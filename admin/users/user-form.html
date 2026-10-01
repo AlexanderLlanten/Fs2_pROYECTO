@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Usuario | KYNEX Admin</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/forms.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main>
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <p class="section-eyebrow">
+                    KYNEX ADMIN
+                </p>
+
+                <h1>
+                    Usuario
+                </h1>
+
+                <p>
+                    Creación y edición de usuarios del ecosistema KYNEX.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="admin-section section-spacing">
+
+            <div class="container">
+
+                <div class="admin-form-header">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            KYNEX ADMIN
+                        </p>
+
+                        <h2 id="user-form-title">
+                            Crear usuario
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="users.html"
+                        class="btn btn-kynex-secondary"
+                    >
+                        <i class="bi bi-arrow-left"></i>
+
+                        Volver
+                    </a>
+
+                </div>
+
+
+                <form
+                    class="kynex-form"
+                    id="admin-user-form"
+                    novalidate
+                >
+
+                    <div class="form-grid">
+
+
+                        <!-- RUN -->
+
+                        <div class="form-group">
+
+                            <label for="admin-run">
+
+                                RUN
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="admin-run"
+                                class="form-control-kynex"
+                                minlength="7"
+                                maxlength="9"
+                                required
+                            >
+
+                            <small class="form-help">
+                                Sin puntos ni guion.
+                            </small>
+
+                            <p
+                                class="field-message"
+                                id="admin-run-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- NOMBRE -->
+
+                        <div class="form-group">
+
+                            <label for="admin-first-name">
+
+                                Nombre
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="admin-first-name"
+                                class="form-control-kynex"
+                                maxlength="50"
+                                required
+                            >
+
+                            <p
+                                class="field-message"
+                                id="admin-first-name-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- APELLIDOS -->
+
+                        <div class="form-group form-group-full">
+
+                            <label for="admin-last-name">
+
+                                Apellidos
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="admin-last-name"
+                                class="form-control-kynex"
+                                maxlength="100"
+                                required
+                            >
+
+                            <p
+                                class="field-message"
+                                id="admin-last-name-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group form-group-full">
+
+                            <label for="admin-email">
+
+                                Correo electrónico
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="email"
+                                id="admin-email"
+                                class="form-control-kynex"
+                                maxlength="100"
+                                required
+                            >
+
+                            <p
+                                class="field-message"
+                                id="admin-email-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- FECHA -->
+
+                        <div class="form-group">
+
+                            <label for="admin-birth-date">
+                                Fecha de nacimiento
+                            </label>
+
+                            <input
+                                type="date"
+                                id="admin-birth-date"
+                                class="form-control-kynex"
+                            >
+
+                        </div>
+
+
+                        <!-- ROL -->
+
+                        <div class="form-group">
+
+                            <label for="admin-role">
+
+                                Tipo de usuario
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <select
+                                id="admin-role"
+                                class="form-select-kynex"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecciona un rol
+                                </option>
+
+                                <option value="Administrador">
+                                    Administrador
+                                </option>
+
+                                <option value="Cliente">
+                                    Cliente
+                                </option>
+
+                                <option value="Vendedor">
+                                    Vendedor
+                                </option>
+
+                            </select>
+
+                            <p
+                                class="field-message"
+                                id="admin-role-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- REGIÓN -->
+
+                        <div class="form-group">
+
+                            <label for="admin-region">
+
+                                Región
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <select
+                                id="admin-region"
+                                class="form-select-kynex"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecciona una región
+                                </option>
+
+                            </select>
+
+                            <p
+                                class="field-message"
+                                id="admin-region-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- COMUNA -->
+
+                        <div class="form-group">
+
+                            <label for="admin-commune">
+
+                                Comuna
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <select
+                                id="admin-commune"
+                                class="form-select-kynex"
+                                disabled
+                                required
+                            >
+
+                                <option value="">
+                                    Selecciona primero una región
+                                </option>
+
+                            </select>
+
+                            <p
+                                class="field-message"
+                                id="admin-commune-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- DIRECCIÓN -->
+
+                        <div class="form-group form-group-full">
+
+                            <label for="admin-address">
+
+                                Dirección
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <textarea
+                                id="admin-address"
+                                class="form-control-kynex"
+                                maxlength="300"
+                                rows="3"
+                                required
+                            ></textarea>
+
+                            <p
+                                class="field-message"
+                                id="admin-address-message"
+                            ></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn btn-kynex-primary form-submit"
+                        >
+                            Guardar usuario
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="form-status"
+                        id="admin-user-status"
+                        role="status"
+                        aria-live="polite"
+                    >
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="../../assets/js/app.js"
+        defer
+    ></script>
+
+    <script
+        type="module"
+        src="../../assets/js/modules/admin-user-form.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../../assets/js/modules/admin-auth.js"
+    ></script>
+
+</body>
+
+</html>

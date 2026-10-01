@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="KYNEX es una plataforma deportiva para comprar suplementos, descubrir entrenamientos y mejorar la experiencia de cada deportista."
+    >
+
+    <title>KYNEX | Suplementación y entrenamiento</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+</head>
+
+<body>
+
+    <!-- Enlace de accesibilidad -->
+    <a class="skip-link" href="#main-content">
+        Ir al contenido principal
+    </a>
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <nav
+            class="navbar navbar-expand-lg navbar-dark"
+            aria-label="Navegación principal"
+        >
+            <div class="container">
+
+                <!-- Marca -->
+                <a
+                    class="navbar-brand brand-logo"
+                    href="index.html"
+                    aria-label="KYNEX - Página principal"
+                >
+                    KYNEX
+                </a>
+
+                <!-- Botón navegación móvil -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Abrir menú de navegación"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navegación -->
+                <div
+                    class="collapse navbar-collapse"
+                    id="mainNavbar"
+                >
+
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="index.html"
+                            >
+                                Inicio
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="pages/shop/products.html"
+                            >
+                                Tienda
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="pages/training/training.html"
+                            >
+                                Entrenamiento
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="pages/information/blog.html"
+                            >
+                                Blog
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="pages/information/about.html"
+                            >
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="pages/information/contact.html"
+                            >
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <!-- Acciones de usuario -->
+                    <div class="navbar-actions">
+
+                        <a
+                            class="navbar-icon-link"
+                            href="pages/account/login.html"
+                            aria-label="Iniciar sesión"
+                            title="Iniciar sesión"
+                        >
+                            <i
+                                class="bi bi-person"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                        <a
+                            class="navbar-icon-link cart-link"
+                            href="pages/shop/cart.html"
+                            aria-label="Ver carrito de compras"
+                            title="Carrito"
+                        >
+                            <i
+                                class="bi bi-bag"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span
+                                class="cart-counter"
+                                id="cart-counter"
+                                aria-label="0 productos en el carrito"
+                            >
+                                0
+                            </span>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ==================================================
+         CONTENIDO PRINCIPAL
+    =================================================== -->
+    <main id="main-content">
+
+        <!-- HERO -->
+        <section
+            class="hero-section"
+            aria-labelledby="hero-title"
+        >
+
+            <div class="container">
+                <div class="row align-items-center min-vh-75">
+
+                    <!-- Texto -->
+                    <div class="col-lg-7">
+
+                        <p class="hero-eyebrow">
+                            SUPLEMENTACIÓN · ENTRENAMIENTO · RENDIMIENTO
+                        </p>
+
+                        <h1
+                            class="hero-title"
+                            id="hero-title"
+                        >
+                            Entrena mejor.
+                            <span>Supérate.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            KYNEX integra suplementación deportiva,
+                            entrenamiento y contenido especializado en
+                            una experiencia diseñada para acompañar
+                            distintos objetivos y disciplinas.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <a
+                                class="btn btn-kynex-primary"
+                                href="pages/shop/products.html"
+                            >
+                                Explorar suplementos
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+                            </a>
+
+                            <a
+                                class="btn btn-kynex-secondary"
+                                href="pages/training/training.html"
+                            >
+                                Ver entrenamientos
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Elemento visual -->
+                    <div class="col-lg-5">
+
+                        <div class="hero-visual">
+
+                            <div class="hero-image-wrapper">
+
+                                <img
+                                    src="assets/img/brand/kynex-hero-home.jpg"
+                                    alt="Productos KYNEX en un entorno de entrenamiento"
+                                    class="hero-main-image"
+                                >
+
+                                <div class="hero-image-badge">
+
+                                    <span>
+                                        KYNEX PERFORMANCE
+                                    </span>
+
+                                    <strong>
+                                        TRAIN. FUEL. EVOLVE.
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+             PROPUESTA DE VALOR
+        =================================================== -->
+        <section
+            class="value-section section-spacing"
+            aria-labelledby="value-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        MÁS QUE UNA TIENDA
+                    </p>
+
+                    <h2 id="value-title">
+                        Todo lo necesario para avanzar
+                    </h2>
+
+                    <p>
+                        Una plataforma creada para conectar productos,
+                        conocimiento y entrenamiento dentro de una misma
+                        experiencia deportiva.
+                    </p>
+
+                </div>
+
+                <div class="row g-4">
+
+                    <!-- Card 1 -->
+                    <div class="col-md-6 col-lg-4">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+                                <i
+                                    class="bi bi-bag-check"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+
+                            <h3>
+                                Suplementación clara
+                            </h3>
+
+                            <p>
+                                Productos presentados con información
+                                nutricional, ingredientes, modo de uso,
+                                alérgenos y recomendaciones relevantes.
+                            </p>
+
+                            <a
+                                href="pages/shop/products.html"
+                                class="feature-link"
+                            >
+                                Explorar tienda
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-6 col-lg-4">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+                                <i
+                                    class="bi bi-person-arms-up"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+
+                            <h3>
+                                Entrenamiento
+                            </h3>
+
+                            <p>
+                                Ejercicios organizados por grupo muscular,
+                                dificultad y equipamiento para facilitar
+                                la creación de futuras rutinas.
+                            </p>
+
+                            <a
+                                href="pages/training/training.html"
+                                class="feature-link"
+                            >
+                                Ver ejercicios
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-6 col-lg-4">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+                                <i
+                                    class="bi bi-graph-up-arrow"
+                                    aria-hidden="true"
+                                ></i>
+                            </div>
+
+                            <h3>
+                                Evolución deportiva
+                            </h3>
+
+                            <p>
+                                El ecosistema KYNEX está preparado para
+                                incorporar seguimiento, rutinas,
+                                recomendaciones y personalización.
+                            </p>
+
+                            <a
+                                href="pages/information/about.html"
+                                class="feature-link"
+                            >
+                                Conocer KYNEX
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+            CATEGORÍAS
+        =================================================== -->
+
+        <section
+            class="category-section section-spacing"
+            aria-labelledby="category-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        ENCUENTRA LO QUE NECESITAS
+                    </p>
+
+                    <h2 id="category-title">
+                        Explora por categoría
+                    </h2>
+
+                    <p>
+                        Encuentra suplementos según el tipo
+                        de producto y el objetivo deportivo.
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <!-- Proteínas -->
+                    <div class="col-6 col-lg-3">
+
+                        <a
+                            href="pages/shop/products.html"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon">
+                                <i class="bi bi-cup-straw"></i>
+                            </div>
+
+                            <h3>
+                                Proteínas
+                            </h3>
+
+                            <p>
+                                Recuperación y desarrollo muscular.
+                            </p>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- Creatinas -->
+                    <div class="col-6 col-lg-3">
+
+                        <a
+                            href="pages/shop/products.html"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+
+                            <h3>
+                                Creatinas
+                            </h3>
+
+                            <p>
+                                Fuerza y rendimiento deportivo.
+                            </p>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- Vitaminas -->
+                    <div class="col-6 col-lg-3">
+
+                        <a
+                            href="pages/shop/products.html"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon">
+                                <i class="bi bi-capsule"></i>
+                            </div>
+
+                            <h3>
+                                Vitaminas
+                            </h3>
+
+                            <p>
+                                Apoyo nutricional cotidiano.
+                            </p>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- Pre-entreno -->
+                    <div class="col-6 col-lg-3">
+
+                        <a
+                            href="pages/shop/products.html"
+                            class="category-card"
+                        >
+
+                            <div class="category-icon">
+                                <i class="bi bi-fire"></i>
+                            </div>
+
+                            <h3>
+                                Pre-entreno
+                            </h3>
+
+                            <p>
+                                Energía para cada sesión.
+                            </p>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+            PRODUCTOS DESTACADOS
+        =================================================== -->
+
+        <section
+            class="featured-products section-spacing"
+            aria-labelledby="featured-products-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        SELECCIÓN KYNEX
+                    </p>
+
+                    <h2 id="featured-products-title">
+                        Productos destacados
+                    </h2>
+
+                    <p>
+                        Una selección de productos orientados
+                        al rendimiento, fuerza y recuperación.
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <!-- PRODUCTO 1 -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <article class="product-card">
+
+                            <div class="home-product-image-wrapper">
+
+                                <img
+                                    src="assets/img/products/kynex-whey-protein-vanilla.png"
+                                    alt="Whey Protein Performance KYNEX"
+                                    class="home-product-image"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+
+                            <div class="product-card-body">
+
+                                <span class="product-category">
+                                    PROTEÍNA
+                                </span>
+
+                                <h3>
+                                    Whey Protein Performance
+                                </h3>
+
+                                <p class="product-description">
+                                    Proteína de suero orientada al apoyo
+                                    nutricional posterior al entrenamiento.
+                                </p>
+
+
+                                <div class="product-card-footer">
+
+                                    <strong>
+                                        $39.990
+                                    </strong>
+
+                                    <a
+                                        href="pages/shop/product-detail.html?id=1"
+                                        class="btn btn-kynex-secondary"
+                                    >
+                                        Ver producto
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- PRODUCTO 2 -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <article class="product-card">
+
+                            <div class="home-product-image-wrapper">
+
+                                <img
+                                    src="assets/img/products/kynex-creatina-monohidratada-unflavored.png"
+                                    alt="Creatina Monohidratada KYNEX"
+                                    class="home-product-image"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+
+                            <div class="product-card-body">
+
+                                <span class="product-category">
+                                    CREATINA
+                                </span>
+
+                                <h3>
+                                    Creatina Monohidratada
+                                </h3>
+
+                                <p class="product-description">
+                                    Creatina en polvo orientada a complementar
+                                    planes de entrenamiento de fuerza.
+                                </p>
+
+
+                                <div class="product-card-footer">
+
+                                    <strong>
+                                        $21.990
+                                    </strong>
+
+                                    <a
+                                        href="pages/shop/product-detail.html?id=2"
+                                        class="btn btn-kynex-secondary"
+                                    >
+                                        Ver producto
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- PRODUCTO 3 -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <article class="product-card">
+
+                            <div class="home-product-image-wrapper">
+
+                                <img
+                                    src="assets/img/products/kynex-pre-workout-energy-fruit-punch.png"
+                                    alt="Pre Workout Energy KYNEX"
+                                    class="home-product-image"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+
+                            <div class="product-card-body">
+
+                                <span class="product-category">
+                                    PRE-ENTRENO
+                                </span>
+
+                                <h3>
+                                    Pre Workout Energy
+                                </h3>
+
+                                <p class="product-description">
+                                    Fórmula demostrativa orientada
+                                    al consumo previo a sesiones de entrenamiento.
+                                </p>
+
+
+                                <div class="product-card-footer">
+
+                                    <strong>
+                                        $26.990
+                                    </strong>
+
+                                    <a
+                                        href="pages/shop/product-detail.html?id=3"
+                                        class="btn btn-kynex-secondary"
+                                    >
+                                        Ver producto
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section-action">
+
+                    <a
+                        href="pages/shop/products.html"
+                        class="btn btn-kynex-primary"
+                    >
+
+                        Ver todos los productos
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+            OBJETIVOS
+        =================================================== -->
+
+        <section
+            class="goals-section section-spacing"
+            aria-labelledby="goals-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        COMPRA SEGÚN TU OBJETIVO
+                    </p>
+
+                    <h2 id="goals-title">
+                        ¿Qué quieres conseguir?
+                    </h2>
+
+                    <p>
+                        KYNEX organiza el descubrimiento
+                        de productos según las necesidades
+                        del deportista.
+                    </p>
+
+                </div>
+
+
+                <div class="goals-grid">
+
+                    <a
+                        href="pages/shop/products.html"
+                        class="goal-card"
+                    >
+
+                        <i class="bi bi-bar-chart-line"></i>
+
+                        <span>
+                            Aumento de masa
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="pages/shop/products.html"
+                        class="goal-card"
+                    >
+
+                        <i class="bi bi-lightning"></i>
+
+                        <span>
+                            Energía
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="pages/shop/products.html"
+                        class="goal-card"
+                    >
+
+                        <i class="bi bi-heart-pulse"></i>
+
+                        <span>
+                            Recuperación
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="pages/shop/products.html"
+                        class="goal-card"
+                    >
+
+                        <i class="bi bi-moon-stars"></i>
+
+                        <span>
+                            Descanso
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+            KYNEX TRAINING
+        =================================================== -->
+
+        <section
+            class="training-highlight section-spacing"
+            aria-labelledby="training-highlight-title"
+        >
+
+            <div class="container">
+
+                <div class="row align-items-center g-5">
+
+
+                    <div class="col-lg-6">
+
+                        <div class="training-visual">
+
+                            <img
+                                src="assets/img/training/training-hero-deadlift.jpg"
+                                alt="Entrenamiento de fuerza en KYNEX Training"
+                                class="training-highlight-image"
+                                loading="lazy"
+                            >
+
+                            <div class="training-image-overlay">
+
+                                <span>
+                                    KYNEX TRAINING
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-6">
+
+                        <p class="section-eyebrow">
+                            ENTRENA CON PROPÓSITO
+                        </p>
+
+                        <h2 id="training-highlight-title">
+                            Del suplemento al entrenamiento
+                        </h2>
+
+                        <p>
+                            KYNEX complementa la experiencia
+                            de compra con una biblioteca de ejercicios
+                            organizada por grupo muscular,
+                            equipamiento y nivel de dificultad.
+                        </p>
+
+                        <p>
+                            El usuario podrá explorar ejercicios
+                            y posteriormente construir sus propias
+                            rutinas.
+                        </p>
+
+
+                        <div class="hero-actions">
+
+                            <a
+                                href="pages/training/training.html"
+                                class="btn btn-kynex-primary"
+                            >
+                                Explorar ejercicios
+                            </a>
+
+                            <a
+                                href="pages/training/routine.html"
+                                class="btn btn-kynex-secondary"
+                            >
+                                Mi rutina
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+            CONTENIDO MULTIMEDIA
+        =================================================== -->
+
+        <section
+            class="media-section section-spacing"
+            aria-labelledby="media-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        APRENDE Y ENTRENA
+                    </p>
+
+                    <h2 id="media-title">
+                        Contenido audiovisual
+                    </h2>
+
+                    <p>
+                        Material complementario relacionado
+                        con técnica, entrenamiento y rendimiento.
+                    </p>
+
+                </div>
+
+
+                <div class="video-container">
+
+                    <iframe
+                        src="https://www.youtube.com/embed/UBMk30rjy0o"
+                        title="Contenido audiovisual de entrenamiento"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+            BLOG DESTACADO
+        =================================================== -->
+
+        <section
+            class="home-blog section-spacing"
+            aria-labelledby="home-blog-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        KYNEX CONTENT
+                    </p>
+
+                    <h2 id="home-blog-title">
+                        Aprende más
+                    </h2>
+
+                    <p>
+                        Contenido informativo sobre
+                        suplementación, entrenamiento
+                        y recuperación.
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+                    <!-- ARTÍCULO 1 -->
+
+                    <div class="col-md-6">
+
+                        <article class="home-blog-card">
+
+                            <img
+                                src="assets/img/blog/blog-creatina-rendimiento.jpg"
+                                alt="Creatina y rendimiento deportivo"
+                                class="home-blog-image"
+                                loading="lazy"
+                            >
+
+
+                            <div class="home-blog-content">
+
+                                <span class="blog-category">
+                                    SUPLEMENTACIÓN
+                                </span>
+
+                                <h3>
+                                    Creatina y rendimiento
+                                </h3>
+
+                                <p>
+                                    Conoce conceptos relacionados con
+                                    la creatina dentro del contexto
+                                    del entrenamiento de fuerza.
+                                </p>
+
+                                <a
+                                    href="pages/information/blog-detail-1.html"
+                                    class="feature-link"
+                                >
+
+                                    Leer artículo
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- ARTÍCULO 2 -->
+
+                    <div class="col-md-6">
+
+                        <article class="home-blog-card">
+
+                            <img
+                                src="assets/img/blog/blog-recuperacion-muscular.jpg"
+                                alt="Recuperación muscular después del entrenamiento"
+                                class="home-blog-image"
+                                loading="lazy"
+                            >
+
+
+                            <div class="home-blog-content">
+
+                                <span class="blog-category">
+                                    ENTRENAMIENTO
+                                </span>
+
+                                <h3>
+                                    Recuperación muscular
+                                </h3>
+
+                                <p>
+                                    Conoce la importancia del descanso,
+                                    la alimentación y la planificación
+                                    dentro del entrenamiento.
+                                </p>
+
+                                <a
+                                    href="pages/information/blog-detail-2.html"
+                                    class="feature-link"
+                                >
+
+                                    Leer artículo
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <div class="section-action">
+
+                    <a
+                        href="pages/information/blog.html"
+                        class="btn btn-kynex-secondary"
+                    >
+
+                        Ver todos los artículos
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+             CTA
+        =================================================== -->
+        <section
+            class="cta-section section-spacing"
+            aria-labelledby="cta-title"
+        >
+
+            <div class="container">
+
+                <div class="cta-panel">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            KYNEX
+                        </p>
+
+                        <h2 id="cta-title">
+                            Construye tu próximo nivel
+                        </h2>
+
+                        <p>
+                            Explora suplementación y entrenamiento
+                            desde una plataforma pensada para deportistas.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="pages/account/register.html"
+                        class="btn btn-kynex-primary"
+                    >
+                        Crear cuenta
+
+                        <i
+                            class="bi bi-arrow-right"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="row gy-5">
+
+                <!-- Marca -->
+                <div class="col-lg-5">
+
+                    <a
+                        href="index.html"
+                        class="footer-brand"
+                    >
+                        KYNEX
+                    </a>
+
+                    <p class="footer-description">
+                        Plataforma deportiva orientada a suplementación,
+                        entrenamiento y desarrollo de hábitos asociados
+                        al rendimiento.
+                    </p>
+
+                </div>
+
+                <!-- Navegación -->
+                <div class="col-6 col-lg-2">
+
+                    <h2 class="footer-title">
+                        KYNEX
+                    </h2>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="pages/information/about.html">
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="pages/information/blog.html">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="pages/information/contact.html">
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Plataforma -->
+                <div class="col-6 col-lg-2">
+
+                    <h2 class="footer-title">
+                        Explorar
+                    </h2>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="pages/shop/products.html">
+                                Tienda
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="pages/training/training.html">
+                                Entrenamiento
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="pages/account/login.html">
+                                Mi cuenta
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- Social -->
+                <div class="col-lg-3">
+
+                    <h2 class="footer-title">
+                        Comunidad
+                    </h2>
+
+                <div class="social-links">
+
+                    <a
+                        href="https://www.instagram.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        title="Instagram"
+                    >
+                        <i
+                            class="bi bi-instagram"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+
+                    <a
+                        href="https://www.tiktok.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="TikTok"
+                        title="TikTok"
+                    >
+                        <i
+                            class="bi bi-tiktok"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+
+                    <a
+                        href="https://www.youtube.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="YouTube"
+                        title="YouTube"
+                    >
+                        <i
+                            class="bi bi-youtube"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+
+                </div>
+
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    KYNEX. Todos los derechos reservados.
+                </p>
+
+                <p>
+                    Suplementación · Entrenamiento · Rendimiento
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!-- JavaScript propio -->
+    <script
+        src="assets/js/app.js"
+        defer
+    ></script>
+
+</body>
+</html>

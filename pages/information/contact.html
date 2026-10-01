@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Contacta a KYNEX para realizar consultas sobre productos, soporte y servicios."
+    >
+
+    <title>Contacto | KYNEX</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <!-- CSS KYNEX -->
+    <link
+        rel="stylesheet"
+        href="../../assets/css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/forms.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- Accesibilidad -->
+    <a
+        class="skip-link"
+        href="#main-content"
+    >
+        Ir al contenido principal
+    </a>
+
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+
+    <header class="site-header">
+
+        <nav
+            class="navbar navbar-expand-lg navbar-dark"
+            aria-label="Navegación principal"
+        >
+
+            <div class="container">
+
+                <!-- Logo -->
+                <a
+                    class="navbar-brand brand-logo"
+                    href="../../index.html"
+                >
+                    KYNEX
+                </a>
+
+
+                <!-- Menú móvil -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Abrir menú"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <!-- Navegación -->
+                <div
+                    class="collapse navbar-collapse"
+                    id="mainNavbar"
+                >
+
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../../index.html"
+                            >
+                                Inicio
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../shop/products.html"
+                            >
+                                Tienda
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../training/training.html"
+                            >
+                                Entrenamiento
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../information/blog.html"
+                            >
+                                Blog
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../information/about.html"
+                            >
+                                Nosotros
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="contact.html"
+                            >
+                                Contacto
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+
+                    <!-- Cuenta y carrito -->
+                    <div class="navbar-actions">
+
+                        <a
+                            class="navbar-icon-link"
+                            href="../account/login.html"
+                            aria-label="Iniciar sesión"
+                        >
+
+                            <i
+                                class="bi bi-person"
+                                aria-hidden="true"
+                            ></i>
+
+                        </a>
+
+
+                        <a
+                            class="navbar-icon-link cart-link"
+                            href="../shop/cart.html"
+                            aria-label="Ver carrito"
+                        >
+
+                            <i
+                                class="bi bi-bag"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span
+                                class="cart-counter"
+                                id="cart-counter"
+                            >
+                                0
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTENIDO PRINCIPAL
+    =================================================== -->
+
+    <main id="main-content">
+
+        <section class="form-section section-spacing">
+
+            <div class="container">
+
+                <div class="form-layout">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            CONTACTO
+                        </p>
+
+                        <h2>
+                            Hablemos
+                        </h2>
+
+                        <p>
+                            Envíanos tu consulta y revisaremos
+                            tu mensaje.
+                        </p>
+
+
+                        <form
+                            class="kynex-form"
+                            id="contact-form"
+                            novalidate
+                        >
+
+                            <div class="form-grid">
+
+
+                                <!-- NOMBRE -->
+
+                                <div class="form-group form-group-full">
+
+                                    <label for="contact-name">
+
+                                        Nombre
+
+                                        <span class="required-mark">
+                                            *
+                                        </span>
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="contact-name"
+                                        name="name"
+                                        class="form-control-kynex"
+                                        maxlength="100"
+                                        autocomplete="name"
+                                        required
+                                    >
+
+                                    <p
+                                        class="field-message"
+                                        id="contact-name-message"
+                                    ></p>
+
+                                </div>
+
+
+                                <!-- EMAIL -->
+
+                                <div class="form-group form-group-full">
+
+                                    <label for="contact-email">
+
+                                        Correo electrónico
+
+                                        <span class="required-mark">
+                                            *
+                                        </span>
+
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="contact-email"
+                                        name="email"
+                                        class="form-control-kynex"
+                                        maxlength="100"
+                                        autocomplete="email"
+                                        required
+                                    >
+
+                                    <p
+                                        class="field-message"
+                                        id="contact-email-message"
+                                    ></p>
+
+                                </div>
+
+
+                                <!-- COMENTARIO -->
+
+                                <div class="form-group form-group-full">
+
+                                    <label for="contact-comment">
+
+                                        Comentario
+
+                                        <span class="required-mark">
+                                            *
+                                        </span>
+
+                                    </label>
+
+                                    <textarea
+                                        id="contact-comment"
+                                        name="comment"
+                                        class="form-control-kynex"
+                                        maxlength="500"
+                                        rows="6"
+                                        required
+                                    ></textarea>
+
+
+                                    <div class="textarea-meta">
+
+                                        <p
+                                            class="field-message"
+                                            id="contact-comment-message"
+                                        ></p>
+
+                                        <span id="comment-counter">
+                                            0 / 500
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-kynex-primary form-submit"
+                                >
+                                    Enviar mensaje
+
+                                    <i class="bi bi-send"></i>
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                class="form-status"
+                                id="contact-status"
+                                role="status"
+                                aria-live="polite"
+                            >
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                    <aside class="form-side-panel">
+
+                        <i class="bi bi-chat-dots"></i>
+
+                        <h2>
+                            Contacta a KYNEX
+                        </h2>
+
+                        <p>
+                            Este formulario permite canalizar
+                            dudas y solicitudes de los usuarios.
+                        </p>
+
+
+                        <ul class="form-side-list">
+
+                            <li>
+
+                                <i class="bi bi-envelope"></i>
+
+                                <span>
+                                    Consultas generales.
+                                </span>
+
+                            </li>
+
+                            <li>
+
+                                <i class="bi bi-bag"></i>
+
+                                <span>
+                                    Información de productos.
+                                </span>
+
+                            </li>
+
+                            <li>
+
+                                <i class="bi bi-question-circle"></i>
+
+                                <span>
+                                    Soporte y orientación.
+                                </span>
+
+                            </li>
+
+                        </ul>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="row gy-5">
+
+                <div class="col-lg-5">
+
+                    <a
+                        href="../../index.html"
+                        class="footer-brand"
+                    >
+                        KYNEX
+                    </a>
+
+                    <p class="footer-description">
+                        Plataforma deportiva orientada a
+                        suplementación, entrenamiento y rendimiento.
+                    </p>
+
+                </div>
+
+
+                <div class="col-6 col-lg-2">
+
+                    <h2 class="footer-title">
+                        KYNEX
+                    </h2>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="../information/about.html">
+                                Nosotros
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../information/blog.html">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../information/contact.html">
+                                Contacto
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="col-6 col-lg-2">
+
+                    <h2 class="footer-title">
+                        Explorar
+                    </h2>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="../shop/products.html">
+                                Tienda
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../training/training.html">
+                                Entrenamiento
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../account/login.html">
+                                Mi cuenta
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <h2 class="footer-title">
+                        Comunidad
+                    </h2>
+
+                    <div class="social-links">
+
+                        <a
+                            href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                            title="Instagram"
+                        >
+                            <i
+                                class="bi bi-instagram"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+
+                        <a
+                            href="https://www.tiktok.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="TikTok"
+                            title="TikTok"
+                        >
+                            <i
+                                class="bi bi-tiktok"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+
+                        <a
+                            href="https://www.youtube.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="YouTube"
+                            title="YouTube"
+                        >
+                            <i
+                                class="bi bi-youtube"
+                                aria-hidden="true"
+                            ></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <hr class="footer-divider">
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    KYNEX.
+                </p>
+
+                <p>
+                    Suplementación · Entrenamiento · Rendimiento
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Bootstrap -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!-- JS KYNEX -->
+    <script
+        src="../../assets/js/app.js"
+        defer
+    ></script>
+
+    <script
+        type="module"
+        src="../../assets/js/modules/contact.js"
+    ></script>
+
+</body>
+
+</html>

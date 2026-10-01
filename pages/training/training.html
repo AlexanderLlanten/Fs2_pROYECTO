@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Biblioteca de ejercicios KYNEX organizada por grupo muscular y dificultad."
+    >
+
+    <title>Entrenamiento | KYNEX</title>
+
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/main.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/training.css"
+    >
+
+</head>
+
+
+<body>
+
+    <a
+        class="skip-link"
+        href="#main-content"
+    >
+        Ir al contenido principal
+    </a>
+
+
+    <header class="site-header">
+
+        <nav
+            class="navbar navbar-expand-lg navbar-dark"
+            aria-label="Navegación principal"
+        >
+
+            <div class="container">
+
+                <a
+                    class="navbar-brand brand-logo"
+                    href="../../index.html"
+                >
+                    KYNEX
+                </a>
+
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Abrir menú"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div
+                    class="collapse navbar-collapse"
+                    id="mainNavbar"
+                >
+
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../../index.html"
+                            >
+                                Inicio
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../shop/products.html"
+                            >
+                                Tienda
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="training.html"
+                            >
+                                Entrenamiento
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../information/blog.html"
+                            >
+                                Blog
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../information/about.html"
+                            >
+                                Nosotros
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <a
+                                class="nav-link"
+                                href="../information/contact.html"
+                            >
+                                Contacto
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+
+                    <div class="navbar-actions">
+
+                        <a
+                            class="navbar-icon-link"
+                            href="../account/login.html"
+                            aria-label="Iniciar sesión"
+                        >
+                            <i class="bi bi-person"></i>
+                        </a>
+
+
+                        <a
+                            class="navbar-icon-link cart-link"
+                            href="../shop/cart.html"
+                            aria-label="Ver carrito"
+                        >
+
+                            <i class="bi bi-bag"></i>
+
+                            <span
+                                class="cart-counter"
+                                id="cart-counter"
+                            >
+                                0
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main id="main-content">
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <p class="section-eyebrow">
+                    KYNEX TRAINING
+                </p>
+
+                <h1>
+                    Entrenamiento
+                </h1>
+
+                <p>
+                    Explora ejercicios y crea una rutina
+                    personalizada utilizando la biblioteca KYNEX.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="section-spacing">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-eyebrow">
+                        BIBLIOTECA
+                    </p>
+
+                    <h2>
+                        Ejercicios disponibles
+                    </h2>
+
+                    <p id="exercise-count">
+                        0 ejercicios encontrados
+                    </p>
+
+                </div>
+
+
+                <div class="training-toolbar">
+
+                    <div class="training-filter">
+
+                        <label for="exercise-search">
+                            Buscar ejercicio
+                        </label>
+
+                        <input
+                            type="search"
+                            id="exercise-search"
+                            class="form-control"
+                            placeholder="Ej: sentadilla"
+                        >
+
+                    </div>
+
+
+                    <div class="training-filter">
+
+                        <label for="muscle-filter">
+                            Grupo muscular
+                        </label>
+
+                        <select
+                            id="muscle-filter"
+                            class="form-select"
+                        >
+
+                            <option value="all">
+                                Todos
+                            </option>
+
+                            <option value="Pecho">
+                                Pecho
+                            </option>
+
+                            <option value="Espalda">
+                                Espalda
+                            </option>
+
+                            <option value="Piernas">
+                                Piernas
+                            </option>
+
+                            <option value="Hombros">
+                                Hombros
+                            </option>
+
+                            <option value="Brazos">
+                                Brazos
+                            </option>
+
+                            <option value="Core">
+                                Core
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="training-filter">
+
+                        <label for="difficulty-filter">
+                            Dificultad
+                        </label>
+
+                        <select
+                            id="difficulty-filter"
+                            class="form-select"
+                        >
+
+                            <option value="all">
+                                Todas
+                            </option>
+
+                            <option value="Principiante">
+                                Principiante
+                            </option>
+
+                            <option value="Intermedio">
+                                Intermedio
+                            </option>
+
+                            <option value="Avanzado">
+                                Avanzado
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="exercise-grid"
+                    id="exercise-container"
+                >
+                </div>
+
+
+                <div
+                    class="training-empty d-none"
+                    id="exercise-empty"
+                >
+
+                    <i class="bi bi-search"></i>
+
+                    <h2>
+                        No se encontraron ejercicios
+                    </h2>
+
+                    <p>
+                        Prueba cambiando los filtros de búsqueda.
+                    </p>
+
+                </div>
+
+
+                <div class="section-action">
+
+                    <a
+                        href="routine.html"
+                        class="btn btn-kynex-primary"
+                    >
+
+                        <i class="bi bi-clipboard2-pulse"></i>
+
+                        Ver mi rutina
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    KYNEX.
+                </p>
+
+                <p>
+                    Suplementación · Entrenamiento · Rendimiento
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <script
+        src="../../assets/js/app.js"
+        defer
+    ></script>
+
+
+    <script
+        type="module"
+        src="../../assets/js/modules/training.js"
+    ></script>
+
+</body>
+
+</html>

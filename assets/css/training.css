@@ -1,0 +1,493 @@
+/* =========================================================
+   KYNEX - TRAINING
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   FILTROS
+--------------------------------------------------------- */
+
+.training-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 16px;
+
+    margin-bottom: 36px;
+}
+
+
+.training-filter {
+    flex: 1 1 220px;
+}
+
+
+.training-filter label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--color-text);
+
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   GRID
+--------------------------------------------------------- */
+
+.exercise-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* ---------------------------------------------------------
+   TARJETA
+--------------------------------------------------------- */
+
+.exercise-card {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    background-color:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-md);
+
+    transition:
+        transform var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+
+.exercise-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--color-border-hover);
+}
+
+
+/* ---------------------------------------------------------
+   IMAGEN EJERCICIO
+--------------------------------------------------------- */
+
+.exercise-card-image {
+    overflow: hidden;
+
+    width: 100%;
+    height: 240px;
+
+    background-color:
+        var(--color-bg-soft);
+
+    border-bottom:
+        1px solid var(--color-border);
+}
+
+
+.exercise-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform var(--transition-normal);
+}
+
+
+.exercise-card:hover
+.exercise-image {
+    transform:
+        scale(1.035);
+}
+
+
+.exercise-image-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(158, 240, 26, 0.12),
+            transparent 60%
+        );
+}
+
+
+.exercise-image-fallback i {
+    color:
+        var(--color-primary);
+
+    font-size:
+        4rem;
+}
+
+
+/* ---------------------------------------------------------
+   CONTENIDO
+--------------------------------------------------------- */
+
+.exercise-card-content {
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+
+    padding: 26px;
+}
+
+
+.exercise-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+
+.exercise-badge {
+    display: inline-flex;
+
+    padding:
+        5px 9px;
+
+    color:
+        var(--color-text-soft);
+
+    background-color:
+        var(--color-bg-soft);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        50px;
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        700;
+}
+
+
+.exercise-card h2,
+.exercise-card h3 {
+    margin-bottom:
+        12px;
+}
+
+
+.exercise-card p {
+    flex-grow: 1;
+
+    color:
+        var(--color-text-soft);
+}
+
+
+.exercise-prescription {
+    margin:
+        18px 0;
+
+    padding:
+        12px;
+
+    background-color:
+        var(--color-bg-soft);
+
+    border-radius:
+        var(--radius-sm);
+
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        0.85rem;
+}
+
+
+/* ---------------------------------------------------------
+   ESTADO VACÍO
+--------------------------------------------------------- */
+
+.training-empty {
+    padding:
+        60px 20px;
+
+    text-align:
+        center;
+
+    color:
+        var(--color-text-soft);
+}
+
+
+/* ---------------------------------------------------------
+   RUTINA
+--------------------------------------------------------- */
+
+.routine-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.routine-item {
+    display: grid;
+
+    grid-template-columns:
+        1fr auto auto auto;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    padding:
+        22px;
+
+    background-color:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-md);
+}
+
+
+.routine-item h3 {
+    margin-bottom:
+        5px;
+}
+
+
+.routine-item p {
+    margin:
+        0;
+
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        0.85rem;
+}
+
+
+.routine-number {
+    width:
+        90px;
+}
+
+
+.routine-number label {
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        700;
+}
+
+
+.routine-number input {
+    width:
+        100%;
+
+    padding:
+        9px 10px;
+
+    background-color:
+        var(--color-bg);
+
+    color:
+        var(--color-text);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-sm);
+}
+
+
+.routine-remove {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    background:
+        transparent;
+
+    color:
+        var(--color-danger);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-sm);
+}
+
+
+/* ---------------------------------------------------------
+   RESUMEN
+--------------------------------------------------------- */
+
+.routine-summary {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    margin-bottom:
+        28px;
+
+    padding:
+        22px;
+
+    background-color:
+        var(--color-surface);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-md);
+}
+
+
+.routine-summary-item strong {
+    display:
+        block;
+
+    color:
+        var(--color-primary);
+
+    font-size:
+        1.7rem;
+}
+
+
+.routine-summary-item span {
+    color:
+        var(--color-text-soft);
+
+    font-size:
+        0.8rem;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media (
+    max-width: 991.98px
+) {
+
+    .exercise-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .routine-item {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (
+    max-width: 575.98px
+) {
+
+    .exercise-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .exercise-card-image {
+        height:
+            220px;
+    }
+
+
+    .routine-item {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .routine-number {
+        width:
+            100%;
+    }
+
+
+    .routine-summary {
+        flex-direction:
+            column;
+    }
+
+}

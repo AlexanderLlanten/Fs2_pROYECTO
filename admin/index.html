@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Panel administrativo de KYNEX para la gestión de productos, usuarios y pedidos."
+    >
+
+    <title>Administración | KYNEX</title>
+
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- Estilos KYNEX -->
+    <link
+        rel="stylesheet"
+        href="../assets/css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../assets/css/admin.css"
+    >
+
+</head>
+
+
+<body class="admin-body">
+
+    <!-- Accesibilidad -->
+
+    <a
+        class="skip-link"
+        href="#admin-main-content"
+    >
+        Ir al contenido principal
+    </a>
+
+
+    <div class="admin-layout">
+
+
+        <!-- ==================================================
+             SIDEBAR
+        =================================================== -->
+
+        <aside
+            class="admin-sidebar"
+            aria-label="Menú administrativo"
+        >
+
+            <!-- Marca -->
+
+            <div class="admin-sidebar-brand">
+
+                <a
+                    href="index.html"
+                    class="admin-sidebar-logo"
+                    aria-label="KYNEX Admin - Inicio"
+                >
+                    KYNEX
+                    <span>
+                        ADMIN
+                    </span>
+                </a>
+
+            </div>
+
+
+            <!-- Perfil actual -->
+
+            <div
+                id="admin-session"
+                class="admin-sidebar-session"
+            >
+            </div>
+
+
+            <!-- Navegación -->
+
+            <nav
+                class="admin-sidebar-navigation"
+                aria-label="Navegación del administrador"
+            >
+
+                <p class="admin-sidebar-label">
+                    GESTIÓN
+                </p>
+
+
+                <ul class="admin-sidebar-menu">
+
+                    <!-- PANEL -->
+
+                    <li>
+
+                        <a
+                            href="index.html"
+                            class="admin-sidebar-link active"
+                            aria-current="page"
+                        >
+
+                            <i
+                                class="bi bi-grid-1x2"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Panel principal
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- PRODUCTOS -->
+
+                    <li data-seller-access>
+
+                        <a
+                            href="products/products.html"
+                            class="admin-sidebar-link"
+                        >
+
+                            <i
+                                class="bi bi-box-seam"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Productos
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- USUARIOS -->
+
+                    <li data-admin-only>
+
+                        <a
+                            href="users/users.html"
+                            class="admin-sidebar-link"
+                        >
+
+                            <i
+                                class="bi bi-people"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Usuarios
+                            </span>
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- PEDIDOS -->
+
+                    <li data-seller-access>
+
+                        <a
+                            href="orders/orders.html"
+                            class="admin-sidebar-link"
+                        >
+
+                            <i
+                                class="bi bi-receipt"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Pedidos
+                            </span>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+
+                <p class="admin-sidebar-label admin-sidebar-label-secondary">
+                    KYNEX
+                </p>
+
+
+                <ul class="admin-sidebar-menu">
+
+                    <!-- VOLVER A TIENDA -->
+
+                    <li>
+
+                        <a
+                            href="../index.html"
+                            class="admin-sidebar-link"
+                        >
+
+                            <i
+                                class="bi bi-shop"
+                                aria-hidden="true"
+                            ></i>
+
+                            <span>
+                                Volver a la tienda
+                            </span>
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- Información inferior -->
+
+            <div class="admin-sidebar-footer">
+
+                <p>
+                    KYNEX
+                </p>
+
+                <span>
+                    Gestión interna
+                </span>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==================================================
+             CONTENIDO
+        =================================================== -->
+
+        <main
+            class="admin-main"
+            id="admin-main-content"
+        >
+
+
+            <!-- ==================================================
+                 CABECERA
+            =================================================== -->
+
+            <header class="admin-main-header">
+
+                <div>
+
+                    <p class="section-eyebrow">
+                        KYNEX ADMIN
+                    </p>
+
+                    <h1>
+                        Panel de administración
+                    </h1>
+
+                    <p>
+                        Gestiona productos, usuarios y pedidos
+                        desde un único espacio.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="../index.html"
+                    class="btn btn-kynex-secondary"
+                >
+
+                    <i
+                        class="bi bi-shop"
+                        aria-hidden="true"
+                    ></i>
+
+                    Ver tienda
+
+                </a>
+
+            </header>
+
+
+            <!-- ==================================================
+                 RESUMEN
+            =================================================== -->
+
+            <section
+                class="admin-dashboard-section"
+                aria-labelledby="admin-modules-title"
+            >
+
+                <div class="admin-section-heading">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            MÓDULOS
+                        </p>
+
+                        <h2 id="admin-modules-title">
+                            Gestión KYNEX
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+                        Selecciona una de las áreas disponibles
+                        para comenzar.
+                    </p>
+
+                </div>
+
+
+                <div class="row g-4">
+
+
+                    <!-- ==================================================
+                         PRODUCTOS
+                    =================================================== -->
+
+                    <div
+                        class="col-md-6 col-xl-4"
+                        data-seller-access
+                    >
+
+                        <article class="admin-dashboard-card">
+
+                            <div class="admin-dashboard-card-header">
+
+                                <div class="admin-dashboard-icon">
+
+                                    <i
+                                        class="bi bi-box-seam"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                </div>
+
+
+                                <span class="admin-module-badge">
+                                    Inventario
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Productos
+                            </h3>
+
+
+                            <p>
+                                Consulta el catálogo, stock,
+                                stock crítico y características
+                                de los productos disponibles.
+                            </p>
+
+
+                            <a
+                                href="products/products.html"
+                                class="admin-dashboard-link"
+                            >
+
+                                Gestionar productos
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         USUARIOS
+                    =================================================== -->
+
+                    <div
+                        class="col-md-6 col-xl-4"
+                        data-admin-only
+                    >
+
+                        <article class="admin-dashboard-card">
+
+                            <div class="admin-dashboard-card-header">
+
+                                <div class="admin-dashboard-icon">
+
+                                    <i
+                                        class="bi bi-people"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                </div>
+
+
+                                <span class="admin-module-badge">
+                                    Accesos
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Usuarios
+                            </h3>
+
+
+                            <p>
+                                Administra los usuarios registrados,
+                                sus datos personales y los diferentes
+                                perfiles del sistema.
+                            </p>
+
+
+                            <a
+                                href="users/users.html"
+                                class="admin-dashboard-link"
+                            >
+
+                                Gestionar usuarios
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         PEDIDOS
+                    =================================================== -->
+
+                    <div
+                        class="col-md-6 col-xl-4"
+                        data-seller-access
+                    >
+
+                        <article class="admin-dashboard-card">
+
+                            <div class="admin-dashboard-card-header">
+
+                                <div class="admin-dashboard-icon">
+
+                                    <i
+                                        class="bi bi-receipt"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                </div>
+
+
+                                <span class="admin-module-badge">
+                                    Ventas
+                                </span>
+
+                            </div>
+
+
+                            <h3>
+                                Pedidos
+                            </h3>
+
+
+                            <p>
+                                Consulta las órdenes registradas,
+                                sus productos, clientes, totales
+                                y estados actuales.
+                            </p>
+
+
+                            <a
+                                href="orders/orders.html"
+                                class="admin-dashboard-link"
+                            >
+
+                                Consultar pedidos
+
+                                <i
+                                    class="bi bi-arrow-right"
+                                    aria-hidden="true"
+                                ></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 INFORMACIÓN
+            =================================================== -->
+
+            <section
+                class="admin-dashboard-section"
+                aria-labelledby="admin-info-title"
+            >
+
+                <div class="admin-info-panel">
+
+                    <div class="admin-info-icon">
+
+                        <i
+                            class="bi bi-shield-check"
+                            aria-hidden="true"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            ACCESO CONTROLADO
+                        </p>
+
+
+                        <h2 id="admin-info-title">
+                            Funciones según perfil
+                        </h2>
+
+
+                        <p>
+                            Las opciones disponibles en este panel
+                            se adaptan automáticamente al perfil del
+                            usuario que mantiene una sesión activa.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 FOOTER ADMIN
+            =================================================== -->
+
+            <footer class="admin-main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    KYNEX.
+                </p>
+
+
+                <p>
+                    Panel administrativo
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==================================================
+         BOOTSTRAP
+    =================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+
+    <!-- ==================================================
+         JAVASCRIPT KYNEX
+    =================================================== -->
+
+    <script
+        src="../assets/js/app.js"
+        defer
+    ></script>
+
+
+    <script
+        type="module"
+        src="../assets/js/modules/admin-auth.js"
+    ></script>
+
+</body>
+
+</html>

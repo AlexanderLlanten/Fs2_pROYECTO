@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Detalle de pedido | KYNEX Admin</title>
+
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main>
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <p class="section-eyebrow">
+                    KYNEX ADMIN
+                </p>
+
+                <h1 id="order-title">
+                    Detalle de pedido
+                </h1>
+
+                <p>
+                    Información del pedido seleccionado.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="admin-section section-spacing">
+
+            <div class="container">
+
+                <div id="order-detail">
+                </div>
+
+
+                <div
+                    class="admin-empty d-none"
+                    id="order-not-found"
+                >
+
+                    <h2>
+                        Pedido no encontrado
+                    </h2>
+
+                    <p>
+                        El pedido solicitado no existe.
+                    </p>
+
+                </div>
+
+
+                <div class="mt-4">
+
+                    <a
+                        href="orders.html"
+                        class="btn btn-kynex-secondary"
+                    >
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Volver a pedidos
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="../../assets/js/app.js"
+        defer
+    ></script>
+
+
+    <script
+        type="module"
+        src="../../assets/js/modules/admin-order-detail.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../../assets/js/modules/admin-auth.js"
+    ></script>
+
+</body>
+
+</html>

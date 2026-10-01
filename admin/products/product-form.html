@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Producto | KYNEX Admin</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/forms.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main>
+
+        <!-- ==================================================
+             HEADER
+        =================================================== -->
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <p class="section-eyebrow">
+                    KYNEX ADMIN
+                </p>
+
+                <h1>
+                    Producto
+                </h1>
+
+                <p>
+                    Creación y edición de productos
+                    disponibles en la plataforma.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FORMULARIO
+        =================================================== -->
+
+        <section class="admin-section section-spacing">
+
+            <div class="container">
+
+                <div class="admin-form-header">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            INVENTARIO
+                        </p>
+
+                        <h2 id="product-form-title">
+                            Nuevo producto
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="products.html"
+                        class="btn btn-kynex-secondary"
+                    >
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Volver
+
+                    </a>
+
+                </div>
+
+
+                <form
+                    class="kynex-form"
+                    id="admin-product-form"
+                    novalidate
+                >
+
+                    <div class="form-grid">
+
+
+                        <!-- ==================================================
+                             CÓDIGO
+                        =================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="product-code">
+
+                                Código
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="product-code"
+                                name="code"
+                                class="form-control-kynex"
+                                minlength="3"
+                                placeholder="KYN007"
+                                autocomplete="off"
+                                required
+                            >
+
+                            <small class="form-help">
+                                Mínimo 3 caracteres.
+                            </small>
+
+                            <p
+                                class="field-message"
+                                id="product-code-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             CATEGORÍA
+                        =================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="product-category">
+
+                                Categoría
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <select
+                                id="product-category"
+                                name="category"
+                                class="form-select-kynex"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecciona una categoría
+                                </option>
+
+                                <option value="Proteínas">
+                                    Proteínas
+                                </option>
+
+                                <option value="Creatinas">
+                                    Creatinas
+                                </option>
+
+                                <option value="Pre-entreno">
+                                    Pre-entreno
+                                </option>
+
+                                <option value="Vitaminas">
+                                    Vitaminas
+                                </option>
+
+                                <option value="Aminoácidos">
+                                    Aminoácidos
+                                </option>
+
+                                <option value="Otros">
+                                    Otros
+                                </option>
+
+                            </select>
+
+                            <p
+                                class="field-message"
+                                id="product-category-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             NOMBRE
+                        =================================================== -->
+
+                        <div class="form-group form-group-full">
+
+                            <label for="product-name">
+
+                                Nombre
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="product-name"
+                                name="name"
+                                class="form-control-kynex"
+                                maxlength="100"
+                                placeholder="Nombre del producto"
+                                required
+                            >
+
+                            <p
+                                class="field-message"
+                                id="product-name-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             DESCRIPCIÓN
+                        =================================================== -->
+
+                        <div class="form-group form-group-full">
+
+                            <label for="product-description">
+                                Descripción
+                            </label>
+
+                            <textarea
+                                id="product-description"
+                                name="description"
+                                class="form-control-kynex"
+                                maxlength="500"
+                                rows="5"
+                                placeholder="Descripción opcional del producto"
+                            ></textarea>
+
+
+                            <div class="textarea-meta">
+
+                                <p
+                                    class="field-message"
+                                    id="product-description-message"
+                                ></p>
+
+                                <span id="description-counter">
+                                    0 / 500
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             PRECIO
+                        =================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="product-price">
+
+                                Precio
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-price"
+                                name="price"
+                                class="form-control-kynex"
+                                min="0"
+                                step="0.01"
+                                placeholder="39990"
+                                required
+                            >
+
+                            <small class="form-help">
+                                Puede ser 0 para productos gratuitos.
+                            </small>
+
+                            <p
+                                class="field-message"
+                                id="product-price-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             STOCK
+                        =================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="product-stock">
+
+                                Stock
+
+                                <span class="required-mark">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-stock"
+                                name="stock"
+                                class="form-control-kynex"
+                                min="0"
+                                step="1"
+                                placeholder="20"
+                                required
+                            >
+
+                            <p
+                                class="field-message"
+                                id="product-stock-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             STOCK CRÍTICO
+                        =================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="product-critical-stock">
+                                Stock crítico
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-critical-stock"
+                                name="criticalStock"
+                                class="form-control-kynex"
+                                min="0"
+                                step="1"
+                                placeholder="5"
+                            >
+
+                            <small class="form-help">
+                                Opcional. Generará una alerta cuando
+                                el stock sea igual o inferior.
+                            </small>
+
+                            <p
+                                class="field-message"
+                                id="product-critical-stock-message"
+                            ></p>
+
+                        </div>
+
+
+                        <!-- ==================================================
+                             IMAGEN
+                        =================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="product-image">
+                                Imagen
+                            </label>
+
+                            <input
+                                type="text"
+                                id="product-image"
+                                name="image"
+                                class="form-control-kynex"
+                                placeholder="assets/img/products/producto.jpg"
+                            >
+
+                            <small class="form-help">
+                                Campo opcional. Puede indicar una ruta
+                                o URL de imagen.
+                            </small>
+
+                            <p
+                                class="field-message"
+                                id="product-image-message"
+                            ></p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         ALERTA STOCK
+                    =================================================== -->
+
+                    <div
+                        class="product-stock-warning d-none"
+                        id="product-stock-warning"
+                        data-admin-only
+                    >
+
+                        <i class="bi bi-exclamation-triangle"></i>
+
+                        <div>
+
+                            <strong>
+                                Atención
+                            </strong>
+
+                            <p>
+                                El stock actual se encuentra en el nivel
+                                de stock crítico o por debajo.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         ACCIONES
+                    =================================================== -->
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn btn-kynex-primary form-submit"
+                        >
+
+                            <i class="bi bi-floppy"></i>
+
+                            Guardar producto
+
+                        </button>
+
+
+                        <a
+                            href="products.html"
+                            class="btn btn-kynex-secondary"
+                        >
+                            Cancelar
+                        </a>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         ESTADO
+                    =================================================== -->
+
+                    <div
+                        class="form-status"
+                        id="product-form-status"
+                        role="status"
+                        aria-live="polite"
+                    >
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="../../assets/js/app.js"
+        defer
+    ></script>
+
+
+    <script
+        type="module"
+        src="../../assets/js/modules/admin-product-form.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../../assets/js/modules/admin-auth.js"
+    ></script>
+
+</body>
+
+</html>
