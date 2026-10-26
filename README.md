@@ -218,5 +218,12 @@ Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin c
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
 
+Vitest ejecuta como máximo dos archivos simultáneamente, cada uno con su propio
+entorno jsdom, para reducir la competencia por CPU y memoria. Se conserva el límite
+de 5 segundos por prueba. El auxiliar que completa los datos de registro usa
+`userEvent.click` y `userEvent.paste`; los casos de validación y corrección mantienen
+la escritura tecla a tecla. Así los recorridos completos siguen comprobando eventos,
+normalización, persistencia y navegación sin repetir esa escritura en cada campo.
+
 El avance estimado frente a la pauta, las funcionalidades pendientes y la medición
 de cobertura de esta etapa se documentan en [docs/avance-migracion.md](docs/avance-migracion.md).

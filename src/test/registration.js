@@ -14,7 +14,10 @@ export const registrationData = {
 export async function fillRegistration(user, values = registrationData) {
     for (const [label, key] of [["RUN", "run"], ["Nombre", "firstName"], ["Apellidos", "lastName"],
         ["Correo electrónico", "email"], ["Dirección", "address"]]) {
-        await user.type(screen.getByRole("textbox", { name: label, exact: true }), values[key]);
+        // Los recorridos necesitan datos válidos; la escritura tecla a tecla se prueba
+        // en los casos de validación. Pegar conserva los eventos reales de entrada.
+        await user.click(screen.getByRole("textbox", { name: label, exact: true }));
+        await user.paste(values[key]);
     }
     await user.selectOptions(screen.getByRole("combobox", { name: "Región" }), values.region);
     await user.selectOptions(screen.getByRole("combobox", { name: "Comuna" }), values.commune);

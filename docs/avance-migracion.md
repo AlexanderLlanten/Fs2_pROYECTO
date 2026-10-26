@@ -107,6 +107,29 @@ de la tienda; la edición compartida del catálogo aún está pendiente.
 - La comprobación de que una contraseña no se renderiza usa una clave de prueba
   distinta del RUN, evitando confundir una coincidencia parcial de texto con una fuga.
 
+### Corrección de la ejecución intermitente de pruebas
+
+La salida aportada por el estudiante mostró siete pruebas que agotaron el límite
+de 5 segundos y tres fallos posteriores en los mismos archivos de formularios y
+recorridos integrados. La suite anterior pasó localmente, por lo que no se pudo
+reproducir el fallo en todas las ejecuciones. El patrón es compatible con actividad
+asíncrona pendiente tras agotar el tiempo de una prueba.
+
+Se limita Vitest a dos procesos para evitar crear demasiados entornos jsdom a la
+vez. El auxiliar de registro completa los campos mediante pegado simulado con
+userEvent; conserva los eventos de entrada, cambio y salida de foco. Los casos
+específicos de escritura y corrección siguen usando teclado. Se mantienen todas
+las aserciones, el aislamiento entre archivos y el límite original de 5 segundos.
+Esta corrección afecta solo al entorno de pruebas, sin alterar las pantallas ni
+el porcentaje de migración.
+
+Revalidación: los cuatro archivos afectados pasan sus 46 pruebas; la más lenta
+terminó en 1,62 segundos. Tanto `npm test` como `npm run test:coverage` aprueban las
+303 pruebas en 45 archivos; se conservan las métricas indicadas abajo y la compilación
+de producción es correcta. `npm test` tardó unos 83 segundos en este equipo.
+Limitar procesos puede aumentar la duración total de la suite a cambio de reducir
+la carga simultánea.
+
 ### Cobertura medida
 
 | Métrica | Cubierto / total | Porcentaje |
