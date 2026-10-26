@@ -23,8 +23,9 @@ La gestión de usuarios usa `/admin/usuarios`, `/admin/usuarios/nuevo` y
 ## Inicio KYNEX
 
 HomePage recupera el encabezado «Entrena mejor. Supérate.» y la imagen original
-de la marca. Compone HomeHero, CategoryGrid y FeaturedProducts con las moléculas
-SectionHeading, CategoryCard y FeatureCard. Los destacados se obtienen del campo
+de la marca. Compone HomeHero, FeatureSection, CategoryGrid, FeaturedProducts,
+GoalSection, TrainingHighlight, HomeMedia y HomeArticles con las moléculas
+SectionHeading, CategoryCard, FeatureCard y BlogCard. Los destacados se obtienen del campo
 `featured` de los mismos productos usados en el catálogo y se agregan al carrito
 compartido, respetando el stock y mostrando una confirmación accesible.
 
@@ -32,6 +33,26 @@ Las categorías abren `/productos?categoria=...`. El selector del catálogo se
 sincroniza con ese parámetro y con el historial del navegador; una categoría
 desconocida muestra el catálogo completo. El aviso de despacho usa
 `FREE_SHIPPING_FROM`, la misma regla que calcula el total del carrito.
+
+Inicio recupera los accesos a tienda, entrenamiento, Nosotros, rutina, Blog y registro,
+los cuatro objetivos originales, la fotografía de entrenamiento y los dos artículos.
+Los objetivos llevan al catálogo completo, como en EP1. FeatureCard acepta una acción
+opcional; las tarjetas informativas de Nosotros conservan su composición sin enlaces.
+«Ver destacados» aparece solo cuando existe esa sección. Se mantienen la compra desde
+destacados, el enlace al catálogo de la llamada final y los filtros por categoría.
+
+HomeMedia conserva el video original `UBMk30rjy0o` en un iframe con título, carga
+diferida y sin reproducción automática. Ofrece abrirlo en YouTube en otra pestaña.
+En el navegador de revisión el reproductor externo mostró el código 151: se verificó
+la integración y la alternativa, pero no se confirmó la reproducción del video.
+
+## Continuación de compra demostrativa
+
+CartSummary anuncia «El proceso de checkout será implementado en una etapa posterior»
+al activar Continuar compra, igual que el alcance del aviso original. Usa una región
+de estado accesible asociada al botón, que mantiene el foco y admite teclado. El
+carrito vacío no permite continuar. Esta acción no realiza peticiones, escribe datos,
+crea pedidos ni cambia la ruta; la compra permanece disponible para seguir editándola.
 
 ## Estado de autenticación
 
@@ -385,14 +406,16 @@ npm run build
 ```
 
 No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
-la paridad del catálogo y el detalle (7 archivos y 36 pruebas en este corte):
+Inicio y el aviso del carrito (5 archivos y 30 pruebas en este corte):
 
 ```sh
-npm test -- productDetails ProductInformation ProductImage ProductDetailPage ProductsPage QuantitySelector CatalogParity
+npm test -- HomePage FeatureSection HomeParity CartSummary CartPage
 ```
 
 En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
-los datos completos, imágenes, ficha, búsqueda, cantidades y recorridos integrados.
+la composición de Inicio, enlaces, video, acceso público, persistencia y aviso de compra.
+Catálogo y detalle conservan su selección rápida:
+`npm test -- productDetails ProductInformation ProductImage ProductDetailPage ProductsPage QuantitySelector CatalogParity`.
 Blog conserva su selección rápida: `npm test -- ArticleImage BlogCard ArticleContent BlogPage Blog.test`.
 Nosotros conserva su selección rápida: `npm test -- About.test AboutPage FeatureSection HomePage`.
 Entrenamiento y rutina conservan su selección rápida:
@@ -442,6 +465,10 @@ todos los perfiles, retorno desde Login, recarga y manejo de artículos inexiste
 La paridad de catálogo añade comparación de datos originales, lectura compatible sin
 escrituras, personalizaciones, nutrición con valores cero, alérgenos, tipos inesperados,
 imágenes originales y rutas antiguas, cantidades elegidas y stock restante.
+Inicio agrega navegación hacia todos sus nuevos destinos, objetivos sin filtros
+inventados, recarga con los tres perfiles y visita anónima, catálogo vacío o dañado
+y conservación de la compra y la rutina. El aviso de checkout verifica teclado,
+foco, descripción accesible y ausencia de solicitudes o escrituras.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.

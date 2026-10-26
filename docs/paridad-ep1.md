@@ -2,7 +2,8 @@
 
 Corte: 26 de octubre de 2026. Rama: `feature/react-migration`.
 
-Esta etapa contrasta directamente catálogo, detalle de producto e Inicio. Se usan
+La revisión acumulada contrasta directamente catálogo, detalle de producto, Inicio
+y el aviso de continuación del carrito. Se usan
 los HTML y módulos originales conservados en `pages/`, `admin/` y `assets/js/`;
 el Inicio anterior a Vite se consulta con `git show 3d43937:index.html`.
 La matriz también identifica las 20 pantallas y sus rutas actuales. Para los demás
@@ -13,10 +14,10 @@ manual exhaustiva de cada elemento visual en este corte.
 
 | Pantalla original | Ruta React | Estado y evidencia |
 | --- | --- | --- |
-| Inicio | `/` | Migrado con pruebas; quedan bloques y accesos del Inicio original, detallados abajo. |
+| Inicio | `/` | Contrastado: bloques, imágenes, objetivos, enlaces, artículos y video original con alternativa externa. Reproducción externa no confirmada. |
 | Catálogo | `/productos` | Contrastado: búsqueda por nombre, descripción, categoría y código, filtro, contador, imágenes y objetivos. |
 | Detalle de producto | `/productos/:id` | Contrastado: ficha completa, imágenes, cantidad por adición y stock restante. |
-| Carrito | `/carrito` | Reglas y persistencia con pruebas; falta recuperar el aviso del botón Continuar compra. |
+| Carrito | `/carrito` | Reglas y persistencia con pruebas; aviso de Continuar compra recuperado y verificado sin operaciones de compra. |
 | Login | `/login` | Migrado; pruebas de autenticación y retorno seguro. |
 | Registro | `/registro` | Migrado; pruebas de validaciones, región/comuna y persistencia. |
 | Contacto | `/contacto` | Migrado; validación local como en EP1, sin envío. |
@@ -62,7 +63,32 @@ manual exhaustiva de cada elemento visual en este corte.
   sabor y muestran los primeros dos objetivos originales. El detalle se adapta a móvil
   y evita el desbordamiento producido por el gutter de la fila introductoria.
 
-## Comprobación de esta etapa
+## Corregido en Inicio y continuación de compra
+
+- HomeHero recupera Ver entrenamientos y conserva Explorar productos y Ver destacados.
+  Este último solo aparece si hay destacados disponibles, evitando un ancla sin destino.
+- FeatureSection/FeatureCard admiten una acción opcional. Inicio recupera Explorar tienda,
+  Ver ejercicios y Conocer KYNEX; Nosotros mantiene sus tarjetas informativas sin acción.
+- GoalSection presenta Aumento de masa, Energía, Recuperación y Descanso. Los cuatro
+  abren `/productos` sin filtros, como los enlaces originales. Los filtros actuales
+  por categoría de CategoryGrid se conservan.
+- TrainingHighlight recupera la fotografía original y los accesos a Entrenamiento
+  y Mi rutina. HomeArticles reutiliza BlogCard, ArticleImage y los datos de los dos
+  artículos; cada tarjeta abre su lectura y el conjunto enlaza la portada del Blog.
+- La llamada final recupera Crear cuenta y mantiene Ir a la tienda. Los textos del
+  bloque de entrenamiento describen la rutina ya disponible en React.
+- HomeMedia conserva `https://www.youtube.com/embed/UBMk30rjy0o`, con título accesible,
+  proporción 16:9, carga diferida y sin reproducción automática. Se añade apertura
+  directa en YouTube. El reproductor externo mostró el código 151 durante la revisión:
+  no se confirmó su reproducción ni se sustituyó el contenido por otro video.
+- CartSummary reemplaza el `alert` del módulo original por un mensaje local de estado
+  anunciado al activar Continuar compra. Mantiene el foco, funciona con teclado y
+  se asocia al botón con `aria-describedby`. No crea pedidos, envía peticiones ni
+  altera el almacenamiento; el botón está deshabilitado sin productos.
+- El gutter horizontal del hero usa `gx-4` para que Inicio permanezca dentro del
+  ancho móvil. La composición conserva la paleta, tipografía e imágenes KYNEX.
+
+## Comprobación del corte anterior: catálogo
 
 - Selección rápida: `npm test -- productDetails ProductInformation ProductImage ProductDetailPage ProductsPage QuantitySelector CatalogParity`:
   7 archivos, 36 pruebas aprobadas.
@@ -78,18 +104,33 @@ manual exhaustiva de cada elemento visual en este corte.
   tipos inesperados, edición administrativa, stock agotado, cambios de catálogo,
   selección máxima, cambio de id y rechazo de notación exponencial en ids.
 
+## Comprobación de Inicio y carrito
+
+- `npm test -- HomePage FeatureSection HomeParity CartSummary CartPage`:
+  5 archivos, 30 pruebas aprobadas.
+- Regresión con cobertura: 80 archivos, 597 pruebas aprobadas. Sentencias 97,91%,
+  ramas 94,66%, funciones 99,30% y líneas 98,98%.
+- Se agregan 23 pruebas: dos de composición de Inicio, una de acciones opcionales,
+  dos del aviso y 18 recorridos integrados. Comprueban destinos, cuatro objetivos,
+  cuatro perfiles (incluida visita anónima), recarga, datos guardados, catálogo vacío
+  o dañado y aviso sin solicitudes ni escrituras. Las pruebas de video verifican
+  el elemento y la URL; jsdom no reproduce contenido externo.
+- Build de producción correcto. En `vite preview`, las siete imágenes de Inicio
+  cargaron al recorrer la página, incluido entrenamiento y las dos del Blog.
+- Inicio a 1280 × 800, 768 × 1024 y 390 × 844 sin desbordamiento horizontal;
+  navegación a Entrenamiento, Rutina y un artículo. La rutina mantuvo dos ejercicios
+  y diez series. El carrito mantuvo cuatro unidades y total $76.970 después del aviso.
+- Aviso revisado en escritorio y móvil; sin errores ni advertencias en la consola
+  de la aplicación durante este recorrido. El error del reproductor externo se
+  registra por separado y permanece como limitación de esta revisión.
+
 ## Pendientes para el siguiente corte
 
-1. Completar Inicio: accesos a Entrenamiento y Nosotros, objetivos, bloque de
-   entrenamiento/rutina con su imagen, contenido audiovisual, artículos y CTA de
-   registro. El Inicio original contiene estos bloques; la ruta React todavía
-   presenta una composición reducida. Los objetivos originales llevan al catálogo
-   completo; no se les atribuye un filtro por objetivo que la EP1 no implementa.
-2. Recuperar un aviso accesible al pulsar Continuar compra. La EP1 solo informa que
-   checkout se implementará después; React conserva el botón pero todavía no muestra
-   ese aviso. No corresponde convertirlo en un pago o pedido real durante la migración.
-3. Completar la revisión transversal del resto de pantallas y estados antes de cerrar
+1. Completar la revisión transversal del resto de pantallas y estados antes de cerrar
    ERS, trazabilidad, documento de testing y paquete final.
+2. Comprobar la reproducción del video en el navegador de entrega. La integración
+   conserva el recurso original y su enlace directo; no se da por validado un servicio
+   externo solo porque el iframe se monte correctamente.
 
 La autoevaluación técnica sigue siendo conservadora: 81% del encargo, con 19%
 ponderado pendiente. No mide horas restantes ni equivale a la calificación de EP2.

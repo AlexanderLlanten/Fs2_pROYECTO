@@ -18,13 +18,13 @@ La pauta evalúa también requisitos, proceso y evidencia de testing, además de
 El inventario permite comprobar que ya hay una ruta React para cada pantalla original;
 la autoevaluación ponderada incluye pendientes que ese conteo no mide.
 
-En este corte se contrastaron catálogo y detalle con la EP1. Se incorporaron las
-seis imágenes originales, todos los metadatos de producto, ficha de uso/nutrición,
-objetivos, selección de cantidades y búsqueda por código y categoría. Los datos
-guardados prevalecen; solo se completan campos de detalle ausentes de productos
-originales identificados por id y código. Se verificó también el build de producción.
-La auditoría identificó pendientes concretos en Inicio y en el aviso demostrativo
-de Continuar compra, registrados en [paridad-ep1.md](paridad-ep1.md).
+En este corte se cerraron los pendientes identificados de Inicio y el aviso
+demostrativo de Continuar compra. Se recuperaron objetivos, entrenamiento/rutina,
+artículos, video y accesos a tienda, Nosotros y registro, conservando los componentes
+y funcionalidades actuales. El carrito informa el alcance demostrativo sin generar
+pedidos ni modificar la compra. La etapa anterior había completado catálogo y detalle.
+La evidencia acumulada y la limitación de reproducción del video externo se registran
+en [paridad-ep1.md](paridad-ep1.md).
 La estimación técnica se mantiene de forma conservadora en 81% hasta cerrar la
 auditoría de paridad, requisitos y documentación. Contar las 20 pantallas no basta
 para elevar automáticamente los niveles de la rúbrica.
@@ -46,9 +46,9 @@ del estado actual del repositorio y deben revisarse al terminar la migración.
 
 | Indicador | Peso en EP2 | Nivel estimado | Aporte estimado | Evidencia y pendiente |
 | --- | ---: | ---: | ---: | --- |
-| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | Las 20 pantallas tienen ruta React. Catálogo y detalle recuperan ficha e imágenes originales. Quedan bloques/accesos de Inicio, aviso de Continuar compra, revisión transversal y cierre del ERS con trazabilidad. |
+| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | Las 20 pantallas tienen ruta React. Catálogo, detalle e Inicio contrastados; aviso de Continuar compra recuperado. Quedan revisión transversal, validación del video externo y cierre del ERS con trazabilidad. |
 | IE2.1.2: componentes, props, estado y Bootstrap responsivo | 10% | 80% | 8,0 | Layouts, carrito, autenticación, formularios y contenido reutilizables, con revisión visual por etapa. Falta la revisión transversal final de componentes, navegación y responsividad en todo el alcance. |
-| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 574 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. La auditoría final puede requerir casos adicionales según los hallazgos. |
+| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 597 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. La auditoría final puede requerir casos adicionales según los hallazgos. |
 | IE2.3.1: proceso de testing, mocks, resultados y cobertura | 8% | 80% | 6,4 | Entorno jsdom, RTL, mocks de callbacks/Storage/Date y cobertura V8 medida. Falta cerrar el documento de testing, analizar los riesgos residuales y repetir la medición sobre el alcance final. |
 | **Encargo** | **40%** | | **32,4 / 40** | **32,4 ÷ 40 × 100 = 81%. Pendiente ponderado: 7,6 / 40 = 19%.** |
 
@@ -73,8 +73,8 @@ Hay código para preparar estas demostraciones; todavía faltan el guion y el en
 
 | Bloque | Pantallas originales | Estado React |
 | --- | ---: | --- |
-| Inicio | 1 | Ruta migrada; pendientes bloques y accesos del original |
-| Catálogo, detalle, carrito | 3 | Migrados; catálogo y ficha contrastados, pendiente aviso demostrativo de Continuar compra |
+| Inicio | 1 | Bloques y accesos contrastados; video original y enlace alternativo, reproducción externa no confirmada |
+| Catálogo, detalle, carrito | 3 | Migrados; catálogo y ficha contrastados, aviso demostrativo de Continuar compra recuperado |
 | Login y registro | 2 | Migrados |
 | Contacto | 1 | Migrado, con validación local como en la EP1 |
 | Nosotros | 1 | Migrada, con secciones reutilizables y accesos a la tienda |
@@ -100,33 +100,35 @@ además de comprobarse al consultar los datos desde el servicio.
 
 ## Verificación realizada en esta etapa
 
-- Pruebas seleccionadas mediante `npm test -- productDetails ProductInformation ProductImage ProductDetailPage ProductsPage QuantitySelector CatalogParity`:
-  **7 archivos, 36 pruebas aprobadas**, unos 14 segundos en este equipo.
-- Regresión completa de cierre mediante `npm run test:coverage`: **79 archivos,
-  574 pruebas aprobadas, 0 fallidas**, unos 129 segundos en este equipo.
+- Pruebas seleccionadas mediante `npm test -- HomePage FeatureSection HomeParity CartSummary CartPage`:
+  **5 archivos, 30 pruebas aprobadas**, unos 14 segundos en este equipo.
+- Regresión completa de cierre mediante `npm run test:coverage`: **80 archivos,
+  597 pruebas aprobadas, 0 fallidas**, unos 206 segundos en este equipo.
 - `npm run build`: compilación de producción correcta.
-- Navegador sobre `vite preview`: seis imágenes cargadas desde las URL versionadas
-  del build, búsqueda por `KYN002`, ficha completa de creatina con 0 kcal, selección
-  de tres unidades, confirmación exacta y cantidades/precio conservados en el carrito.
-  Recarga directa de Whey con ingredientes, alérgenos Leche/Soya, 120 kcal y 24 g.
-- Vistas de escritorio de 1280 × 800, tableta de 768 × 1024 y móvil de 390 × 844:
-  imagen, paneles y tabla dentro del ancho disponible. Se ajustó el gutter horizontal
-  de la ficha para evitar desbordamiento móvil. Sin errores ni advertencias de consola.
+- Navegador sobre `vite preview`: las siete imágenes de Inicio cargadas desde las URL
+  del build, enlaces a Entrenamiento, Rutina y artículo de recuperación, con compra
+  y rutina conservadas. El aviso de Continuar compra mantiene cuatro unidades y
+  total $76.970; no navega ni genera un pedido.
+- Inicio en escritorio de 1280 × 800, tableta de 768 × 1024 y móvil de 390 × 844 sin
+  desbordamiento horizontal. Aviso del carrito revisado en escritorio y móvil. Se
+  ajustó el gutter del hero. Sin errores ni advertencias en la consola de la aplicación.
+- El iframe de YouTube mostró código 151 en el navegador de revisión. Se conserva el
+  video original con enlace directo, pero su reproducción queda pendiente de validar
+  en el navegador de entrega. Las pruebas DOM no validan un reproductor externo.
 - Regresión automatizada de tienda, registro, carrito y permisos, además del ciclo
   de usuarios, eliminación confirmada, duplicados, reducción del propio rol, cambio
   de correo de la cuenta conectada, conflictos entre pestañas y errores de almacenamiento.
-- 24 pruebas adicionales: seis de datos/compatibilidad, cuatro de ProductInformation,
-  ocho recorridos de paridad, tres de imágenes, dos de búsqueda y una del límite de
-  QuantitySelector. Cubren datos originales completos, lectura sin escrituras, vacíos
-  explícitos, personalizaciones, objetos parciales, metadatos inesperados, cero calorías,
-  imágenes conocidas y rutas antiguas, edición administrativa, selección de hasta diez,
-  stock restante y sus cambios, agotados, cambio de producto e ids no válidos.
+- 23 pruebas adicionales: dos de composición de Inicio, una de acciones opcionales en
+  FeatureSection, dos del aviso de CartSummary y 18 recorridos de HomeParity. Cubren
+  cuatro perfiles (incluida visita anónima), recarga, siete destinos, cuatro objetivos,
+  catálogo vacío o dañado, video original y aviso sin solicitudes ni escrituras.
+  Se comprueban teclado, foco y descripción accesible del botón.
 
 ### Auditoría de paridad
 
 [paridad-ep1.md](paridad-ep1.md) identifica las 20 pantallas y sus rutas, las fuentes
-originales, las correcciones de catálogo/detalle y los pendientes concretos de Inicio
-y Continuar compra. Para los demás módulos registra la migración y sus pruebas previas;
+originales y las correcciones de catálogo/detalle, Inicio y Continuar compra. Para los
+demás módulos registra la migración y sus pruebas previas;
 no afirma una revisión manual exhaustiva de cada elemento visual en este corte.
 Los campos heredados explícitos prevalecen sobre las sugerencias del catálogo inicial;
 los productos ajenos a los seis originales no reciben una ficha nutricional por código.
@@ -165,8 +167,8 @@ el navegador, igual que la versión original.
 
 Durante el desarrollo se ejecutan las pruebas del módulo afectado. Al cerrar esta
 etapa se ejecutó además la regresión completa porque cambiaron
-datos compartidos de catálogo, tarjetas, cantidades y detalle, con efectos sobre Inicio,
-administración y carrito. El estudiante puede usar la selección de 36 pruebas
+FeatureCard/FeatureSection compartidos con Nosotros, la composición de Inicio y el
+resumen del carrito. El estudiante puede usar la selección de 30 pruebas
 como comprobación rápida tras sincronizar este mismo código. No necesita repetir
 la cobertura en cada paso. La suite completa vuelve a ejecutarse cuando cambian
 dependencias compartidas, aparecen fallos o se prepara la entrega final; la cobertura
@@ -199,15 +201,15 @@ la carga simultánea.
 
 | Métrica | Cubierto / total | Porcentaje |
 | --- | ---: | ---: |
-| Sentencias | 1303 / 1331 | 97,89% |
-| Ramas | 1029 / 1091 | 94,31% |
-| Funciones | 423 / 426 | 99,29% |
-| Líneas | 1066 / 1077 | 98,97% |
+| Sentencias | 1314 / 1342 | 97,91% |
+| Ramas | 1047 / 1106 | 94,66% |
+| Funciones | 431 / 434 | 99,30% |
+| Líneas | 1077 / 1088 | 98,98% |
 
 La configuración incluye `src/**/*.{js,jsx}`, excluyendo `src/main.jsx` y los
 auxiliares de `src/test`. Vitest excluye los archivos de pruebas de la instrumentación.
 El resultado no mide HTML/JavaScript heredado, CSS, comportamiento visual ni requisitos
-que no se hayan traducido a código. **98,97% de líneas no significa 98,97% de migración.**
+que no se hayan traducido a código. **98,98% de líneas no significa 98,98% de migración.**
 
 Quedan ramas alternativas de utilidades de carrito (68,18%) y de presentación, además
 de algunas recuperaciones de errores de páginas. CartContext alcanza 84,61% de ramas;
@@ -219,7 +221,8 @@ algunas variantes de error/recuperación de la página, aunque el servicio sí c
 los fallos de lectura, guardado y vaciado. Nosotros y FeatureSection agregan cobertura
 de composición y navegación pública. Blog agrega casos de portada, artículos e imágenes.
 La ficha completa incorpora casos de datos originales, compatibilidad, información
-ausente y cantidad real agregada según stock.
+ausente y cantidad real agregada según stock. Inicio agrega los bloques originales,
+las acciones opcionales de las tarjetas y el comportamiento del aviso de compra.
 La auditoría contra la versión original y el ERS deberá identificar posibles huecos de
 requisitos; la cobertura alta solo describe el código instrumentado en este corte.
 Los callbacks del menú y algunas ramas de recuperación de errores no se ejecutan en
@@ -247,15 +250,14 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 
 ## Trabajo restante y orden propuesto
 
-1. Completar los bloques y accesos de Inicio y el aviso demostrativo de Continuar compra,
-   conforme a los hallazgos de `paridad-ep1.md`.
-2. Revisar navegación directa, rutas inexistentes, persistencia y responsividad en
-   el alcance completo; ejecutar regresión y cobertura final con casos relevantes.
-3. Actualizar el ERS con requisitos, alcance final y trazabilidad. Cerrar el documento
+1. Revisar navegación directa, rutas inexistentes, persistencia y responsividad en
+   el alcance completo; comprobar el video externo en el navegador de entrega y
+   ejecutar regresión y cobertura final con casos relevantes.
+2. Actualizar el ERS con requisitos, alcance final y trazabilidad. Cerrar el documento
    de cobertura de testing con casos, resultados, mocks, exclusiones y análisis.
-4. Preparar el comprimido del proyecto y verificar los entregables y el enlace GitHub.
-5. Preparar y ensayar la defensa individual, mostrando las 10 pruebas seleccionadas.
+3. Preparar el comprimido del proyecto y verificar los entregables y el enlace GitHub.
+4. Preparar y ensayar la defensa individual, mostrando las 10 pruebas seleccionadas.
 
-La siguiente etapa completa Inicio y el aviso de Continuar compra antes del cierre transversal y documental.
+La siguiente etapa realiza la revisión transversal y comienza el cierre documental.
 El tiempo pendiente depende del alcance de los módulos restantes; estos porcentajes
 no permiten deducir un número de horas o días con fiabilidad.
