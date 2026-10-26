@@ -27,6 +27,7 @@ y documentos y omite `.git`, `node_modules`, `dist` y `coverage`.
 - [ERS actualizado V2](docs/entrega/ERS_KYNEX_V2.docx).
 - [Informe de cobertura en Word](docs/entrega/Cobertura_Testing_KYNEX.docx) y [versión Markdown](docs/cobertura-testing.md).
 - [Guía de defensa con diez pruebas](docs/guia-defensa.md).
+- [Informe básico del código en Word](docs/entrega/Guia_Explicativa_Codigo_KYNEX.docx): explica carpetas, componentes, páginas, datos, pruebas y vocabulario con un ejemplo sencillo.
 - [Auditoría final](docs/auditoria-final.md), [evidencias](docs/evidencias/) y [avance frente a la pauta](docs/avance-migracion.md).
 
 **Verificación final:** 597 pruebas aprobadas en 80 archivos; cobertura de líneas
