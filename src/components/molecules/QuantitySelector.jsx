@@ -3,6 +3,7 @@ function QuantitySelector({
     onIncrease,
     onDecrease,
     disabledIncrease = false,
+    disabledDecrease = false,
     label = "Cantidad"
 }) {
     return (
@@ -19,6 +20,7 @@ function QuantitySelector({
                 <button
                     type="button"
                     aria-label="Disminuir cantidad"
+                    disabled={disabledDecrease}
                     onClick={onDecrease}
                 >
                     <i
