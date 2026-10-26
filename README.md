@@ -29,6 +29,41 @@ sincroniza con ese parámetro y con el historial del navegador; una categoría
 desconocida muestra el catálogo completo. El aviso de despacho usa
 `FREE_SHIPPING_FROM`, la misma regla que calcula el total del carrito.
 
+## Estado de autenticación
+
+`AuthProvider` envuelve al carrito y al router. El hook `useAuth` expone:
+
+| Valor | Uso |
+| --- | --- |
+| `user` | Identidad de la sesión o `null`: id, nombre, apellido, correo y rol. |
+| `isAuthenticated` | Indica si hay una sesión válida. |
+| `login(email, password)` | Devuelve `{ success, session }` o `{ success: false, message }`. |
+| `logout()` | Elimina la sesión; conserva usuarios y carrito. Devuelve un resultado con `success`. |
+| `hasRole(...roles)` | Consulta uno o varios roles, por ejemplo `hasRole("Administrador", "Vendedor")`. |
+| `refreshSession()` | Relee una sesión modificada por otro consumidor de la misma pestaña. |
+
+La sesión se recupera al montar el proveedor y se sincroniza entre pestañas mediante
+el evento `storage`. Si cambian los usuarios, se actualizan los datos y el rol desde
+su registro; una sesión de un usuario eliminado se descarta. Las lecturas de sesión
+no inicializan ni sobrescriben usuarios. Los fallos al guardar o eliminar una sesión
+devuelven un error y conservan el estado anterior.
+
+El servicio mantiene las claves de la EP1: `kynex_users` y `kynex_session`.
+Las cuentas de demostración se inicializan al intentar ingresar, únicamente si
+todavía no existe `kynex_users`. Un registro vacío o dañado no se reemplaza por las
+cuentas iniciales. La sesión guarda solo identidad y rol, sin contraseña, RUN ni dirección.
+
+| Rol | Correo demostrativo | Contraseña |
+| --- | --- | --- |
+| Cliente | camila@gmail.com | 1234 |
+| Vendedor | martin@duoc.cl | 1234 |
+| Administrador | admin@profesor.duoc.cl | 1234 |
+
+Esta etapa prepara el estado que consumirán Login, Registro y las rutas protegidas.
+La autenticación sigue siendo una demostración Front End con datos locales, como en
+la EP1: los roles y las credenciales del navegador no constituyen seguridad de producción.
+Una versión de producción debe validar credenciales y permisos en un servidor.
+
 ## Desarrollo y verificación
 
 Requiere Node.js 22.12 o superior.
@@ -43,3 +78,5 @@ npm run build
 Las pruebas usan Vitest y React Testing Library. Cubren los componentes, las rutas
 con el layout compartido, el menú móvil y la actualización del contador al agregar,
 cambiar cantidades, eliminar y vaciar productos, además de recuperar el carrito guardado.
+También verifican autenticación, persistencia y sincronización de sesiones, consultas
+de roles, compatibilidad con los datos de la EP1 y errores de almacenamiento.

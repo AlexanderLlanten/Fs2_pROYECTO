@@ -1,11 +1,14 @@
+import AuthProvider from "./context/AuthContext.jsx";
 import CartProvider from "./context/CartContext.jsx";
 import AppRouter from "./routes/AppRouter.jsx";
 
 function App() {
     return (
-        <CartProvider>
-            <AppRouter />
-        </CartProvider>
+        <AuthProvider>
+            <CartProvider>
+                <AppRouter />
+            </CartProvider>
+        </AuthProvider>
     );
 }
 
