@@ -1,0 +1,25 @@
+.about-story-copy h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.85rem, 3vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.about-story-copy > p:not(.kynex-eyebrow),
+.about-vision > p {
+    color: var(--kynex-muted);
+}
+
+.about-story-copy > p:last-child { margin-bottom: 0; }
+
+.about-story .home-feature-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    background: linear-gradient(135deg, var(--kynex-surface), rgba(158, 240, 26, 0.06));
+}
+
+.about-vision { max-width: 48rem; }
+.about-vision .home-section-heading { margin-bottom: 1rem; }
+.about-vision > p { margin-bottom: 1.5rem; }

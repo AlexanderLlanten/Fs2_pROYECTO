@@ -13,6 +13,7 @@ import "./styles/auth.css";
 import "./styles/admin.css";
 import "./styles/contact.css";
 import "./styles/training.css";
+import "./styles/about.css";
 
 import App from "./App.jsx";
 
