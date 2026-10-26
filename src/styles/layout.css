@@ -1,0 +1,172 @@
+.kynex-public-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.kynex-main {
+    flex: 1;
+}
+
+.kynex-skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1100;
+    padding: 0.75rem 1rem;
+    color: var(--kynex-bg);
+    background: var(--kynex-accent);
+    border-radius: 0.5rem;
+    transform: translateY(calc(-100% - 1rem));
+}
+
+.kynex-skip-link:focus {
+    color: var(--kynex-bg);
+    transform: translateY(0);
+}
+
+.kynex-brand {
+    display: inline-block;
+    color: var(--kynex-text);
+    font-size: 1.65rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.kynex-brand::after {
+    content: ".";
+    color: var(--kynex-accent);
+}
+
+.kynex-brand:hover,
+.kynex-brand:focus-visible {
+    color: var(--kynex-accent);
+}
+
+.kynex-header {
+    background: rgba(11, 15, 20, 0.94);
+    border-bottom: 1px solid var(--kynex-border);
+    backdrop-filter: blur(16px);
+}
+
+.kynex-header .navbar {
+    min-height: 76px;
+    padding-block: 0.65rem;
+}
+
+.kynex-header .navbar-nav {
+    gap: 0.5rem;
+}
+
+.kynex-header .nav-link {
+    padding: 0.65rem 0.9rem;
+    color: var(--kynex-muted);
+}
+
+.kynex-header .nav-link:hover,
+.kynex-header .nav-link:focus-visible,
+.kynex-header .nav-link.active {
+    color: var(--kynex-accent);
+}
+
+.kynex-header .nav-link.active {
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+    text-decoration-thickness: 2px;
+}
+
+.kynex-cart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 0.9rem;
+    color: var(--kynex-text);
+    border: 1px solid var(--kynex-border);
+    border-radius: 999px;
+}
+
+.kynex-cart-link:hover,
+.kynex-cart-link:focus-visible,
+.kynex-cart-link.active {
+    color: var(--kynex-accent);
+    border-color: var(--kynex-accent);
+}
+
+.kynex-cart-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    padding-inline: 0.35rem;
+    color: var(--kynex-bg);
+    background: var(--kynex-accent);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.kynex-footer {
+    padding: 3.5rem 0 1.5rem;
+    background: #080b0f;
+    border-top: 1px solid var(--kynex-border);
+}
+
+.kynex-footer-description {
+    max-width: 430px;
+    margin: 1rem 0 0;
+    color: var(--kynex-muted);
+}
+
+.kynex-footer-title {
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.kynex-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: var(--kynex-muted);
+}
+
+.kynex-footer-links a:hover,
+.kynex-footer-links a:focus-visible {
+    color: var(--kynex-accent);
+}
+
+.kynex-footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--kynex-border);
+    color: var(--kynex-muted-dark);
+    font-size: 0.85rem;
+}
+
+.kynex-footer-bottom p {
+    margin: 0;
+}
+
+.kynex-header a:focus-visible,
+.kynex-footer a:focus-visible,
+.kynex-header button:focus-visible {
+    outline: 2px solid var(--kynex-accent);
+    outline-offset: 4px;
+}
+
+@media (max-width: 991.98px) {
+    .kynex-header .navbar-collapse {
+        padding-block: 1rem 0.5rem;
+    }
+
+    .kynex-header .nav-link {
+        width: fit-content;
+    }
+}

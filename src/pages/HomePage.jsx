@@ -1,8 +1,10 @@
-import Button from "../components/atoms/Button.jsx";
+import {
+    Link
+} from "react-router-dom";
 
 function HomePage() {
     return (
-        <main>
+        <>
             <section className="kynex-hero">
                 <div className="container py-5">
                     <div className="row align-items-center min-vh-75">
@@ -21,14 +23,17 @@ function HomePage() {
                                 Bootstrap y Vitest.
                             </p>
 
-                            <Button>
-                                Explorar KYNEX
-                            </Button>
+                            <Link
+                                className="btn btn-success"
+                                to="/productos"
+                            >
+                                Explorar productos
+                            </Link>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
+        </>
     );
 }
 

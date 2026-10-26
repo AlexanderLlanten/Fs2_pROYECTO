@@ -1,8 +1,11 @@
+import CartProvider from "./context/CartContext.jsx";
 import AppRouter from "./routes/AppRouter.jsx";
 
 function App() {
     return (
-        <AppRouter />
+        <CartProvider>
+            <AppRouter />
+        </CartProvider>
     );
 }
 
