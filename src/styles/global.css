@@ -1,0 +1,79 @@
+:root {
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color-scheme: dark;
+
+    --kynex-bg: #0b0f0d;
+    --kynex-surface: #121814;
+    --kynex-text: #f4f7f5;
+    --kynex-muted: #a7b0aa;
+    --kynex-accent: #9cff3b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    background:
+        var(--kynex-bg);
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+
+    color:
+        var(--kynex-text);
+
+    background:
+        var(--kynex-bg);
+}
+
+a {
+    color:
+        inherit;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.kynex-hero {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(156, 255, 59, 0.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #0b0f0d 0%,
+            #111912 100%
+        );
+}
+
+.kynex-eyebrow {
+    color:
+        var(--kynex-accent);
+
+    font-size:
+        0.8rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.14em;
+}
