@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 
 import Price from "../atoms/Price.jsx";
+import ProductImage from "../atoms/ProductImage.jsx";
 import QuantitySelector from "./QuantitySelector.jsx";
 
 function CartItem({
@@ -19,10 +20,7 @@ function CartItem({
     return (
         <article className="cart-item-react">
             <div className="cart-item-react-visual">
-                <i
-                    className={`bi ${product.icon || "bi-box-seam"}`}
-                    aria-hidden="true"
-                />
+                <ProductImage product={product} />
             </div>
 
             <div className="cart-item-react-info">

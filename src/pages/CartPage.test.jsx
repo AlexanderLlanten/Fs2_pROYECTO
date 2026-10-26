@@ -18,6 +18,7 @@ import {
 
 import CartProvider from "../context/CartContext.jsx";
 import CartPage from "./CartPage.jsx";
+import { productImages } from "../data/productImages.js";
 
 function renderCartPage() {
     render(
@@ -75,6 +76,10 @@ describe("CartPage", () => {
                 }
             )
         ).toBeInTheDocument();
+
+        expect(
+            screen.getByRole("img", { name: "Creatina Monohidratada" })
+        ).toHaveAttribute("src", productImages.KYN002);
 
         await user.click(
             screen.getByRole(

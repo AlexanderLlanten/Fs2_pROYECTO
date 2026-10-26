@@ -17,9 +17,11 @@ import {
 } from "react-router-dom";
 
 import CartItem from "./CartItem.jsx";
+import { productImages } from "../../data/productImages.js";
 
 const product = {
     id: 2,
+    code: "KYN002",
     name: "Creatina Monohidratada",
     category: "Creatinas",
     price: 21990,
@@ -49,6 +51,10 @@ describe("CartItem", () => {
                 }
             )
         ).toBeInTheDocument();
+
+        expect(
+            screen.getByRole("img", { name: product.name })
+        ).toHaveAttribute("src", productImages.KYN002);
 
         expect(
             screen.getByText(

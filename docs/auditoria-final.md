@@ -105,3 +105,19 @@ El código conserva el alcance académico de EP1: LocalStorage, autenticación
 demostrativa, contacto local, pedidos de consulta y checkout informativo.
 Back End, pagos y persistencia centralizada siguen siendo evolución futura.
 La guía permite preparar la defensa; el estudiante debe ensayarla y presentarla.
+
+## Corrección posterior de imágenes del carrito
+
+El carrito conservaba un ícono fijo aunque el producto tuviera fotografía. Se
+reutiliza `ProductImage`, igual que en catálogo y detalle, con miniatura contenida
+en su espacio y el respaldo existente ante imágenes ausentes o fallidas.
+Se ampliaron las aserciones de CartItem y CartPage para detectar el caso, incluida
+la recuperación de una compra guardada solo con id y cantidad: ambas fallaron
+antes de corregirlo. Después, `npm test -- ProductImage CartItem CartPage` aprobó
+los **9 casos de 3 archivos**, y `npm run build` terminó correctamente.
+
+Se comprobó la fotografía empaquetada de creatina en 1280 × 900 y 390 × 844,
+también después de recargar, sin desbordamiento de página ni errores de consola.
+No se cambia el formato de almacenamiento ni hace falta vaciar el carrito.
+Esta verificación focalizada es posterior al corte de cobertura documentado arriba;
+no se volvió a medir la cobertura global para este ajuste.
