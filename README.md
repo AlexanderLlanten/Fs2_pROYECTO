@@ -13,7 +13,7 @@ Frontend KYNEX en migración a React, Vite y React Router.
   mediante rutas hijas; no duplican la cabecera, el pie ni el elemento `main`.
 
 `CartProvider` permanece por encima del router para conservar el carrito al navegar.
-Las rutas disponibles son `/`, `/productos`, `/productos/:id`, `/carrito` y `/login`.
+Las rutas disponibles son `/`, `/productos`, `/productos/:id`, `/carrito`, `/login` y `/registro`.
 La navegación compartida enlaza estas rutas ya migradas.
 
 ## Inicio KYNEX
@@ -38,6 +38,7 @@ desconocida muestra el catálogo completo. El aviso de despacho usa
 | `user` | Identidad de la sesión o `null`: id, nombre, apellido, correo y rol. |
 | `isAuthenticated` | Indica si hay una sesión válida. |
 | `login(email, password)` | Devuelve `{ success, session }` o `{ success: false, message }`. |
+| `register(values)` | Crea un Cliente; devuelve `{ success, user }` o un error con `message` y, cuando corresponde, `errors` por campo. No inicia sesión. |
 | `logout()` | Elimina la sesión; conserva usuarios y carrito. Devuelve un resultado con `success`. |
 | `hasRole(...roles)` | Consulta uno o varios roles, por ejemplo `hasRole("Administrador", "Vendedor")`. |
 | `refreshSession()` | Relee una sesión modificada por otro consumidor de la misma pestaña. |
@@ -49,7 +50,7 @@ no inicializan ni sobrescriben usuarios. Los fallos al guardar o eliminar una se
 devuelven un error y conservan el estado anterior.
 
 El servicio mantiene las claves de la EP1: `kynex_users` y `kynex_session`.
-Las cuentas de demostración se inicializan al intentar ingresar, únicamente si
+Las cuentas de demostración se inicializan al intentar ingresar o registrar una cuenta, únicamente si
 todavía no existe `kynex_users`. Un registro vacío o dañado no se reemplaza por las
 cuentas iniciales. La sesión guarda solo identidad y rol, sin contraseña, RUN ni dirección.
 
@@ -59,7 +60,7 @@ cuentas iniciales. La sesión guarda solo identidad y rol, sin contraseña, RUN 
 | Vendedor | martin@duoc.cl | 1234 |
 | Administrador | admin@profesor.duoc.cl | 1234 |
 
-Login consume este estado; Registro y las rutas protegidas se integrarán en sus etapas.
+Login y Registro consumen este estado; las rutas protegidas se integrarán en su etapa.
 La autenticación sigue siendo una demostración Front End con datos locales, como en
 la EP1: los roles y las credenciales del navegador no constituyen seguridad de producción.
 Una versión de producción debe validar credenciales y permisos en un servidor.
@@ -81,8 +82,27 @@ y rutas todavía no disponibles. Los tres perfiles conservan su rol y usan estas
 públicas durante esta etapa; el destino administrativo se conectará al migrar administración.
 
 Cerrar sesión conserva la compra y mantiene la página pública actual. Una sesión
-vigente evita volver a mostrar el formulario de Login. El registro se incorporará
-en la siguiente etapa.
+vigente evita volver a mostrar los formularios de Login y Registro.
+
+## Registro de clientes
+
+`RegistrationPage` usa PublicLayout y el organismo `RegistrationForm`. Reutiliza
+`FormField`, que admite input, select y textarea con etiquetas, ayuda y errores
+asociados. Conserva el catálogo de regiones y comunas de la EP1.
+
+Valida RUN de 7 a 9 caracteres con módulo 11 (normaliza puntos, guion y K), nombre
+obligatorio de hasta 50 caracteres, apellidos hasta 100, correo permitido hasta 100,
+región y comuna relacionadas y dirección obligatoria hasta 300. La fecha de nacimiento
+es opcional y, si se informa, debe existir en el calendario. Al cambiar la región,
+se reinicia la comuna. Los errores se validan al salir del campo y al enviar, enfocando
+el primer campo inválido; el envío permanece deshabilitado mientras se procesa.
+
+El servicio vuelve a leer los usuarios y comprueba duplicados de RUN y correo antes
+de guardar. Preserva los registros previos y rechaza almacenamiento dañado sin
+sobrescribirlo. Genera un id único y fija el rol Cliente y la contraseña demostrativa
+`1234`, como en la EP1, aunque el consumidor intente enviar otro rol o contraseña.
+El éxito reinicia el formulario y ofrece iniciar sesión. La página de origen se
+conserva entre Login y Registro para volver a ella después de ingresar.
 
 ## Desarrollo y verificación
 
@@ -92,6 +112,7 @@ Requiere Node.js 22.12 o superior.
 npm ci
 npm run dev
 npm test
+npm run test:coverage
 npm run build
 ```
 
@@ -100,3 +121,8 @@ con el layout compartido, el menú móvil y la actualización del contador al ag
 cambiar cantidades, eliminar y vaciar productos, además de recuperar el carrito guardado.
 También verifican autenticación, persistencia y sincronización de sesiones, consultas
 de roles, compatibilidad con los datos de la EP1 y errores de almacenamiento.
+El registro agrega pruebas de validaciones, duplicados, selectores relacionados,
+persistencia, errores de escritura y el recorrido Registro > Login > Carrito.
+
+El avance estimado frente a la pauta, las funcionalidades pendientes y la medición
+de cobertura de esta etapa se documentan en [docs/avance-migracion.md](docs/avance-migracion.md).

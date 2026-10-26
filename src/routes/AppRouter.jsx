@@ -9,6 +9,7 @@ import HomePage from "../pages/HomePage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import ProductDetailPage from "../pages/ProductDetailPage.jsx";
 import ProductsPage from "../pages/ProductsPage.jsx";
+import RegistrationPage from "../pages/RegistrationPage.jsx";
 import PublicLayout from "../components/templates/PublicLayout.jsx";
 
 function AppRouter() {
@@ -21,6 +22,7 @@ function AppRouter() {
                     <Route path="productos/:id" element={<ProductDetailPage />} />
                     <Route path="carrito" element={<CartPage />} />
                     <Route path="login" element={<LoginPage />} />
+                    <Route path="registro" element={<RegistrationPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>

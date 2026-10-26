@@ -1,4 +1,4 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 import LoginForm from "../components/organisms/LoginForm.jsx";
 import { defaultUsers } from "../data/users.js";
@@ -31,6 +31,7 @@ function LoginPage() {
                             <h2 id="login-form-title">Bienvenido de vuelta</h2>
                             <p className="auth-form-intro">Ingresa tus credenciales para acceder a tu cuenta KYNEX.</p>
                             <LoginForm onSubmit={login} />
+                            <p className="auth-registration-link">¿Aún no tienes cuenta? <Link to="/registro" state={state}>Crear cuenta</Link></p>
                         </div>
                         <aside className="auth-side-panel" aria-labelledby="demo-accounts-title">
                             <i className="bi bi-person-circle auth-side-icon" aria-hidden="true" />
