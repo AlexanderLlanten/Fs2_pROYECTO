@@ -216,7 +216,15 @@
     outline-offset: 4px;
 }
 
-@media (max-width: 991.98px) {
+@media (min-width: 1200px) {
+    .kynex-header .navbar-nav { gap: 0.25rem; }
+    .kynex-header .nav-link { padding-inline: 0.65rem; font-size: 0.9rem; white-space: nowrap; }
+    .kynex-header .kynex-account-user { max-width: 5.5rem; }
+    .kynex-header .kynex-account-link,
+    .kynex-header .kynex-account-logout { white-space: nowrap; }
+}
+
+@media (max-width: 1199.98px) {
     .kynex-header .navbar-collapse {
         padding-block: 1rem 0.5rem;
     }

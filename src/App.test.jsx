@@ -25,7 +25,13 @@ describe("Rutas públicas con PublicLayout", () => {
         ["/carrito", "Carrito de compras"],
         ["/login", "Iniciar sesión"],
         ["/registro", "Crear cuenta"],
-        ["/contacto", "Hablemos"]
+        ["/contacto", "Hablemos"],
+        ["/entrenamiento", "Entrenamiento"],
+        ["/rutina", "Mi rutina"],
+        ["/nosotros", "Nuestra tienda"],
+        ["/blog", "Blog"],
+        ["/blog/creatina-y-rendimiento", "Creatina y rendimiento"],
+        ["/blog/recuperacion-muscular", "Recuperación muscular"]
     ])("carga %s con una sola cabecera, un main y un footer", (path, title) => {
         window.history.replaceState({}, "", path);
         render(<App />);

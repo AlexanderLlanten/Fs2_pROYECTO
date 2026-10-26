@@ -1,0 +1,28 @@
+.blog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.blog-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--kynex-border); border-radius: 1rem; background: var(--kynex-surface); }
+.blog-image { overflow: hidden; background: var(--kynex-bg-soft); }
+.blog-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.blog-image-fallback { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .5rem; height: 100%; color: var(--kynex-muted); }
+.blog-image-fallback i { color: var(--kynex-accent); font-size: 2.5rem; }
+.blog-card-image { height: 280px; }
+.blog-card-body { display: flex; flex-direction: column; align-items: flex-start; flex: 1; padding: 1.75rem; }
+.blog-card h3 { margin-block: 1rem; font-size: 1.55rem; font-weight: 800; }
+.blog-card p { flex: 1; color: var(--kynex-muted); }
+.blog-read-link { display: inline-flex; align-items: center; gap: .75rem; min-height: 2.75rem; color: var(--kynex-accent); font-weight: 700; }
+.blog-read-link:hover { color: var(--kynex-accent-hover); }
+.blog-article { max-width: 56.25rem; margin-inline: auto; }
+.blog-article-image { height: clamp(15rem, 45vw, 32.5rem); border: 1px solid var(--kynex-border); border-radius: 1rem; }
+.blog-article-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-block: 2rem 1.5rem; color: var(--kynex-muted); font-size: .85rem; }
+.blog-article-content { overflow-wrap: break-word; }
+.blog-article-content p, .blog-article-content ul { color: var(--kynex-muted); line-height: 1.8; }
+.blog-article-content section { margin-top: 2.25rem; }
+.blog-article-content h2 { margin-bottom: 1rem; font-size: clamp(1.45rem, 3vw, 1.9rem); font-weight: 800; }
+.blog-article-content li + li { margin-top: .5rem; }
+.blog-article-note { margin-top: 2.25rem; padding: 1.5rem; border: 1px solid rgba(158, 240, 26, .18); border-radius: .75rem; background: rgba(158, 240, 26, .05); }
+.blog-article-note h2 { color: var(--kynex-accent); font-size: 1.15rem; }
+.blog-article-note p { margin-bottom: 0; }
+@media (max-width: 767.98px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-card-image { height: 220px; }
+    .blog-card-body { padding: 1.5rem; }
+}

@@ -47,6 +47,10 @@ describe("Navbar", () => {
         expect(nav.getByRole("link", { name: "Inicio" })).toHaveAttribute("href", "/");
         expect(nav.getByRole("link", { name: "Tienda" })).toHaveAttribute("href", "/productos");
         expect(nav.getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/contacto");
+        expect(nav.getByRole("link", { name: "Entrenamiento" })).toHaveAttribute("href", "/entrenamiento");
+        expect(nav.getByRole("link", { name: "Mi rutina" })).toHaveAttribute("href", "/rutina");
+        expect(nav.getByRole("link", { name: "Nosotros" })).toHaveAttribute("href", "/nosotros");
+        expect(nav.getByRole("link", { name: "Blog", exact: true })).toHaveAttribute("href", "/blog");
         expect(nav.getByRole("link", { name: "Iniciar sesión" })).toHaveAttribute("href", "/login");
         expect(nav.getByRole("link", { name: "Carrito (0)" })).toHaveAttribute("href", "/carrito");
     });
@@ -57,7 +61,13 @@ describe("Navbar", () => {
         ["/productos/2", "Tienda"],
         ["/carrito", "Carrito (0)"],
         ["/login", "Iniciar sesión"],
-        ["/contacto", "Contacto"]
+        ["/contacto", "Contacto"],
+        ["/entrenamiento", "Entrenamiento"],
+        ["/rutina", "Mi rutina"],
+        ["/nosotros", "Nosotros"],
+        ["/blog", "Blog"],
+        ["/blog/creatina-y-rendimiento", "Blog"],
+        ["/blog/recuperacion-muscular", "Blog"]
     ])("marca solamente el enlace activo en %s", (path, activeLink) => {
         renderNavbar(path);
 
