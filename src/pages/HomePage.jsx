@@ -1,4 +1,6 @@
-import Button from "../components/atoms/Button.jsx";
+import {
+    Link
+} from "react-router-dom";
 
 function HomePage() {
     return (
@@ -21,9 +23,12 @@ function HomePage() {
                                 Bootstrap y Vitest.
                             </p>
 
-                            <Button>
-                                Explorar KYNEX
-                            </Button>
+                            <Link
+                                className="btn btn-success"
+                                to="/productos"
+                            >
+                                Explorar productos
+                            </Link>
                         </div>
                     </div>
                 </div>

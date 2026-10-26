@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import HomePage from "../pages/HomePage.jsx";
+import ProductsPage from "../pages/ProductsPage.jsx";
 
 function AppRouter() {
     return (
@@ -13,6 +14,11 @@ function AppRouter() {
                 <Route
                     path="/"
                     element={<HomePage />}
+                />
+
+                <Route
+                    path="/productos"
+                    element={<ProductsPage />}
                 />
             </Routes>
         </BrowserRouter>
