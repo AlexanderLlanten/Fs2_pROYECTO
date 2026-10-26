@@ -232,6 +232,21 @@ vuelve a comparar el perfil abierto al guardar o eliminar para evitar sobrescrib
 cambios detectables. Esto sigue usando almacenamiento local, sin un servidor que
 coordine transacciones entre usuarios.
 
+## Contacto
+
+`/contacto` es público y usa PublicLayout, con enlaces desde Navbar y Footer.
+`ContactForm` reutiliza FormField y Button. Valida nombre obligatorio de hasta
+100 caracteres, correo obligatorio de hasta 100 en los dominios permitidos y
+comentario obligatorio de hasta 500. Comparte `getEmailError` con los otros
+formularios. El contador muestra la longitud actual del comentario; los errores
+se asocian a los campos, se enfoca el primero inválido y se retiran al corregir.
+
+Se conserva la validación local de la EP1. El botón «Validar mensaje» y la nota
+de demostración aclaran su alcance. El éxito muestra «Mensaje validado correctamente»
+y conserva los valores; editar retira la confirmación hasta volver a validar.
+No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
+permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
+
 ## Registro de clientes
 
 `RegistrationPage` usa PublicLayout y el organismo `RegistrationForm`. Reutiliza
@@ -264,6 +279,28 @@ npm run test:coverage
 npm run build
 ```
 
+No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
+Contacto (3 archivos y 20 pruebas en este corte):
+
+```sh
+npm test -- ContactForm contact.test Contact.test
+```
+
+En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
+el formulario, sus validaciones y el recorrido integrado de Contacto.
+
+| Momento | Comprobación |
+| --- | --- |
+| Durante la edición de un módulo | Pruebas de los archivos afectados. |
+| Al cerrar una etapa, especialmente con cambios en rutas, proveedores o componentes compartidos | Una ejecución de la suite completa para detectar regresiones. |
+| Antes de la entrega final o al actualizar su evidencia de testing | Suite con cobertura y build de producción. |
+
+Después de descargar una etapa que ya pasó la regresión completa, la comprobación
+del módulo sirve como revisión rápida en el equipo del estudiante. Repetir la
+suite completa tiene sentido si aparecen fallos locales, conflictos de integración
+o cambios adicionales. La cobertura se mide para documentar un corte; no hace falta
+repetirla con cada cambio pequeño.
+
 Las pruebas usan Vitest y React Testing Library. Cubren los componentes, las rutas
 con el layout compartido, el menú móvil y la actualización del contador al agregar,
 cambiar cantidades, eliminar y vaciar productos, además de recuperar el carrito guardado.
@@ -281,6 +318,9 @@ Los pedidos verifican cálculos, consulta sin escrituras, datos históricos, cop
 independientes, permisos vigentes, acceso directo y posterior a Login, recarga,
 ids inexistentes, denegación del servicio y retirada de datos al perder el acceso.
 También se comprueban los accesos del panel según el perfil y el cierre del menú.
+Contacto verifica obligatoriedad, límites, dominios, contador, foco y corrección de
+errores, confirmación local, acceso público, navegación, retorno desde Login y
+conservación del carrito y la sesión sin enviar peticiones.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.

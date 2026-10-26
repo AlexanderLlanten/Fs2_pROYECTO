@@ -8,7 +8,7 @@ Fecha de corte: 26 de octubre de 2026. Rama: `feature/react-migration`.
   Se calcula sobre los cuatro indicadores del encargo, cuyo peso conjunto es 40%
   de la evaluación. Es una estimación de cumplimiento, no una calificación del docente
   ni un porcentaje de horas de trabajo realizadas.
-- **Migración de pantallas: 13 de 20, equivalente a 65%; faltan 7, equivalente a 35%.**
+- **Migración de pantallas: 14 de 20, equivalente a 70%; faltan 6, equivalente a 30%.**
   Cuenta cada pantalla HTML original una vez, incluido el inicio. No pondera el
   esfuerzo: la base compartida, carrito, autenticación, formularios y pruebas ya
   implementadas se reutilizarán en las pantallas siguientes. Tampoco implica paridad
@@ -18,13 +18,12 @@ La diferencia se debe al peso que la pauta da a componentes y testing. Cumplir e
 indicadores puede avanzar antes de terminar todas las pantallas. Para planificar el
 trabajo pendiente de migración hay que considerar ambas medidas.
 
-En este corte se completaron la lista y el detalle de pedidos demostrativos, con
-consulta protegida para Administrador y Vendedor. Además se cerró la paridad
-funcional del panel: accesos a Productos, Usuarios y Pedidos según perfil, navegación,
-sesión e inventario compartido. Por ello se suman las dos pantallas de pedidos y
-la pantalla del panel, que antes se contaba como inicial y pendiente.
+En este corte se completó Contacto, con validaciones de nombre, correo y comentario,
+contador, errores accesibles y confirmación local. Usa el layout público y tiene
+accesos desde la cabecera y el pie. Se conserva el alcance de validación de la EP1;
+se aclara en la página que la demostración valida el mensaje sin enviarlo.
 El 81% técnico se mantiene porque los niveles ponderados de los indicadores todavía
-no cambian; el avance funcional sí pasa de 50% a 65%.
+no cambian; el avance funcional sí pasa de 65% a 70%.
 
 ## Fuente y método
 
@@ -43,9 +42,9 @@ del estado actual del repositorio y deben revisarse al terminar la migración.
 
 | Indicador | Peso en EP2 | Nivel estimado | Aporte estimado | Evidencia y pendiente |
 | --- | ---: | ---: | ---: | --- |
-| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | React/Vite/Router, Atomic Design, panel, usuarios, catálogo editable y consulta de pedidos integrados. Quedan siete páginas públicas, paridad final y cierre del ERS. |
+| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | React/Vite/Router, Atomic Design, panel, usuarios, catálogo editable, pedidos y Contacto integrados. Quedan seis páginas públicas, paridad final y cierre del ERS. |
 | IE2.1.2: componentes, props, estado y Bootstrap responsivo | 10% | 80% | 8,0 | Layouts público y administrativo, carrito, autenticación y formularios reutilizables; revisión visual de escritorio y móvil. Falta aplicar y revisar esta estructura en todos los módulos restantes. |
-| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 425 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. Se deberán agregar casos para cada módulo nuevo. |
+| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 448 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. Se deberán agregar casos para cada módulo nuevo. |
 | IE2.3.1: proceso de testing, mocks, resultados y cobertura | 8% | 80% | 6,4 | Entorno jsdom, RTL, mocks de callbacks/Storage/Date y cobertura V8 medida. Falta cerrar el documento de testing, analizar los riesgos residuales y repetir la medición sobre el alcance final. |
 | **Encargo** | **40%** | | **32,4 / 40** | **32,4 ÷ 40 × 100 = 81%. Pendiente ponderado: 7,6 / 40 = 19%.** |
 
@@ -73,11 +72,12 @@ Hay código para preparar estas demostraciones; todavía faltan el guion y el en
 | Inicio | 1 | Migrado |
 | Catálogo, detalle, carrito | 3 | Migrados; pendiente revisión final de paridad y recursos del catálogo |
 | Login y registro | 2 | Migrados |
-| Contacto, nosotros, blog y dos artículos | 5 | Pendientes |
+| Contacto | 1 | Migrado, con validación local como en la EP1 |
+| Nosotros, blog y dos artículos | 4 | Pendientes |
 | Entrenamiento y rutina | 2 | Pendientes |
 | Gestión de usuarios: lista y formulario | 2 | Migradas, con permisos y persistencia compartida |
 | Administración: panel, productos, formulario de producto, pedidos y detalle de pedido | 5 | Migradas; pedidos conserva el alcance demostrativo de consulta de la EP1 |
-| **Total** | **20** | **13 migradas / 7 pendientes** |
+| **Total** | **20** | **14 migradas / 6 pendientes** |
 
 La matriz de permisos y las guardas ya existen. `/admin` y sus rutas desconocidas
 exigen ADMIN_ACCESS: Administrador y Vendedor entran; Cliente vuelve a la tienda;
@@ -95,23 +95,34 @@ además de comprobarse al consultar los datos desde el servicio.
 
 ## Verificación realizada en esta etapa
 
-- Suite completa mediante `npm run test:coverage`: **59 archivos,
-  425 pruebas aprobadas, 0 fallidas**.
+- Pruebas específicas mediante `npm test -- ContactForm contact.test Contact.test`:
+  **3 archivos, 20 pruebas aprobadas**, unos 9 segundos en este equipo.
+- Regresión completa de cierre mediante `npm run test:coverage`: **62 archivos,
+  448 pruebas aprobadas, 0 fallidas**, unos 124 segundos en este equipo.
 - `npm run build`: compilación de producción correcta.
-- Navegador: lista y detalle con Administrador; recarga directa del pedido 1002;
-  cierre e ingreso como Vendedor, panel sin Usuarios y consulta del pedido 1003.
-  Los tres módulos están disponibles para Administrador y dos para Vendedor.
-- Vista de escritorio de 1280 × 800 y móvil de 390 × 844: lista con enlaces visibles
-  en escritorio, resumen dentro del ancho móvil y tabla desplazable. No hay errores
-  ni advertencias de consola durante los recorridos revisados.
+- Navegador: Contacto directo con sesión activa, validación vacía y foco en Nombre,
+  rechazo de correo no permitido, corrección y confirmación con valores conservados;
+  menú móvil y recarga de la ruta. Se usaron datos ficticios de prueba.
+- Vista de escritorio de 1280 × 800 y móvil de 390 × 844: campos dentro del ancho
+  disponible y sin desbordamiento horizontal. No hay errores ni advertencias de consola.
 - Regresión automatizada de tienda, registro, carrito y permisos, además del ciclo
   de usuarios, eliminación confirmada, duplicados, reducción del propio rol, cambio
   de correo de la cuenta conectada, conflictos entre pestañas y errores de almacenamiento.
-- 50 pruebas adicionales: cálculos y estados de pedidos, lista, líneas y resumen;
-  consulta sin escrituras, copias independientes, importes históricos frente a
-  cambios del catálogo, permisos vigentes, navegación y Login con ambos perfiles,
-  recarga, ids inválidos, rutas desconocidas, denegación del servicio, retirada del
-  detalle al cerrar sesión o perder permisos y accesos del panel según perfil.
+- 23 pruebas adicionales: 20 específicas de Contacto y tres casos de ruta pública,
+  enlace activo y retorno de Login en pruebas compartidas. Cubren campos vacíos,
+  límites de 100/500 caracteres, correos permitidos, contador, foco, corrección,
+  confirmación, todos los perfiles, navegación, ausencia de petición de envío,
+  conservación de datos guardados y del borrador al cerrar sesión en la misma ruta.
+
+### Frecuencia de pruebas
+
+Durante el desarrollo se ejecutan las pruebas del módulo afectado. Al cerrar esta
+etapa se ejecutó además la regresión completa porque cambiaron Navbar, Footer,
+rutas y retorno desde Login. El estudiante puede usar la selección de 20 pruebas
+como comprobación rápida tras sincronizar este mismo código. No necesita repetir
+la cobertura en cada paso. La suite completa vuelve a ejecutarse cuando cambian
+dependencias compartidas, aparecen fallos o se prepara la entrega final; la cobertura
+actualiza la evidencia del corte. Esta estrategia está descrita también en README.
 
 ### Antecedente: corrección de la ejecución intermitente de pruebas
 
@@ -140,21 +151,22 @@ la carga simultánea.
 
 | Métrica | Cubierto / total | Porcentaje |
 | --- | ---: | ---: |
-| Sentencias | 1036 / 1062 | 97,55% |
-| Ramas | 817 / 876 | 93,26% |
-| Funciones | 313 / 316 | 99,05% |
-| Líneas | 857 / 868 | 98,73% |
+| Sentencias | 1075 / 1101 | 97,63% |
+| Ramas | 843 / 901 | 93,56% |
+| Funciones | 327 / 330 | 99,09% |
+| Líneas | 889 / 900 | 98,77% |
 
 La configuración incluye `src/**/*.{js,jsx}`, excluyendo `src/main.jsx` y los
 auxiliares de `src/test`. Vitest excluye los archivos de pruebas de la instrumentación.
 El resultado no mide HTML/JavaScript heredado, CSS, comportamiento visual ni módulos
-que todavía no se implementan. **98,73% de líneas no significa 98,73% de migración.**
+que todavía no se implementan. **98,77% de líneas no significa 98,77% de migración.**
 
 Quedan ramas alternativas de utilidades de carrito (68,18%) y de presentación, además
 de algunas recuperaciones de errores de páginas. CartContext alcanza 84,61% de ramas;
 ya se verifican referencias inexistentes, datos dañados y límites frente al catálogo.
 Los permisos, guardas, usuarios, productos y pedidos tienen pruebas de servicio y
-recorrido. Faltan los casos de las siete páginas que todavía no se implementan.
+recorrido. Contacto añade validación e integración pública. Faltan los casos de las
+seis páginas que todavía no se implementan.
 Los callbacks del menú y algunas ramas de recuperación de errores no se ejecutan en
 esta medición; el menú móvil se revisó también en navegador. LocalStorage no proporciona
 una transacción entre pestañas: se detectan conflictos contra el perfil abierto,
@@ -180,7 +192,7 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 
 ## Trabajo restante y orden propuesto
 
-1. Migrar Contacto, entrenamiento y rutina con sus validaciones y comportamiento.
+1. Migrar entrenamiento y rutina con sus validaciones y comportamiento.
 2. Migrar nosotros, blog y artículos. Completar enlaces,
    recursos del catálogo y paridad funcional con el proyecto original.
 3. Revisar navegación directa, rutas inexistentes, persistencia y responsividad en
@@ -190,6 +202,6 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 5. Preparar el comprimido del proyecto y verificar los entregables y el enlace GitHub.
 6. Preparar y ensayar la defensa individual, mostrando las 10 pruebas seleccionadas.
 
-La siguiente etapa de implementación es Contacto y sus validaciones.
+La siguiente etapa de implementación es entrenamiento y rutina.
 El tiempo pendiente depende del alcance de los módulos restantes; estos porcentajes
 no permiten deducir un número de horas o días con fiabilidad.
