@@ -22,7 +22,7 @@ function Navbar() {
     return (
         <header className="kynex-header">
             <nav
-                className="navbar navbar-expand-lg navbar-dark"
+                className="navbar navbar-expand-xl navbar-dark"
                 aria-label="Navegación principal"
             >
                 <div className="container">
@@ -43,7 +43,7 @@ function Navbar() {
                         className={`collapse navbar-collapse${isMenuOpen ? " show" : ""}`}
                         id={menuId}
                     >
-                        <ul className="navbar-nav mx-auto mb-3 mb-lg-0">
+                        <ul className="navbar-nav mx-auto mb-3 mb-xl-0">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/" end onClick={closeMenu}>
                                     Inicio
@@ -53,6 +53,12 @@ function Navbar() {
                                 <NavLink className="nav-link" to="/productos" onClick={closeMenu}>
                                     Tienda
                                 </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/entrenamiento" onClick={closeMenu}>Entrenamiento</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/rutina" onClick={closeMenu}>Mi rutina</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/contacto" onClick={closeMenu}>Contacto</NavLink>

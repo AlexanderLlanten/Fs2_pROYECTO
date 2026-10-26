@@ -18,6 +18,8 @@ describe("Footer", () => {
         expect(nav.getByRole("link", { name: "Tienda" })).toHaveAttribute("href", "/productos");
         expect(nav.getByRole("link", { name: "Carrito" })).toHaveAttribute("href", "/carrito");
         expect(nav.getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/contacto");
+        expect(nav.getByRole("link", { name: "Entrenamiento" })).toHaveAttribute("href", "/entrenamiento");
+        expect(nav.getByRole("link", { name: "Mi rutina" })).toHaveAttribute("href", "/rutina");
     });
 
     it("navega con React Router desde el pie de página", async () => {

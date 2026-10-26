@@ -23,6 +23,8 @@ import AdminProductFormPage from "../pages/AdminProductFormPage.jsx";
 import AdminOrdersPage from "../pages/AdminOrdersPage.jsx";
 import AdminOrderDetailPage from "../pages/AdminOrderDetailPage.jsx";
 import ContactPage from "../pages/ContactPage.jsx";
+import TrainingPage from "../pages/TrainingPage.jsx";
+import RoutinePage from "../pages/RoutinePage.jsx";
 
 function AppRouter() {
     return (
@@ -36,6 +38,8 @@ function AppRouter() {
                     <Route path="login" element={<LoginPage />} />
                     <Route path="registro" element={<RegistrationPage />} />
                     <Route path="contacto" element={<ContactPage />} />
+                    <Route path="entrenamiento" element={<TrainingPage />} />
+                    <Route path="rutina" element={<RoutinePage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>
