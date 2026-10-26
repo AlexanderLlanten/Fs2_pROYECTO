@@ -1,4 +1,6 @@
 import { defaultUsers } from "../data/users.js";
+import { getRegistrationErrors, normalizeRegistration } from "../utils/registration.js";
+import { cleanRun } from "../utils/validation.js";
 
 export const USERS_KEY = "kynex_users";
 export const SESSION_KEY = "kynex_session";
@@ -42,11 +44,12 @@ function readUsers() {
         const parsed = JSON.parse(stored);
         return {
             users: Array.isArray(parsed) ? parsed.filter(isValidUser) : [],
+            isCorrupted: !Array.isArray(parsed) || !parsed.every(isValidUser),
             needsInitialization: false
         };
     } catch {
         // No reemplazar registros dañados por las cuentas de demostración.
-        return { users: [], needsInitialization: false };
+        return { users: [], needsInitialization: false, isCorrupted: true };
     }
 }
 
@@ -125,6 +128,39 @@ export function logoutUser() {
     try {
         localStorage.removeItem(SESSION_KEY);
         return { success: true };
+    } catch {
+        return { success: false, message: STORAGE_ERROR };
+    }
+}
+
+export function registerUser(values) {
+    const data = normalizeRegistration(values);
+    const errors = getRegistrationErrors(data);
+    if (Object.values(errors).some(Boolean)) {
+        return { success: false, errors, message: "Revisa los campos marcados antes de continuar." };
+    }
+
+    try {
+        const { users, isCorrupted } = readUsers();
+        if (isCorrupted) {
+            return { success: false, message: "Los usuarios guardados no se pueden leer correctamente. No se modificaron tus datos." };
+        }
+        if (users.some(user => cleanRun(user.run) === data.run)) {
+            errors.run = "Ya existe un usuario registrado con este RUN.";
+        }
+        if (users.some(user => normalizeEmail(user.email) === data.email)) {
+            errors.email = "Ya existe un usuario registrado con este correo.";
+        }
+        if (Object.values(errors).some(Boolean)) {
+            return { success: false, errors, message: "Revisa los campos marcados antes de continuar." };
+        }
+
+        const id = Math.max(Date.now(), ...users.map(user => user.id + 1));
+        if (!Number.isSafeInteger(id) || id <= 0) throw new Error("No se puede generar un identificador.");
+        // La EP1 crea clientes con contraseña demostrativa 1234, sin abrir una sesión.
+        const user = { ...data, id, password: "1234", role: "Cliente" };
+        localStorage.setItem(USERS_KEY, JSON.stringify([...users, user]));
+        return { success: true, user: toSession(user) };
     } catch {
         return { success: false, message: STORAGE_ERROR };
     }

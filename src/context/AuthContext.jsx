@@ -4,6 +4,7 @@ import {
     getSession,
     loginUser,
     logoutUser,
+    registerUser,
     SESSION_KEY,
     USERS_KEY
 } from "../services/auth.js";
@@ -61,6 +62,7 @@ function AuthProvider({ children }) {
         isAuthenticated: user !== null,
         login,
         logout,
+        register: registerUser,
         refreshSession,
         hasRole: (...roles) => user !== null && roles.includes(user.role)
     }), [user, login, logout, refreshSession]);
