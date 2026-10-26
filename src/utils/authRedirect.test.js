@@ -12,6 +12,21 @@ describe("Destino posterior al acceso", () => {
             .toBe("/productos?categoria=Prote%C3%ADnas");
     });
 
+    it.each(["Administrador", "Vendedor"])("envía %s al panel o al origen público explícito", role => {
+        expect(getLoginDestination(undefined, role)).toBe("/admin");
+        expect(getLoginDestination({ pathname: "/admin", search: "?vista=resumen" }, role)).toBe("/admin?vista=resumen");
+        expect(getLoginDestination({ pathname: "/productos", search: "?categoria=Vitaminas" }, role)).toBe("/productos?categoria=Vitaminas");
+        for (const pathname of ["https://ejemplo.com", "//ejemplo.com", "/login", "/registro", "/admin/usuarios", "/admin/desconocido"]) {
+            expect(getLoginDestination({ pathname }, role)).toBe("/admin");
+        }
+    });
+
+    it("impide retornar al panel con un perfil Cliente o desconocido", () => {
+        for (const role of ["Cliente", "Otro", undefined]) {
+            expect(getLoginDestination({ pathname: "/admin" }, role)).toBe("/productos");
+        }
+    });
+
     it.each(["https://ejemplo.com", "//ejemplo.com", "/login", "/admin", "/no-existe", "/\\ejemplo.com"])(
         "usa el catálogo en lugar de un destino externo, circular o inexistente: %s",
         pathname => expect(getLoginDestination({ pathname })).toBe("/productos")

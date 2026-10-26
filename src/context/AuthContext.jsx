@@ -8,6 +8,7 @@ import {
     SESSION_KEY,
     USERS_KEY
 } from "../services/auth.js";
+import { hasPermission } from "../utils/permissions.js";
 
 export const AuthContext = createContext(null);
 
@@ -64,7 +65,8 @@ function AuthProvider({ children }) {
         logout,
         register: registerUser,
         refreshSession,
-        hasRole: (...roles) => user !== null && roles.includes(user.role)
+        hasRole: (...roles) => user !== null && roles.includes(user.role),
+        hasPermission: permission => user !== null && hasPermission(user.role, permission)
     }), [user, login, logout, refreshSession]);
 
     return (
