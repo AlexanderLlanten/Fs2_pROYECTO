@@ -15,6 +15,8 @@ Frontend KYNEX en migración a React, Vite y React Router.
 `CartProvider` permanece por encima del router para conservar el carrito al navegar.
 Las rutas disponibles son `/`, `/productos`, `/productos/:id`, `/carrito`, `/login` y `/registro`.
 La navegación compartida enlaza estas rutas ya migradas.
+El área privada inicial usa `/admin` con `AdminLayout`; sus rutas hijas requieren
+el permiso de acceso administrativo antes de montar el layout.
 
 ## Inicio KYNEX
 
@@ -41,6 +43,7 @@ desconocida muestra el catálogo completo. El aviso de despacho usa
 | `register(values)` | Crea un Cliente; devuelve `{ success, user }` o un error con `message` y, cuando corresponde, `errors` por campo. No inicia sesión. |
 | `logout()` | Elimina la sesión; conserva usuarios y carrito. Devuelve un resultado con `success`. |
 | `hasRole(...roles)` | Consulta uno o varios roles, por ejemplo `hasRole("Administrador", "Vendedor")`. |
+| `hasPermission(permission)` | Consulta la matriz central de permisos de administración. |
 | `refreshSession()` | Relee una sesión modificada por otro consumidor de la misma pestaña. |
 
 La sesión se recupera al montar el proveedor y se sincroniza entre pestañas mediante
@@ -60,7 +63,7 @@ cuentas iniciales. La sesión guarda solo identidad y rol, sin contraseña, RUN 
 | Vendedor | martin@duoc.cl | 1234 |
 | Administrador | admin@profesor.duoc.cl | 1234 |
 
-Login y Registro consumen este estado; las rutas protegidas se integrarán en su etapa.
+Login, Registro, ProtectedRoute y RoleGate consumen este estado.
 La autenticación sigue siendo una demostración Front End con datos locales, como en
 la EP1: los roles y las credenciales del navegador no constituyen seguridad de producción.
 Una versión de producción debe validar credenciales y permisos en un servidor.
@@ -77,12 +80,54 @@ fallos generales mediante un aviso accesible.
 
 `AccountActions` integra el acceso a Login, el nombre, el rol y el cierre de sesión en
 Navbar. Al ingresar se vuelve a la página pública de origen, conservando los filtros,
-o a `/productos` si no existe un origen válido. Se descartan destinos externos, `/login`
-y rutas todavía no disponibles. Los tres perfiles conservan su rol y usan estas rutas
-públicas durante esta etapa; el destino administrativo se conectará al migrar administración.
+o al panel `/admin` si ese es el origen y el perfil tiene permiso. Sin un origen
+válido, Cliente entra a `/productos`; Vendedor y Administrador entran a `/admin`,
+como en la EP1. Se descartan destinos externos, `/login`, `/registro` y rutas
+todavía no disponibles. Un origen público válido se conserva para todos los perfiles.
 
 Cerrar sesión conserva la compra y mantiene la página pública actual. Una sesión
 vigente evita volver a mostrar los formularios de Login y Registro.
+
+## Rutas protegidas y permisos
+
+`src/utils/permissions.js` centraliza los permisos heredados de `admin-auth.js`:
+
+| Permiso | Cliente | Vendedor | Administrador |
+| --- | --- | --- | --- |
+| `ADMIN_ACCESS` | No | Sí | Sí |
+| `PRODUCTS_VIEW` | No | Sí | Sí |
+| `ORDERS_VIEW` | No | Sí | Sí |
+| `PRODUCTS_MANAGE` | No | No | Sí |
+| `USERS_MANAGE` | No | No | Sí |
+
+Son permisos del área administrativa; el catálogo público continúa abierto a todos.
+Un permiso o rol desconocido se deniega.
+
+`ProtectedRoute` renderiza un `Outlet` únicamente con sesión y el permiso solicitado.
+Sin sesión envía a Login con `replace`, conservando `pathname` y `search` en el estado
+del router. Si falta el permiso, vuelve al destino inicial del rol: tienda para
+Cliente y panel para perfiles de gestión. Se pueden anidar guardas para reservar
+un módulo al Administrador. Sin la prop `permission` exige solo una sesión válida.
+El destino de rechazo debe quedar fuera de la guarda que rechaza, como en las rutas
+anidadas verificadas en sus pruebas.
+
+`RoleGate` condiciona acciones visibles usando la misma matriz y permite un `fallback`.
+Navbar ofrece «Administración» solo a Administrador y Vendedor. Ocultar acciones
+complementa la protección de la ruta. Ambas reaccionan al cierre, eliminación de usuario
+y cambios de rol sincronizados por AuthProvider; no se guarda una copia del permiso
+al montar. El rol se obtiene del registro vigente del usuario al recuperar la sesión.
+
+`/admin` y sus rutas desconocidas están protegidas por `ADMIN_ACCESS`. AdminLayout
+reutiliza BrandLink y AccountActions, añade menú móvil, salto al contenido, un main
+con Outlet y pie administrativo. AdminHomePage muestra la sesión y un resumen
+calculado a partir de los mismos productos del catálogo: referencias, unidades y
+productos cuyo stock es menor o igual al umbral crítico. Las rutas inexistentes
+muestran 404 con regreso a tienda o panel.
+
+Esta etapa entrega la base del panel. Las listas y formularios administrativos
+todavía no tienen rutas React; se conectarán a sus permisos al migrar cada módulo.
+La matriz y las guardas anidadas de esos permisos ya están verificadas mediante
+pruebas, sin presentar esos módulos como implementados.
 
 ## Registro de clientes
 
@@ -123,6 +168,9 @@ También verifican autenticación, persistencia y sincronización de sesiones, c
 de roles, compatibilidad con los datos de la EP1 y errores de almacenamiento.
 El registro agrega pruebas de validaciones, duplicados, selectores relacionados,
 persistencia, errores de escritura y el recorrido Registro > Login > Carrito.
+Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
+no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
+de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
 
 El avance estimado frente a la pauta, las funcionalidades pendientes y la medición
 de cobertura de esta etapa se documentan en [docs/avance-migracion.md](docs/avance-migracion.md).
