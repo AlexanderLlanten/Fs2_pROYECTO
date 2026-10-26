@@ -3,6 +3,10 @@ import {
     useParams
 } from "react-router-dom";
 
+import {
+    useState
+} from "react";
+
 import Price from "../components/atoms/Price.jsx";
 import StockBadge from "../components/atoms/StockBadge.jsx";
 
@@ -10,10 +14,21 @@ import {
     products
 } from "../data/products.js";
 
+import useCart from "../hooks/useCart.js";
+
 function ProductDetailPage() {
     const {
         id
     } = useParams();
+
+    const {
+        addToCart
+    } = useCart();
+
+    const [
+        feedback,
+        setFeedback
+    ] = useState("");
 
     const product =
         products.find(
@@ -51,6 +66,16 @@ function ProductDetailPage() {
                     </div>
                 </section>
             </main>
+        );
+    }
+
+    function handleAddToCart() {
+        addToCart(
+            product
+        );
+
+        setFeedback(
+            "Producto agregado al carrito."
         );
     }
 
@@ -159,16 +184,28 @@ function ProductDetailPage() {
                                     <button
                                         className="btn btn-success"
                                         type="button"
-                                        disabled
+                                        disabled={
+                                            product.stock <= 0
+                                        }
+                                        onClick={handleAddToCart}
                                     >
                                         Agregar al carrito
                                     </button>
                                 </div>
 
-                                <p className="product-detail-note">
-                                    El carrito se habilitará en la siguiente etapa
-                                    de la migración mediante estado global.
+                                <p
+                                    className="product-detail-note"
+                                    aria-live="polite"
+                                >
+                                    {feedback}
                                 </p>
+
+                                <Link
+                                    className="btn btn-outline-light mt-2"
+                                    to="/carrito"
+                                >
+                                    Ver carrito
+                                </Link>
                             </div>
                         </div>
                     </div>

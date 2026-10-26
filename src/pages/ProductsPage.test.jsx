@@ -15,13 +15,16 @@ import {
     MemoryRouter
 } from "react-router-dom";
 
+import CartProvider from "../context/CartContext.jsx";
 import ProductsPage from "./ProductsPage.jsx";
 
 function renderPage() {
     render(
-        <MemoryRouter>
-            <ProductsPage />
-        </MemoryRouter>
+        <CartProvider>
+            <MemoryRouter>
+                <ProductsPage />
+            </MemoryRouter>
+        </CartProvider>
     );
 }
 

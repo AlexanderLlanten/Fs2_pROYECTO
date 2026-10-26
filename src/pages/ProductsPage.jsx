@@ -1,4 +1,8 @@
 import {
+    Link
+} from "react-router-dom";
+
+import {
     useState
 } from "react";
 
@@ -8,7 +12,14 @@ import {
     products
 } from "../data/products.js";
 
+import useCart from "../hooks/useCart.js";
+
 function ProductsPage() {
+    const {
+        addToCart,
+        totalItems
+    } = useCart();
+
     const [
         search,
         setSearch
@@ -69,18 +80,34 @@ function ProductsPage() {
         <main>
             <section className="catalog-header">
                 <div className="container">
-                    <p className="kynex-eyebrow">
-                        CATÁLOGO KYNEX
-                    </p>
+                    <div className="d-flex flex-wrap align-items-end justify-content-between gap-3">
+                        <div>
+                            <p className="kynex-eyebrow">
+                                CATÁLOGO KYNEX
+                            </p>
 
-                    <h1>
-                        Suplementación para cada objetivo
-                    </h1>
+                            <h1>
+                                Suplementación para cada objetivo
+                            </h1>
 
-                    <p>
-                        Explora el catálogo disponible y filtra los productos
-                        según tus necesidades.
-                    </p>
+                            <p>
+                                Explora el catálogo disponible y filtra los productos
+                                según tus necesidades.
+                            </p>
+                        </div>
+
+                        <Link
+                            className="btn btn-outline-light"
+                            to="/carrito"
+                        >
+                            <i
+                                className="bi bi-cart3 me-2"
+                                aria-hidden="true"
+                            />
+
+                            Carrito ({totalItems})
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -168,6 +195,7 @@ function ProductsPage() {
 
                     <ProductGrid
                         products={filteredProducts}
+                        onAddToCart={addToCart}
                     />
                 </div>
             </section>

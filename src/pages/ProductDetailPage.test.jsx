@@ -15,24 +15,27 @@ import {
     Routes
 } from "react-router-dom";
 
+import CartProvider from "../context/CartContext.jsx";
 import ProductDetailPage from "./ProductDetailPage.jsx";
 
 function renderDetail(
     initialEntry
 ) {
     render(
-        <MemoryRouter
-            initialEntries={[
-                initialEntry
-            ]}
-        >
-            <Routes>
-                <Route
-                    path="/productos/:id"
-                    element={<ProductDetailPage />}
-                />
-            </Routes>
-        </MemoryRouter>
+        <CartProvider>
+            <MemoryRouter
+                initialEntries={[
+                    initialEntry
+                ]}
+            >
+                <Routes>
+                    <Route
+                        path="/productos/:id"
+                        element={<ProductDetailPage />}
+                    />
+                </Routes>
+            </MemoryRouter>
+        </CartProvider>
     );
 }
 
