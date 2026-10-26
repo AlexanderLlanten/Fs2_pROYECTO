@@ -983,3 +983,54 @@
             auto;
     }
 }
+
+
+.cart-page-header {
+    padding:
+        4rem 0 2.5rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--kynex-bg-soft),
+            var(--kynex-bg)
+        );
+
+    border-bottom:
+        1px solid var(--kynex-border);
+}
+
+.cart-page-header h1 {
+    margin-bottom:
+        0.75rem;
+
+    font-size:
+        clamp(2.3rem, 5vw, 4rem);
+
+    letter-spacing:
+        -0.04em;
+}
+
+.cart-page-header p:last-child {
+    margin-bottom:
+        0;
+
+    color:
+        var(--kynex-muted);
+}
+
+.cart-page-section {
+    padding:
+        3rem 0 6rem;
+}
+
+.cart-items-react {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        1rem;
+}

@@ -4,6 +4,7 @@ import {
     Routes
 } from "react-router-dom";
 
+import CartPage from "../pages/CartPage.jsx";
 import HomePage from "../pages/HomePage.jsx";
 import ProductDetailPage from "../pages/ProductDetailPage.jsx";
 import ProductsPage from "../pages/ProductsPage.jsx";
@@ -25,6 +26,11 @@ function AppRouter() {
                 <Route
                     path="/productos/:id"
                     element={<ProductDetailPage />}
+                />
+
+                <Route
+                    path="/carrito"
+                    element={<CartPage />}
                 />
             </Routes>
         </BrowserRouter>
