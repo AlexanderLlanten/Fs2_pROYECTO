@@ -4,6 +4,18 @@ import { render, screen } from "@testing-library/react";
 import FormField from "./FormField.jsx";
 
 describe("FormField", () => {
+    it("asocia ayuda y error a selectores y áreas de texto", () => {
+        render(<>
+            <FormField label="Región" as="select" defaultValue="" error="Selecciona una región.">
+                <option value="">Selecciona</option><option value="RM">Metropolitana</option>
+            </FormField>
+            <FormField label="Dirección" as="textarea" rows={3} helpText="Calle y número." />
+        </>);
+        expect(screen.getByRole("combobox", { name: "Región" })).toHaveAccessibleDescription("Selecciona una región.");
+        expect(screen.getByRole("option", { name: "Metropolitana" })).toBeInTheDocument();
+        expect(screen.getByRole("textbox", { name: "Dirección" })).toHaveAccessibleDescription("Calle y número.");
+    });
+
     it("asocia etiquetas únicas a cada campo sin exigir ids manuales", () => {
         render(
             <>
