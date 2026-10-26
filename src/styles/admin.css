@@ -285,7 +285,8 @@
 }
 
 .kynex-users-table td:first-child,
-.kynex-users-table .kynex-badge {
+.kynex-users-table .kynex-badge,
+.kynex-users-table .kynex-stock-badge {
     white-space: nowrap;
 }
 
