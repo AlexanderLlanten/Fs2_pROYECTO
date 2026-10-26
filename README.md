@@ -247,6 +247,38 @@ y conserva los valores; editar retira la confirmación hasta volver a validar.
 No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
 permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
 
+## Entrenamiento y rutina
+
+`/entrenamiento` y `/rutina` son públicas y reutilizan PublicLayout. Navbar y Footer
+enlazan ambas páginas; Login permite regresar a cualquiera de ellas. El menú se
+contrae por debajo de 1200 px para alojar los nuevos accesos y las acciones de sesión.
+
+`src/data/exercises.js` conserva los ocho ejercicios, ids, textos, fotografías y
+sugerencias de la EP1. `ExerciseLibrary` combina búsqueda por nombre/descripción,
+grupo muscular y dificultad, con contador y estado vacío. `ExerciseCard` recibe
+sus datos y callback por props, usa un icono si falla la imagen y bloquea ejercicios
+ya seleccionados. Las confirmaciones se muestran en la página, sin alertas nativas.
+
+`routineStore.js` conserva `kynex_routine` y el formato `{ id, sets, reps }`;
+`useRoutine` comparte una instantánea con useSyncExternalStore y escucha cambios
+locales y entre pestañas. La rutina pertenece a este navegador, como en la EP1;
+iniciar o cerrar sesión no modifica su contenido. No agrega un proveedor al carrito.
+
+`RoutineBuilder` compone resumen, `RoutineItem`, estado vacío y ConfirmDeleteDialog.
+Series y repeticiones reutilizan FormField y se guardan al salir del campo o pulsar
+Enter. Se exigen enteros de 1–20 series y 1–100 repeticiones, respetando los límites
+declarados en el HTML original; los valores inválidos muestran un error sin guardarse.
+Se pueden quitar ejercicios y vaciar la rutina tras confirmar; Cancelar o Escape
+conservan la selección. El resumen calcula ejercicios distintos y series totales.
+
+La lectura conserva ajustes heredados válidos, convierte cantidades numéricas de
+texto, aplica sugerencias a cantidades ausentes/inválidas y ajusta excesos a los
+límites. Omite referencias de ejercicios inexistentes, como la versión original.
+Leer no escribe. JSON dañado, registros mal formados o ids repetidos bloquean las
+escrituras sin reemplazar los datos. Un fallo de persistencia conserva la rutina
+anterior y ofrece volver a intentar. Cada operación vuelve a leer los datos vigentes;
+LocalStorage sigue sin ofrecer transacciones entre pestañas.
+
 ## Registro de clientes
 
 `RegistrationPage` usa PublicLayout y el organismo `RegistrationForm`. Reutiliza
@@ -280,14 +312,15 @@ npm run build
 ```
 
 No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
-Contacto (3 archivos y 20 pruebas en este corte):
+Entrenamiento y rutina (6 archivos y 44 pruebas en este corte):
 
 ```sh
-npm test -- ContactForm contact.test Contact.test
+npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test
 ```
 
 En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
-el formulario, sus validaciones y el recorrido integrado de Contacto.
+las tarjetas, filtros, edición, reglas de rutina, persistencia y recorridos integrados.
+Contacto conserva su selección rápida: `npm test -- ContactForm contact.test Contact.test`.
 
 | Momento | Comprobación |
 | --- | --- |
@@ -320,7 +353,10 @@ ids inexistentes, denegación del servicio y retirada de datos al perder el acce
 También se comprueban los accesos del panel según el perfil y el cierre del menú.
 Contacto verifica obligatoriedad, límites, dominios, contador, foco y corrección de
 errores, confirmación local, acceso público, navegación, retorno desde Login y
-conservación del carrito y la sesión sin enviar peticiones.
+conservación del carrito y la sesión sin enviar peticiones. Entrenamiento y rutina
+comprueban filtros combinados, duplicados, valores heredados, límites numéricos,
+recarga, sincronización, cancelación/confirmación, fallos de almacenamiento y
+conservación de los datos de sesión, catálogo y compra.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
