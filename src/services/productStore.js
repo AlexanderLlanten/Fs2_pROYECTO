@@ -1,5 +1,6 @@
 import { products as defaultProducts } from "../data/products.js";
 import { getProductErrors, normalizeProduct, parseProductId } from "../utils/products.js";
+import { completeProductDetails } from "../utils/productDetails.js";
 
 export const PRODUCTS_KEY = "kynex_products";
 const PRODUCTS_CHANGED = "kynex:products-changed";
@@ -26,7 +27,7 @@ export function readCatalog() {
             ids.add(product.id); codes.add(code);
             return false;
         })) result = corrupted;
-        else result = { success: true, products: parsed.map(product => ({ ...product, ...normalizeProduct(product) })) };
+        else result = { success: true, products: parsed.map(product => completeProductDetails({ ...product, ...normalizeProduct(product) })) };
     } catch { result = corrupted; }
     lastRaw = raw;
     snapshot = result;
