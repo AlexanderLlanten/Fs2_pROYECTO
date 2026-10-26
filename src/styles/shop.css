@@ -662,3 +662,324 @@
             column;
     }
 }
+
+
+.quantity-selector {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        0.4rem;
+}
+
+.quantity-selector-label {
+    color:
+        var(--kynex-muted-dark);
+
+    font-size:
+        0.78rem;
+}
+
+.quantity-selector-control {
+    display:
+        inline-flex;
+
+    overflow:
+        hidden;
+
+    width:
+        fit-content;
+
+    border:
+        1px solid var(--kynex-border);
+
+    border-radius:
+        0.65rem;
+}
+
+.quantity-selector-control button,
+.quantity-selector-control output {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        2.75rem;
+
+    height:
+        2.75rem;
+
+    color:
+        var(--kynex-text);
+
+    background:
+        var(--kynex-surface);
+}
+
+.quantity-selector-control button {
+    border:
+        0;
+}
+
+.quantity-selector-control button:hover:not(:disabled) {
+    color:
+        var(--kynex-accent);
+
+    background:
+        var(--kynex-surface-light);
+}
+
+.quantity-selector-control button:disabled {
+    opacity:
+        0.45;
+}
+
+.quantity-selector-control output {
+    border-right:
+        1px solid var(--kynex-border);
+
+    border-left:
+        1px solid var(--kynex-border);
+}
+
+.cart-item-react {
+    display:
+        grid;
+
+    grid-template-columns:
+        90px minmax(0, 1fr) auto auto auto;
+
+    align-items:
+        center;
+
+    gap:
+        1.25rem;
+
+    padding:
+        1.25rem;
+
+    background:
+        var(--kynex-surface);
+
+    border:
+        1px solid var(--kynex-border);
+
+    border-radius:
+        1rem;
+}
+
+.cart-item-react-visual {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        90px;
+
+    height:
+        90px;
+
+    color:
+        var(--kynex-accent);
+
+    background:
+        var(--kynex-bg-soft);
+
+    border-radius:
+        0.75rem;
+
+    font-size:
+        2.5rem;
+}
+
+.cart-item-react-info > span {
+    color:
+        var(--kynex-accent);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+}
+
+.cart-item-react-info h2 {
+    margin:
+        0.25rem 0;
+
+    font-size:
+        1.15rem;
+}
+
+.cart-item-react-info p {
+    margin-bottom:
+        0.35rem;
+
+    color:
+        var(--kynex-muted);
+}
+
+.cart-item-react-info a {
+    color:
+        var(--kynex-muted);
+
+    font-size:
+        0.85rem;
+}
+
+.cart-item-react-info a:hover {
+    color:
+        var(--kynex-accent);
+}
+
+.cart-remove-button-react {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        2.75rem;
+
+    height:
+        2.75rem;
+
+    color:
+        var(--kynex-danger);
+
+    background:
+        transparent;
+
+    border:
+        1px solid var(--kynex-border);
+
+    border-radius:
+        0.65rem;
+}
+
+.cart-summary-react {
+    position:
+        sticky;
+
+    top:
+        1.5rem;
+
+    padding:
+        1.5rem;
+
+    background:
+        var(--kynex-surface);
+
+    border:
+        1px solid var(--kynex-border);
+
+    border-radius:
+        1rem;
+}
+
+.cart-summary-react h2 {
+    margin-bottom:
+        1.25rem;
+}
+
+.cart-summary-react dl {
+    margin-bottom:
+        1.25rem;
+}
+
+.cart-summary-react dl > div {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        1rem;
+
+    padding:
+        0.75rem 0;
+
+    border-bottom:
+        1px solid var(--kynex-border);
+}
+
+.cart-summary-react dt {
+    color:
+        var(--kynex-muted);
+}
+
+.cart-summary-react dd {
+    margin:
+        0;
+}
+
+.cart-summary-total {
+    margin-bottom:
+        1rem;
+}
+
+.cart-summary-react > p {
+    color:
+        var(--kynex-muted);
+
+    font-size:
+        0.85rem;
+}
+
+@media (max-width: 991.98px) {
+    .cart-item-react {
+        grid-template-columns:
+            80px minmax(0, 1fr) auto;
+    }
+
+    .cart-item-react .quantity-selector,
+    .cart-item-react .kynex-price {
+        grid-column:
+            2 / -1;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .cart-item-react {
+        grid-template-columns:
+            1fr;
+    }
+
+    .cart-item-react-visual {
+        width:
+            100%;
+
+        height:
+            150px;
+    }
+
+    .cart-item-react .quantity-selector,
+    .cart-item-react .kynex-price {
+        grid-column:
+            auto;
+    }
+}
