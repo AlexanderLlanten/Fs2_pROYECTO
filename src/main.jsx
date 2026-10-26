@@ -11,6 +11,7 @@ import "./styles/layout.css";
 import "./styles/home.css";
 import "./styles/auth.css";
 import "./styles/admin.css";
+import "./styles/contact.css";
 
 import App from "./App.jsx";
 

@@ -126,9 +126,69 @@ calculado a partir de los mismos productos del catálogo: referencias, unidades 
 productos cuyo stock es menor o igual al umbral crítico. Las rutas inexistentes
 muestran 404 con regreso a tienda o panel.
 
-El panel y el menú ofrecen Usuarios solo al Administrador. La lista y los formularios
-de usuarios están conectados a su guarda; las pantallas de productos y pedidos
-se integrarán en las siguientes etapas.
+El panel y el menú ofrecen Usuarios solo al Administrador y Productos también al
+Vendedor. Pedidos está disponible para ambos perfiles. Los tres módulos usan sus
+guardas y tarjetas AdminModuleCard, con accesos activos desde el panel.
+
+## Consulta de pedidos
+
+`/admin/pedidos` y `/admin/pedidos/:id` exigen `ORDERS_VIEW`, además del acceso
+administrativo. Sin sesión se solicita Login y se conserva el destino; Cliente
+vuelve a la tienda. Administrador y Vendedor pueden consultar lista y detalle.
+Los cambios de rol o cierre de sesión sincronizados retiran también estas pantallas.
+
+`src/data/orders.js` conserva los tres pedidos demostrativos de la EP1: identidad,
+fecha, cliente, estado y líneas con nombre, precio y cantidad registrados.
+`adminOrders.js` comprueba el rol vigente en cada consulta y devuelve copias de
+los datos. No agrega una clave de almacenamiento ni operaciones de escritura.
+Se conserva el alcance de consulta de la versión original.
+
+`OrdersTable`, `OrderItemsTable` y `OrderSummary` reutilizan el layout, Badge,
+Price y su formato CLP. `OrderStatusBadge` distingue los estados mediante texto
+y color. Las tablas tienen encabezados y regiones desplazables con teclado;
+el resumen se adapta al ancho móvil. Un id inválido o inexistente ofrece volver
+a la lista y los subcaminos desconocidos muestran 404 bajo la misma guarda.
+
+La cantidad total suma unidades, no referencias. Los importes se calculan a partir
+de las líneas del pedido y no del catálogo editable; cambiar o eliminar un producto
+actual no modifica esos datos históricos. Se muestra el total de productos, sin
+añadir las reglas de despacho del carrito que la EP1 no incluye en estos pedidos.
+
+## Gestión de productos y catálogo compartido
+
+Las rutas `/admin/productos`, `/admin/productos/nuevo` y
+`/admin/productos/:id/editar` reutilizan AdminLayout. La lista exige `PRODUCTS_VIEW`;
+los formularios y las operaciones de escritura exigen `PRODUCTS_MANAGE`. Vendedor
+puede consultar precios, stock y detalle público; Administrador puede crear,
+editar y eliminar. Login conserva el destino solicitado si el perfil tiene permiso.
+
+`ProductsTable` y `AdminProductForm` componen las páginas. El formulario reutiliza
+FormField y Button: código único de al menos 3 caracteres, categoría del catálogo,
+nombre de hasta 100 caracteres, descripción opcional de hasta 500, precio no negativo,
+stock entero no negativo y umbral crítico opcional. Precio, stock y umbral aceptan 0;
+un umbral vacío se guarda como `null`. Conserva contador, validación por campo, foco
+en el primer error, alerta de stock y bloqueo de envíos repetidos. El diálogo de
+eliminación comparte `ConfirmDeleteDialog` con Usuarios y enfoca Cancelar al abrir.
+
+`productStore.js` conserva `kynex_products`. `useCatalog` usa una instantánea estable
+con `useSyncExternalStore`, notificaciones dentro de la pestaña y eventos `storage`
+entre pestañas. Inicio, catálogo, detalle, inventario y carrito consumen los mismos
+productos. Si la clave no existe, se usan los seis productos iniciales sin escribir;
+una lista vacía no se repuebla. Datos dañados o duplicados se anuncian y no se reemplazan.
+
+`adminProducts.js` vuelve a consultar la sesión vigente, valida datos y códigos
+duplicados y compara el producto abierto antes de guardar o eliminar. La edición
+conserva id, destacados, marca, formato, sabor y metadatos adicionales de la EP1.
+Un cambio detectado desde otra pestaña conserva el borrador, bloquea Guardar y ofrece
+Recargar datos. Una escritura fallida conserva el catálogo anterior. El almacenamiento
+local sigue siendo demostrativo y no ofrece transacciones concurrentes entre pestañas.
+
+La imagen opcional admite URL http(s) o una ruta `/assets/`; las rutas heredadas
+`../../assets/...` se convierten a la raíz. ProductImage reutiliza el ícono si la
+imagen está ausente o falla. El carrito toma precio y stock vigentes, limita cantidades,
+retira agotados/eliminados y persiste las cantidades ajustadas. Un fallo de lectura
+del catálogo conserva la compra guardada; un fallo al guardar el carrito se anuncia
+y conserva los cambios en memoria durante esa visita.
 
 ## Gestión de usuarios
 
@@ -172,6 +232,21 @@ vuelve a comparar el perfil abierto al guardar o eliminar para evitar sobrescrib
 cambios detectables. Esto sigue usando almacenamiento local, sin un servidor que
 coordine transacciones entre usuarios.
 
+## Contacto
+
+`/contacto` es público y usa PublicLayout, con enlaces desde Navbar y Footer.
+`ContactForm` reutiliza FormField y Button. Valida nombre obligatorio de hasta
+100 caracteres, correo obligatorio de hasta 100 en los dominios permitidos y
+comentario obligatorio de hasta 500. Comparte `getEmailError` con los otros
+formularios. El contador muestra la longitud actual del comentario; los errores
+se asocian a los campos, se enfoca el primero inválido y se retiran al corregir.
+
+Se conserva la validación local de la EP1. El botón «Validar mensaje» y la nota
+de demostración aclaran su alcance. El éxito muestra «Mensaje validado correctamente»
+y conserva los valores; editar retira la confirmación hasta volver a validar.
+No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
+permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
+
 ## Registro de clientes
 
 `RegistrationPage` usa PublicLayout y el organismo `RegistrationForm`. Reutiliza
@@ -204,6 +279,28 @@ npm run test:coverage
 npm run build
 ```
 
+No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
+Contacto (3 archivos y 20 pruebas en este corte):
+
+```sh
+npm test -- ContactForm contact.test Contact.test
+```
+
+En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
+el formulario, sus validaciones y el recorrido integrado de Contacto.
+
+| Momento | Comprobación |
+| --- | --- |
+| Durante la edición de un módulo | Pruebas de los archivos afectados. |
+| Al cerrar una etapa, especialmente con cambios en rutas, proveedores o componentes compartidos | Una ejecución de la suite completa para detectar regresiones. |
+| Antes de la entrega final o al actualizar su evidencia de testing | Suite con cobertura y build de producción. |
+
+Después de descargar una etapa que ya pasó la regresión completa, la comprobación
+del módulo sirve como revisión rápida en el equipo del estudiante. Repetir la
+suite completa tiene sentido si aparecen fallos locales, conflictos de integración
+o cambios adicionales. La cobertura se mide para documentar un corte; no hace falta
+repetirla con cada cambio pequeño.
+
 Las pruebas usan Vitest y React Testing Library. Cubren los componentes, las rutas
 con el layout compartido, el menú móvil y la actualización del contador al agregar,
 cambiar cantidades, eliminar y vaciar productos, además de recuperar el carrito guardado.
@@ -214,6 +311,16 @@ persistencia, errores de escritura y el recorrido Registro > Login > Carrito.
 La gestión administrativa verifica creación, edición, eliminación/cancelación,
 duplicados, protección de la cuenta conectada, sincronización del perfil propio,
 conflictos entre pestañas, datos dañados, fallos de persistencia y reversión de sesión.
+Los productos agregan validaciones, permisos de escritura, duplicados de código,
+conservación de metadatos e integración con categoría, detalle, inicio, inventario y
+carrito; se prueban cambios de precio, límites de stock, errores y recuperación.
+Los pedidos verifican cálculos, consulta sin escrituras, datos históricos, copias
+independientes, permisos vigentes, acceso directo y posterior a Login, recarga,
+ids inexistentes, denegación del servicio y retirada de datos al perder el acceso.
+También se comprueban los accesos del panel según el perfil y el cierre del menú.
+Contacto verifica obligatoriedad, límites, dominios, contador, foco y corrección de
+errores, confirmación local, acceso público, navegación, retorno desde Login y
+conservación del carrito y la sesión sin enviar peticiones.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.

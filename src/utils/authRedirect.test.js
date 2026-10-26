@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { getLoginDestination } from "./authRedirect.js";
 
 describe("Destino posterior al acceso", () => {
-    it.each(["/", "/carrito", "/productos", "/productos/2"])("permite volver a %s", pathname => {
+    it.each(["/", "/carrito", "/productos", "/productos/2", "/contacto"])("permite volver a %s", pathname => {
         expect(getLoginDestination({ pathname })).toBe(pathname);
     });
 
@@ -31,6 +31,23 @@ describe("Destino posterior al acceso", () => {
         for (const role of ["Cliente", "Otro", undefined]) {
             expect(getLoginDestination({ pathname: "/admin" }, role)).toBe("/productos");
         }
+    });
+
+    it("permite la lista de productos a Vendedor y Administrador", () => {
+        for (const role of ["Vendedor", "Administrador"]) expect(getLoginDestination({ pathname: "/admin/productos" }, role)).toBe("/admin/productos");
+        expect(getLoginDestination({ pathname: "/admin/productos" }, "Cliente")).toBe("/productos");
+    });
+    it.each(["/admin/pedidos", "/admin/pedidos/1001"])("retorna a %s solo con permiso de consulta", pathname => {
+        for (const role of ["Vendedor", "Administrador"]) expect(getLoginDestination({ pathname, search: "?origen=panel" }, role)).toBe(`${pathname}?origen=panel`);
+        expect(getLoginDestination({ pathname }, "Cliente")).toBe("/productos");
+        expect(getLoginDestination({ pathname }, "Desconocido")).toBe("/productos");
+    });
+    it("descarta un subcamino de pedidos no implementado", () => {
+        expect(getLoginDestination({ pathname: "/admin/pedidos/1001/editar" }, "Administrador")).toBe("/admin");
+    });
+    it.each(["/admin/productos/nuevo", "/admin/productos/2/editar"])("reserva el retorno a %s al Administrador", pathname => {
+        expect(getLoginDestination({ pathname }, "Administrador")).toBe(pathname);
+        expect(getLoginDestination({ pathname }, "Vendedor")).toBe("/admin");
     });
 
     it.each(["https://ejemplo.com", "//ejemplo.com", "/login", "/admin", "/no-existe", "/\\ejemplo.com"])(

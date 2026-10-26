@@ -6,8 +6,11 @@ import CartItem from "../components/molecules/CartItem.jsx";
 import CartSummary from "../components/organisms/CartSummary.jsx";
 
 import useCart from "../hooks/useCart.js";
+import useCatalog from "../hooks/useCatalog.js";
+import CatalogError from "../components/molecules/CatalogError.jsx";
 
 function CartPage() {
+    const catalog = useCatalog();
     const {
         detailedCart,
         totalItems,
@@ -18,7 +21,8 @@ function CartPage() {
         increaseQuantity,
         decreaseQuantity,
         removeFromCart,
-        clearCart
+        clearCart,
+        storageError
     } = useCart();
 
     return (
@@ -52,8 +56,9 @@ function CartPage() {
 
             <section className="cart-page-section">
                 <div className="container">
+                    {storageError && <p className="auth-form-alert" role="alert">{storageError}</p>}
                     {
-                        detailedCart.length === 0
+                        !catalog.success ? <CatalogError resource={catalog} /> : detailedCart.length === 0
                             ? (
                                 <div className="catalog-empty">
                                     <i

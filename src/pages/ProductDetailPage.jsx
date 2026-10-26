@@ -10,13 +10,15 @@ import {
 import Price from "../components/atoms/Price.jsx";
 import StockBadge from "../components/atoms/StockBadge.jsx";
 
-import {
-    products
-} from "../data/products.js";
+import useCatalog from "../hooks/useCatalog.js";
+import CatalogError from "../components/molecules/CatalogError.jsx";
+import ProductImage from "../components/atoms/ProductImage.jsx";
 
 import useCart from "../hooks/useCart.js";
 
 function ProductDetailPage() {
+    const catalog = useCatalog();
+    const { products } = catalog;
     const {
         id
     } = useParams();
@@ -36,6 +38,8 @@ function ProductDetailPage() {
                 item.id ===
                 Number(id)
         );
+
+    if (!catalog.success) return <section className="product-detail-section"><div className="container"><h1>Catálogo no disponible</h1><CatalogError resource={catalog} /></div></section>;
 
     if (!product) {
         return (
@@ -105,10 +109,7 @@ function ProductDetailPage() {
                                     criticalStock={product.criticalStock}
                                 />
 
-                                <i
-                                    className={`bi ${product.icon || "bi-box-seam"}`}
-                                    aria-hidden="true"
-                                />
+                                <ProductImage product={product} />
                             </div>
                         </div>
 

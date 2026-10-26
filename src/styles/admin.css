@@ -143,6 +143,77 @@
     font-weight: 800;
 }
 
+.kynex-admin-module {
+    flex-direction: column;
+    height: 100%;
+    margin-top: 0;
+    padding: 1.5rem;
+}
+
+.kynex-admin-module h3,
+.kynex-order-summary h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.kynex-admin-module .btn {
+    margin-top: auto;
+}
+
+.kynex-users-table.kynex-orders-table {
+    min-width: 850px;
+}
+
+.kynex-users-table.kynex-orders-table th[scope="row"] {
+    min-width: 0;
+}
+
+.kynex-users-table.kynex-order-items-table {
+    min-width: 540px;
+}
+
+.kynex-order-email,
+.kynex-order-note {
+    display: block;
+    color: var(--kynex-muted);
+    overflow-wrap: anywhere;
+}
+
+.kynex-order-status--pending {
+    color: #ffd166;
+    background: rgba(255, 209, 102, 0.1);
+}
+
+.kynex-order-status--preparation {
+    color: #8acbff;
+    background: rgba(138, 203, 255, 0.1);
+}
+
+.kynex-order-status--shipped {
+    color: #70ddb2;
+    background: rgba(112, 221, 178, 0.1);
+}
+
+.kynex-order-summary {
+    padding: 1.75rem;
+    background: var(--kynex-surface);
+    border: 1px solid var(--kynex-border);
+    border-radius: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.kynex-order-facts > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.kynex-order-facts dt {
+    color: var(--kynex-muted);
+    font-weight: 400;
+}
+
 .kynex-admin-footer {
     display: flex;
     flex-wrap: wrap;
@@ -189,6 +260,28 @@
 .kynex-users-table td {
     max-width: 15rem;
     overflow-wrap: anywhere;
+}
+
+.kynex-products-table {
+    min-width: 900px;
+}
+
+.kynex-products-table .kynex-price {
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.kynex-products-table .kynex-price strong {
+    font-size: 1rem;
+}
+
+.kynex-products-table .kynex-price small {
+    display: none;
+}
+
+.kynex-products-table .kynex-user-actions {
+    min-width: 0;
+    max-width: 7rem;
 }
 
 .kynex-users-table td:first-child,

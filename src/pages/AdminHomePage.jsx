@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import InventorySummary from "../components/organisms/InventorySummary.jsx";
-import { products } from "../data/products.js";
+import useCatalog from "../hooks/useCatalog.js";
+import CatalogError from "../components/molecules/CatalogError.jsx";
 import useAuth from "../hooks/useAuth.js";
-import RoleGate from "../components/molecules/RoleGate.jsx";
+import AdminModuleCard from "../components/molecules/AdminModuleCard.jsx";
 import { PERMISSIONS } from "../utils/permissions.js";
 
+const modules = [
+    { title: "Productos", description: "Consulta precios, disponibilidad y alertas de stock.", icon: "bi-box-seam", to: "/admin/productos", action: "Consultar productos", permission: PERMISSIONS.PRODUCTS_VIEW },
+    { title: "Usuarios", description: "Administra los datos y perfiles de las cuentas registradas.", icon: "bi-people", to: "/admin/usuarios", action: "Gestionar usuarios", permission: PERMISSIONS.USERS_MANAGE },
+    { title: "Pedidos", description: "Consulta clientes, productos y estados de los pedidos.", icon: "bi-receipt", to: "/admin/pedidos", action: "Consultar pedidos", permission: PERMISSIONS.ORDERS_VIEW }
+];
+
 function AdminHomePage() {
-    const { user } = useAuth();
+    const { user, hasPermission } = useAuth();
+    const catalog = useCatalog();
 
     return (
         <>
@@ -18,19 +26,21 @@ function AdminHomePage() {
                 </div>
                 <Link className="btn btn-outline-light" to="/productos"><i className="bi bi-shop me-2" aria-hidden="true" />Ver tienda</Link>
             </header>
-            <InventorySummary products={products} />
-            <RoleGate permission={PERMISSIONS.USERS_MANAGE}>
-                <section className="kynex-admin-info" aria-labelledby="users-module-title">
-                    <i className="bi bi-people" aria-hidden="true" />
-                    <div><p className="kynex-eyebrow">ACCESOS</p><h2 id="users-module-title">Usuarios</h2><p>Consulta las cuentas y administra sus datos y perfiles.</p><Link className="btn btn-outline-light" to="/admin/usuarios">Gestionar usuarios</Link></div>
-                </section>
-            </RoleGate>
+            {catalog.success ? <InventorySummary products={catalog.products} /> : <CatalogError resource={catalog} />}
+            <section className="mt-5" aria-labelledby="admin-modules-title">
+                <p className="kynex-eyebrow">MÓDULOS</p><h2 id="admin-modules-title">Gestión KYNEX</h2>
+                <p className="kynex-users-count mb-4">Selecciona una de las áreas disponibles para comenzar.</p>
+                <div className="row g-4">{modules.filter(module => hasPermission(module.permission)).map(module => (
+                    <div className="col-md-6 col-xl-4" key={module.to}><AdminModuleCard {...module} /></div>
+                ))}</div>
+            </section>
             <section className="kynex-admin-info" aria-labelledby="admin-profile-title">
                 <i className="bi bi-shield-check" aria-hidden="true" />
                 <div>
                     <p className="kynex-eyebrow">MI CUENTA</p>
                     <h2 id="admin-profile-title">Sesión de gestión activa</h2>
                     <p>Has ingresado como {user.firstName} {user.lastName}, con perfil <strong>{user.role}</strong>.</p>
+                    <p>Las opciones disponibles en el panel se adaptan al perfil de tu sesión.</p>
                     <p className="mb-0">Puedes volver a la tienda desde el menú y cerrar tu sesión al terminar.</p>
                 </div>
             </section>

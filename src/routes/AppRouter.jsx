@@ -18,6 +18,11 @@ import { PERMISSIONS } from "../utils/permissions.js";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import AdminUsersPage from "../pages/AdminUsersPage.jsx";
 import AdminUserFormPage from "../pages/AdminUserFormPage.jsx";
+import AdminProductsPage from "../pages/AdminProductsPage.jsx";
+import AdminProductFormPage from "../pages/AdminProductFormPage.jsx";
+import AdminOrdersPage from "../pages/AdminOrdersPage.jsx";
+import AdminOrderDetailPage from "../pages/AdminOrderDetailPage.jsx";
+import ContactPage from "../pages/ContactPage.jsx";
 
 function AppRouter() {
     return (
@@ -30,6 +35,7 @@ function AppRouter() {
                     <Route path="carrito" element={<CartPage />} />
                     <Route path="login" element={<LoginPage />} />
                     <Route path="registro" element={<RegistrationPage />} />
+                    <Route path="contacto" element={<ContactPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>
@@ -40,6 +46,19 @@ function AppRouter() {
                             <Route path="usuarios/nuevo" element={<AdminUserFormPage />} />
                             <Route path="usuarios/:id/editar" element={<AdminUserFormPage />} />
                             <Route path="usuarios/*" element={<NotFoundPage admin />} />
+                        </Route>
+                        <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_VIEW} />}>
+                            <Route path="productos" element={<AdminProductsPage />} />
+                            <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_MANAGE} />}>
+                                <Route path="productos/nuevo" element={<AdminProductFormPage />} />
+                                <Route path="productos/:id/editar" element={<AdminProductFormPage />} />
+                            </Route>
+                            <Route path="productos/*" element={<NotFoundPage admin />} />
+                        </Route>
+                        <Route element={<ProtectedRoute permission={PERMISSIONS.ORDERS_VIEW} />}>
+                            <Route path="pedidos" element={<AdminOrdersPage />} />
+                            <Route path="pedidos/:id" element={<AdminOrderDetailPage />} />
+                            <Route path="pedidos/*" element={<NotFoundPage admin />} />
                         </Route>
                         <Route path="*" element={<NotFoundPage admin />} />
                     </Route>
