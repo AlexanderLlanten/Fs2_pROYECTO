@@ -184,8 +184,11 @@ Recargar datos. Una escritura fallida conserva el catálogo anterior. El almacen
 local sigue siendo demostrativo y no ofrece transacciones concurrentes entre pestañas.
 
 La imagen opcional admite URL http(s) o una ruta `/assets/`; las rutas heredadas
-`../../assets/...` se convierten a la raíz. ProductImage reutiliza el ícono si la
-imagen está ausente o falla. El carrito toma precio y stock vigentes, limita cantidades,
+`../../assets/...` se normalizan. ProductImage prioriza la imagen personalizada y,
+si falta, recupera una de las seis originales por código. `assetImages.js` resuelve
+los recursos originales a las URL que Vite genera también en producción. Al agregar
+imágenes locales nuevas hay que registrar su ruta en ese manifiesto. Si la imagen
+falla o no hay una disponible se conserva el icono. El carrito toma precio y stock vigentes, limita cantidades,
 retira agotados/eliminados y persiste las cantidades ajustadas. Un fallo de lectura
 del catálogo conserva la compra guardada; un fallo al guardar el carrito se anuncia
 y conserva los cambios en memoria durante esa visita.
@@ -247,6 +250,30 @@ y conserva los valores; editar retira la confirmación hasta volver a validar.
 No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
 permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
 
+## Paridad del catálogo con EP1
+
+`src/data/products.js` conserva la ficha completa de los seis productos originales.
+ProductInformation compone ProductInfoList, listas de uso, tabla nutricional y calidad
+y seguridad. Presenta beneficios, ingredientes, alérgenos, uso, nutrición, certificaciones
+y advertencia. Tolera metadatos incompletos; cero calorías permanece visible y la falta
+de información sobre alérgenos se distingue de una lista explícitamente vacía.
+
+`completeProductDetails` completa solo campos de detalle ausentes en los catálogos
+guardados por las primeras etapas React, y exige coincidencia de id y código original.
+Leer no escribe: precios, stock, nombres, descripciones e imágenes guardados prevalecen.
+También se conservan listas vacías, null y objetos parciales explícitos. Los datos
+adicionales quedan preservados cuando se guarda una edición administrativa posterior.
+
+El detalle reutiliza QuantitySelector para elegir de 1 a 10 unidades por adición,
+limitadas además por el stock que queda después del carrito. El mensaje informa la
+cantidad realmente agregada y la selección se ajusta ante cambios del catálogo. Los
+productos agotados o ya completos en el carrito bloquean Agregar. La búsqueda incluye
+nombre, descripción, categoría y código; las tarjetas muestran los objetivos originales.
+
+La revisión y los pendientes concretos se registran en [docs/paridad-ep1.md](docs/paridad-ep1.md).
+Quedan bloques y accesos del Inicio original y el aviso demostrativo de Continuar compra,
+además de la revisión transversal y documentación final.
+
 ## Blog y artículos
 
 Las rutas públicas `/blog`, `/blog/creatina-y-rendimiento` y
@@ -278,8 +305,8 @@ entregables y defensa; el inventario de pantallas no mide ese trabajo de cierre.
 
 `/nosotros` es pública y reutiliza PublicLayout. Conserva la presentación de KYNEX,
 su propuesta, experiencia, categorías, visión, compromisos y accesos al catálogo de
-la página original. Los textos sobre la ficha de producto describen los datos que
-actualmente muestra React: descripción, formato, precio, stock y características.
+la página original. Los textos sobre la ficha de producto resumen información disponible
+en React; el detalle ahora incorpora también la información ampliada de la EP1.
 
 `src/data/about.js` separa las listas de contenido de la presentación. El organismo
 `FeatureSection` compone SectionHeading y FeatureCard mediante props; se reutiliza
@@ -358,14 +385,15 @@ npm run build
 ```
 
 No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
-Blog y artículos (5 archivos y 23 pruebas en este corte):
+la paridad del catálogo y el detalle (7 archivos y 36 pruebas en este corte):
 
 ```sh
-npm test -- ArticleImage BlogCard ArticleContent BlogPage Blog.test
+npm test -- productDetails ProductInformation ProductImage ProductDetailPage ProductsPage QuantitySelector CatalogParity
 ```
 
 En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
-las imágenes, tarjetas, cuerpos de lectura, portada y recorridos integrados.
+los datos completos, imágenes, ficha, búsqueda, cantidades y recorridos integrados.
+Blog conserva su selección rápida: `npm test -- ArticleImage BlogCard ArticleContent BlogPage Blog.test`.
 Nosotros conserva su selección rápida: `npm test -- About.test AboutPage FeatureSection HomePage`.
 Entrenamiento y rutina conservan su selección rápida:
 `npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test`.
@@ -411,6 +439,9 @@ menú móvil, retorno desde Login, recarga y conservación de compra y rutina.
 Blog y artículos agregan composición por props, alternativa de imagen, contenido
 original, enlaces distinguibles, lectura directa, cambio de artículo, acceso con
 todos los perfiles, retorno desde Login, recarga y manejo de artículos inexistentes.
+La paridad de catálogo añade comparación de datos originales, lectura compatible sin
+escrituras, personalizaciones, nutrición con valores cero, alérgenos, tipos inesperados,
+imágenes originales y rutas antiguas, cantidades elegidas y stock restante.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
