@@ -1,3 +1,4 @@
+import { useId, useState } from "react";
 import Price from "../atoms/Price.jsx";
 
 function CartSummary({
@@ -7,6 +8,8 @@ function CartSummary({
     total,
     missingForFreeShipping
 }) {
+    const [showCheckoutNotice, setShowCheckoutNotice] = useState(false);
+    const noticeId = useId();
     let shippingMessage =
         "Agrega productos para calcular el despacho.";
 
@@ -94,12 +97,19 @@ function CartSummary({
             <button
                 type="button"
                 className="btn btn-success w-100"
+                onClick={() => setShowCheckoutNotice(true)}
+                aria-describedby={showCheckoutNotice && totalItems > 0 ? noticeId : undefined}
                 disabled={
                     totalItems === 0
                 }
             >
                 Continuar compra
             </button>
+            <p id={noticeId} className="cart-checkout-notice" role="status" aria-live="polite" aria-atomic="true">
+                {showCheckoutNotice && totalItems > 0
+                    ? "El proceso de checkout será implementado en una etapa posterior."
+                    : ""}
+            </p>
         </aside>
     );
 }

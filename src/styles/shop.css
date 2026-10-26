@@ -1024,6 +1024,14 @@
         3rem 0 6rem;
 }
 
+.cart-checkout-notice:not(:empty) {
+    margin: 1rem 0 0;
+    padding: 1rem;
+    border-left: 3px solid var(--kynex-accent);
+    background: var(--kynex-bg-soft);
+}
+.cart-checkout-notice:empty { margin: 0; }
+
 .cart-items-react {
     display:
         flex;
