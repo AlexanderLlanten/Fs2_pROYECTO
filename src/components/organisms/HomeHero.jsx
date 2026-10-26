@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 import heroImage from "../../../assets/img/brand/kynex-hero-home.jpg";
 
-function HomeHero() {
+function HomeHero({ showFeatured = true }) {
     return (
         <section className="home-hero kynex-hero" aria-labelledby="home-title">
             <div className="container">
-                <div className="row align-items-center g-5">
+                <div className="row align-items-center gx-4 gy-5">
                     <div className="col-12 col-lg-6">
                         <p className="kynex-eyebrow">KYNEX PERFORMANCE</p>
                         <h1 id="home-title">
@@ -22,9 +22,12 @@ function HomeHero() {
                                 Explorar productos
                                 <i className="bi bi-arrow-right ms-2" aria-hidden="true" />
                             </Link>
-                            <a className="btn btn-outline-light" href="#productos-destacados">
+                            <Link className="btn btn-outline-light" to="/entrenamiento">
+                                Ver entrenamientos
+                            </Link>
+                            {showFeatured && <a className="home-feature-link" href="#productos-destacados">
                                 Ver destacados
-                            </a>
+                            </a>}
                         </div>
                     </div>
                     <div className="col-12 col-lg-6">

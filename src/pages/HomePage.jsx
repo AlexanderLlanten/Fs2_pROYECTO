@@ -6,7 +6,12 @@ import CategoryGrid from "../components/organisms/CategoryGrid.jsx";
 import FeaturedProducts from "../components/organisms/FeaturedProducts.jsx";
 import HomeHero from "../components/organisms/HomeHero.jsx";
 import FeatureSection from "../components/organisms/FeatureSection.jsx";
-import { homeCategories, homeFeatures } from "../data/home.js";
+import GoalSection from "../components/organisms/GoalSection.jsx";
+import TrainingHighlight from "../components/organisms/TrainingHighlight.jsx";
+import HomeMedia from "../components/organisms/HomeMedia.jsx";
+import HomeArticles from "../components/organisms/HomeArticles.jsx";
+import { homeCategories, homeFeatures, homeGoals } from "../data/home.js";
+import { articles } from "../data/articles.js";
 import useCatalog from "../hooks/useCatalog.js";
 import CatalogError from "../components/molecules/CatalogError.jsx";
 import useCart from "../hooks/useCart.js";
@@ -38,7 +43,7 @@ function HomePage() {
 
     return (
         <>
-            <HomeHero />
+            <HomeHero showFeatured={catalog.success && products.some(product => product.featured)} />
 
             <section className="home-shipping" aria-label="Información de despacho">
                 <div className="container">
@@ -48,6 +53,14 @@ function HomePage() {
                     </p>
                 </div>
             </section>
+
+            <FeatureSection
+                id="value-title"
+                eyebrow="LA EXPERIENCIA KYNEX"
+                title="Todo lo necesario para avanzar"
+                description="Una plataforma que conecta productos, conocimiento y entrenamiento."
+                features={homeFeatures}
+            />
 
             <section className="home-section" aria-labelledby="categories-title">
                 <div className="container">
@@ -67,27 +80,25 @@ function HomePage() {
                 feedback={feedback}
             />}
 
-            <FeatureSection
-                id="value-title"
-                eyebrow="LA EXPERIENCIA KYNEX"
-                title="Todo lo necesario para avanzar"
-                description="Una experiencia de compra pensada para acompañar tus decisiones."
-                features={homeFeatures}
-            />
+            <GoalSection goals={homeGoals} />
+            <TrainingHighlight />
+            <HomeMedia />
+            <HomeArticles articles={articles} />
 
-            <section className="home-section pt-0" aria-labelledby="home-cta-title">
+            <section className="home-section" aria-labelledby="home-cta-title">
                 <div className="container">
                     <div className="home-cta">
                         <div>
                             <p className="kynex-eyebrow">TU PRÓXIMO PASO</p>
                             <h2 id="home-cta-title">Construye tu próximo nivel</h2>
                             <p>
-                                Conoce el catálogo KYNEX y elige los productos que
-                                acompañarán tu próxima sesión.
+                                Explora suplementación y entrenamiento desde una
+                                plataforma pensada para deportistas.
                             </p>
                         </div>
                         <div className="home-actions">
-                            <Link className="btn home-primary-link" to="/productos">
+                            <Link className="btn home-primary-link" to="/registro">Crear cuenta</Link>
+                            <Link className="btn btn-outline-light" to="/productos">
                                 Ir a la tienda
                                 <i className="bi bi-arrow-right ms-2" aria-hidden="true" />
                             </Link>

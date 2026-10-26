@@ -9,7 +9,7 @@ function FeatureSection({ id, eyebrow, title, description, features, columns = 3
                 <div className="row g-4">
                     {features.map(feature => (
                         <div className={`col-12 col-md-6 ${columns === 4 ? "col-lg-3" : "col-lg-4"}`} key={feature.title}>
-                            <FeatureCard icon={feature.icon} title={feature.title}>{feature.description}</FeatureCard>
+                            <FeatureCard icon={feature.icon} title={feature.title} action={feature.action}>{feature.description}</FeatureCard>
                         </div>
                     ))}
                 </div>
