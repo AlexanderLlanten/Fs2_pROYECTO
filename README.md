@@ -17,6 +17,8 @@ Las rutas disponibles son `/`, `/productos`, `/productos/:id`, `/carrito`, `/log
 La navegación compartida enlaza estas rutas ya migradas.
 El área privada inicial usa `/admin` con `AdminLayout`; sus rutas hijas requieren
 el permiso de acceso administrativo antes de montar el layout.
+La gestión de usuarios usa `/admin/usuarios`, `/admin/usuarios/nuevo` y
+`/admin/usuarios/:id/editar`, con la guarda específica `USERS_MANAGE`.
 
 ## Inicio KYNEX
 
@@ -124,10 +126,51 @@ calculado a partir de los mismos productos del catálogo: referencias, unidades 
 productos cuyo stock es menor o igual al umbral crítico. Las rutas inexistentes
 muestran 404 con regreso a tienda o panel.
 
-Esta etapa entrega la base del panel. Las listas y formularios administrativos
-todavía no tienen rutas React; se conectarán a sus permisos al migrar cada módulo.
-La matriz y las guardas anidadas de esos permisos ya están verificadas mediante
-pruebas, sin presentar esos módulos como implementados.
+El panel y el menú ofrecen Usuarios solo al Administrador. La lista y los formularios
+de usuarios están conectados a su guarda; las pantallas de productos y pedidos
+se integrarán en las siguientes etapas.
+
+## Gestión de usuarios
+
+`AdminUsersPage` compone `UsersTable` y `DeleteUserDialog`. Muestra RUN, nombre,
+correo, región, comuna, rol y acciones; la tabla se desplaza horizontalmente en
+pantallas estrechas. La cuenta conectada se identifica como «Sesión actual» y
+carece de acción de eliminar. El diálogo nativo enfoca Cancelar, admite Escape y
+devuelve el foco al cerrarse; la eliminación requiere confirmación explícita.
+
+`AdminUserFormPage` carga un usuario por id o abre un formulario vacío. Un id
+inválido o inexistente muestra un error y un enlace de regreso. `AdminUserForm`
+reutiliza `UserProfileFields` con el registro público, agrega el selector de rol
+y valida los mismos límites, RUN, dominios, fecha opcional y región/comuna.
+Al guardar vuelve a la lista con un aviso accesible.
+
+`src/services/adminUsers.js` verifica la sesión vigente y `USERS_MANAGE` en cada
+operación, incluso cuando se invoca fuera de las páginas:
+
+| Función | Comportamiento |
+| --- | --- |
+| `listManagedUsers()` | Devuelve perfiles administrables sin contraseñas. |
+| `getManagedUser(id)` | Recupera un perfil por id entero positivo. |
+| `saveManagedUser(values, { id, expectedUser }?)` | Crea si no se proporciona id o edita una cuenta existente. Comprueba duplicados y cambios respecto a la versión abierta. |
+| `deleteManagedUser(id, expectedUser?)` | Elimina otra cuenta; impide eliminar la cuenta conectada y detecta cambios desde su selección. |
+
+Los resultados incluyen `success`, y en caso de fallo `message`, `code` o `errors`
+por campo. Las cuentas nuevas reciben contraseña demostrativa `1234`; editar conserva
+la contraseña y los datos adicionales existentes e ignora ids/contraseñas enviados
+como campos del formulario. El registro público sigue creando únicamente Clientes.
+
+`userStore.js` comparte la lectura y la generación de ids con autenticación, conservando
+`kynex_users` y `kynex_session`. Un registro dañado o con ids repetidos se rechaza para
+escritura. No se reponen cuentas eliminadas ni se modifica el carrito. Al editar la
+cuenta conectada se actualiza también su sesión; si falla guardar usuarios, se intenta
+restaurar la sesión anterior y se vuelve a comprobar el acceso. Cambiar el rol propio
+puede retirar el acceso, como informa el formulario antes de guardar.
+
+La lista escucha cambios entre pestañas. El formulario conserva el borrador si otra
+pestaña cambia la cuenta, deshabilita Guardar y ofrece Recargar datos. El servicio
+vuelve a comparar el perfil abierto al guardar o eliminar para evitar sobrescribir
+cambios detectables. Esto sigue usando almacenamiento local, sin un servidor que
+coordine transacciones entre usuarios.
 
 ## Registro de clientes
 
@@ -168,6 +211,9 @@ También verifican autenticación, persistencia y sincronización de sesiones, c
 de roles, compatibilidad con los datos de la EP1 y errores de almacenamiento.
 El registro agrega pruebas de validaciones, duplicados, selectores relacionados,
 persistencia, errores de escritura y el recorrido Registro > Login > Carrito.
+La gestión administrativa verifica creación, edición, eliminación/cancelación,
+duplicados, protección de la cuenta conectada, sincronización del perfil propio,
+conflictos entre pestañas, datos dañados, fallos de persistencia y reversión de sesión.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
