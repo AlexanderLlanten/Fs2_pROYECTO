@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import FeatureCard from "../components/molecules/FeatureCard.jsx";
 import SectionHeading from "../components/molecules/SectionHeading.jsx";
 import CategoryGrid from "../components/organisms/CategoryGrid.jsx";
 import FeaturedProducts from "../components/organisms/FeaturedProducts.jsx";
 import HomeHero from "../components/organisms/HomeHero.jsx";
+import FeatureSection from "../components/organisms/FeatureSection.jsx";
 import { homeCategories, homeFeatures } from "../data/home.js";
 import useCatalog from "../hooks/useCatalog.js";
 import CatalogError from "../components/molecules/CatalogError.jsx";
@@ -67,25 +67,13 @@ function HomePage() {
                 feedback={feedback}
             />}
 
-            <section className="home-section" aria-labelledby="value-title">
-                <div className="container">
-                    <SectionHeading
-                        id="value-title"
-                        eyebrow="LA EXPERIENCIA KYNEX"
-                        title="Todo lo necesario para avanzar"
-                        description="Una experiencia de compra pensada para acompañar tus decisiones."
-                    />
-                    <div className="row g-4">
-                        {homeFeatures.map(feature => (
-                            <div className="col-12 col-md-6 col-lg-4" key={feature.title}>
-                                <FeatureCard icon={feature.icon} title={feature.title}>
-                                    {feature.description}
-                                </FeatureCard>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <FeatureSection
+                id="value-title"
+                eyebrow="LA EXPERIENCIA KYNEX"
+                title="Todo lo necesario para avanzar"
+                description="Una experiencia de compra pensada para acompañar tus decisiones."
+                features={homeFeatures}
+            />
 
             <section className="home-section pt-0" aria-labelledby="home-cta-title">
                 <div className="container">
