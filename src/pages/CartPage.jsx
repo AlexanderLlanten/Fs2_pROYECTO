@@ -22,7 +22,7 @@ function CartPage() {
     } = useCart();
 
     return (
-        <main>
+        <>
             <section className="cart-page-header">
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-end justify-content-between gap-3">
@@ -134,7 +134,7 @@ function CartPage() {
                     }
                 </div>
             </section>
-        </main>
+        </>
     );
 }
 

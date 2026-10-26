@@ -1,8 +1,4 @@
 import {
-    Link
-} from "react-router-dom";
-
-import {
     useState
 } from "react";
 
@@ -16,8 +12,7 @@ import useCart from "../hooks/useCart.js";
 
 function ProductsPage() {
     const {
-        addToCart,
-        totalItems
+        addToCart
     } = useCart();
 
     const [
@@ -77,7 +72,7 @@ function ProductsPage() {
         );
 
     return (
-        <main>
+        <>
             <section className="catalog-header">
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-end justify-content-between gap-3">
@@ -95,18 +90,6 @@ function ProductsPage() {
                                 según tus necesidades.
                             </p>
                         </div>
-
-                        <Link
-                            className="btn btn-outline-light"
-                            to="/carrito"
-                        >
-                            <i
-                                className="bi bi-cart3 me-2"
-                                aria-hidden="true"
-                            />
-
-                            Carrito ({totalItems})
-                        </Link>
                     </div>
                 </div>
             </section>
@@ -199,7 +182,7 @@ function ProductsPage() {
                     />
                 </div>
             </section>
-        </main>
+        </>
     );
 }
 

@@ -39,7 +39,7 @@ function ProductDetailPage() {
 
     if (!product) {
         return (
-            <main>
+            <>
                 <section className="product-detail-section">
                     <div className="container">
                         <div className="catalog-empty">
@@ -65,7 +65,7 @@ function ProductDetailPage() {
                         </div>
                     </div>
                 </section>
-            </main>
+            </>
         );
     }
 
@@ -80,7 +80,7 @@ function ProductDetailPage() {
     }
 
     return (
-        <main>
+        <>
             <section className="product-detail-section">
                 <div className="container">
                     <div className="mb-4">
@@ -211,7 +211,7 @@ function ProductDetailPage() {
                     </div>
                 </div>
             </section>
-        </main>
+        </>
     );
 }
 

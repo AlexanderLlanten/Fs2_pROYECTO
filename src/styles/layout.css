@@ -1,3 +1,31 @@
+.kynex-public-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.kynex-main {
+    flex: 1;
+}
+
+.kynex-skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1100;
+    padding: 0.75rem 1rem;
+    color: var(--kynex-bg);
+    background: var(--kynex-accent);
+    border-radius: 0.5rem;
+    transform: translateY(calc(-100% - 1rem));
+}
+
+.kynex-skip-link:focus {
+    color: var(--kynex-bg);
+    transform: translateY(0);
+}
+
 .kynex-brand {
     display: inline-block;
     color: var(--kynex-text);

@@ -4,7 +4,7 @@ import {
 
 function HomePage() {
     return (
-        <main>
+        <>
             <section className="kynex-hero">
                 <div className="container py-5">
                     <div className="row align-items-center min-vh-75">
@@ -33,7 +33,7 @@ function HomePage() {
                     </div>
                 </div>
             </section>
-        </main>
+        </>
     );
 }
 
