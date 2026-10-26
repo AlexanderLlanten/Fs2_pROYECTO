@@ -127,8 +127,32 @@ productos cuyo stock es menor o igual al umbral crítico. Las rutas inexistentes
 muestran 404 con regreso a tienda o panel.
 
 El panel y el menú ofrecen Usuarios solo al Administrador y Productos también al
-Vendedor. Ambos módulos están conectados a sus guardas. Las pantallas de pedidos
-se integrarán en la siguiente etapa.
+Vendedor. Pedidos está disponible para ambos perfiles. Los tres módulos usan sus
+guardas y tarjetas AdminModuleCard, con accesos activos desde el panel.
+
+## Consulta de pedidos
+
+`/admin/pedidos` y `/admin/pedidos/:id` exigen `ORDERS_VIEW`, además del acceso
+administrativo. Sin sesión se solicita Login y se conserva el destino; Cliente
+vuelve a la tienda. Administrador y Vendedor pueden consultar lista y detalle.
+Los cambios de rol o cierre de sesión sincronizados retiran también estas pantallas.
+
+`src/data/orders.js` conserva los tres pedidos demostrativos de la EP1: identidad,
+fecha, cliente, estado y líneas con nombre, precio y cantidad registrados.
+`adminOrders.js` comprueba el rol vigente en cada consulta y devuelve copias de
+los datos. No agrega una clave de almacenamiento ni operaciones de escritura.
+Se conserva el alcance de consulta de la versión original.
+
+`OrdersTable`, `OrderItemsTable` y `OrderSummary` reutilizan el layout, Badge,
+Price y su formato CLP. `OrderStatusBadge` distingue los estados mediante texto
+y color. Las tablas tienen encabezados y regiones desplazables con teclado;
+el resumen se adapta al ancho móvil. Un id inválido o inexistente ofrece volver
+a la lista y los subcaminos desconocidos muestran 404 bajo la misma guarda.
+
+La cantidad total suma unidades, no referencias. Los importes se calculan a partir
+de las líneas del pedido y no del catálogo editable; cambiar o eliminar un producto
+actual no modifica esos datos históricos. Se muestra el total de productos, sin
+añadir las reglas de despacho del carrito que la EP1 no incluye en estos pedidos.
 
 ## Gestión de productos y catálogo compartido
 
@@ -253,6 +277,10 @@ conflictos entre pestañas, datos dañados, fallos de persistencia y reversión 
 Los productos agregan validaciones, permisos de escritura, duplicados de código,
 conservación de metadatos e integración con categoría, detalle, inicio, inventario y
 carrito; se prueban cambios de precio, límites de stock, errores y recuperación.
+Los pedidos verifican cálculos, consulta sin escrituras, datos históricos, copias
+independientes, permisos vigentes, acceso directo y posterior a Login, recarga,
+ids inexistentes, denegación del servicio y retirada de datos al perder el acceso.
+También se comprueban los accesos del panel según el perfil y el cierre del menú.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.

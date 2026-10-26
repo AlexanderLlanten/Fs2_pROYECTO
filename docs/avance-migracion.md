@@ -8,7 +8,7 @@ Fecha de corte: 26 de octubre de 2026. Rama: `feature/react-migration`.
   Se calcula sobre los cuatro indicadores del encargo, cuyo peso conjunto es 40%
   de la evaluación. Es una estimación de cumplimiento, no una calificación del docente
   ni un porcentaje de horas de trabajo realizadas.
-- **Migración de pantallas: 10 de 20, equivalente a 50%; faltan 10, equivalente a 50%.**
+- **Migración de pantallas: 13 de 20, equivalente a 65%; faltan 7, equivalente a 35%.**
   Cuenta cada pantalla HTML original una vez, incluido el inicio. No pondera el
   esfuerzo: la base compartida, carrito, autenticación, formularios y pruebas ya
   implementadas se reutilizarán en las pantallas siguientes. Tampoco implica paridad
@@ -18,12 +18,13 @@ La diferencia se debe al peso que la pauta da a componentes y testing. Cumplir e
 indicadores puede avanzar antes de terminar todas las pantallas. Para planificar el
 trabajo pendiente de migración hay que considerar ambas medidas.
 
-En este corte se completaron la lista y el formulario de productos con creación,
-edición y eliminación, integrados con permisos, tienda y carrito. Se cuentan
-como dos pantallas originales, aunque el formulario React tenga rutas de alta y
-edición separadas. El panel ya accede a productos y usuarios; falta pedidos.
+En este corte se completaron la lista y el detalle de pedidos demostrativos, con
+consulta protegida para Administrador y Vendedor. Además se cerró la paridad
+funcional del panel: accesos a Productos, Usuarios y Pedidos según perfil, navegación,
+sesión e inventario compartido. Por ello se suman las dos pantallas de pedidos y
+la pantalla del panel, que antes se contaba como inicial y pendiente.
 El 81% técnico se mantiene porque los niveles ponderados de los indicadores todavía
-no cambian; el avance funcional sí pasa de 40% a 50%.
+no cambian; el avance funcional sí pasa de 50% a 65%.
 
 ## Fuente y método
 
@@ -42,9 +43,9 @@ del estado actual del repositorio y deben revisarse al terminar la migración.
 
 | Indicador | Peso en EP2 | Nivel estimado | Aporte estimado | Evidencia y pendiente |
 | --- | ---: | ---: | ---: | --- |
-| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | React/Vite/Router, Atomic Design, panel protegido, usuarios y productos integrados con el catálogo editable. Quedan páginas, pedidos, paridad final y cierre del ERS. |
+| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | React/Vite/Router, Atomic Design, panel, usuarios, catálogo editable y consulta de pedidos integrados. Quedan siete páginas públicas, paridad final y cierre del ERS. |
 | IE2.1.2: componentes, props, estado y Bootstrap responsivo | 10% | 80% | 8,0 | Layouts público y administrativo, carrito, autenticación y formularios reutilizables; revisión visual de escritorio y móvil. Falta aplicar y revisar esta estructura en todos los módulos restantes. |
-| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 375 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. Se deberán agregar casos para cada módulo nuevo. |
+| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 425 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. Se deberán agregar casos para cada módulo nuevo. |
 | IE2.3.1: proceso de testing, mocks, resultados y cobertura | 8% | 80% | 6,4 | Entorno jsdom, RTL, mocks de callbacks/Storage/Date y cobertura V8 medida. Falta cerrar el documento de testing, analizar los riesgos residuales y repetir la medición sobre el alcance final. |
 | **Encargo** | **40%** | | **32,4 / 40** | **32,4 ÷ 40 × 100 = 81%. Pendiente ponderado: 7,6 / 40 = 19%.** |
 
@@ -75,8 +76,8 @@ Hay código para preparar estas demostraciones; todavía faltan el guion y el en
 | Contacto, nosotros, blog y dos artículos | 5 | Pendientes |
 | Entrenamiento y rutina | 2 | Pendientes |
 | Gestión de usuarios: lista y formulario | 2 | Migradas, con permisos y persistencia compartida |
-| Administración: panel, productos, formulario de producto, pedidos y detalle de pedido | 5 | Productos y formulario migrados; panel inicial disponible con paridad pendiente; pedidos y detalle pendientes |
-| **Total** | **20** | **10 migradas / 10 pendientes** |
+| Administración: panel, productos, formulario de producto, pedidos y detalle de pedido | 5 | Migradas; pedidos conserva el alcance demostrativo de consulta de la EP1 |
+| **Total** | **20** | **13 migradas / 7 pendientes** |
 
 La matriz de permisos y las guardas ya existen. `/admin` y sus rutas desconocidas
 exigen ADMIN_ACCESS: Administrador y Vendedor entran; Cliente vuelve a la tienda;
@@ -89,27 +90,28 @@ ORDERS_VIEW permiten también Vendedor. Estas reglas se verifican en la matriz y
 con guardas anidadas en pruebas. USERS_MANAGE ya protege las rutas y las operaciones
 de usuarios; el menú oculta este módulo a Vendedor. Productos conecta PRODUCTS_VIEW
 en la lista y PRODUCTS_MANAGE en formularios y operaciones. El resumen del panel y
-la tienda comparten el catálogo persistido. Falta conectar pedidos con ORDERS_VIEW.
+la tienda comparten el catálogo persistido. ORDERS_VIEW protege la lista y el detalle,
+además de comprobarse al consultar los datos desde el servicio.
 
 ## Verificación realizada en esta etapa
 
-- Suite completa mediante `npm run test:coverage`: **52 archivos,
-  375 pruebas aprobadas, 0 fallidas**.
+- Suite completa mediante `npm run test:coverage`: **59 archivos,
+  425 pruebas aprobadas, 0 fallidas**.
 - `npm run build`: compilación de producción correcta.
-- Navegador: Login a la lista solicitada, creación y edición de un producto ficticio,
-  publicación en detalle, incorporación de tres unidades al carrito y reducción a una
-  al bajar el stock; precio y despacho recalculados y conservados al recargar.
-  Cancelación de la eliminación con foco inicial en Cancelar. La eliminación
-  confirmada se comprueba en jsdom con datos aislados.
-- Vista de escritorio de 1280 × 800 y móvil de 390 × 844: campos dentro del ancho
-  disponible, tabla desplazable en móvil y sin errores ni advertencias de consola.
+- Navegador: lista y detalle con Administrador; recarga directa del pedido 1002;
+  cierre e ingreso como Vendedor, panel sin Usuarios y consulta del pedido 1003.
+  Los tres módulos están disponibles para Administrador y dos para Vendedor.
+- Vista de escritorio de 1280 × 800 y móvil de 390 × 844: lista con enlaces visibles
+  en escritorio, resumen dentro del ancho móvil y tabla desplazable. No hay errores
+  ni advertencias de consola durante los recorridos revisados.
 - Regresión automatizada de tienda, registro, carrito y permisos, además del ciclo
   de usuarios, eliminación confirmada, duplicados, reducción del propio rol, cambio
   de correo de la cuenta conectada, conflictos entre pestañas y errores de almacenamiento.
-- Nuevas pruebas de validación de productos, permisos, código duplicado, metadatos
-  heredados, catálogo vacío/dañado, conflictos y fallos al guardar; integración con
-  categoría, tienda e inventario; carrito con referencias inválidas, cantidades
-  duplicadas y exceso de stock, cambios de precio, agotados y recuperación.
+- 50 pruebas adicionales: cálculos y estados de pedidos, lista, líneas y resumen;
+  consulta sin escrituras, copias independientes, importes históricos frente a
+  cambios del catálogo, permisos vigentes, navegación y Login con ambos perfiles,
+  recarga, ids inválidos, rutas desconocidas, denegación del servicio, retirada del
+  detalle al cerrar sesión o perder permisos y accesos del panel según perfil.
 
 ### Antecedente: corrección de la ejecución intermitente de pruebas
 
@@ -138,21 +140,21 @@ la carga simultánea.
 
 | Métrica | Cubierto / total | Porcentaje |
 | --- | ---: | ---: |
-| Sentencias | 992 / 1018 | 97,44% |
-| Ramas | 785 / 844 | 93,00% |
-| Funciones | 290 / 293 | 98,97% |
-| Líneas | 819 / 830 | 98,67% |
+| Sentencias | 1036 / 1062 | 97,55% |
+| Ramas | 817 / 876 | 93,26% |
+| Funciones | 313 / 316 | 99,05% |
+| Líneas | 857 / 868 | 98,73% |
 
 La configuración incluye `src/**/*.{js,jsx}`, excluyendo `src/main.jsx` y los
 auxiliares de `src/test`. Vitest excluye los archivos de pruebas de la instrumentación.
 El resultado no mide HTML/JavaScript heredado, CSS, comportamiento visual ni módulos
-que todavía no se implementan. **98,67% de líneas no significa 98,67% de migración.**
+que todavía no se implementan. **98,73% de líneas no significa 98,73% de migración.**
 
 Quedan ramas alternativas de utilidades de carrito (68,18%) y de presentación, además
 de algunas recuperaciones de errores de páginas. CartContext alcanza 84,61% de ramas;
 ya se verifican referencias inexistentes, datos dañados y límites frente al catálogo.
-Los permisos, guardas, usuarios y productos tienen pruebas de servicio y recorrido.
-Faltan los casos de pedidos y de las páginas que todavía no se implementan.
+Los permisos, guardas, usuarios, productos y pedidos tienen pruebas de servicio y
+recorrido. Faltan los casos de las siete páginas que todavía no se implementan.
 Los callbacks del menú y algunas ramas de recuperación de errores no se ejecutan en
 esta medición; el menú móvil se revisó también en navegador. LocalStorage no proporciona
 una transacción entre pestañas: se detectan conflictos contra el perfil abierto,
@@ -178,9 +180,8 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 
 ## Trabajo restante y orden propuesto
 
-1. Migrar la lista y el detalle de pedidos, conectar ORDERS_VIEW y completar el panel,
-   conservando compatibilidad con los datos de EP1.
-2. Contacto, entrenamiento, rutina, nosotros, blog y artículos. Completar enlaces,
+1. Migrar Contacto, entrenamiento y rutina con sus validaciones y comportamiento.
+2. Migrar nosotros, blog y artículos. Completar enlaces,
    recursos del catálogo y paridad funcional con el proyecto original.
 3. Revisar navegación directa, rutas inexistentes, persistencia y responsividad en
    el alcance completo; ejecutar regresión y cobertura final con casos relevantes.
@@ -189,6 +190,6 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 5. Preparar el comprimido del proyecto y verificar los entregables y el enlace GitHub.
 6. Preparar y ensayar la defensa individual, mostrando las 10 pruebas seleccionadas.
 
-La siguiente etapa de implementación es la consulta de pedidos y su detalle.
+La siguiente etapa de implementación es Contacto y sus validaciones.
 El tiempo pendiente depende del alcance de los módulos restantes; estos porcentajes
 no permiten deducir un número de horas o días con fiabilidad.
