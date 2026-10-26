@@ -24,7 +24,8 @@ describe("Rutas públicas con PublicLayout", () => {
         ["/productos/999", "Producto no encontrado"],
         ["/carrito", "Carrito de compras"],
         ["/login", "Iniciar sesión"],
-        ["/registro", "Crear cuenta"]
+        ["/registro", "Crear cuenta"],
+        ["/contacto", "Hablemos"]
     ])("carga %s con una sola cabecera, un main y un footer", (path, title) => {
         window.history.replaceState({}, "", path);
         render(<App />);

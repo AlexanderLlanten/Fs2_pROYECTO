@@ -54,6 +54,9 @@ function Navbar() {
                                     Tienda
                                 </NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/contacto" onClick={closeMenu}>Contacto</NavLink>
+                            </li>
                         </ul>
 
                         <div className="kynex-navbar-actions">

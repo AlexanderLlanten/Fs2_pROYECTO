@@ -22,6 +22,7 @@ function Footer() {
                                 <li><Link to="/">Inicio</Link></li>
                                 <li><Link to="/productos">Tienda</Link></li>
                                 <li><Link to="/carrito">Carrito</Link></li>
+                                <li><Link to="/contacto">Contacto</Link></li>
                             </ul>
                         </nav>
                     </div>

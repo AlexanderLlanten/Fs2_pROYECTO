@@ -22,6 +22,7 @@ import AdminProductsPage from "../pages/AdminProductsPage.jsx";
 import AdminProductFormPage from "../pages/AdminProductFormPage.jsx";
 import AdminOrdersPage from "../pages/AdminOrdersPage.jsx";
 import AdminOrderDetailPage from "../pages/AdminOrderDetailPage.jsx";
+import ContactPage from "../pages/ContactPage.jsx";
 
 function AppRouter() {
     return (
@@ -34,6 +35,7 @@ function AppRouter() {
                     <Route path="carrito" element={<CartPage />} />
                     <Route path="login" element={<LoginPage />} />
                     <Route path="registro" element={<RegistrationPage />} />
+                    <Route path="contacto" element={<ContactPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>
