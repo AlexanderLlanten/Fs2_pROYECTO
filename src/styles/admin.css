@@ -158,6 +158,100 @@
     margin: 0;
 }
 
+.kynex-users-count {
+    color: var(--kynex-muted);
+}
+
+.kynex-users-table-wrap {
+    border: 1px solid var(--kynex-border);
+    border-radius: 0.85rem;
+    overflow-y: hidden;
+}
+
+.kynex-users-table {
+    --bs-table-color: var(--kynex-text);
+    --bs-table-bg: var(--kynex-surface);
+    --bs-table-border-color: var(--kynex-border);
+    min-width: 1050px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+
+.kynex-users-table > :not(caption) > * > * {
+    padding: 0.85rem;
+}
+
+.kynex-users-table thead {
+    --bs-table-bg: var(--kynex-bg-soft);
+    white-space: nowrap;
+}
+
+.kynex-users-table td {
+    max-width: 15rem;
+    overflow-wrap: anywhere;
+}
+
+.kynex-users-table td:first-child,
+.kynex-users-table .kynex-badge {
+    white-space: nowrap;
+}
+
+.kynex-users-table th[scope="row"] {
+    min-width: 10rem;
+}
+
+.kynex-user-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 7rem;
+}
+
+.kynex-user-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.kynex-current-user {
+    color: var(--kynex-accent);
+    font-size: 0.75rem;
+}
+
+.kynex-admin-user-form {
+    max-width: 900px;
+}
+
+.kynex-user-dialog {
+    width: min(520px, calc(100% - 2rem));
+    padding: 2rem;
+    color: var(--kynex-text);
+    background: var(--kynex-surface);
+    border: 1px solid var(--kynex-border);
+    border-radius: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.kynex-user-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.kynex-user-dialog h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.kynex-user-dialog .auth-form-alert {
+    margin-bottom: 1rem;
+}
+
+.kynex-user-dialog button:focus-visible,
+.kynex-users-table-wrap:focus-visible {
+    outline: 2px solid var(--kynex-accent);
+    outline-offset: 4px;
+}
+
 .kynex-admin-layout a:focus-visible,
 .kynex-admin-layout button:focus-visible {
     outline: 2px solid var(--kynex-accent);

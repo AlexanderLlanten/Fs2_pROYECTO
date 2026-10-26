@@ -16,9 +16,15 @@ describe("Destino posterior al acceso", () => {
         expect(getLoginDestination(undefined, role)).toBe("/admin");
         expect(getLoginDestination({ pathname: "/admin", search: "?vista=resumen" }, role)).toBe("/admin?vista=resumen");
         expect(getLoginDestination({ pathname: "/productos", search: "?categoria=Vitaminas" }, role)).toBe("/productos?categoria=Vitaminas");
-        for (const pathname of ["https://ejemplo.com", "//ejemplo.com", "/login", "/registro", "/admin/usuarios", "/admin/desconocido"]) {
+        for (const pathname of ["https://ejemplo.com", "//ejemplo.com", "/login", "/registro", "/admin/desconocido"]) {
             expect(getLoginDestination({ pathname }, role)).toBe("/admin");
         }
+    });
+
+    it.each(["/admin/usuarios", "/admin/usuarios/nuevo", "/admin/usuarios/1/editar"])("retorna a %s solo con permiso de usuarios", pathname => {
+        expect(getLoginDestination({ pathname, search: "?origen=panel" }, "Administrador")).toBe(`${pathname}?origen=panel`);
+        expect(getLoginDestination({ pathname }, "Vendedor")).toBe("/admin");
+        expect(getLoginDestination({ pathname }, "Cliente")).toBe("/productos");
     });
 
     it("impide retornar al panel con un perfil Cliente o desconocido", () => {
