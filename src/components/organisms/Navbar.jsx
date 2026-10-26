@@ -2,6 +2,7 @@ import { useEffect, useId, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import BrandLink from "../atoms/BrandLink.jsx";
+import AccountActions from "../molecules/AccountActions.jsx";
 import useCart from "../../hooks/useCart.js";
 
 function Navbar() {
@@ -55,18 +56,21 @@ function Navbar() {
                             </li>
                         </ul>
 
-                        <NavLink
-                            className="kynex-cart-link"
-                            to="/carrito"
-                            aria-label={`Carrito (${totalItems})`}
-                            onClick={closeMenu}
-                        >
-                            <i className="bi bi-bag" aria-hidden="true" />
-                            Carrito
-                            <span className="kynex-cart-counter" aria-live="polite" aria-atomic="true">
-                                {totalItems}
-                            </span>
-                        </NavLink>
+                        <div className="kynex-navbar-actions">
+                            <AccountActions onNavigate={closeMenu} />
+                            <NavLink
+                                className="kynex-cart-link"
+                                to="/carrito"
+                                aria-label={`Carrito (${totalItems})`}
+                                onClick={closeMenu}
+                            >
+                                <i className="bi bi-bag" aria-hidden="true" />
+                                Carrito
+                                <span className="kynex-cart-counter" aria-live="polite" aria-atomic="true">
+                                    {totalItems}
+                                </span>
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             </nav>

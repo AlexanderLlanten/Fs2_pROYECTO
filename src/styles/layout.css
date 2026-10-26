@@ -70,6 +70,61 @@
     color: var(--kynex-accent);
 }
 
+.kynex-navbar-actions,
+.kynex-account-session {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.kynex-account-link,
+.kynex-account-logout {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    color: var(--kynex-muted);
+    font-size: 0.85rem;
+}
+
+.kynex-account-link:hover,
+.kynex-account-link.active,
+.kynex-account-logout:hover {
+    color: var(--kynex-accent);
+}
+
+.kynex-account-user {
+    display: flex;
+    flex-direction: column;
+    max-width: 10rem;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.kynex-account-user span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kynex-account-user small {
+    color: var(--kynex-accent);
+    font-size: 0.72rem;
+}
+
+.kynex-account-logout {
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+
+.kynex-account-error {
+    max-width: 18rem;
+    margin: 0.5rem 0 0;
+    color: var(--kynex-danger);
+    font-size: 0.8rem;
+}
+
 .kynex-header .nav-link.active {
     text-decoration: underline;
     text-underline-offset: 0.5rem;
@@ -168,5 +223,14 @@
 
     .kynex-header .nav-link {
         width: fit-content;
+    }
+
+    .kynex-navbar-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .kynex-account-session {
+        flex-wrap: wrap;
     }
 }

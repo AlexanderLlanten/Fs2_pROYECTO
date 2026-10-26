@@ -10,6 +10,8 @@ export default defineConfig({
         environment: "jsdom",
         globals: true,
         setupFiles: "./src/test/setup.js",
+        // Cada archivo crea su propio jsdom; limitar procesos evita saturar el equipo.
+        maxWorkers: 2,
 
         coverage: {
             provider: "v8",

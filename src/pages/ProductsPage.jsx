@@ -1,6 +1,7 @@
 import {
     useState
 } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import ProductGrid from "../components/organisms/ProductGrid.jsx";
 
@@ -20,10 +21,7 @@ function ProductsPage() {
         setSearch
     ] = useState("");
 
-    const [
-        category,
-        setCategory
-    ] = useState("all");
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const categories = [
         ...new Set(
@@ -33,6 +31,27 @@ function ProductsPage() {
             )
         )
     ];
+
+    const requestedCategory = searchParams.get("categoria");
+    const category = categories.includes(requestedCategory)
+        ? requestedCategory
+        : "all";
+
+    function handleCategoryChange(event) {
+        const nextCategory = event.target.value;
+
+        setSearchParams(currentParams => {
+            const nextParams = new URLSearchParams(currentParams);
+
+            if (nextCategory === "all") {
+                nextParams.delete("categoria");
+            } else {
+                nextParams.set("categoria", nextCategory);
+            }
+
+            return nextParams;
+        });
+    }
 
     const normalizedSearch =
         search
@@ -135,12 +154,7 @@ function ProductsPage() {
                             <select
                                 id="category-filter"
                                 value={category}
-                                onChange={
-                                    event =>
-                                        setCategory(
-                                            event.target.value
-                                        )
-                                }
+                                onChange={handleCategoryChange}
                             >
                                 <option value="all">
                                     Todas las categorías

@@ -1,0 +1,293 @@
+.kynex-admin-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.kynex-admin-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    background: #080b0f;
+    border-right: 1px solid var(--kynex-border);
+}
+
+.kynex-admin-brand-row,
+.kynex-admin-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.kynex-admin-tag {
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    margin-left: 0.6rem;
+    color: var(--kynex-accent);
+    background: rgba(158, 240, 26, 0.08);
+    border: 1px solid rgba(158, 240, 26, 0.2);
+    border-radius: 0.3rem;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.kynex-admin-menu .kynex-account {
+    padding: 1rem;
+    margin: 2rem 0;
+    background: var(--kynex-surface);
+    border: 1px solid var(--kynex-border);
+    border-radius: 0.75rem;
+}
+
+.kynex-admin-menu .kynex-account-session {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.kynex-admin-menu ul {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.kynex-admin-menu nav a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    color: var(--kynex-muted);
+    border: 1px solid transparent;
+    border-radius: 0.65rem;
+}
+
+.kynex-admin-menu nav a:hover,
+.kynex-admin-menu nav a.active {
+    color: var(--kynex-accent);
+    background: rgba(158, 240, 26, 0.06);
+    border-color: rgba(158, 240, 26, 0.15);
+}
+
+.kynex-admin-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.kynex-admin-main {
+    flex: 1;
+    padding: clamp(1.25rem, 3vw, 3rem);
+}
+
+.kynex-admin-heading {
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.kynex-admin-heading h1 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.kynex-admin-heading p:last-child,
+.kynex-admin-info p:last-child {
+    margin-bottom: 0;
+    color: var(--kynex-muted);
+}
+
+.kynex-admin-stat {
+    height: 100%;
+    padding: 1.5rem;
+    background: var(--kynex-surface);
+    border: 1px solid var(--kynex-border);
+    border-radius: 1rem;
+}
+
+.kynex-admin-stat i,
+.kynex-admin-info > i {
+    color: var(--kynex-accent);
+    font-size: 1.75rem;
+}
+
+.kynex-admin-stat p {
+    margin: 1rem 0 0.5rem;
+    color: var(--kynex-muted);
+}
+
+.kynex-admin-stat strong {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.kynex-admin-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.75rem;
+    margin-top: 2.5rem;
+    background: linear-gradient(135deg, var(--kynex-surface), rgba(158, 240, 26, 0.04));
+    border: 1px solid var(--kynex-border);
+    border-radius: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.kynex-admin-info h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.kynex-admin-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem clamp(1.25rem, 3vw, 3rem);
+    color: var(--kynex-muted-dark);
+    border-top: 1px solid var(--kynex-border);
+    font-size: 0.85rem;
+}
+
+.kynex-admin-footer p {
+    margin: 0;
+}
+
+.kynex-users-count {
+    color: var(--kynex-muted);
+}
+
+.kynex-users-table-wrap {
+    border: 1px solid var(--kynex-border);
+    border-radius: 0.85rem;
+    overflow-y: hidden;
+}
+
+.kynex-users-table {
+    --bs-table-color: var(--kynex-text);
+    --bs-table-bg: var(--kynex-surface);
+    --bs-table-border-color: var(--kynex-border);
+    min-width: 1050px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+}
+
+.kynex-users-table > :not(caption) > * > * {
+    padding: 0.85rem;
+}
+
+.kynex-users-table thead {
+    --bs-table-bg: var(--kynex-bg-soft);
+    white-space: nowrap;
+}
+
+.kynex-users-table td {
+    max-width: 15rem;
+    overflow-wrap: anywhere;
+}
+
+.kynex-users-table td:first-child,
+.kynex-users-table .kynex-badge {
+    white-space: nowrap;
+}
+
+.kynex-users-table th[scope="row"] {
+    min-width: 10rem;
+}
+
+.kynex-user-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 7rem;
+}
+
+.kynex-user-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.kynex-current-user {
+    color: var(--kynex-accent);
+    font-size: 0.75rem;
+}
+
+.kynex-admin-user-form {
+    max-width: 900px;
+}
+
+.kynex-user-dialog {
+    width: min(520px, calc(100% - 2rem));
+    padding: 2rem;
+    color: var(--kynex-text);
+    background: var(--kynex-surface);
+    border: 1px solid var(--kynex-border);
+    border-radius: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.kynex-user-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.kynex-user-dialog h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.kynex-user-dialog .auth-form-alert {
+    margin-bottom: 1rem;
+}
+
+.kynex-user-dialog button:focus-visible,
+.kynex-users-table-wrap:focus-visible {
+    outline: 2px solid var(--kynex-accent);
+    outline-offset: 4px;
+}
+
+.kynex-admin-layout a:focus-visible,
+.kynex-admin-layout button:focus-visible {
+    outline: 2px solid var(--kynex-accent);
+    outline-offset: 4px;
+}
+
+@media (max-width: 991.98px) {
+    .kynex-admin-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kynex-admin-sidebar {
+        position: static;
+        height: auto;
+        padding: 1rem 1.25rem;
+        border-right: 0;
+        border-bottom: 1px solid var(--kynex-border);
+    }
+
+    .kynex-admin-brand-row button {
+        padding: 0.5rem;
+        color: var(--kynex-text);
+        font-size: 1.5rem;
+    }
+
+    .kynex-admin-menu {
+        display: none;
+    }
+
+    .kynex-admin-menu.is-open {
+        display: block;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .kynex-admin-info {
+        flex-direction: column;
+    }
+}

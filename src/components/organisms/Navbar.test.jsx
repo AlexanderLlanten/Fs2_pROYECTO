@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 import CartProvider from "../../context/CartContext.jsx";
+import AuthProvider from "../../context/AuthContext.jsx";
 import { products } from "../../data/products.js";
 import useCart from "../../hooks/useCart.js";
 import { CART_KEY } from "../../utils/cart.js";
@@ -23,7 +24,7 @@ function CartActions() {
 
 function renderNavbar(initialEntry = "/") {
     return render(
-        <CartProvider>
+        <AuthProvider><CartProvider>
             <MemoryRouter initialEntries={[initialEntry]}>
                 <Navbar />
                 <CartActions />
@@ -31,7 +32,7 @@ function renderNavbar(initialEntry = "/") {
                     <Route path="*" element={<p>Contenido de la página</p>} />
                 </Routes>
             </MemoryRouter>
-        </CartProvider>
+        </CartProvider></AuthProvider>
     );
 }
 
@@ -45,6 +46,7 @@ describe("Navbar", () => {
         expect(nav.getByRole("link", { name: "KYNEX" })).toHaveAttribute("href", "/");
         expect(nav.getByRole("link", { name: "Inicio" })).toHaveAttribute("href", "/");
         expect(nav.getByRole("link", { name: "Tienda" })).toHaveAttribute("href", "/productos");
+        expect(nav.getByRole("link", { name: "Iniciar sesión" })).toHaveAttribute("href", "/login");
         expect(nav.getByRole("link", { name: "Carrito (0)" })).toHaveAttribute("href", "/carrito");
     });
 
@@ -52,7 +54,8 @@ describe("Navbar", () => {
         ["/", "Inicio"],
         ["/productos", "Tienda"],
         ["/productos/2", "Tienda"],
-        ["/carrito", "Carrito (0)"]
+        ["/carrito", "Carrito (0)"],
+        ["/login", "Iniciar sesión"]
     ])("marca solamente el enlace activo en %s", (path, activeLink) => {
         renderNavbar(path);
 
