@@ -5,13 +5,14 @@ import { useSearchParams } from "react-router-dom";
 
 import ProductGrid from "../components/organisms/ProductGrid.jsx";
 
-import {
-    products
-} from "../data/products.js";
+import useCatalog from "../hooks/useCatalog.js";
+import CatalogError from "../components/molecules/CatalogError.jsx";
 
 import useCart from "../hooks/useCart.js";
 
 function ProductsPage() {
+    const catalog = useCatalog();
+    const { products } = catalog;
     const {
         addToCart
     } = useCart();
@@ -190,10 +191,10 @@ function ProductsPage() {
                         </p>
                     </div>
 
-                    <ProductGrid
+                    {!catalog.success ? <CatalogError resource={catalog} /> : <ProductGrid
                         products={filteredProducts}
                         onAddToCart={addToCart}
-                    />
+                    />}
                 </div>
             </section>
         </>

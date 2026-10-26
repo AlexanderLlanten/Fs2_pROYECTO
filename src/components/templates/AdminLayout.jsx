@@ -33,6 +33,7 @@ function AdminLayout() {
                         <p className="kynex-eyebrow">GESTIÓN</p>
                         <ul>
                             <li><NavLink to="/admin" end onClick={() => setIsOpen(false)}><i className="bi bi-grid-1x2" aria-hidden="true" />Panel principal</NavLink></li>
+                            <RoleGate permission={PERMISSIONS.PRODUCTS_VIEW}><li><NavLink to="/admin/productos" onClick={() => setIsOpen(false)}><i className="bi bi-box-seam" aria-hidden="true" />Productos</NavLink></li></RoleGate>
                             <RoleGate permission={PERMISSIONS.USERS_MANAGE}><li><NavLink to="/admin/usuarios" onClick={() => setIsOpen(false)}><i className="bi bi-people" aria-hidden="true" />Usuarios</NavLink></li></RoleGate>
                             <li><Link to="/productos" onClick={() => setIsOpen(false)}><i className="bi bi-shop" aria-hidden="true" />Volver a la tienda</Link></li>
                         </ul>

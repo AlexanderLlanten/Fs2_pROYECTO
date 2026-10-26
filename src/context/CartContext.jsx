@@ -1,284 +1,80 @@
-import {
-    createContext,
-    useEffect,
-    useMemo,
-    useState
-} from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import useCatalog from "../hooks/useCatalog.js";
+import { CART_KEY, calculateCartSummary, normalizeQuantity } from "../utils/cart.js";
 
-import {
-    products
-} from "../data/products.js";
-
-import {
-    CART_KEY,
-    calculateCartSummary,
-    normalizeQuantity
-} from "../utils/cart.js";
-
-export const CartContext =
-    createContext(null);
+export const CartContext = createContext(null);
 
 function readStoredCart() {
-    const stored =
-        localStorage.getItem(
-            CART_KEY
-        );
-
-    if (!stored) {
-        return [];
-    }
-
     try {
-        const parsed =
-            JSON.parse(
-                stored
-            );
-
-        return Array.isArray(
-            parsed
-        )
-            ? parsed
-            : [];
-    } catch {
-        return [];
-    }
+        const parsed = JSON.parse(localStorage.getItem(CART_KEY) ?? "[]");
+        return Array.isArray(parsed) ? parsed : [];
+    } catch { return []; }
 }
 
-function CartProvider({
-    children
-}) {
-    const [
-        cart,
-        setCart
-    ] = useState(
-        readStoredCart
-    );
+function reconcileCart(cart, products) {
+    const seen = new Set();
+    return cart.flatMap(item => {
+        const product = products.find(product => product.id === item?.id);
+        if (!product || product.stock <= 0 || !Number.isSafeInteger(item.quantity) || item.quantity <= 0 || seen.has(item.id)) return [];
+        seen.add(item.id);
+        return [{ id: item.id, quantity: normalizeQuantity(item.quantity, product.stock) }];
+    });
+}
 
-    useEffect(
-        () => {
-            localStorage.setItem(
-                CART_KEY,
-                JSON.stringify(
-                    cart
-                )
-            );
-        },
-        [
-            cart
-        ]
-    );
+function CartProvider({ children }) {
+    const catalog = useCatalog();
+    const [storedCart, setCart] = useState(readStoredCart);
+    const [storageError, setStorageError] = useState("");
+    const cart = useMemo(() => reconcileCart(storedCart, catalog.products), [storedCart, catalog.products]);
+    const detailedCart = useMemo(() => cart.map(item => ({
+        ...catalog.products.find(product => product.id === item.id), quantity: item.quantity
+    })), [cart, catalog.products]);
+    const summary = useMemo(() => calculateCartSummary(detailedCart), [detailedCart]);
 
-    const detailedCart =
-        useMemo(
-            () =>
-                cart
-                    .map(
-                        cartItem => {
-                            const product =
-                                products.find(
-                                    item =>
-                                        item.id ===
-                                        cartItem.id
-                                );
+    useEffect(() => {
+        // Un fallo al leer el catálogo no debe borrar una compra guardada.
+        if (!catalog.success) return;
+        if (JSON.stringify(storedCart) !== JSON.stringify(cart)) setCart(cart);
+        try {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            setStorageError("");
+        } catch { setStorageError("No fue posible guardar el carrito. Los cambios se conservarán mientras esta página siga abierta."); }
+    }, [cart, storedCart, catalog.success]);
 
-                            if (!product) {
-                                return null;
-                            }
-
-                            const quantity =
-                                normalizeQuantity(
-                                    cartItem.quantity,
-                                    product.stock
-                                );
-
-                            if (
-                                quantity === 0
-                            ) {
-                                return null;
-                            }
-
-                            return {
-                                ...product,
-                                quantity
-                            };
-                        }
-                    )
-                    .filter(Boolean),
-            [
-                cart
-            ]
-        );
-
-    const summary =
-        useMemo(
-            () =>
-                calculateCartSummary(
-                    detailedCart
-                ),
-            [
-                detailedCart
-            ]
-        );
-
-    function addToCart(
-        product,
-        quantity = 1
-    ) {
-        if (
-            !product
-            ||
-            Number(product.stock) <= 0
-        ) {
-            return;
-        }
-
-        setCart(
-            currentCart => {
-                const existing =
-                    currentCart.find(
-                        item =>
-                            item.id ===
-                            product.id
-                    );
-
-                if (!existing) {
-                    return [
-                        ...currentCart,
-                        {
-                            id:
-                                product.id,
-
-                            quantity:
-                                normalizeQuantity(
-                                    quantity,
-                                    product.stock
-                                )
-                        }
-                    ];
-                }
-
-                return currentCart.map(
-                    item =>
-                        item.id ===
-                        product.id
-                            ? {
-                                ...item,
-
-                                quantity:
-                                    normalizeQuantity(
-                                        item.quantity
-                                        +
-                                        quantity,
-                                        product.stock
-                                    )
-                            }
-                            : item
-                );
-            }
-        );
+    function addToCart(candidate, quantity = 1) {
+        if (!catalog.success || !Number.isSafeInteger(quantity) || quantity <= 0) return;
+        // Consultar el producto vigente, incluso si el consumidor conserva una copia antigua.
+        const product = catalog.products.find(item => item.id === candidate?.id);
+        if (!product || product.stock <= 0) return;
+        setCart(current => {
+            const next = reconcileCart(current, catalog.products);
+            const existing = next.find(item => item.id === product.id);
+            return existing
+                ? next.map(item => item.id === product.id ? { ...item, quantity: normalizeQuantity(item.quantity + quantity, product.stock) } : item)
+                : [...next, { id: product.id, quantity: normalizeQuantity(quantity, product.stock) }];
+        });
     }
 
-    function increaseQuantity(
-        productId
-    ) {
-        const product =
-            products.find(
-                item =>
-                    item.id ===
-                    productId
-            );
-
-        if (!product) {
-            return;
-        }
-
-        setCart(
-            currentCart =>
-                currentCart.map(
-                    item =>
-                        item.id ===
-                        productId
-                            ? {
-                                ...item,
-
-                                quantity:
-                                    normalizeQuantity(
-                                        item.quantity
-                                        +
-                                        1,
-                                        product.stock
-                                    )
-                            }
-                            : item
-                )
-        );
+    function increaseQuantity(id) {
+        if (!catalog.success) return;
+        const product = catalog.products.find(item => item.id === id);
+        if (!product) return;
+        setCart(current => reconcileCart(current, catalog.products).map(item => item.id === id
+            ? { ...item, quantity: normalizeQuantity(item.quantity + 1, product.stock) } : item));
     }
-
-    function decreaseQuantity(
-        productId
-    ) {
-        setCart(
-            currentCart =>
-                currentCart
-                    .map(
-                        item =>
-                            item.id ===
-                            productId
-                                ? {
-                                    ...item,
-
-                                    quantity:
-                                        item.quantity
-                                        -
-                                        1
-                                }
-                                : item
-                    )
-                    .filter(
-                        item =>
-                            item.quantity >
-                            0
-                    )
-        );
+    function decreaseQuantity(id) {
+        if (!catalog.success) return;
+        setCart(current => reconcileCart(current, catalog.products)
+            .map(item => item.id === id ? { ...item, quantity: item.quantity - 1 } : item)
+            .filter(item => item.quantity > 0));
     }
+    function removeFromCart(id) { setCart(current => current.filter(item => item?.id !== id)); }
+    function clearCart() { setCart([]); }
 
-    function removeFromCart(
-        productId
-    ) {
-        setCart(
-            currentCart =>
-                currentCart.filter(
-                    item =>
-                        item.id !==
-                        productId
-                )
-        );
-    }
-
-    function clearCart() {
-        setCart(
-            []
-        );
-    }
-
-    const value = {
-        cart,
-        detailedCart,
-        ...summary,
-        addToCart,
-        increaseQuantity,
-        decreaseQuantity,
-        removeFromCart,
-        clearCart
-    };
-
-    return (
-        <CartContext.Provider
-            value={value}
-        >
-            {children}
-        </CartContext.Provider>
-    );
+    return <CartContext.Provider value={{
+        cart, detailedCart, ...summary, storageError,
+        addToCart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart
+    }}>{children}</CartContext.Provider>;
 }
 
 export default CartProvider;

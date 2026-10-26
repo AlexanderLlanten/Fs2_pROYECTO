@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import InventorySummary from "../components/organisms/InventorySummary.jsx";
-import { products } from "../data/products.js";
+import useCatalog from "../hooks/useCatalog.js";
+import CatalogError from "../components/molecules/CatalogError.jsx";
 import useAuth from "../hooks/useAuth.js";
 import RoleGate from "../components/molecules/RoleGate.jsx";
 import { PERMISSIONS } from "../utils/permissions.js";
 
 function AdminHomePage() {
     const { user } = useAuth();
+    const catalog = useCatalog();
 
     return (
         <>
@@ -18,7 +20,13 @@ function AdminHomePage() {
                 </div>
                 <Link className="btn btn-outline-light" to="/productos"><i className="bi bi-shop me-2" aria-hidden="true" />Ver tienda</Link>
             </header>
-            <InventorySummary products={products} />
+            {catalog.success ? <InventorySummary products={catalog.products} /> : <CatalogError resource={catalog} />}
+            <RoleGate permission={PERMISSIONS.PRODUCTS_VIEW}>
+                <section className="kynex-admin-info" aria-labelledby="products-module-title">
+                    <i className="bi bi-box-seam" aria-hidden="true" />
+                    <div><p className="kynex-eyebrow">CATÁLOGO</p><h2 id="products-module-title">Productos</h2><p>Consulta precios, disponibilidad y alertas de stock.</p><Link className="btn btn-outline-light" to="/admin/productos">Consultar productos</Link></div>
+                </section>
+            </RoleGate>
             <RoleGate permission={PERMISSIONS.USERS_MANAGE}>
                 <section className="kynex-admin-info" aria-labelledby="users-module-title">
                     <i className="bi bi-people" aria-hidden="true" />

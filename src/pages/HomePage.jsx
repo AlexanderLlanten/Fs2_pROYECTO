@@ -7,7 +7,8 @@ import CategoryGrid from "../components/organisms/CategoryGrid.jsx";
 import FeaturedProducts from "../components/organisms/FeaturedProducts.jsx";
 import HomeHero from "../components/organisms/HomeHero.jsx";
 import { homeCategories, homeFeatures } from "../data/home.js";
-import { products } from "../data/products.js";
+import useCatalog from "../hooks/useCatalog.js";
+import CatalogError from "../components/molecules/CatalogError.jsx";
 import useCart from "../hooks/useCart.js";
 import { FREE_SHIPPING_FROM } from "../utils/cart.js";
 
@@ -18,6 +19,8 @@ const freeShippingAmount = new Intl.NumberFormat("es-CL", {
 }).format(FREE_SHIPPING_FROM);
 
 function HomePage() {
+    const catalog = useCatalog();
+    const { products } = catalog;
     const { addToCart, detailedCart } = useCart();
     const [feedback, setFeedback] = useState("");
 
@@ -58,11 +61,11 @@ function HomePage() {
                 </div>
             </section>
 
-            <FeaturedProducts
+            {!catalog.success ? <div className="container"><CatalogError resource={catalog} /></div> : <FeaturedProducts
                 products={products}
                 onAddToCart={handleAddToCart}
                 feedback={feedback}
-            />
+            />}
 
             <section className="home-section" aria-labelledby="value-title">
                 <div className="container">

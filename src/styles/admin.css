@@ -191,6 +191,28 @@
     overflow-wrap: anywhere;
 }
 
+.kynex-products-table {
+    min-width: 900px;
+}
+
+.kynex-products-table .kynex-price {
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.kynex-products-table .kynex-price strong {
+    font-size: 1rem;
+}
+
+.kynex-products-table .kynex-price small {
+    display: none;
+}
+
+.kynex-products-table .kynex-user-actions {
+    min-width: 0;
+    max-width: 7rem;
+}
+
 .kynex-users-table td:first-child,
 .kynex-users-table .kynex-badge {
     white-space: nowrap;

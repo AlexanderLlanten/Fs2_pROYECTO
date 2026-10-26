@@ -18,6 +18,8 @@ import { PERMISSIONS } from "../utils/permissions.js";
 import NotFoundPage from "../pages/NotFoundPage.jsx";
 import AdminUsersPage from "../pages/AdminUsersPage.jsx";
 import AdminUserFormPage from "../pages/AdminUserFormPage.jsx";
+import AdminProductsPage from "../pages/AdminProductsPage.jsx";
+import AdminProductFormPage from "../pages/AdminProductFormPage.jsx";
 
 function AppRouter() {
     return (
@@ -42,6 +44,14 @@ function AppRouter() {
                             <Route path="usuarios/*" element={<NotFoundPage admin />} />
                         </Route>
                         <Route path="*" element={<NotFoundPage admin />} />
+                        <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_VIEW} />}>
+                            <Route path="productos" element={<AdminProductsPage />} />
+                            <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_MANAGE} />}>
+                                <Route path="productos/nuevo" element={<AdminProductFormPage />} />
+                                <Route path="productos/:id/editar" element={<AdminProductFormPage />} />
+                            </Route>
+                            <Route path="productos/*" element={<NotFoundPage admin />} />
+                        </Route>
                     </Route>
                 </Route>
             </Routes>

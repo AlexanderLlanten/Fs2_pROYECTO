@@ -6,6 +6,7 @@ import Badge from "../atoms/Badge.jsx";
 import Button from "../atoms/Button.jsx";
 import Price from "../atoms/Price.jsx";
 import StockBadge from "../atoms/StockBadge.jsx";
+import ProductImage from "../atoms/ProductImage.jsx";
 
 function ProductCard({
     product,
@@ -42,10 +43,7 @@ function ProductCard({
                     criticalStock={product.criticalStock}
                 />
 
-                <i
-                    className={`bi ${product.icon || "bi-box-seam"}`}
-                    aria-hidden="true"
-                />
+                <ProductImage product={product} />
             </div>
 
             <div className="shop-product-body">

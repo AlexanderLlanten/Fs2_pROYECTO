@@ -33,6 +33,15 @@ describe("Destino posterior al acceso", () => {
         }
     });
 
+    it("permite la lista de productos a Vendedor y Administrador", () => {
+        for (const role of ["Vendedor", "Administrador"]) expect(getLoginDestination({ pathname: "/admin/productos" }, role)).toBe("/admin/productos");
+        expect(getLoginDestination({ pathname: "/admin/productos" }, "Cliente")).toBe("/productos");
+    });
+    it.each(["/admin/productos/nuevo", "/admin/productos/2/editar"])("reserva el retorno a %s al Administrador", pathname => {
+        expect(getLoginDestination({ pathname }, "Administrador")).toBe(pathname);
+        expect(getLoginDestination({ pathname }, "Vendedor")).toBe("/admin");
+    });
+
     it.each(["https://ejemplo.com", "//ejemplo.com", "/login", "/admin", "/no-existe", "/\\ejemplo.com"])(
         "usa el catálogo en lugar de un destino externo, circular o inexistente: %s",
         pathname => expect(getLoginDestination({ pathname })).toBe("/productos")
