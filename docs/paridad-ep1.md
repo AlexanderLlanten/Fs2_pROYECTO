@@ -7,8 +7,10 @@ y el aviso de continuación del carrito. Se usan
 los HTML y módulos originales conservados en `pages/`, `admin/` y `assets/js/`;
 el Inicio anterior a Vite se consulta con `git show 3d43937:index.html`.
 La matriz también identifica las 20 pantallas y sus rutas actuales. Para los demás
-módulos se registra la migración y sus pruebas previas, sin afirmar una revisión
-manual exhaustiva de cada elemento visual en este corte.
+módulos se registra la migración y sus pruebas previas. El cierre añade la
+[auditoría transversal](auditoria-final.md): 22 rutas y variantes en tres tamaños,
+roles, formularios y persistencia. No se afirma una comparación exhaustiva de cada
+elemento visual o de todos los estados posibles.
 
 ## Inventario y hallazgos
 
@@ -35,7 +37,8 @@ manual exhaustiva de cada elemento visual en este corte.
 | Pedidos | `/admin/pedidos` | Migrado; consulta demostrativa y permisos con pruebas. |
 | Detalle de pedido | `/admin/pedidos/:id` | Migrado; datos históricos y cálculos con pruebas. |
 
-20 de 20 pantallas tienen ruta React. Este conteo no cierra la paridad ni los entregables.
+20 de 20 pantallas tienen ruta React. La auditoría y documentación de cierre están
+preparadas; el conteo no acredita por sí mismo todos los requisitos del ERS.
 
 ## Corregido en catálogo y detalle
 
@@ -124,13 +127,16 @@ manual exhaustiva de cada elemento visual en este corte.
   de la aplicación durante este recorrido. El error del reproductor externo se
   registra por separado y permanece como limitación de esta revisión.
 
-## Pendientes para el siguiente corte
+## Cierre transversal
 
-1. Completar la revisión transversal del resto de pantallas y estados antes de cerrar
-   ERS, trazabilidad, documento de testing y paquete final.
-2. Comprobar la reproducción del video en el navegador de entrega. La integración
-   conserva el recurso original y su enlace directo; no se da por validado un servicio
-   externo solo porque el iframe se monte correctamente.
+La [auditoría final](auditoria-final.md) incorpora las comprobaciones del resto de
+pantallas y los límites observados. Se corrigió la división en líneas de la etiqueta
+de stock en la tabla móvil. El clon limpio aprobó las 597 pruebas y el build.
+El ERS 2.1 y el documento independiente de testing incorporan esta evidencia.
 
-La autoevaluación técnica sigue siendo conservadora: 81% del encargo, con 19%
-ponderado pendiente. No mide horas restantes ni equivale a la calificación de EP2.
+La reproducción de YouTube sigue sin validarse: el iframe y la página del proveedor
+mostraron una restricción que requiere aprobación, código 151. Debe comprobarse en
+el navegador de presentación. También quedan la matriz de cuatro navegadores y
+las mediciones temporales del ERS. La [autoevaluación](avance-migracion.md) actualiza
+la estimación técnica del 81% anterior a 95%, separada del 100% de pantallas migradas
+y de la evaluación de la defensa individual.

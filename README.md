@@ -1,6 +1,34 @@
 # Fs2_pROYECTO
 
-Frontend KYNEX en migración a React, Vite y React Router.
+Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del inventario original tienen ruta React.
+
+## Entrega y ejecución en otro equipo
+
+Trabajar con **feature/react-migration**. Esta entrega no modifica `main`.
+Se verificaron instalación y build desde un clon nuevo con Node 24.22.1 y npm 11.19.1.
+
+```powershell
+git clone --branch feature/react-migration --single-branch https://github.com/AlexanderLlanten/Fs2_pROYECTO.git
+cd Fs2_pROYECTO
+npm.cmd ci
+npm.cmd run dev
+```
+
+Abrir la URL que indique Vite. Para comprobar producción: `npm.cmd run build`
+y luego `npm.cmd run preview`. Desde el ZIP, extraer y abrir una terminal donde
+está `package.json`; ejecutar desde `npm.cmd ci`. El archivo conserva las fuentes
+y documentos y omite `.git`, `node_modules`, `dist` y `coverage`.
+
+- [ERS actualizado 2.1](docs/entrega/ERS_KYNEX_V2_1.docx).
+- [Informe de cobertura en Word](docs/entrega/Cobertura_Testing_KYNEX.docx) y [versión Markdown](docs/cobertura-testing.md).
+- [Guía de defensa con diez pruebas](docs/guia-defensa.md).
+- [Auditoría final](docs/auditoria-final.md), [evidencias](docs/evidencias/) y [avance frente a la pauta](docs/avance-migracion.md).
+
+**Verificación final:** 597 pruebas aprobadas en 80 archivos; cobertura de líneas
+98,98%. La suite completa ya está registrada en la evidencia. No hace falta
+repetirla por descargar esta documentación; puede usarse una selección del módulo.
+El video externo, la matriz de navegadores y las mediciones de rendimiento tienen
+los límites descritos en la auditoría. El sistema conserva su alcance académico.
 
 ## Layout público y Atomic Design
 
@@ -318,9 +346,10 @@ Login conserva portada o artículo de origen, incluida la consulta. Visitar esta
 páginas no agrega claves de almacenamiento; compra y rutina se conservan al navegar,
 recargar e iniciar o cerrar sesión.
 
-Con este bloque, las 20 pantallas del inventario original tienen ruta y contenido
-en React. Quedan la revisión final de paridad y recursos, ERS, documento de testing,
-entregables y defensa; el inventario de pantallas no mide ese trabajo de cierre.
+Las 20 pantallas del inventario original tienen ruta y contenido en React. La
+auditoría transversal, el ERS y el informe de testing están documentados. Continúan
+las verificaciones del entorno de presentación y el ensayo de defensa indicados
+en [la auditoría final](docs/auditoria-final.md).
 
 ## Nosotros
 
