@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Link, MemoryRouter, Route, Routes } from "react-router-dom";
@@ -12,7 +12,14 @@ function renderLayout() {
             <MemoryRouter>
                 <Routes>
                     <Route element={<PublicLayout />}>
-                        <Route index element={<><h1>Página de inicio</h1><Link to="/productos">Ver catálogo</Link></>} />
+                        <Route index element={
+                            <>
+                                <h1>Página de inicio</h1>
+                                <Link to="/productos">Ver catálogo</Link>
+                                <Link to="/?categoria=Creatinas">Cambiar filtro</Link>
+                                <Link to="/#seccion">Ir a una sección</Link>
+                            </>
+                        } />
                         <Route path="productos" element={<h1>Catálogo de productos</h1>} />
                     </Route>
                 </Routes>
@@ -22,7 +29,10 @@ function renderLayout() {
 }
 
 describe("PublicLayout", () => {
-    beforeEach(() => localStorage.clear());
+    beforeEach(() => {
+        localStorage.clear();
+        vi.mocked(window.scrollTo).mockClear();
+    });
 
     it("compone una cabecera, el contenido de la ruta y un pie de página", () => {
         renderLayout();
@@ -50,5 +60,19 @@ describe("PublicLayout", () => {
         expect(screen.queryByRole("heading", { name: "Página de inicio" })).not.toBeInTheDocument();
         expect(screen.getByRole("banner")).toBe(header);
         expect(screen.getByRole("contentinfo")).toBe(footer);
+        expect(window.scrollTo).toHaveBeenCalledTimes(2);
+        expect(window.scrollTo).toHaveBeenLastCalledWith({ top: 0, left: 0, behavior: "instant" });
+    });
+
+    it("conserva el desplazamiento al cambiar filtros y respeta las anclas internas", async () => {
+        const user = userEvent.setup();
+        renderLayout();
+        vi.mocked(window.scrollTo).mockClear();
+
+        await user.click(screen.getByRole("link", { name: "Cambiar filtro" }));
+        expect(window.scrollTo).not.toHaveBeenCalled();
+
+        await user.click(screen.getByRole("link", { name: "Ir a una sección" }));
+        expect(window.scrollTo).not.toHaveBeenCalled();
     });
 });
