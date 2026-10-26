@@ -8,7 +8,7 @@ Fecha de corte: 26 de octubre de 2026. Rama: `feature/react-migration`.
   Se calcula sobre los cuatro indicadores del encargo, cuyo peso conjunto es 40%
   de la evaluación. Es una estimación de cumplimiento, no una calificación del docente
   ni un porcentaje de horas de trabajo realizadas.
-- **Migración de pantallas: 16 de 20, equivalente a 80%; faltan 4, equivalente a 20%.**
+- **Migración de pantallas: 17 de 20, equivalente a 85%; faltan 3, equivalente a 15%.**
   Cuenta cada pantalla HTML original una vez, incluido el inicio. No pondera el
   esfuerzo: la base compartida, carrito, autenticación, formularios y pruebas ya
   implementadas se reutilizarán en las pantallas siguientes. Tampoco implica paridad
@@ -18,14 +18,14 @@ La diferencia se debe al peso que la pauta da a componentes y testing. Cumplir e
 indicadores puede avanzar antes de terminar todas las pantallas. Para planificar el
 trabajo pendiente de migración hay que considerar ambas medidas.
 
-En este corte se completaron Entrenamiento y rutina: ocho ejercicios originales con
-fotografías, filtros combinados, selección sin duplicados, edición de series y
-repeticiones, resumen, eliminación y vaciado confirmado. Las páginas usan el layout
-público, accesos desde cabecera y pie y retorno desde Login. La clave `kynex_routine`
-conserva los datos de la EP1; los errores de lectura/escritura se anuncian sin
-sobrescribir la rutina anterior. Se verificaron escritorio, móvil y recarga.
+En este corte se completó Nosotros: presentación, propuesta, experiencia, catálogo,
+visión, compromisos y accesos a la tienda de la página original. Reutiliza el layout
+público y las tarjetas existentes; FeatureSection compone ventajas tanto en Inicio
+como en Nosotros. Las cuatro categorías abren la tienda filtrada, y los otros dos
+accesos abren el catálogo completo. Se integraron cabecera, pie y regreso desde Login.
+Se comprobaron escritorio, tableta, móvil y recarga, conservando compra y rutina.
 El 81% técnico se mantiene porque los niveles ponderados de los indicadores todavía
-no cambian; el avance funcional sí pasa de 70% a 80%.
+no cambian; el avance funcional sí pasa de 80% a 85%.
 
 ## Fuente y método
 
@@ -44,9 +44,9 @@ del estado actual del repositorio y deben revisarse al terminar la migración.
 
 | Indicador | Peso en EP2 | Nivel estimado | Aporte estimado | Evidencia y pendiente |
 | --- | ---: | ---: | ---: | --- |
-| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | React/Vite/Router, Atomic Design, panel, usuarios, catálogo editable, pedidos, Contacto, entrenamiento y rutina integrados. Quedan cuatro páginas públicas, paridad final y cierre del ERS. |
+| IE2.1.1: aplicación con framework JS | 10% | 60% | 6,0 | React/Vite/Router, Atomic Design, panel, usuarios, catálogo editable, pedidos, Contacto, entrenamiento, rutina y Nosotros integrados. Quedan Blog y dos artículos, paridad final y cierre del ERS. |
 | IE2.1.2: componentes, props, estado y Bootstrap responsivo | 10% | 80% | 8,0 | Layouts público y administrativo, carrito, autenticación y formularios reutilizables; revisión visual de escritorio y móvil. Falta aplicar y revisar esta estructura en todos los módulos restantes. |
-| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 498 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. Se deberán agregar casos para cada módulo nuevo. |
+| IE2.2.1: pruebas de lógica y comportamiento | 12% | 100% | 12,0 | 518 pruebas correctas, con componentes, DOM, eventos, permisos, CRUD, servicios y recorridos integrados; superan las 10 pruebas del descriptor máximo. Se deberán agregar casos para cada módulo nuevo. |
 | IE2.3.1: proceso de testing, mocks, resultados y cobertura | 8% | 80% | 6,4 | Entorno jsdom, RTL, mocks de callbacks/Storage/Date y cobertura V8 medida. Falta cerrar el documento de testing, analizar los riesgos residuales y repetir la medición sobre el alcance final. |
 | **Encargo** | **40%** | | **32,4 / 40** | **32,4 ÷ 40 × 100 = 81%. Pendiente ponderado: 7,6 / 40 = 19%.** |
 
@@ -75,11 +75,12 @@ Hay código para preparar estas demostraciones; todavía faltan el guion y el en
 | Catálogo, detalle, carrito | 3 | Migrados; pendiente revisión final de paridad y recursos del catálogo |
 | Login y registro | 2 | Migrados |
 | Contacto | 1 | Migrado, con validación local como en la EP1 |
-| Nosotros, blog y dos artículos | 4 | Pendientes |
+| Nosotros | 1 | Migrada, con secciones reutilizables y accesos a la tienda |
+| Blog y dos artículos | 3 | Pendientes |
 | Entrenamiento y rutina | 2 | Migradas, con biblioteca, ajustes y persistencia compatible |
 | Gestión de usuarios: lista y formulario | 2 | Migradas, con permisos y persistencia compartida |
 | Administración: panel, productos, formulario de producto, pedidos y detalle de pedido | 5 | Migradas; pedidos conserva el alcance demostrativo de consulta de la EP1 |
-| **Total** | **20** | **16 migradas / 4 pendientes** |
+| **Total** | **20** | **17 migradas / 3 pendientes** |
 
 La matriz de permisos y las guardas ya existen. `/admin` y sus rutas desconocidas
 exigen ADMIN_ACCESS: Administrador y Vendedor entran; Cliente vuelve a la tienda;
@@ -97,28 +98,39 @@ además de comprobarse al consultar los datos desde el servicio.
 
 ## Verificación realizada en esta etapa
 
-- Pruebas específicas mediante `npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test`:
-  **6 archivos, 44 pruebas aprobadas**, unos 18 segundos en este equipo.
-- Regresión completa de cierre mediante `npm run test:coverage`: **68 archivos,
-  498 pruebas aprobadas, 0 fallidas**, unos 161 segundos en este equipo.
+- Pruebas seleccionadas mediante `npm test -- About.test AboutPage FeatureSection HomePage`:
+  **4 archivos, 20 pruebas aprobadas**, unos 13 segundos en este equipo. Incluyen
+  las tres pruebas existentes de Inicio, que ahora también reutiliza FeatureSection.
+- Regresión completa de cierre mediante `npm run test:coverage`: **71 archivos,
+  518 pruebas aprobadas, 0 fallidas**, unos 184 segundos en este equipo.
 - `npm run build`: compilación de producción correcta.
-- Navegador: filtros por músculo/dificultad y búsqueda sin resultados, selección de
-  dos ejercicios, bloqueo de duplicados, resumen y edición. Rechazo de cero series,
-  corrección y restauración de ajustes tras recargar. El diálogo de vaciado enfoca
-  Cancelar; se comprobó que cancelar conserva la rutina. El vaciado efectivo y la
-  eliminación se verificaron con almacenamiento aislado en las pruebas automatizadas.
-- Vistas de escritorio de 1280 × 800 y móvil de 390 × 844: imágenes originales cargadas,
-  campos dentro del ancho disponible y sin desbordamiento horizontal. El menú móvil
-  cierra al navegar. No hay errores ni advertencias de consola.
+- Navegador: Nosotros directo con sesión activa, contenido y secciones completas,
+  categoría Creatinas con filtro aplicado en la tienda, acceso final al catálogo
+  completo, recarga, enlace desde el pie y menú móvil que cierra al navegar.
+- Vistas de escritorio de 1280 × 800, tableta de 768 × 1024 y móvil de 390 × 844:
+  columnas y tarjetas dentro del ancho disponible. Se corrigió un desbordamiento
+  móvil de 12 px causado por el gutter horizontal de la introducción; la lectura
+  posterior confirma scrollWidth igual a clientWidth. Sin errores ni advertencias
+  de consola. Las capturas conservan la estética oscura y el acento verde KYNEX.
 - Regresión automatizada de tienda, registro, carrito y permisos, además del ciclo
   de usuarios, eliminación confirmada, duplicados, reducción del propio rol, cambio
   de correo de la cuenta conectada, conflictos entre pestañas y errores de almacenamiento.
-- 50 pruebas adicionales: 44 específicas del módulo y seis casos de rutas, enlaces
-  activos y retorno de Login en pruebas compartidas. Cubren datos por props, imagen
-  alternativa, filtros, duplicados, cantidades enteras y límites, guardado al salir
-  del campo o con Enter, datos heredados, recarga y cambios entre pestañas. También
-  verifican cancelación, confirmación, foco, fallos de lectura/escritura, recuperación,
-  acceso con todos los perfiles y conservación de sesión, catálogo y carrito.
+- 20 pruebas adicionales: 17 en los tres archivos nuevos y tres casos de ruta pública,
+  enlace activo y retorno de Login en pruebas compartidas. Cubren composición por
+  props, contenido institucional, categorías y accesos al catálogo, todos los perfiles,
+  menú móvil, Login y cierre de sesión, recarga y conservación de datos guardados.
+  También comprueban 404 para subcaminos desconocidos y que la página no duplique
+  cabecera, main ni footer. Las pruebas previas de Inicio siguen verificando destacados,
+  carrito y límites de stock al usar el nuevo organismo compartido.
+
+### Alcance de Nosotros
+
+Se conservaron las secciones e iconos del HTML original. Las descripciones de la ficha
+de producto se ajustaron a los datos que muestra React, sin anunciar ingredientes ni
+información nutricional que aún no están disponibles en ese detalle. Las categorías
+reutilizan CategoryGrid y sus enlaces con `categoria` en la URL. La página no agrega
+servicios ni claves de almacenamiento. El contenido sobre Blog se conserva como parte
+de la propuesta original; su portada y dos artículos siguen pendientes de migración.
 
 ### Compatibilidad y límites de la rutina
 
@@ -136,7 +148,8 @@ el navegador, igual que la versión original.
 
 Durante el desarrollo se ejecutan las pruebas del módulo afectado. Al cerrar esta
 etapa se ejecutó además la regresión completa porque cambiaron Navbar, Footer,
-rutas y retorno desde Login. El estudiante puede usar la selección de 44 pruebas
+rutas y retorno desde Login, además de compartir FeatureSection con Inicio.
+El estudiante puede usar la selección de 20 pruebas
 como comprobación rápida tras sincronizar este mismo código. No necesita repetir
 la cobertura en cada paso. La suite completa vuelve a ejecutarse cuando cambian
 dependencias compartidas, aparecen fallos o se prepara la entrega final; la cobertura
@@ -169,15 +182,15 @@ la carga simultánea.
 
 | Métrica | Cubierto / total | Porcentaje |
 | --- | ---: | ---: |
-| Sentencias | 1233 / 1260 | 97,85% |
-| Ramas | 959 / 1020 | 94,01% |
-| Funciones | 390 / 393 | 99,23% |
-| Líneas | 1007 / 1018 | 98,91% |
+| Sentencias | 1239 / 1266 | 97,86% |
+| Ramas | 963 / 1024 | 94,04% |
+| Funciones | 392 / 395 | 99,24% |
+| Líneas | 1013 / 1024 | 98,92% |
 
 La configuración incluye `src/**/*.{js,jsx}`, excluyendo `src/main.jsx` y los
 auxiliares de `src/test`. Vitest excluye los archivos de pruebas de la instrumentación.
 El resultado no mide HTML/JavaScript heredado, CSS, comportamiento visual ni módulos
-que todavía no se implementan. **98,91% de líneas no significa 98,91% de migración.**
+que todavía no se implementan. **98,92% de líneas no significa 98,92% de migración.**
 
 Quedan ramas alternativas de utilidades de carrito (68,18%) y de presentación, además
 de algunas recuperaciones de errores de páginas. CartContext alcanza 84,61% de ramas;
@@ -186,7 +199,8 @@ Los permisos, guardas, usuarios, productos y pedidos tienen pruebas de servicio 
 recorrido. Contacto añade validación e integración pública; Entrenamiento y rutina
 añaden reglas, persistencia y edición. RoutineBuilder alcanza 78,94% de ramas: quedan
 algunas variantes de error/recuperación de la página, aunque el servicio sí comprueba
-los fallos de lectura, guardado y vaciado. Faltan los casos de las cuatro páginas
+los fallos de lectura, guardado y vaciado. Nosotros y FeatureSection agregan cobertura
+de composición y navegación pública. Faltan los casos de las tres páginas de Blog
 que todavía no se implementan.
 Los callbacks del menú y algunas ramas de recuperación de errores no se ejecutan en
 esta medición; el menú móvil se revisó también en navegador. LocalStorage no proporciona
@@ -213,7 +227,7 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 
 ## Trabajo restante y orden propuesto
 
-1. Migrar nosotros, blog y artículos. Completar enlaces,
+1. Migrar Blog y sus dos artículos. Completar enlaces,
    recursos del catálogo y paridad funcional con el proyecto original.
 2. Revisar navegación directa, rutas inexistentes, persistencia y responsividad en
    el alcance completo; ejecutar regresión y cobertura final con casos relevantes.
@@ -222,6 +236,6 @@ se mantienen fuera del historial Git. Este documento conserva la medición de co
 4. Preparar el comprimido del proyecto y verificar los entregables y el enlace GitHub.
 5. Preparar y ensayar la defensa individual, mostrando las 10 pruebas seleccionadas.
 
-La siguiente etapa de implementación es Nosotros; después siguen Blog y sus artículos.
+La siguiente etapa de implementación es Blog y sus dos artículos.
 El tiempo pendiente depende del alcance de los módulos restantes; estos porcentajes
 no permiten deducir un número de horas o días con fiabilidad.

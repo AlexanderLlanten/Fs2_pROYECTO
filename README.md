@@ -247,6 +247,25 @@ y conserva los valores; editar retira la confirmación hasta volver a validar.
 No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
 permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
 
+## Nosotros
+
+`/nosotros` es pública y reutiliza PublicLayout. Conserva la presentación de KYNEX,
+su propuesta, experiencia, categorías, visión, compromisos y accesos al catálogo de
+la página original. Los textos sobre la ficha de producto describen los datos que
+actualmente muestra React: descripción, formato, precio, stock y características.
+
+`src/data/about.js` separa las listas de contenido de la presentación. El organismo
+`FeatureSection` compone SectionHeading y FeatureCard mediante props; se reutiliza
+en Inicio y en las tres secciones de ventajas de Nosotros. CategoryGrid y CategoryCard
+enlazan las cuatro categorías con el filtro correspondiente de la tienda. Los otros
+dos accesos abren el catálogo completo. El diseño usa Bootstrap y los colores KYNEX,
+con columnas adaptadas a escritorio, tableta y móvil.
+
+Navbar y Footer incorporan Nosotros y el menú móvil cierra al entrar. Login conserva
+esta ruta y su consulta como destino de regreso. La página no agrega almacenamiento
+ni modifica sesión, usuarios, productos, carrito o rutina al consultarla; cerrar sesión
+conserva las selecciones del navegador. Los subcaminos desconocidos muestran 404.
+
 ## Entrenamiento y rutina
 
 `/entrenamiento` y `/rutina` son públicas y reutilizan PublicLayout. Navbar y Footer
@@ -312,14 +331,16 @@ npm run build
 ```
 
 No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
-Entrenamiento y rutina (6 archivos y 44 pruebas en este corte):
+Nosotros y su componente compartido con Inicio (4 archivos y 20 pruebas en este corte):
 
 ```sh
-npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test
+npm test -- About.test AboutPage FeatureSection HomePage
 ```
 
 En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
-las tarjetas, filtros, edición, reglas de rutina, persistencia y recorridos integrados.
+la página, la sección reutilizable, los recorridos integrados y la regresión de Inicio.
+Entrenamiento y rutina conservan su selección rápida:
+`npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test`.
 Contacto conserva su selección rápida: `npm test -- ContactForm contact.test Contact.test`.
 
 | Momento | Comprobación |
@@ -356,7 +377,9 @@ errores, confirmación local, acceso público, navegación, retorno desde Login 
 conservación del carrito y la sesión sin enviar peticiones. Entrenamiento y rutina
 comprueban filtros combinados, duplicados, valores heredados, límites numéricos,
 recarga, sincronización, cancelación/confirmación, fallos de almacenamiento y
-conservación de los datos de sesión, catálogo y compra.
+conservación de los datos de sesión, catálogo y compra. Nosotros comprueba contenido
+institucional, composición por props, enlaces a categorías y catálogo, acceso público,
+menú móvil, retorno desde Login, recarga y conservación de compra y rutina.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
