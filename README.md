@@ -126,9 +126,45 @@ calculado a partir de los mismos productos del catálogo: referencias, unidades 
 productos cuyo stock es menor o igual al umbral crítico. Las rutas inexistentes
 muestran 404 con regreso a tienda o panel.
 
-El panel y el menú ofrecen Usuarios solo al Administrador. La lista y los formularios
-de usuarios están conectados a su guarda; las pantallas de productos y pedidos
-se integrarán en las siguientes etapas.
+El panel y el menú ofrecen Usuarios solo al Administrador y Productos también al
+Vendedor. Ambos módulos están conectados a sus guardas. Las pantallas de pedidos
+se integrarán en la siguiente etapa.
+
+## Gestión de productos y catálogo compartido
+
+Las rutas `/admin/productos`, `/admin/productos/nuevo` y
+`/admin/productos/:id/editar` reutilizan AdminLayout. La lista exige `PRODUCTS_VIEW`;
+los formularios y las operaciones de escritura exigen `PRODUCTS_MANAGE`. Vendedor
+puede consultar precios, stock y detalle público; Administrador puede crear,
+editar y eliminar. Login conserva el destino solicitado si el perfil tiene permiso.
+
+`ProductsTable` y `AdminProductForm` componen las páginas. El formulario reutiliza
+FormField y Button: código único de al menos 3 caracteres, categoría del catálogo,
+nombre de hasta 100 caracteres, descripción opcional de hasta 500, precio no negativo,
+stock entero no negativo y umbral crítico opcional. Precio, stock y umbral aceptan 0;
+un umbral vacío se guarda como `null`. Conserva contador, validación por campo, foco
+en el primer error, alerta de stock y bloqueo de envíos repetidos. El diálogo de
+eliminación comparte `ConfirmDeleteDialog` con Usuarios y enfoca Cancelar al abrir.
+
+`productStore.js` conserva `kynex_products`. `useCatalog` usa una instantánea estable
+con `useSyncExternalStore`, notificaciones dentro de la pestaña y eventos `storage`
+entre pestañas. Inicio, catálogo, detalle, inventario y carrito consumen los mismos
+productos. Si la clave no existe, se usan los seis productos iniciales sin escribir;
+una lista vacía no se repuebla. Datos dañados o duplicados se anuncian y no se reemplazan.
+
+`adminProducts.js` vuelve a consultar la sesión vigente, valida datos y códigos
+duplicados y compara el producto abierto antes de guardar o eliminar. La edición
+conserva id, destacados, marca, formato, sabor y metadatos adicionales de la EP1.
+Un cambio detectado desde otra pestaña conserva el borrador, bloquea Guardar y ofrece
+Recargar datos. Una escritura fallida conserva el catálogo anterior. El almacenamiento
+local sigue siendo demostrativo y no ofrece transacciones concurrentes entre pestañas.
+
+La imagen opcional admite URL http(s) o una ruta `/assets/`; las rutas heredadas
+`../../assets/...` se convierten a la raíz. ProductImage reutiliza el ícono si la
+imagen está ausente o falla. El carrito toma precio y stock vigentes, limita cantidades,
+retira agotados/eliminados y persiste las cantidades ajustadas. Un fallo de lectura
+del catálogo conserva la compra guardada; un fallo al guardar el carrito se anuncia
+y conserva los cambios en memoria durante esa visita.
 
 ## Gestión de usuarios
 
@@ -214,6 +250,9 @@ persistencia, errores de escritura y el recorrido Registro > Login > Carrito.
 La gestión administrativa verifica creación, edición, eliminación/cancelación,
 duplicados, protección de la cuenta conectada, sincronización del perfil propio,
 conflictos entre pestañas, datos dañados, fallos de persistencia y reversión de sesión.
+Los productos agregan validaciones, permisos de escritura, duplicados de código,
+conservación de metadatos e integración con categoría, detalle, inicio, inventario y
+carrito; se prueban cambios de precio, límites de stock, errores y recuperación.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
