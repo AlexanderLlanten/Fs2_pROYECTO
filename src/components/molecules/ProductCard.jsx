@@ -14,11 +14,15 @@ function ProductCard({
     const isOutOfStock =
         Number(product.stock) <= 0;
 
+    const canAddToCart =
+        typeof onAddToCart ===
+        "function";
+
     function handleAddToCart() {
         if (
             isOutOfStock
             ||
-            !onAddToCart
+            !canAddToCart
         ) {
             return;
         }
@@ -85,7 +89,11 @@ function ProductCard({
                         </Link>
 
                         <Button
-                            disabled={isOutOfStock}
+                            disabled={
+                                isOutOfStock
+                                ||
+                                !canAddToCart
+                            }
                             onClick={handleAddToCart}
                         >
                             Agregar

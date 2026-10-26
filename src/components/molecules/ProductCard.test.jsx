@@ -73,6 +73,19 @@ describe("ProductCard", () => {
         ).toBeInTheDocument();
     });
 
+    it("deshabilita Agregar mientras no exista una función de carrito", () => {
+        renderProductCard();
+
+        expect(
+            screen.getByRole(
+                "button",
+                {
+                    name: /agregar/i
+                }
+            )
+        ).toBeDisabled();
+    });
+
     it("entrega el producto al callback cuando se presiona Agregar", async () => {
         const user =
             userEvent.setup();
