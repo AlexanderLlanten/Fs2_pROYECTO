@@ -1,0 +1,931 @@
+{
+  "fecha": "2026-10-26",
+  "navegador": "Chromium integrado de Codex",
+  "rutas": [
+    {
+      "path": "/",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Entrena mejor. Supérate."
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/productos",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/productos",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Suplementación para cada objetivo"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/productos/1",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/productos/1",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Whey Protein Performance"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/carrito",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/carrito",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Carrito de compras"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/login",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/login",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Iniciar sesión"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/registro",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/registro",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Crear cuenta"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/contacto",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/contacto",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Hablemos"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/nosotros",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/nosotros",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Nuestra tienda"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/blog",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/blog",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Blog"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/blog/creatina-y-rendimiento",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/blog/creatina-y-rendimiento",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Creatina y rendimiento"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/blog/recuperacion-muscular",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/blog/recuperacion-muscular",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Recuperación muscular"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/entrenamiento",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/entrenamiento",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Entrenamiento"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/rutina",
+      "width": 390,
+      "phase": "visitante",
+      "url": "/rutina",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Mi rutina"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Entrena mejor. Supérate."
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/productos",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/productos",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Suplementación para cada objetivo"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/productos/1",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/productos/1",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Whey Protein Performance"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/carrito",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/carrito",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Carrito de compras"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/login",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/login",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Iniciar sesión"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/registro",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/registro",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Crear cuenta"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/contacto",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/contacto",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Hablemos"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/nosotros",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/nosotros",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Nuestra tienda"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/blog",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/blog",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Blog"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/blog/creatina-y-rendimiento",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/blog/creatina-y-rendimiento",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Creatina y rendimiento"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/blog/recuperacion-muscular",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/blog/recuperacion-muscular",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Recuperación muscular"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/entrenamiento",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/entrenamiento",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Entrenamiento"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/rutina",
+      "width": 768,
+      "phase": "visitante",
+      "url": "/rutina",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Mi rutina"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Entrena mejor. Supérate."
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/productos",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/productos",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Suplementación para cada objetivo"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/productos/1",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/productos/1",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Whey Protein Performance"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/carrito",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/carrito",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Carrito de compras"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/login",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/login",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Iniciar sesión"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/registro",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/registro",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Crear cuenta"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/contacto",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/contacto",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Hablemos"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/nosotros",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/nosotros",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Nuestra tienda"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/blog",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/blog",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Blog"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/blog/creatina-y-rendimiento",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/blog/creatina-y-rendimiento",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Creatina y rendimiento"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/blog/recuperacion-muscular",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/blog/recuperacion-muscular",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Recuperación muscular"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/entrenamiento",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/entrenamiento",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Entrenamiento"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/rutina",
+      "width": 1280,
+      "phase": "visitante",
+      "url": "/rutina",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Mi rutina"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Panel de administración"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin/usuarios",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/usuarios",
+      "alerts": [],
+      "broken": [],
+      "client": 1280,
+      "h1": [
+        "Usuarios"
+      ],
+      "main": 1,
+      "scroll": 1280
+    },
+    {
+      "path": "/admin/usuarios/nuevo",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/usuarios/nuevo",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Nuevo usuario"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin/usuarios/1/editar",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/usuarios/1/editar",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Editar usuario"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin/productos",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/productos",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Productos"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin/productos/nuevo",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/productos/nuevo",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Nuevo producto"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin/productos/1/editar",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/productos/1/editar",
+      "alerts": [],
+      "broken": [],
+      "client": 1265,
+      "h1": [
+        "Editar producto"
+      ],
+      "main": 1,
+      "scroll": 1265
+    },
+    {
+      "path": "/admin/pedidos",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/pedidos",
+      "alerts": [],
+      "broken": [],
+      "client": 1280,
+      "h1": [
+        "Pedidos"
+      ],
+      "main": 1,
+      "scroll": 1280
+    },
+    {
+      "path": "/admin/pedidos/1001",
+      "width": 1280,
+      "phase": "administrador",
+      "url": "/admin/pedidos/1001",
+      "alerts": [],
+      "broken": [],
+      "client": 1280,
+      "h1": [
+        "Pedido #1001"
+      ],
+      "main": 1,
+      "scroll": 1280
+    },
+    {
+      "path": "/admin",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Panel de administración"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/admin/usuarios",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/usuarios",
+      "alerts": [],
+      "broken": [],
+      "client": 768,
+      "h1": [
+        "Usuarios"
+      ],
+      "main": 1,
+      "scroll": 768
+    },
+    {
+      "path": "/admin/usuarios/nuevo",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/usuarios/nuevo",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Nuevo usuario"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/admin/usuarios/1/editar",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/usuarios/1/editar",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Editar usuario"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/admin/productos",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/productos",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Productos"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/admin/productos/nuevo",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/productos/nuevo",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Nuevo producto"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/admin/productos/1/editar",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/productos/1/editar",
+      "alerts": [],
+      "broken": [],
+      "client": 753,
+      "h1": [
+        "Editar producto"
+      ],
+      "main": 1,
+      "scroll": 753
+    },
+    {
+      "path": "/admin/pedidos",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/pedidos",
+      "alerts": [],
+      "broken": [],
+      "client": 768,
+      "h1": [
+        "Pedidos"
+      ],
+      "main": 1,
+      "scroll": 768
+    },
+    {
+      "path": "/admin/pedidos/1001",
+      "width": 768,
+      "phase": "administrador",
+      "url": "/admin/pedidos/1001",
+      "alerts": [],
+      "broken": [],
+      "client": 768,
+      "h1": [
+        "Pedido #1001"
+      ],
+      "main": 1,
+      "scroll": 768
+    },
+    {
+      "path": "/admin",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Panel de administración"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/admin/usuarios",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/usuarios",
+      "alerts": [],
+      "broken": [],
+      "client": 390,
+      "h1": [
+        "Usuarios"
+      ],
+      "main": 1,
+      "scroll": 390
+    },
+    {
+      "path": "/admin/usuarios/nuevo",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/usuarios/nuevo",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Nuevo usuario"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/admin/usuarios/1/editar",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/usuarios/1/editar",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Editar usuario"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/admin/productos",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/productos",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Productos"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/admin/productos/nuevo",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/productos/nuevo",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Nuevo producto"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/admin/productos/1/editar",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/productos/1/editar",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Editar producto"
+      ],
+      "main": 1,
+      "scroll": 375
+    },
+    {
+      "path": "/admin/pedidos",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/pedidos",
+      "alerts": [],
+      "broken": [],
+      "client": 390,
+      "h1": [
+        "Pedidos"
+      ],
+      "main": 1,
+      "scroll": 390
+    },
+    {
+      "path": "/admin/pedidos/1001",
+      "width": 390,
+      "phase": "administrador",
+      "url": "/admin/pedidos/1001",
+      "alerts": [],
+      "broken": [],
+      "client": 375,
+      "h1": [
+        "Pedido #1001"
+      ],
+      "main": 1,
+      "scroll": 375
+    }
+  ],
+  "alcance": "22 rutas y variantes en 3 tamaños; cubren las 20 pantallas originales. No sustituye una matriz de cuatro motores ni todos los estados posibles."
+}
