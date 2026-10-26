@@ -13,7 +13,7 @@ Frontend KYNEX en migración a React, Vite y React Router.
   mediante rutas hijas; no duplican la cabecera, el pie ni el elemento `main`.
 
 `CartProvider` permanece por encima del router para conservar el carrito al navegar.
-Las rutas disponibles son `/`, `/productos`, `/productos/:id` y `/carrito`.
+Las rutas disponibles son `/`, `/productos`, `/productos/:id`, `/carrito` y `/login`.
 La navegación compartida enlaza estas rutas ya migradas.
 
 ## Inicio KYNEX
@@ -59,10 +59,30 @@ cuentas iniciales. La sesión guarda solo identidad y rol, sin contraseña, RUN 
 | Vendedor | martin@duoc.cl | 1234 |
 | Administrador | admin@profesor.duoc.cl | 1234 |
 
-Esta etapa prepara el estado que consumirán Login, Registro y las rutas protegidas.
+Login consume este estado; Registro y las rutas protegidas se integrarán en sus etapas.
 La autenticación sigue siendo una demostración Front End con datos locales, como en
 la EP1: los roles y las credenciales del navegador no constituyen seguridad de producción.
 Una versión de producción debe validar credenciales y permisos en un servidor.
+
+## Login
+
+`LoginPage` usa el layout público y compone el organismo `LoginForm` con las moléculas
+`FormField` y `PasswordField`. Conserva las reglas de acceso de la EP1: correo de hasta
+100 caracteres en los dominios `duoc.cl`, `profesor.duoc.cl` o `gmail.com`, y contraseña
+de 4 a 10 caracteres. Valida al salir de cada campo y al enviar, enfoca el primer campo
+inválido, permite mostrar u ocultar la contraseña y evita envíos duplicados mientras
+se resuelve el acceso. Los errores quedan asociados a sus campos y se anuncian los
+fallos generales mediante un aviso accesible.
+
+`AccountActions` integra el acceso a Login, el nombre, el rol y el cierre de sesión en
+Navbar. Al ingresar se vuelve a la página pública de origen, conservando los filtros,
+o a `/productos` si no existe un origen válido. Se descartan destinos externos, `/login`
+y rutas todavía no disponibles. Los tres perfiles conservan su rol y usan estas rutas
+públicas durante esta etapa; el destino administrativo se conectará al migrar administración.
+
+Cerrar sesión conserva la compra y mantiene la página pública actual. Una sesión
+vigente evita volver a mostrar el formulario de Login. El registro se incorporará
+en la siguiente etapa.
 
 ## Desarrollo y verificación
 

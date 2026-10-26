@@ -4,11 +4,12 @@ import userEvent from "@testing-library/user-event";
 import { Link, MemoryRouter, Route, Routes } from "react-router-dom";
 
 import CartProvider from "../../context/CartContext.jsx";
+import AuthProvider from "../../context/AuthContext.jsx";
 import PublicLayout from "./PublicLayout.jsx";
 
 function renderLayout() {
     render(
-        <CartProvider>
+        <AuthProvider><CartProvider>
             <MemoryRouter>
                 <Routes>
                     <Route element={<PublicLayout />}>
@@ -24,7 +25,7 @@ function renderLayout() {
                     </Route>
                 </Routes>
             </MemoryRouter>
-        </CartProvider>
+        </CartProvider></AuthProvider>
     );
 }
 
