@@ -9,19 +9,31 @@
 
     color-scheme: dark;
 
-    --kynex-bg: #0b0f0d;
-    --kynex-surface: #121814;
-    --kynex-text: #f4f7f5;
-    --kynex-muted: #a7b0aa;
-    --kynex-accent: #9cff3b;
+    --kynex-bg: #0b0f14;
+    --kynex-bg-soft: #101720;
+    --kynex-surface: #151d27;
+    --kynex-surface-light: #1b2633;
+    --kynex-text: #f8fafc;
+    --kynex-muted: #aab4c3;
+    --kynex-muted-dark: #7d8998;
+    --kynex-accent: #9ef01a;
+    --kynex-accent-hover: #b5ff40;
+    --kynex-danger: #ff5a65;
+    --kynex-success: #42d392;
+    --kynex-border: rgba(255, 255, 255, 0.09);
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
     min-width: 320px;
+
+    scroll-behavior: smooth;
+
     background:
         var(--kynex-bg);
 }
@@ -36,11 +48,16 @@ body {
 
     background:
         var(--kynex-bg);
+
+    line-height: 1.6;
 }
 
 a {
     color:
         inherit;
+
+    text-decoration:
+        none;
 }
 
 .min-vh-75 {
@@ -54,13 +71,13 @@ a {
     background:
         radial-gradient(
             circle at 85% 20%,
-            rgba(156, 255, 59, 0.15),
+            rgba(158, 240, 26, 0.15),
             transparent 35%
         ),
         linear-gradient(
             135deg,
-            #0b0f0d 0%,
-            #111912 100%
+            var(--kynex-bg) 0%,
+            var(--kynex-bg-soft) 100%
         );
 }
 
@@ -76,4 +93,93 @@ a {
 
     letter-spacing:
         0.14em;
+
+    text-transform:
+        uppercase;
+}
+
+.kynex-badge,
+.kynex-stock-badge {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    width:
+        fit-content;
+
+    padding:
+        0.35rem 0.65rem;
+
+    border:
+        1px solid var(--kynex-border);
+
+    border-radius:
+        999px;
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.04em;
+
+    text-transform:
+        uppercase;
+}
+
+.kynex-badge {
+    color:
+        var(--kynex-accent);
+
+    background:
+        rgba(158, 240, 26, 0.08);
+}
+
+.kynex-stock-badge--success {
+    color:
+        var(--kynex-success);
+
+    background:
+        rgba(66, 211, 146, 0.08);
+}
+
+.kynex-stock-badge--warning {
+    color:
+        var(--kynex-accent);
+
+    background:
+        rgba(158, 240, 26, 0.08);
+}
+
+.kynex-stock-badge--danger {
+    color:
+        var(--kynex-danger);
+
+    background:
+        rgba(255, 90, 101, 0.08);
+}
+
+.kynex-price {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+}
+
+.kynex-price small {
+    color:
+        var(--kynex-muted-dark);
+}
+
+.kynex-price strong {
+    color:
+        var(--kynex-text);
+
+    font-size:
+        1.25rem;
 }
