@@ -121,7 +121,7 @@
         700;
 }
 
-.shop-product-body h2 {
+.shop-product-body :is(h2, h3) {
     margin-bottom:
         0.75rem;
 

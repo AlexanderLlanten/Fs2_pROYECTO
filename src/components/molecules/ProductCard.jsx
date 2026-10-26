@@ -9,8 +9,10 @@ import StockBadge from "../atoms/StockBadge.jsx";
 
 function ProductCard({
     product,
-    onAddToCart
+    onAddToCart,
+    headingLevel = 2
 }) {
+    const Heading = `h${headingLevel}`;
     const isOutOfStock =
         Number(product.stock) <= 0;
 
@@ -57,9 +59,9 @@ function ProductCard({
                     </span>
                 </div>
 
-                <h2>
+                <Heading>
                     {product.name}
-                </h2>
+                </Heading>
 
                 <p>
                     {product.description}

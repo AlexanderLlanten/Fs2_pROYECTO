@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./styles/global.css";
 import "./styles/shop.css";
 import "./styles/layout.css";
+import "./styles/home.css";
 
 import App from "./App.jsx";
 

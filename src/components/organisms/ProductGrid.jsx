@@ -2,7 +2,8 @@ import ProductCard from "../molecules/ProductCard.jsx";
 
 function ProductGrid({
     products,
-    onAddToCart
+    onAddToCart,
+    headingLevel = 2
 }) {
     if (
         !Array.isArray(products)
@@ -41,6 +42,7 @@ function ProductGrid({
                         <ProductCard
                             product={product}
                             onAddToCart={onAddToCart}
+                            headingLevel={headingLevel}
                         />
                     </div>
                 )
