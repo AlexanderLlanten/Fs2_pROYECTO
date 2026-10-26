@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth.js";
+import { PERMISSIONS } from "../../utils/permissions.js";
+import RoleGate from "./RoleGate.jsx";
 
-function AccountActions({ onNavigate }) {
+function AccountActions({ onNavigate, showAdminLink = true }) {
     const { user, logout } = useAuth();
     const { pathname, search } = useLocation();
     const [error, setError] = useState("");
@@ -42,6 +44,13 @@ function AccountActions({ onNavigate }) {
                     <span>{user.firstName}</span>
                     <small>{user.role}</small>
                 </p>
+                {showAdminLink && (
+                    <RoleGate permission={PERMISSIONS.ADMIN_ACCESS}>
+                        <NavLink className="kynex-account-link" to="/admin" onClick={onNavigate}>
+                            <i className="bi bi-grid-1x2" aria-hidden="true" />Administración
+                        </NavLink>
+                    </RoleGate>
+                )}
                 <button type="button" className="kynex-account-logout" onClick={handleLogout}>
                     <i className="bi bi-box-arrow-right" aria-hidden="true" />
                     Cerrar sesión

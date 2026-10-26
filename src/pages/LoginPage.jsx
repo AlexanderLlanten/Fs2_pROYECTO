@@ -6,9 +6,9 @@ import useAuth from "../hooks/useAuth.js";
 import { getLoginDestination } from "../utils/authRedirect.js";
 
 function LoginPage() {
-    const { isAuthenticated, login } = useAuth();
+    const { user, isAuthenticated, login } = useAuth();
     const { state } = useLocation();
-    const destination = getLoginDestination(state?.from);
+    const destination = getLoginDestination(state?.from, user?.role);
 
     if (isAuthenticated) {
         return <Navigate to={destination} replace />;

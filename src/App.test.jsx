@@ -88,9 +88,10 @@ describe("Rutas públicas con PublicLayout", () => {
         window.history.replaceState({}, "", "/login");
         render(<App />);
 
-        expect(await screen.findByRole("heading", { name: "Suplementación para cada objetivo" })).toBeInTheDocument();
-        expect(screen.getByText("Martín")).toBeInTheDocument();
-        expect(screen.getByText("Vendedor")).toBeInTheDocument();
+        expect(await screen.findByRole("heading", { name: "Panel de administración" })).toBeInTheDocument();
+        const menu = within(screen.getByRole("complementary", { name: "Menú administrativo" }));
+        expect(menu.getByText("Martín")).toBeInTheDocument();
+        expect(menu.getByText("Vendedor")).toBeInTheDocument();
         expect(screen.queryByRole("form")).not.toBeInTheDocument();
     });
 

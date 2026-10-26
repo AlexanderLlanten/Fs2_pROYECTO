@@ -4,9 +4,9 @@ import useAuth from "../hooks/useAuth.js";
 import { getLoginDestination } from "../utils/authRedirect.js";
 
 function RegistrationPage() {
-    const { isAuthenticated, register } = useAuth();
+    const { user, isAuthenticated, register } = useAuth();
     const { state } = useLocation();
-    if (isAuthenticated) return <Navigate to={getLoginDestination(state?.from)} replace />;
+    if (isAuthenticated) return <Navigate to={getLoginDestination(state?.from, user?.role)} replace />;
 
     return (
         <>

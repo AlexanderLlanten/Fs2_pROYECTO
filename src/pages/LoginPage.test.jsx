@@ -28,6 +28,7 @@ function renderPage(from) {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/productos" element={<Destination />} />
                     <Route path="/carrito" element={<Destination />} />
+                    <Route path="/admin" element={<Destination />} />
                 </Routes>
             </MemoryRouter>
         </AuthProvider>
@@ -61,7 +62,7 @@ describe("LoginPage", () => {
         await submitCredentials(user, email);
 
         expect(await screen.findByRole("heading", { name: "Destino del acceso" })).toBeInTheDocument();
-        expect(screen.getByLabelText("Destino actual")).toHaveTextContent("/productos");
+        expect(screen.getByLabelText("Destino actual")).toHaveTextContent(role === "Cliente" ? "/productos" : "/admin");
         expect(screen.getByLabelText("Perfil actual")).toHaveTextContent(role);
         expect(JSON.parse(localStorage.getItem(SESSION_KEY))).toMatchObject({ email, role });
     });
@@ -73,6 +74,20 @@ describe("LoginPage", () => {
         await submitCredentials(user, "camila@gmail.com");
 
         expect(await screen.findByLabelText("Destino actual")).toHaveTextContent("/productos?categoria=Vitaminas");
+    });
+
+    it("regresa al panel solicitado después de autenticar un vendedor", async () => {
+        const user = userEvent.setup();
+        renderPage({ pathname: "/admin", search: "?vista=resumen" });
+        await submitCredentials(user, "martin@duoc.cl");
+        expect(await screen.findByLabelText("Destino actual")).toHaveTextContent("/admin?vista=resumen");
+    });
+
+    it("descarta un origen administrativo si ingresa un Cliente", async () => {
+        const user = userEvent.setup();
+        renderPage({ pathname: "/admin" });
+        await submitCredentials(user, "camila@gmail.com");
+        expect(await screen.findByLabelText("Destino actual")).toHaveTextContent("/productos");
     });
 
     it("redirige al visitante que ya tiene sesión sin volver a mostrar el formulario", async () => {

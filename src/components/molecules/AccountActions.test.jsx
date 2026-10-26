@@ -27,6 +27,16 @@ describe("AccountActions", () => {
     beforeEach(() => localStorage.clear());
     afterEach(() => vi.restoreAllMocks());
 
+    it.each([["camila@gmail.com", false], ["martin@duoc.cl", true], ["admin@profesor.duoc.cl", true]])(
+        "ofrece Administración según el permiso de %s", (email, allowed) => {
+            loginUser(email, "1234");
+            renderActions();
+            const link = screen.queryByRole("link", { name: "Administración" });
+            if (allowed) expect(link).toHaveAttribute("href", "/admin");
+            else expect(link).not.toBeInTheDocument();
+        }
+    );
+
     it("lleva al login conservando la página de origen y sus filtros", async () => {
         const user = userEvent.setup();
         renderActions();
