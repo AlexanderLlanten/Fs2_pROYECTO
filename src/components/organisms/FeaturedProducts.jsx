@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 import ProductGrid from "./ProductGrid.jsx";
 
-function FeaturedProducts({ products, onAddToCart }) {
+function FeaturedProducts({ products, onAddToCart, feedback = "" }) {
     const featuredProducts = products.filter(product => product.featured);
 
     if (featuredProducts.length === 0) {
@@ -28,6 +28,9 @@ function FeaturedProducts({ products, onAddToCart }) {
                         Ver todo el catálogo
                     </Link>
                 </div>
+                <p className="home-feedback" role="status" aria-live="polite" aria-atomic="true">
+                    {feedback}
+                </p>
                 <ProductGrid
                     products={featuredProducts}
                     onAddToCart={onAddToCart}

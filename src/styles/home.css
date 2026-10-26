@@ -149,6 +149,12 @@
     margin: 0;
 }
 
+.home-feedback {
+    min-height: 1.6rem;
+    margin-bottom: 1.25rem;
+    color: var(--kynex-accent);
+}
+
 .home-category-card,
 .home-feature-card {
     display: block;

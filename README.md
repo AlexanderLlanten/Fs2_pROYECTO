@@ -16,6 +16,19 @@ Frontend KYNEX en migración a React, Vite y React Router.
 Las rutas disponibles son `/`, `/productos`, `/productos/:id` y `/carrito`.
 La navegación compartida enlaza estas rutas ya migradas.
 
+## Inicio KYNEX
+
+HomePage recupera el encabezado «Entrena mejor. Supérate.» y la imagen original
+de la marca. Compone HomeHero, CategoryGrid y FeaturedProducts con las moléculas
+SectionHeading, CategoryCard y FeatureCard. Los destacados se obtienen del campo
+`featured` de los mismos productos usados en el catálogo y se agregan al carrito
+compartido, respetando el stock y mostrando una confirmación accesible.
+
+Las categorías abren `/productos?categoria=...`. El selector del catálogo se
+sincroniza con ese parámetro y con el historial del navegador; una categoría
+desconocida muestra el catálogo completo. El aviso de despacho usa
+`FREE_SHIPPING_FROM`, la misma regla que calcula el total del carrito.
+
 ## Desarrollo y verificación
 
 Requiere Node.js 22.12 o superior.

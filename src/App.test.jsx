@@ -16,7 +16,7 @@ describe("Rutas públicas con PublicLayout", () => {
     });
 
     it.each([
-        ["/", "La evolución de KYNEX comienza aquí."],
+        ["/", "Entrena mejor. Supérate."],
         ["/productos", "Suplementación para cada objetivo"],
         ["/productos/2", "Creatina Monohidratada"],
         ["/productos/999", "Producto no encontrado"],
@@ -30,6 +30,35 @@ describe("Rutas públicas con PublicLayout", () => {
         expect(screen.getAllByRole("contentinfo")).toHaveLength(1);
         expect(within(screen.getByRole("main")).getByRole("heading", { level: 1, name: title })).toBeInTheDocument();
         expect(within(screen.getByRole("banner")).getByRole("link", { name: "Carrito (0)" })).toBeInTheDocument();
+    });
+
+    it.each(["Proteínas", "Creatinas", "Vitaminas", "Pre-entreno"])(
+        "abre %s desde el inicio con el catálogo filtrado",
+        async category => {
+            const user = userEvent.setup();
+            render(<App />);
+
+            await user.click(screen.getByRole("link", { name: `Explorar ${category}` }));
+
+            expect(screen.getByRole("heading", { level: 1, name: "Suplementación para cada objetivo" })).toBeInTheDocument();
+            expect(screen.getByRole("combobox", { name: /filtrar por categoría/i })).toHaveValue(category);
+            expect(new URLSearchParams(window.location.search).get("categoria")).toBe(category);
+            expect(screen.getAllByRole("article").length).toBeGreaterThan(0);
+        }
+    );
+
+    it("agrega un destacado desde el inicio y lo conserva al abrir el carrito", async () => {
+        const user = userEvent.setup();
+        render(<App />);
+        const card = screen.getByRole("heading", { level: 3, name: "Creatina Monohidratada" }).closest("article");
+
+        await user.click(within(card).getByRole("button", { name: "Agregar" }));
+        expect(screen.getByRole("status")).toHaveTextContent("Agregaste Creatina Monohidratada al carrito.");
+        await user.click(screen.getByRole("link", { name: "Carrito (1)" }));
+
+        expect(screen.getByRole("heading", { name: "Carrito de compras" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Creatina Monohidratada" })).toBeInTheDocument();
+        expect(screen.getByLabelText("Cantidad actual")).toHaveTextContent("1");
     });
 
     it("mantiene el carrito y su contador al navegar entre inicio, catálogo, detalle y carrito", async () => {
