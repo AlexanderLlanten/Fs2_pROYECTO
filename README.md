@@ -19,7 +19,7 @@ y luego `npm.cmd run preview`. Desde el ZIP, extraer y abrir una terminal donde
 está `package.json`; ejecutar desde `npm.cmd ci`. El archivo conserva las fuentes
 y documentos y omite `.git`, `node_modules`, `dist` y `coverage`.
 
-- [ERS actualizado 2.1](docs/entrega/ERS_KYNEX_V2_1.docx).
+- [ERS actualizado V2](docs/entrega/ERS_KYNEX_V2.docx).
 - [Informe de cobertura en Word](docs/entrega/Cobertura_Testing_KYNEX.docx) y [versión Markdown](docs/cobertura-testing.md).
 - [Guía de defensa con diez pruebas](docs/guia-defensa.md).
 - [Auditoría final](docs/auditoria-final.md), [evidencias](docs/evidencias/) y [avance frente a la pauta](docs/avance-migracion.md).

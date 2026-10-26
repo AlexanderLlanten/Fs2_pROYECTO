@@ -6,7 +6,7 @@ Corte final: 26 de octubre de 2026. Rama: `feature/react-migration`.
 
 - **Migración de pantallas: 20 de 20, 100%.** No faltan pantallas del inventario por incorporar a React.
 - **Autoevaluación técnica frente al encargo: 95%; margen pendiente estimado: 5%.** Es un juicio de revisión sobre la rúbrica, no una calificación ni un porcentaje de horas.
-- Código, ERS 2.1, documento de cobertura, guía de defensa y fuentes para el ZIP preparados. El alcance académico Front End está implementado y verificado en los escenarios descritos.
+- Código, ERS V2, documento de cobertura, guía de defensa y fuentes para el ZIP preparados. El alcance académico Front End está implementado y verificado en los escenarios descritos.
 - Continúan pendientes comprobaciones de aceptación ligadas al entorno: reproducción externa, matriz de navegadores y mediciones de rendimiento. La preparación material de la defensa no equivale a haberla presentado.
 
 El 81% del corte anterior queda como antecedente: faltaban auditoría transversal,
@@ -40,21 +40,23 @@ El 5% tampoco representa una lista exacta de tareas ni permite calcular horas re
 | Elemento | Resultado |
 | --- | --- |
 | Clon público y npm ci | Correctos, con Node 24.22.1 y npm 11.19.1 |
-| Regresión de cierre | 80 archivos, 597 aprobadas, 0 fallidas, 0 omitidas; 150,02 s |
-| Cobertura | Sentencias 97,91%; ramas 94,66%; funciones 99,30%; líneas 98,98% |
+| Regresión de cierre | 80 archivos, 597 aprobadas, 0 fallidas, 0 omitidas; 130,76 s |
+| Cobertura | Sentencias 97,91%; ramas 94,74%; funciones 99,30%; líneas 98,98% |
 | Producción | Build correcto en clon limpio y después del ajuste CSS |
 | Navegador | 22 rutas/variantes × 3 tamaños, además de roles, formularios, persistencia y cinco errores de ruta |
-| ERS | Revisión 2.1, 24 RF y 17 RNF con trazabilidad y límites explícitos |
+| ERS | Versión 2 ejecutiva, 24 RF y 17 RNF con criterios y límites explícitos |
 | Testing | Informe Word y versión Markdown con resultados, mocks, diez casos y riesgos residuales |
 | Defensa | Guía con comandos y explicación de diez pruebas |
 
-La suite se midió en `a4c13bc`. El cambio de código posterior `55f03c3` solo afecta
-CSS; el contenido JS/JSX, dependencias y configuración coincide, normalizando LF/CRLF.
-La evidencia se conserva en [evidencias](evidencias/).
+La cobertura vigente se midió sobre `de87421`, incluida la corrección de imágenes
+del carrito. Las 597 pruebas aprobaron en 130,76 s. Los informes se actualizaron
+con redacción ejecutiva, en tercera persona y autocontenida. La nueva medición se
+conserva en [testing V2](evidencias/testing-v2.json) y
+[cobertura V2](evidencias/coverage-v2.json); la evidencia del cierre anterior se mantiene como antecedente.
 
 Referencias: [auditoría final](auditoria-final.md), [paridad EP1](paridad-ep1.md),
 [informe de testing](cobertura-testing.md), [guía de defensa](guia-defensa.md),
-[ERS 2.1](entrega/ERS_KYNEX_V2_1.docx) e
+[ERS V2](entrega/ERS_KYNEX_V2.docx) e
 [informe Word](entrega/Cobertura_Testing_KYNEX.docx).
 
 ## Presentación individual
@@ -83,5 +85,6 @@ futura, no se añaden para cerrar esta migración Front End.
 No es necesario ejecutar las 597 pruebas después de cada cambio o descarga.
 Seleccionar el módulo afectado durante el desarrollo. Ejecutar la suite completa
 ante cambios compartidos, conflictos o fallos; generar cobertura al actualizar la
-evidencia final. Este cierre ya incluye la regresión; los cambios posteriores de
-CSS y documentación se verifican con build, navegador y revisión de documentos.
+evidencia final. La actualización de informes ya incluye la regresión sobre el
+código vigente; los cambios exclusivos de documentación se verifican mediante
+revisión editorial, visual y de consistencia de datos.

@@ -152,6 +152,6 @@ npm.cmd test -- src/services/adminUsers.test.js -t 'revierte la sesión si falla
 - Abrir la rama feature/react-migration y verificar instalación/build en el equipo de la presentación. Usar un perfil de prueba y conservar el mismo origen para LocalStorage.
 - Verificar reproducción de YouTube en ese navegador; durante la auditoría mostró restricción y código 151. No anunciar la reproducción como comprobada.
 - Ensayar roles con las cuentas demostrativas del README y datos de prueba. No utilizar datos personales reales.
-- Abrir el ERS 2.1, el informe Word y coverage/index.html; el HTML se genera con npm.cmd run test:coverage.
+- Abrir el ERS V2, el informe Word y coverage/index.html; el HTML se genera con npm.cmd run test:coverage.
 - Practicar la explicación de preparación, acción y aserciones, sin memorizar solo nombres o porcentajes. Ajustar el tiempo a lo que indique el docente.
 - El ZIP incluye fuentes y documentos; no incluye node_modules, dist ni coverage, que se regeneran. La entrega al aula virtual la realiza el estudiante.
