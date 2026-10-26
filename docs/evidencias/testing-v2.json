@@ -1,0 +1,3562 @@
+{
+  "fecha": "2026-10-26",
+  "rama": "feature/react-migration",
+  "commit_suite": "de874210bc748c2cb95ce77734811b35b27aa513",
+  "alcance": "Regresión y cobertura vigentes tras corregir las imágenes del carrito. Actualización de informes ejecutivos V2.",
+  "entorno": {
+    "sistema": "Windows",
+    "node": "24.22.1",
+    "npm": "11.19.1",
+    "vitest": "5.0.5",
+    "jsdom": "30.1.3"
+  },
+  "resultado": {
+    "archivos": 80,
+    "pruebas": 597,
+    "aprobadas": 597,
+    "fallidas": 0,
+    "omitidas": 0,
+    "duracion_segundos": 130.76
+  },
+  "grupos": {
+    "src": {
+      "archivos": 11,
+      "pruebas": 169
+    },
+    "src/components/atoms": {
+      "archivos": 7,
+      "pruebas": 21
+    },
+    "src/components/molecules": {
+      "archivos": 12,
+      "pruebas": 34
+    },
+    "src/components/organisms": {
+      "archivos": 20,
+      "pruebas": 80
+    },
+    "src/components/templates": {
+      "archivos": 2,
+      "pruebas": 5
+    },
+    "src/context": {
+      "archivos": 3,
+      "pruebas": 27
+    },
+    "src/pages": {
+      "archivos": 8,
+      "pruebas": 35
+    },
+    "src/routes": {
+      "archivos": 1,
+      "pruebas": 15
+    },
+    "src/services": {
+      "archivos": 6,
+      "pruebas": 115
+    },
+    "src/utils": {
+      "archivos": 10,
+      "pruebas": 96
+    }
+  },
+  "cobertura": {
+    "lines": {
+      "total": 1088,
+      "covered": 1077,
+      "skipped": 0,
+      "pct": 98.98
+    },
+    "statements": {
+      "total": 1342,
+      "covered": 1314,
+      "skipped": 0,
+      "pct": 97.91
+    },
+    "functions": {
+      "total": 434,
+      "covered": 431,
+      "skipped": 0,
+      "pct": 99.3
+    },
+    "branches": {
+      "total": 1104,
+      "covered": 1046,
+      "skipped": 0,
+      "pct": 94.74
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "archivos": [
+    {
+      "archivo": "src/About.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Nosotros integrado abre la ruta pública con el perfil undefined",
+          "estado": "passed",
+          "duracion_ms": 247.13710000000037
+        },
+        {
+          "nombre": "Nosotros integrado abre la ruta pública con el perfil camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 84.83710000000019
+        },
+        {
+          "nombre": "Nosotros integrado abre la ruta pública con el perfil martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 126.93859999999995
+        },
+        {
+          "nombre": "Nosotros integrado abre la ruta pública con el perfil admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 87.19579999999996
+        },
+        {
+          "nombre": "Nosotros integrado navega desde cabecera y pie y cierra el menú móvil",
+          "estado": "passed",
+          "duracion_ms": 609.8838000000001
+        },
+        {
+          "nombre": "Nosotros integrado abre Proteínas con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 147.3762999999999
+        },
+        {
+          "nombre": "Nosotros integrado abre Creatinas con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 112.9704999999999
+        },
+        {
+          "nombre": "Nosotros integrado abre Pre-entreno con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 113.32319999999982
+        },
+        {
+          "nombre": "Nosotros integrado abre Vitaminas con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 133.85100000000057
+        },
+        {
+          "nombre": "Nosotros integrado abre el catálogo completo desde Explorar catálogo",
+          "estado": "passed",
+          "duracion_ms": 196.90570000000025
+        },
+        {
+          "nombre": "Nosotros integrado abre el catálogo completo desde Ir a la tienda",
+          "estado": "passed",
+          "duracion_ms": 118.77900000000045
+        },
+        {
+          "nombre": "Nosotros integrado vuelve desde Login y conserva compra y rutina al cerrar sesión",
+          "estado": "passed",
+          "duracion_ms": 725.8467
+        },
+        {
+          "nombre": "Nosotros integrado restaura la ruta al recargar sin modificar datos guardados",
+          "estado": "passed",
+          "duracion_ms": 168.65010000000075
+        },
+        {
+          "nombre": "Nosotros integrado muestra 404 en un subcamino desconocido sin marcar Nosotros como activo",
+          "estado": "passed",
+          "duracion_ms": 40.67989999999918
+        }
+      ]
+    },
+    {
+      "archivo": "src/AdminOrders.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Consulta de pedidos integrada exige sesión antes de mostrar /admin/pedidos",
+          "estado": "passed",
+          "duracion_ms": 310.96050000000014
+        },
+        {
+          "nombre": "Consulta de pedidos integrada exige sesión antes de mostrar /admin/pedidos/1001",
+          "estado": "passed",
+          "duracion_ms": 70.41779999999972
+        },
+        {
+          "nombre": "Consulta de pedidos integrada exige sesión antes de mostrar /admin/pedidos/999",
+          "estado": "passed",
+          "duracion_ms": 43.427599999999984
+        },
+        {
+          "nombre": "Consulta de pedidos integrada envía Cliente a la tienda en /admin/pedidos",
+          "estado": "passed",
+          "duracion_ms": 77.9378999999999
+        },
+        {
+          "nombre": "Consulta de pedidos integrada envía Cliente a la tienda en /admin/pedidos/1001",
+          "estado": "passed",
+          "duracion_ms": 71.92700000000013
+        },
+        {
+          "nombre": "Consulta de pedidos integrada envía Cliente a la tienda en /admin/pedidos/1001/extra",
+          "estado": "passed",
+          "duracion_ms": 60.16939999999977
+        },
+        {
+          "nombre": "Consulta de pedidos integrada navega entre lista, detalle y regreso como admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 307.03669999999966
+        },
+        {
+          "nombre": "Consulta de pedidos integrada navega entre lista, detalle y regreso como martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 234.38560000000007
+        },
+        {
+          "nombre": "Consulta de pedidos integrada retorna al detalle y su consulta después del Login de admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 376.5194999999999
+        },
+        {
+          "nombre": "Consulta de pedidos integrada retorna al detalle y su consulta después del Login de martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 293.7349999999997
+        },
+        {
+          "nombre": "Consulta de pedidos integrada informa un pedido inexistente o id inválido: 999",
+          "estado": "passed",
+          "duracion_ms": 26.9958000000006
+        },
+        {
+          "nombre": "Consulta de pedidos integrada informa un pedido inexistente o id inválido: invalido",
+          "estado": "passed",
+          "duracion_ms": 26.857600000000275
+        },
+        {
+          "nombre": "Consulta de pedidos integrada informa un pedido inexistente o id inválido: 1001abc",
+          "estado": "passed",
+          "duracion_ms": 26.024500000000444
+        },
+        {
+          "nombre": "Consulta de pedidos integrada informa un pedido inexistente o id inválido: 1e3",
+          "estado": "passed",
+          "duracion_ms": 22.699399999999514
+        },
+        {
+          "nombre": "Consulta de pedidos integrada no reconstruye importes históricos con los precios o productos actuales",
+          "estado": "passed",
+          "duracion_ms": 34.79919999999947
+        },
+        {
+          "nombre": "Consulta de pedidos integrada retira el detalle y sus datos al perder permiso desde otra pestaña",
+          "estado": "passed",
+          "duracion_ms": 67.66010000000006
+        },
+        {
+          "nombre": "Consulta de pedidos integrada retira el detalle si otra pestaña cierra la sesión",
+          "estado": "passed",
+          "duracion_ms": 28.2491
+        },
+        {
+          "nombre": "Consulta de pedidos integrada ofrece los accesos del panel según el perfil de admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 83.61389999999938
+        },
+        {
+          "nombre": "Consulta de pedidos integrada ofrece los accesos del panel según el perfil de martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 108.04799999999977
+        },
+        {
+          "nombre": "Consulta de pedidos integrada cierra el menú móvil al navegar hacia Pedidos",
+          "estado": "passed",
+          "duracion_ms": 144.72410000000036
+        },
+        {
+          "nombre": "Consulta de pedidos integrada muestra 404 para un subcamino desconocido de pedidos",
+          "estado": "passed",
+          "duracion_ms": 14.651899999999841
+        },
+        {
+          "nombre": "Consulta de pedidos integrada no muestra la lista si el servicio deniega el acceso y permite revisar la sesión",
+          "estado": "passed",
+          "duracion_ms": 88.87249999999949
+        },
+        {
+          "nombre": "Consulta de pedidos integrada no presenta datos de detalle cuando el servicio deniega la consulta",
+          "estado": "passed",
+          "duracion_ms": 14.936300000000301
+        }
+      ]
+    },
+    {
+      "archivo": "src/AdminProducts.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Gestión de productos integrada exige sesión en /admin/productos",
+          "estado": "passed",
+          "duracion_ms": 214.29209999999966
+        },
+        {
+          "nombre": "Gestión de productos integrada exige sesión en /admin/productos/nuevo",
+          "estado": "passed",
+          "duracion_ms": 31.10189999999966
+        },
+        {
+          "nombre": "Gestión de productos integrada exige sesión en /admin/productos/1/editar",
+          "estado": "passed",
+          "duracion_ms": 35.50420000000031
+        },
+        {
+          "nombre": "Gestión de productos integrada permite consultar al Vendedor y bloquea el acceso directo al formulario",
+          "estado": "passed",
+          "duracion_ms": 182.30549999999994
+        },
+        {
+          "nombre": "Gestión de productos integrada retorna al formulario solicitado después del Login",
+          "estado": "passed",
+          "duracion_ms": 375.6900999999998
+        },
+        {
+          "nombre": "Gestión de productos integrada crea, persiste y publica el producto en su detalle y categoría",
+          "estado": "passed",
+          "duracion_ms": 1235.9591000000005
+        },
+        {
+          "nombre": "Gestión de productos integrada edita precio y stock, actualiza el carrito y restaura el cambio al recargar",
+          "estado": "passed",
+          "duracion_ms": 439.3050999999996
+        },
+        {
+          "nombre": "Gestión de productos integrada cancela y confirma la eliminación, retira la compra y devuelve el foco",
+          "estado": "passed",
+          "duracion_ms": 419.8271999999997
+        },
+        {
+          "nombre": "Gestión de productos integrada conserva el borrador y exige recargar si otra pestaña cambia el producto",
+          "estado": "passed",
+          "duracion_ms": 299.2620999999999
+        },
+        {
+          "nombre": "Gestión de productos integrada informa un id inexistente sin ofrecer guardar: 999",
+          "estado": "passed",
+          "duracion_ms": 15.194800000000214
+        },
+        {
+          "nombre": "Gestión de productos integrada informa un id inexistente sin ofrecer guardar: invalido",
+          "estado": "passed",
+          "duracion_ms": 14.540199999999459
+        },
+        {
+          "nombre": "Gestión de productos integrada conserva la fila y anuncia un fallo al persistir una eliminación",
+          "estado": "passed",
+          "duracion_ms": 220.02019999999993
+        },
+        {
+          "nombre": "Gestión de productos integrada comparte cambios del servicio con el inicio y el resumen del panel sin recargar",
+          "estado": "passed",
+          "duracion_ms": 130.8737000000001
+        },
+        {
+          "nombre": "Gestión de productos integrada muestra el fallo del catálogo sin borrar la compra y permite reintentar",
+          "estado": "passed",
+          "duracion_ms": 70.5047999999997
+        }
+      ]
+    },
+    {
+      "archivo": "src/AdminRoutes.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Acceso administrativo integrado exige sesión al abrir directamente /admin",
+          "estado": "passed",
+          "duracion_ms": 199.21309999999994
+        },
+        {
+          "nombre": "Acceso administrativo integrado exige sesión al abrir directamente /admin/no-existe",
+          "estado": "passed",
+          "duracion_ms": 37.23279999999977
+        },
+        {
+          "nombre": "Acceso administrativo integrado envía al Cliente a la tienda al abrir /admin",
+          "estado": "passed",
+          "duracion_ms": 102.30670000000009
+        },
+        {
+          "nombre": "Acceso administrativo integrado envía al Cliente a la tienda al abrir /admin/usuarios",
+          "estado": "passed",
+          "duracion_ms": 62.207400000000234
+        },
+        {
+          "nombre": "Acceso administrativo integrado envía al Cliente a la tienda al abrir /admin/productos/nuevo",
+          "estado": "passed",
+          "duracion_ms": 68.44329999999991
+        },
+        {
+          "nombre": "Acceso administrativo integrado permite entrar y restaurar el panel para martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 69.65179999999964
+        },
+        {
+          "nombre": "Acceso administrativo integrado permite entrar y restaurar el panel para admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 128.98559999999998
+        },
+        {
+          "nombre": "Acceso administrativo integrado regresa al panel solicitado después del Login y conserva el carrito al salir",
+          "estado": "passed",
+          "duracion_ms": 671.6286
+        },
+        {
+          "nombre": "Acceso administrativo integrado conserva el acceso y explica el fallo si no puede cerrar la sesión",
+          "estado": "passed",
+          "duracion_ms": 93.91859999999997
+        },
+        {
+          "nombre": "Acceso administrativo integrado revoca el acceso al panel y su enlace si cambian el rol a Cliente desde otra pestaña",
+          "estado": "passed",
+          "duracion_ms": 104.86310000000003
+        },
+        {
+          "nombre": "Acceso administrativo integrado retira el panel si otra pestaña cierra sesión",
+          "estado": "passed",
+          "duracion_ms": 30.254399999999805
+        },
+        {
+          "nombre": "Acceso administrativo integrado abre Administración desde la tienda solo al perfil autorizado",
+          "estado": "passed",
+          "duracion_ms": 201.03489999999965
+        },
+        {
+          "nombre": "Acceso administrativo integrado ofrece una salida válida para rutas inexistentes públicas y administrativas",
+          "estado": "passed",
+          "duracion_ms": 89.86530000000039
+        }
+      ]
+    },
+    {
+      "archivo": "src/AdminUsers.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Gestión de usuarios integrada reserva /admin/usuarios al Administrador",
+          "estado": "passed",
+          "duracion_ms": 248.4067
+        },
+        {
+          "nombre": "Gestión de usuarios integrada reserva /admin/usuarios/nuevo al Administrador",
+          "estado": "passed",
+          "duracion_ms": 51.096500000000106
+        },
+        {
+          "nombre": "Gestión de usuarios integrada reserva /admin/usuarios/1/editar al Administrador",
+          "estado": "passed",
+          "duracion_ms": 44.11200000000008
+        },
+        {
+          "nombre": "Gestión de usuarios integrada retorna al formulario pedido después de autenticar al administrador",
+          "estado": "passed",
+          "duracion_ms": 671.5998999999997
+        },
+        {
+          "nombre": "Gestión de usuarios integrada lista perfiles sin contraseñas y evita ofrecer la eliminación propia",
+          "estado": "passed",
+          "duracion_ms": 82.17469999999958
+        },
+        {
+          "nombre": "Gestión de usuarios integrada crea un usuario con el rol elegido y vuelve a la lista con confirmación",
+          "estado": "passed",
+          "duracion_ms": 959.8887000000004
+        },
+        {
+          "nombre": "Gestión de usuarios integrada edita un registro manteniendo su identidad y contraseña",
+          "estado": "passed",
+          "duracion_ms": 417.15219999999954
+        },
+        {
+          "nombre": "Gestión de usuarios integrada cancela o confirma la eliminación sin afectar sesión ni carrito",
+          "estado": "passed",
+          "duracion_ms": 333.72530000000006
+        },
+        {
+          "nombre": "Gestión de usuarios integrada mantiene el registro y muestra el error si no puede persistir una eliminación",
+          "estado": "passed",
+          "duracion_ms": 154.04159999999956
+        },
+        {
+          "nombre": "Gestión de usuarios integrada actualiza el perfil conectado al modificar su correo",
+          "estado": "passed",
+          "duracion_ms": 591.7394999999997
+        },
+        {
+          "nombre": "Gestión de usuarios integrada retira el área administrativa si el usuario cambia su propio rol a Cliente",
+          "estado": "passed",
+          "duracion_ms": 166.50950000000012
+        },
+        {
+          "nombre": "Gestión de usuarios integrada no reemplaza el borrador con cambios de otra pestaña y exige recargar antes de guardar",
+          "estado": "passed",
+          "duracion_ms": 434.60279999999966
+        },
+        {
+          "nombre": "Gestión de usuarios integrada muestra un error al editar un usuario inexistente: 999",
+          "estado": "passed",
+          "duracion_ms": 22.838600000000042
+        },
+        {
+          "nombre": "Gestión de usuarios integrada muestra un error al editar un usuario inexistente: invalido",
+          "estado": "passed",
+          "duracion_ms": 16.57420000000002
+        },
+        {
+          "nombre": "Gestión de usuarios integrada sincroniza la lista cuando se crea un usuario desde otra pestaña",
+          "estado": "passed",
+          "duracion_ms": 66.95160000000033
+        }
+      ]
+    },
+    {
+      "archivo": "src/App.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Rutas públicas con PublicLayout carga / con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 296.3701999999994
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /productos con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 70.02919999999995
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /productos/2 con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 54.25640000000021
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /productos/999 con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 33.76440000000002
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /carrito con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 36.775400000000445
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /login con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 47.4360999999999
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /registro con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 52.276199999999335
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /contacto con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 39.44239999999991
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /entrenamiento con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 52.71429999999964
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /rutina con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 31.72109999999975
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /nosotros con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 63.485899999999674
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /blog con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 37.36999999999989
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /blog/creatina-y-rendimiento con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 32.88390000000072
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout carga /blog/recuperacion-muscular con una sola cabecera, un main y un footer",
+          "estado": "passed",
+          "duracion_ms": 34.84010000000035
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout registra una cuenta desde Login, permite ingresar y vuelve al carrito con la compra intacta",
+          "estado": "passed",
+          "duracion_ms": 1566.5078000000003
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout inicia y cierra sesión desde el carrito sin perder la compra ni la página de origen",
+          "estado": "passed",
+          "duracion_ms": 693.9706999999999
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout restaura el perfil en la barra al recargar y evita volver al formulario con sesión activa",
+          "estado": "passed",
+          "duracion_ms": 43.63050000000021
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout abre Proteínas desde el inicio con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 162.60159999999996
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout abre Creatinas desde el inicio con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 154.58759999999984
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout abre Vitaminas desde el inicio con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 142.60590000000047
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout abre Pre-entreno desde el inicio con el catálogo filtrado",
+          "estado": "passed",
+          "duracion_ms": 168.5485000000008
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout agrega un destacado desde el inicio y lo conserva al abrir el carrito",
+          "estado": "passed",
+          "duracion_ms": 242.44690000000082
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout mantiene el carrito y su contador al navegar entre inicio, catálogo, detalle y carrito",
+          "estado": "passed",
+          "duracion_ms": 636.2687999999998
+        },
+        {
+          "nombre": "Rutas públicas con PublicLayout recupera el carrito al recargar y actualiza el contador al vaciarlo",
+          "estado": "passed",
+          "duracion_ms": 154.09880000000157
+        }
+      ]
+    },
+    {
+      "archivo": "src/Blog.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Blog y artículos integrados permite portada y ambos artículos con el perfil undefined",
+          "estado": "passed",
+          "duracion_ms": 552.9577999999999
+        },
+        {
+          "nombre": "Blog y artículos integrados permite portada y ambos artículos con el perfil camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 340.54169999999976
+        },
+        {
+          "nombre": "Blog y artículos integrados permite portada y ambos artículos con el perfil martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 327.23950000000013
+        },
+        {
+          "nombre": "Blog y artículos integrados permite portada y ambos artículos con el perfil admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 373.7040999999999
+        },
+        {
+          "nombre": "Blog y artículos integrados abre directamente y restaura creatina-y-rendimiento al recargar",
+          "estado": "passed",
+          "duracion_ms": 86.52629999999999
+        },
+        {
+          "nombre": "Blog y artículos integrados abre directamente y restaura recuperacion-muscular al recargar",
+          "estado": "passed",
+          "duracion_ms": 123.10879999999997
+        },
+        {
+          "nombre": "Blog y artículos integrados abre Blog desde cabecera y pie y cierra el menú móvil",
+          "estado": "passed",
+          "duracion_ms": 352.6395000000002
+        },
+        {
+          "nombre": "Blog y artículos integrados reutiliza la lectura al pasar de un artículo a otro sin mezclar sus secciones",
+          "estado": "passed",
+          "duracion_ms": 188.13350000000037
+        },
+        {
+          "nombre": "Blog y artículos integrados regresa a /blog desde Login y conserva compra y rutina al cerrar sesión",
+          "estado": "passed",
+          "duracion_ms": 508.3941999999997
+        },
+        {
+          "nombre": "Blog y artículos integrados regresa a /blog/creatina-y-rendimiento desde Login y conserva compra y rutina al cerrar sesión",
+          "estado": "passed",
+          "duracion_ms": 417.8892999999998
+        },
+        {
+          "nombre": "Blog y artículos integrados regresa a /blog/recuperacion-muscular desde Login y conserva compra y rutina al cerrar sesión",
+          "estado": "passed",
+          "duracion_ms": 433.92449999999917
+        },
+        {
+          "nombre": "Blog y artículos integrados abre la tienda desde la portada",
+          "estado": "passed",
+          "duracion_ms": 106.84959999999955
+        },
+        {
+          "nombre": "Blog y artículos integrados informa un artículo desconocido y ofrece volver a la portada",
+          "estado": "passed",
+          "duracion_ms": 85.00810000000001
+        },
+        {
+          "nombre": "Blog y artículos integrados muestra 404 general en subcaminos sin implementar",
+          "estado": "passed",
+          "duracion_ms": 19.366399999999885
+        }
+      ]
+    },
+    {
+      "archivo": "src/CatalogParity.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Paridad del catálogo y detalle reutiliza imágenes originales en Inicio, catálogo y detalle y conserva las selecciones",
+          "estado": "passed",
+          "duracion_ms": 584.3452000000002
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle completa el catálogo React anterior sin reemplazar precio, stock ni almacenamiento",
+          "estado": "passed",
+          "duracion_ms": 85.36609999999973
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle respeta vacíos y metadatos personalizados al editar y recargar",
+          "estado": "passed",
+          "duracion_ms": 102.51769999999988
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle elige de una a diez unidades y agrega la cantidad elegida con el total correcto",
+          "estado": "passed",
+          "duracion_ms": 899.4613999999997
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle reduce la selección al stock que queda tras cambios de catálogo y no anuncia unidades de más",
+          "estado": "passed",
+          "duracion_ms": 356.45600000000013
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle bloquea la compra de un agotado y admite un producto nuevo sin ficha",
+          "estado": "passed",
+          "duracion_ms": 44.55339999999978
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle reinicia cantidad y aviso al cambiar el id dentro de la misma ruta de detalle",
+          "estado": "passed",
+          "duracion_ms": 227.10750000000007
+        },
+        {
+          "nombre": "Paridad del catálogo y detalle no interpreta notación numérica alternativa como un id válido ni monta la ficha",
+          "estado": "passed",
+          "duracion_ms": 26.88590000000022
+        }
+      ]
+    },
+    {
+      "archivo": "src/Contact.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Contacto integrado abre la página pública con el perfil undefined",
+          "estado": "passed",
+          "duracion_ms": 276.26950000000033
+        },
+        {
+          "nombre": "Contacto integrado abre la página pública con el perfil camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 67.02280000000019
+        },
+        {
+          "nombre": "Contacto integrado abre la página pública con el perfil martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 63.12219999999979
+        },
+        {
+          "nombre": "Contacto integrado abre la página pública con el perfil admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 66.95589999999993
+        },
+        {
+          "nombre": "Contacto integrado abre Contacto desde la cabecera y cierra el menú móvil",
+          "estado": "passed",
+          "duracion_ms": 192.84720000000016
+        },
+        {
+          "nombre": "Contacto integrado navega desde el pie conservando la compra y el contador",
+          "estado": "passed",
+          "duracion_ms": 151.23019999999997
+        },
+        {
+          "nombre": "Contacto integrado valida localmente sin enviar una petición ni modificar sesión, catálogo o compra",
+          "estado": "passed",
+          "duracion_ms": 454.2273
+        },
+        {
+          "nombre": "Contacto integrado vuelve a Contacto después de iniciar sesión desde la página",
+          "estado": "passed",
+          "duracion_ms": 429.0297999999998
+        },
+        {
+          "nombre": "Contacto integrado conserva el borrador al cerrar sesión en la misma página pública",
+          "estado": "passed",
+          "duracion_ms": 286.8645999999999
+        }
+      ]
+    },
+    {
+      "archivo": "src/HomeParity.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Paridad de Inicio y continuación de compra mantiene los bloques públicos y los datos guardados con el perfil undefined",
+          "estado": "passed",
+          "duracion_ms": 410.22429999999986
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra mantiene los bloques públicos y los datos guardados con el perfil camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 190.26450000000023
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra mantiene los bloques públicos y los datos guardados con el perfil martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 181.13330000000042
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra mantiene los bloques públicos y los datos guardados con el perfil admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 185.15349999999944
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Ver entrenamientos mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 266.1759000000002
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Conocer KYNEX mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 296.90959999999995
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Mi rutina mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 204.8195999999998
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Leer artículo: Creatina y rendimiento mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 365.21619999999984
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Leer artículo: Recuperación muscular mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 296.6246999999994
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Ver todos los artículos mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 196.0596000000005
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre Crear cuenta mediante React Router y permite volver a Inicio",
+          "estado": "passed",
+          "duracion_ms": 248.15260000000035
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre el catálogo completo desde el objetivo Aumento de masa",
+          "estado": "passed",
+          "duracion_ms": 142.84990000000016
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre el catálogo completo desde el objetivo Energía",
+          "estado": "passed",
+          "duracion_ms": 138.9315999999999
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre el catálogo completo desde el objetivo Recuperación",
+          "estado": "passed",
+          "duracion_ms": 162.45759999999973
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra abre el catálogo completo desde el objetivo Descanso",
+          "estado": "passed",
+          "duracion_ms": 162.96060000000034
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra conserva los bloques informativos cuando el catálogo contiene []",
+          "estado": "passed",
+          "duracion_ms": 90.03960000000006
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra conserva los bloques informativos cuando el catálogo contiene datos dañados",
+          "estado": "passed",
+          "duracion_ms": 82.35859999999957
+        },
+        {
+          "nombre": "Paridad de Inicio y continuación de compra muestra el aviso sin enviar solicitudes, generar pedidos ni modificar compra, sesión o rutina",
+          "estado": "passed",
+          "duracion_ms": 247.30329999999958
+        }
+      ]
+    },
+    {
+      "archivo": "src/Training.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Entrenamiento y rutina integrados permite ambas páginas públicas al perfil undefined",
+          "estado": "passed",
+          "duracion_ms": 327.45510000000013
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados permite ambas páginas públicas al perfil camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 123.1279999999997
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados permite ambas páginas públicas al perfil martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 120.9346999999998
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados permite ambas páginas públicas al perfil admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 130.12220000000025
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados abre los enlaces de cabecera y pie, marca la ruta y cierra el menú móvil",
+          "estado": "passed",
+          "duracion_ms": 322.49659999999994
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados agrega sin duplicar, ajusta series y repeticiones y restaura al recargar",
+          "estado": "passed",
+          "duracion_ms": 613.4888000000001
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados quita un ejercicio y vuelve a permitir agregarlo desde la biblioteca",
+          "estado": "passed",
+          "duracion_ms": 184.3786
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados enfoca Cancelar, respeta cancelación y Escape y exige confirmar para vaciar",
+          "estado": "passed",
+          "duracion_ms": 313.567
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados recupera datos heredados, actualiza desde otra pestaña y responde a la limpieza",
+          "estado": "passed",
+          "duracion_ms": 53.16010000000006
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados anuncia datos dañados sin sobrescribir y permite reintentar después de recuperarlos",
+          "estado": "passed",
+          "duracion_ms": 114.72840000000042
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados informa fallos al agregar y conserva la selección anterior",
+          "estado": "passed",
+          "duracion_ms": 110.11689999999999
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados mantiene los ejercicios y el diálogo si falla el vaciado",
+          "estado": "passed",
+          "duracion_ms": 129.2382000000007
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados vuelve a /entrenamiento después de Login y conserva rutina y compra al cerrar sesión",
+          "estado": "passed",
+          "duracion_ms": 498.8131000000003
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados vuelve a /rutina después de Login y conserva rutina y compra al cerrar sesión",
+          "estado": "passed",
+          "duracion_ms": 467.5765000000001
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados modifica solo la rutina, sin alterar sesión, usuarios, catálogo ni carrito",
+          "estado": "passed",
+          "duracion_ms": 105.6780000000008
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados muestra 404 en /entrenamiento/desconocido",
+          "estado": "passed",
+          "duracion_ms": 21.376400000000103
+        },
+        {
+          "nombre": "Entrenamiento y rutina integrados muestra 404 en /rutina/desconocida",
+          "estado": "passed",
+          "duracion_ms": 17.590900000000147
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/ArticleImage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ArticleImage presenta la imagen con texto alternativo y carga diferida",
+          "estado": "passed",
+          "duracion_ms": 181.3873000000001
+        },
+        {
+          "nombre": "ArticleImage ofrece una alternativa accesible si falta la imagen: undefined",
+          "estado": "passed",
+          "duracion_ms": 25.960000000000036
+        },
+        {
+          "nombre": "ArticleImage ofrece una alternativa accesible si falta la imagen: ",
+          "estado": "passed",
+          "duracion_ms": 15.184299999999894
+        },
+        {
+          "nombre": "ArticleImage sustituye una imagen fallida y permite mostrar una nueva",
+          "estado": "passed",
+          "duracion_ms": 44.615400000000136
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/Badge.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Badge muestra el contenido recibido mediante children",
+          "estado": "passed",
+          "duracion_ms": 37.14300000000003
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/Button.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Button renderiza el texto recibido mediante props",
+          "estado": "passed",
+          "duracion_ms": 131.72949999999992
+        },
+        {
+          "nombre": "Button ejecuta onClick cuando el usuario presiona el botón",
+          "estado": "passed",
+          "duracion_ms": 57.86869999999999
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/OrderStatusBadge.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "OrderStatusBadge identifica Pendiente con texto y estilo",
+          "estado": "passed",
+          "duracion_ms": 29.47160000000008
+        },
+        {
+          "nombre": "OrderStatusBadge identifica Preparación con texto y estilo",
+          "estado": "passed",
+          "duracion_ms": 2.369999999999891
+        },
+        {
+          "nombre": "OrderStatusBadge identifica Despachado con texto y estilo",
+          "estado": "passed",
+          "duracion_ms": 1.7791999999999462
+        },
+        {
+          "nombre": "OrderStatusBadge identifica Otro con texto y estilo",
+          "estado": "passed",
+          "duracion_ms": 1.5178999999998268
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/Price.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Price formatea un valor numérico como moneda chilena",
+          "estado": "passed",
+          "duracion_ms": 23.24000000000001
+        },
+        {
+          "nombre": "Price renderiza el precio recibido mediante props",
+          "estado": "passed",
+          "duracion_ms": 33.86929999999984
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/ProductImage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductImage recupera las seis imágenes originales por código sin exigir un campo image",
+          "estado": "passed",
+          "duracion_ms": 289.9391000000003
+        },
+        {
+          "nombre": "ProductImage prioriza una imagen personalizada sobre la original del código",
+          "estado": "passed",
+          "duracion_ms": 11.121800000000349
+        },
+        {
+          "nombre": "ProductImage resuelve una ruta de imagen heredada al recurso empaquetado y respeta la selección personalizada",
+          "estado": "passed",
+          "duracion_ms": 7.974299999999857
+        },
+        {
+          "nombre": "ProductImage muestra texto alternativo y recupera el ícono cuando falla una imagen",
+          "estado": "passed",
+          "duracion_ms": 21.340099999999893
+        },
+        {
+          "nombre": "ProductImage usa el ícono para una imagen ausente o no admitida",
+          "estado": "passed",
+          "duracion_ms": 3.5223000000000866
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/atoms/StockBadge.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "StockBadge muestra Disponible cuando el stock supera el nivel crítico",
+          "estado": "passed",
+          "duracion_ms": 28.49720000000002
+        },
+        {
+          "nombre": "StockBadge muestra Stock crítico cuando el stock es menor o igual al nivel crítico",
+          "estado": "passed",
+          "duracion_ms": 2.261600000000044
+        },
+        {
+          "nombre": "StockBadge muestra Sin stock cuando no quedan unidades",
+          "estado": "passed",
+          "duracion_ms": 1.669499999999971
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/AccountActions.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "AccountActions ofrece Administración según el permiso de camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 75.57740000000013
+        },
+        {
+          "nombre": "AccountActions ofrece Administración según el permiso de martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 136.52010000000018
+        },
+        {
+          "nombre": "AccountActions ofrece Administración según el permiso de admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 10.14509999999973
+        },
+        {
+          "nombre": "AccountActions lleva al login conservando la página de origen y sus filtros",
+          "estado": "passed",
+          "duracion_ms": 67.95550000000003
+        },
+        {
+          "nombre": "AccountActions muestra el nombre y rol y permite cerrar la sesión desde la navegación",
+          "estado": "passed",
+          "duracion_ms": 33.6253999999999
+        },
+        {
+          "nombre": "AccountActions explica un cierre fallido y conserva la sesión para permitir reintentar",
+          "estado": "passed",
+          "duracion_ms": 47.16809999999987
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/BlogCard.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "BlogCard presenta los datos recibidos por props y abre su ruta de lectura",
+          "estado": "passed",
+          "duracion_ms": 304.36059999999975
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/CartItem.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "CartItem muestra el producto y el total de su línea",
+          "estado": "passed",
+          "duracion_ms": 364.2260000000001
+        },
+        {
+          "nombre": "CartItem ejecuta la eliminación del producto",
+          "estado": "passed",
+          "duracion_ms": 86.08700000000044
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/CategoryCard.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "CategoryCard navega al catálogo conservando las tildes de la categoría en la URL",
+          "estado": "passed",
+          "duracion_ms": 192.9020999999998
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/DeleteUserDialog.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "DeleteUserDialog enfoca Cancelar y exige una decisión explícita antes de eliminar",
+          "estado": "passed",
+          "duracion_ms": 347.96299999999974
+        },
+        {
+          "nombre": "DeleteUserDialog maneja Escape como cancelación y muestra errores sin perder la cuenta seleccionada",
+          "estado": "passed",
+          "duracion_ms": 61.15970000000016
+        },
+        {
+          "nombre": "DeleteUserDialog impide acciones duplicadas mientras se procesa la eliminación",
+          "estado": "passed",
+          "duracion_ms": 72.34799999999996
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/ExerciseCard.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ExerciseCard presenta datos y sugerencias recibidos por props y agrega el ejercicio elegido",
+          "estado": "passed",
+          "duracion_ms": 203.7719000000002
+        },
+        {
+          "nombre": "ExerciseCard impide volver a agregar un ejercicio y respeta el bloqueo por almacenamiento",
+          "estado": "passed",
+          "duracion_ms": 14.970900000000029
+        },
+        {
+          "nombre": "ExerciseCard usa un icono cuando la imagen falla o falta",
+          "estado": "passed",
+          "duracion_ms": 12.214099999999917
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/FormField.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "FormField asocia ayuda y error a selectores y áreas de texto",
+          "estado": "passed",
+          "duracion_ms": 271.5623999999998
+        },
+        {
+          "nombre": "FormField asocia etiquetas únicas a cada campo sin exigir ids manuales",
+          "estado": "passed",
+          "duracion_ms": 31.37059999999974
+        },
+        {
+          "nombre": "FormField asocia ayuda y errores al campo y retira el estado inválido al corregirlo",
+          "estado": "passed",
+          "duracion_ms": 13.868499999999585
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/PasswordField.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "PasswordField muestra y oculta la contraseña sin cambiarla ni enviar el formulario",
+          "estado": "passed",
+          "duracion_ms": 267.36360000000013
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/ProductCard.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductCard renderiza los datos principales recibidos mediante la prop product",
+          "estado": "passed",
+          "duracion_ms": 173.8333
+        },
+        {
+          "nombre": "ProductCard deshabilita Agregar mientras no exista una función de carrito",
+          "estado": "passed",
+          "duracion_ms": 15.260899999999992
+        },
+        {
+          "nombre": "ProductCard entrega el producto al callback cuando se presiona Agregar",
+          "estado": "passed",
+          "duracion_ms": 58.173300000000154
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/QuantitySelector.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "QuantitySelector permite bloquear ambos límites sin ejecutar los callbacks",
+          "estado": "passed",
+          "duracion_ms": 279.34040000000005
+        },
+        {
+          "nombre": "QuantitySelector muestra la cantidad actual",
+          "estado": "passed",
+          "duracion_ms": 9.436399999999594
+        },
+        {
+          "nombre": "QuantitySelector ejecuta los callbacks de aumentar y disminuir",
+          "estado": "passed",
+          "duracion_ms": 96.90999999999985
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/RoleGate.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "RoleGate muestra acciones de usuarios solo al perfil autorizado: null",
+          "estado": "passed",
+          "duracion_ms": 37.30399999999986
+        },
+        {
+          "nombre": "RoleGate muestra acciones de usuarios solo al perfil autorizado: camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 3.307700000000068
+        },
+        {
+          "nombre": "RoleGate muestra acciones de usuarios solo al perfil autorizado: martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 2.406600000000026
+        },
+        {
+          "nombre": "RoleGate muestra acciones de usuarios solo al perfil autorizado: admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 126.47780000000012
+        },
+        {
+          "nombre": "RoleGate muestra el fallback y responde a una pérdida de permisos",
+          "estado": "passed",
+          "duracion_ms": 12.583200000000033
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/molecules/RoutineItem.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "RoutineItem guarda al salir del campo o pulsar Enter y permite quitar el ejercicio",
+          "estado": "passed",
+          "duracion_ms": 530.3391000000001
+        },
+        {
+          "nombre": "RoutineItem rechaza cantidades fuera de rango sin guardar y permite corregir",
+          "estado": "passed",
+          "duracion_ms": 771.2330999999999
+        },
+        {
+          "nombre": "RoutineItem muestra errores de persistencia y sincroniza ajustes nuevos por props",
+          "estado": "passed",
+          "duracion_ms": 163.44799999999987
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/AdminProductForm.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "AdminProductForm bloquea datos vacíos y enfoca el primer error asociado",
+          "estado": "passed",
+          "duracion_ms": 250.40370000000007
+        },
+        {
+          "nombre": "AdminProductForm envía datos normalizados y un umbral vacío como null",
+          "estado": "passed",
+          "duracion_ms": 637.3187000000003
+        },
+        {
+          "nombre": "AdminProductForm precarga y avisa de stock crítico incluyendo el umbral cero",
+          "estado": "passed",
+          "duracion_ms": 63.8762999999999
+        },
+        {
+          "nombre": "AdminProductForm valida al salir y retira el error al corregir con el teclado",
+          "estado": "passed",
+          "duracion_ms": 246.9380000000001
+        },
+        {
+          "nombre": "AdminProductForm conserva los valores y enfoca el duplicado indicado por el servicio",
+          "estado": "passed",
+          "duracion_ms": 126.44880000000012
+        },
+        {
+          "nombre": "AdminProductForm evita envíos repetidos durante la espera y recupera el formulario al fallar",
+          "estado": "passed",
+          "duracion_ms": 147.96730000000025
+        },
+        {
+          "nombre": "AdminProductForm informa una excepción del consumidor y permite reintentar",
+          "estado": "passed",
+          "duracion_ms": 54.57380000000012
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/AdminUserForm.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "AdminUserForm valida los campos requeridos y enfoca el primero sin guardar",
+          "estado": "passed",
+          "duracion_ms": 304.1981999999998
+        },
+        {
+          "nombre": "AdminUserForm comparte validaciones del registro y permite seleccionar un rol al crear",
+          "estado": "passed",
+          "duracion_ms": 873.0320000000002
+        },
+        {
+          "nombre": "AdminUserForm precarga el perfil completo y reinicia comuna al cambiar región",
+          "estado": "passed",
+          "duracion_ms": 136.78459999999995
+        },
+        {
+          "nombre": "AdminUserForm enfoca un duplicado informado por el servicio y conserva los valores para corregir",
+          "estado": "passed",
+          "duracion_ms": 111.97540000000026
+        },
+        {
+          "nombre": "AdminUserForm avisa si el administrador reduce su propio rol",
+          "estado": "passed",
+          "duracion_ms": 125.0608000000002
+        },
+        {
+          "nombre": "AdminUserForm bloquea el envío repetido y recupera el formulario después de un error",
+          "estado": "passed",
+          "duracion_ms": 163.75880000000006
+        },
+        {
+          "nombre": "AdminUserForm permite reintentar si el consumidor lanza un error",
+          "estado": "passed",
+          "duracion_ms": 111.37750000000005
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/ArticleContent.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ArticleContent conserva los párrafos, cuatro recomendaciones y nota del artículo de creatina",
+          "estado": "passed",
+          "duracion_ms": 183.3655000000001
+        },
+        {
+          "nombre": "ArticleContent presenta las secciones, cinco factores y nota académica de recuperación",
+          "estado": "passed",
+          "duracion_ms": 30.011799999999994
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/CartSummary.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "CartSummary anuncia el alcance demostrativo al activar Continuar compra con teclado",
+          "estado": "passed",
+          "duracion_ms": 330.5862000000002
+        },
+        {
+          "nombre": "CartSummary deshabilita la continuación de un carrito vacío",
+          "estado": "passed",
+          "duracion_ms": 80.52160000000003
+        },
+        {
+          "nombre": "CartSummary informa despacho gratuito cuando corresponde",
+          "estado": "passed",
+          "duracion_ms": 15.025800000000345
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/ContactForm.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ContactForm bloquea datos vacíos, anuncia errores y enfoca el primero",
+          "estado": "passed",
+          "duracion_ms": 247.5074000000002
+        },
+        {
+          "nombre": "ContactForm valida al salir del correo, enfoca el error al enviar y permite corregirlo",
+          "estado": "passed",
+          "duracion_ms": 307.63210000000026
+        },
+        {
+          "nombre": "ContactForm limita el comentario a 500 caracteres y actualiza el contador accesible",
+          "estado": "passed",
+          "duracion_ms": 168.63369999999986
+        },
+        {
+          "nombre": "ContactForm confirma datos válidos y conserva los valores del formulario",
+          "estado": "passed",
+          "duracion_ms": 376.24490000000014
+        },
+        {
+          "nombre": "ContactForm retira la confirmación al editar y vuelve a validar el comentario",
+          "estado": "passed",
+          "duracion_ms": 520.4081999999999
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/ExerciseLibrary.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ExerciseLibrary muestra ocho ejercicios y marca los seleccionados",
+          "estado": "passed",
+          "duracion_ms": 247.79269999999997
+        },
+        {
+          "nombre": "ExerciseLibrary combina búsqueda, músculo y dificultad y muestra un estado vacío recuperable",
+          "estado": "passed",
+          "duracion_ms": 572.0838999999996
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/FeatureSection.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "FeatureSection compone una sección identificable con encabezado y tarjetas recibidas por props",
+          "estado": "passed",
+          "duracion_ms": 205.43090000000007
+        },
+        {
+          "nombre": "FeatureSection ofrece acciones opcionales sin convertir las tarjetas informativas en enlaces",
+          "estado": "passed",
+          "duracion_ms": 39.883800000000065
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/FeaturedProducts.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "FeaturedProducts muestra solo destacados y entrega el producto elegido al carrito",
+          "estado": "passed",
+          "duracion_ms": 431.60349999999994
+        },
+        {
+          "nombre": "FeaturedProducts omite la sección con catálogo vacío",
+          "estado": "passed",
+          "duracion_ms": 3.4873999999999796
+        },
+        {
+          "nombre": "FeaturedProducts omite la sección con catálogo sin destacados",
+          "estado": "passed",
+          "duracion_ms": 2.304899999999634
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/Footer.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Footer muestra la identidad KYNEX, el año actual y enlaces a las rutas disponibles",
+          "estado": "passed",
+          "duracion_ms": 258.2157000000002
+        },
+        {
+          "nombre": "Footer navega con React Router desde el pie de página",
+          "estado": "passed",
+          "duracion_ms": 268.9570999999996
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/InventorySummary.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "InventorySummary resume los productos recibidos y cuenta el stock bajo incluyendo agotados",
+          "estado": "passed",
+          "duracion_ms": 168.26620000000003
+        },
+        {
+          "nombre": "InventorySummary muestra ceros para un catálogo vacío",
+          "estado": "passed",
+          "duracion_ms": 15.838799999999992
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/LoginForm.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "LoginForm impide enviar campos vacíos, explica los errores y enfoca el primero",
+          "estado": "passed",
+          "duracion_ms": 311.61929999999984
+        },
+        {
+          "nombre": "LoginForm valida al salir del campo y retira el error al corregirlo",
+          "estado": "passed",
+          "duracion_ms": 942.5562
+        },
+        {
+          "nombre": "LoginForm normaliza el correo y entrega las credenciales válidas una sola vez",
+          "estado": "passed",
+          "duracion_ms": 484.4461000000001
+        },
+        {
+          "nombre": "LoginForm muestra un rechazo del servicio y permite corregir las credenciales",
+          "estado": "passed",
+          "duracion_ms": 501.4224999999997
+        },
+        {
+          "nombre": "LoginForm deshabilita el envío mientras se resuelve el acceso y evita solicitudes duplicadas",
+          "estado": "passed",
+          "duracion_ms": 575.4999000000007
+        },
+        {
+          "nombre": "LoginForm permite reintentar si el servicio produce un error inesperado",
+          "estado": "passed",
+          "duracion_ms": 459.21849999999995
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/Navbar.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Navbar enlaza la marca y las páginas públicas con un carrito vacío",
+          "estado": "passed",
+          "duracion_ms": 393.6736999999998
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /",
+          "estado": "passed",
+          "duracion_ms": 56.07960000000003
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /productos",
+          "estado": "passed",
+          "duracion_ms": 37.24299999999994
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /productos/2",
+          "estado": "passed",
+          "duracion_ms": 48.964300000000094
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /carrito",
+          "estado": "passed",
+          "duracion_ms": 35.45709999999963
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /login",
+          "estado": "passed",
+          "duracion_ms": 35.39220000000023
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /contacto",
+          "estado": "passed",
+          "duracion_ms": 33.6261999999997
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /entrenamiento",
+          "estado": "passed",
+          "duracion_ms": 28.942200000000412
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /rutina",
+          "estado": "passed",
+          "duracion_ms": 27.75630000000001
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /nosotros",
+          "estado": "passed",
+          "duracion_ms": 31.340700000000197
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /blog",
+          "estado": "passed",
+          "duracion_ms": 40.04289999999992
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /blog/creatina-y-rendimiento",
+          "estado": "passed",
+          "duracion_ms": 45.79309999999987
+        },
+        {
+          "nombre": "Navbar marca solamente el enlace activo en /blog/recuperacion-muscular",
+          "estado": "passed",
+          "duracion_ms": 59.99479999999994
+        },
+        {
+          "nombre": "Navbar recupera el total de unidades guardadas, no solo los productos distintos",
+          "estado": "passed",
+          "duracion_ms": 76.37390000000005
+        },
+        {
+          "nombre": "Navbar actualiza el contador al agregar, eliminar y vaciar el carrito",
+          "estado": "passed",
+          "duracion_ms": 428.74999999999955
+        },
+        {
+          "nombre": "Navbar abre y cierra el menú móvil y lo cierra al navegar",
+          "estado": "passed",
+          "duracion_ms": 260.41070000000036
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/OrderItemsTable.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "OrderItemsTable distingue precio unitario, cantidad y total de una línea con varias unidades",
+          "estado": "passed",
+          "duracion_ms": 312.90070000000014
+        },
+        {
+          "nombre": "OrderItemsTable informa un pedido sin productos",
+          "estado": "passed",
+          "duracion_ms": 8.006099999999606
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/OrderSummary.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "OrderSummary muestra cliente, estado, fecha e importe del pedido registrado",
+          "estado": "passed",
+          "duracion_ms": 165.2249999999999
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/OrdersTable.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "OrdersTable asocia pedido, cliente, fecha, unidades e importes y enlaza su detalle",
+          "estado": "passed",
+          "duracion_ms": 344.57849999999985
+        },
+        {
+          "nombre": "OrdersTable informa una lista vacía sin crear enlaces ficticios",
+          "estado": "passed",
+          "duracion_ms": 21.808700000000044
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/ProductGrid.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductGrid renderiza una tarjeta por cada producto recibido mediante props",
+          "estado": "passed",
+          "duracion_ms": 189.6648
+        },
+        {
+          "nombre": "ProductGrid muestra un estado vacío cuando no existen productos",
+          "estado": "passed",
+          "duracion_ms": 7.346300000000156
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/ProductInformation.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductInformation presenta ingredientes, beneficios, alérgenos, uso y nutrición originales",
+          "estado": "passed",
+          "duracion_ms": 277.50199999999995
+        },
+        {
+          "nombre": "ProductInformation distingue alérgenos vacíos informados y conserva cero calorías",
+          "estado": "passed",
+          "duracion_ms": 57.57979999999998
+        },
+        {
+          "nombre": "ProductInformation muestra información no especificada para un producto nuevo sin ficha",
+          "estado": "passed",
+          "duracion_ms": 48.709299999999985
+        },
+        {
+          "nombre": "ProductInformation tolera metadatos de tipos inesperados y conserva el texto como texto",
+          "estado": "passed",
+          "duracion_ms": 48.84049999999979
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/ProductsTable.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductsTable permite consultar a Vendedor sin ofrecer modificaciones",
+          "estado": "passed",
+          "duracion_ms": 179.52030000000013
+        },
+        {
+          "nombre": "ProductsTable ofrece edición y solicita confirmación mediante el callback al Administrador",
+          "estado": "passed",
+          "duracion_ms": 65.77829999999994
+        },
+        {
+          "nombre": "ProductsTable informa un catálogo vacío",
+          "estado": "passed",
+          "duracion_ms": 4.84920000000011
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/RegistrationForm.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "RegistrationForm impide enviar datos vacíos, asocia errores y enfoca el RUN",
+          "estado": "passed",
+          "duracion_ms": 345.40499999999975
+        },
+        {
+          "nombre": "RegistrationForm valida el RUN al salir y retira el error al corregir el dígito verificador",
+          "estado": "passed",
+          "duracion_ms": 493.81590000000006
+        },
+        {
+          "nombre": "RegistrationForm habilita comunas de la región y reinicia la selección al cambiarla",
+          "estado": "passed",
+          "duracion_ms": 358.51760000000013
+        },
+        {
+          "nombre": "RegistrationForm envía datos normalizados, informa la contraseña inicial y reinicia el formulario",
+          "estado": "passed",
+          "duracion_ms": 740.3937999999998
+        },
+        {
+          "nombre": "RegistrationForm muestra duplicados del servicio, enfoca el campo y permite corregir los datos",
+          "estado": "passed",
+          "duracion_ms": 828.8525999999997
+        },
+        {
+          "nombre": "RegistrationForm evita envíos duplicados durante el registro y permite reintentar un fallo",
+          "estado": "passed",
+          "duracion_ms": 851.7878000000001
+        },
+        {
+          "nombre": "RegistrationForm conserva los valores si el servicio lanza un error inesperado",
+          "estado": "passed",
+          "duracion_ms": 780.2801
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/organisms/UsersTable.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "UsersTable muestra el estado vacío",
+          "estado": "passed",
+          "duracion_ms": 121.82240000000002
+        },
+        {
+          "nombre": "UsersTable renderiza texto de usuarios como texto y entrega el registro al solicitar eliminar",
+          "estado": "passed",
+          "duracion_ms": 102.04770000000008
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/templates/AdminLayout.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "AdminLayout compone el perfil, navegación, un main y un footer reutilizables",
+          "estado": "passed",
+          "duracion_ms": 291.6709000000001
+        },
+        {
+          "nombre": "AdminLayout controla el menú móvil con React y permite regresar a la tienda",
+          "estado": "passed",
+          "duracion_ms": 262.9960000000001
+        }
+      ]
+    },
+    {
+      "archivo": "src/components/templates/PublicLayout.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "PublicLayout compone una cabecera, el contenido de la ruta y un pie de página",
+          "estado": "passed",
+          "duracion_ms": 263.42560000000003
+        },
+        {
+          "nombre": "PublicLayout cambia el contenido del Outlet conservando la cabecera y el pie compartidos",
+          "estado": "passed",
+          "duracion_ms": 96.33149999999978
+        },
+        {
+          "nombre": "PublicLayout conserva el desplazamiento al cambiar filtros y respeta las anclas internas",
+          "estado": "passed",
+          "duracion_ms": 177.80999999999995
+        }
+      ]
+    },
+    {
+      "archivo": "src/context/AuthContext.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "AuthContext y useAuth presenta un visitante sin roles cuando no existe una sesión",
+          "estado": "passed",
+          "duracion_ms": 33.00629999999978
+        },
+        {
+          "nombre": "AuthContext y useAuth actualiza la sesión y consultas de rol al ingresar como camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 158.7237
+        },
+        {
+          "nombre": "AuthContext y useAuth actualiza la sesión y consultas de rol al ingresar como martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 45.337600000000066
+        },
+        {
+          "nombre": "AuthContext y useAuth actualiza la sesión y consultas de rol al ingresar como admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 32.636400000000094
+        },
+        {
+          "nombre": "AuthContext y useAuth devuelve el error de autenticación sin abrir una sesión",
+          "estado": "passed",
+          "duracion_ms": 51.317600000000084
+        },
+        {
+          "nombre": "AuthContext y useAuth recupera la sesión guardada al volver a montar el proveedor",
+          "estado": "passed",
+          "duracion_ms": 79.16350000000011
+        },
+        {
+          "nombre": "AuthContext y useAuth conserva la sesión actual si falla otro intento de acceso",
+          "estado": "passed",
+          "duracion_ms": 117.71759999999995
+        },
+        {
+          "nombre": "AuthContext y useAuth cierra la sesión y conserva el estado y almacenamiento del carrito",
+          "estado": "passed",
+          "duracion_ms": 158.7824999999998
+        },
+        {
+          "nombre": "AuthContext y useAuth informa el fallo de cierre y conserva la sesión si no se pudo eliminar",
+          "estado": "passed",
+          "duracion_ms": 62.45190000000002
+        },
+        {
+          "nombre": "AuthContext y useAuth sincroniza la sesión, cambios de rol y eliminación del usuario desde otra pestaña",
+          "estado": "passed",
+          "duracion_ms": 6.31880000000001
+        },
+        {
+          "nombre": "AuthContext y useAuth sincroniza el cierre y el borrado completo realizados en otra pestaña",
+          "estado": "passed",
+          "duracion_ms": 5.190099999999802
+        },
+        {
+          "nombre": "AuthContext y useAuth ignora cambios ajenos a autenticación y eventos de sessionStorage",
+          "estado": "passed",
+          "duracion_ms": 4.294200000000274
+        },
+        {
+          "nombre": "AuthContext y useAuth permite releer una sesión modificada por otro consumidor en la misma pestaña",
+          "estado": "passed",
+          "duracion_ms": 44.35370000000012
+        },
+        {
+          "nombre": "AuthContext y useAuth mantiene la sesión cuando cambia el contenido de React Router",
+          "estado": "passed",
+          "duracion_ms": 131.45100000000002
+        },
+        {
+          "nombre": "AuthContext y useAuth explica el uso incorrecto de useAuth fuera del proveedor",
+          "estado": "passed",
+          "duracion_ms": 10.537800000000061
+        }
+      ]
+    },
+    {
+      "archivo": "src/context/CartCatalog.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Carrito conectado al catálogo persistido limpia referencias inexistentes y duplicadas, cantidades inválidas y exceso de stock al restaurar",
+          "estado": "passed",
+          "duracion_ms": 55.97910000000002
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido consulta precio y stock vigentes al agregar una copia antigua e ignora entradas inválidas",
+          "estado": "passed",
+          "duracion_ms": 437.2724999999996
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido aumentar o disminuir no introduce un producto que aún no está en la compra",
+          "estado": "passed",
+          "duracion_ms": 132.40710000000036
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido actualiza precio, reduce cantidades y evita recuperar un exceso antiguo al aumentar",
+          "estado": "passed",
+          "duracion_ms": 137.21410000000014
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido retira productos agotados o eliminados de la compra persistida",
+          "estado": "passed",
+          "duracion_ms": 8.720500000000357
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido conserva la compra cuando el catálogo está dañado y la recupera al corregirlo",
+          "estado": "passed",
+          "duracion_ms": 5.543899999999667
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido recupera un carrito dañado sin bloquear la página: {",
+          "estado": "passed",
+          "duracion_ms": 3.701000000000022
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido recupera un carrito dañado sin bloquear la página: {}",
+          "estado": "passed",
+          "duracion_ms": 3.114900000000489
+        },
+        {
+          "nombre": "Carrito conectado al catálogo persistido informa el fallo al guardar y conserva la compra en memoria",
+          "estado": "passed",
+          "duracion_ms": 73.12549999999919
+        }
+      ]
+    },
+    {
+      "archivo": "src/context/CartContext.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "CartContext agrega productos y actualiza cantidad y subtotal global",
+          "estado": "passed",
+          "duracion_ms": 194.80510000000004
+        },
+        {
+          "nombre": "CartContext elimina el producto cuando su cantidad disminuye desde uno",
+          "estado": "passed",
+          "duracion_ms": 105.79639999999972
+        },
+        {
+          "nombre": "CartContext vacía el carrito completo",
+          "estado": "passed",
+          "duracion_ms": 93.42590000000018
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/AboutPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "AboutPage conserva la presentación, propuesta, experiencia, visión y compromisos de KYNEX",
+          "estado": "passed",
+          "duracion_ms": 486.3861999999999
+        },
+        {
+          "nombre": "AboutPage enlaza las cuatro categorías y ambos accesos al catálogo mediante React Router",
+          "estado": "passed",
+          "duracion_ms": 82.7530999999999
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/BlogPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "BlogPage muestra los dos artículos originales con imagen, categoría y resumen",
+          "estado": "passed",
+          "duracion_ms": 335.57280000000014
+        },
+        {
+          "nombre": "BlogPage ofrece enlaces distinguibles y compone contenido sin duplicar el layout",
+          "estado": "passed",
+          "duracion_ms": 43.13959999999997
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/CartPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "CartPage muestra el estado vacío cuando no existen productos",
+          "estado": "passed",
+          "duracion_ms": 163.90700000000015
+        },
+        {
+          "nombre": "CartPage renderiza productos almacenados y permite vaciar el carrito",
+          "estado": "passed",
+          "duracion_ms": 129.73050000000012
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/HomePage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "HomePage muestra la identidad KYNEX, la imagen original y accesos al catálogo",
+          "estado": "passed",
+          "duracion_ms": 358.5177000000001
+        },
+        {
+          "nombre": "HomePage recupera los objetivos, el entrenamiento, los artículos y el acceso al registro",
+          "estado": "passed",
+          "duracion_ms": 206.17399999999998
+        },
+        {
+          "nombre": "HomePage conserva el video original con título accesible y alternativa de apertura",
+          "estado": "passed",
+          "duracion_ms": 108.63670000000002
+        },
+        {
+          "nombre": "HomePage usa los datos de destacados y guarda las compras realizadas desde el inicio",
+          "estado": "passed",
+          "duracion_ms": 188.17869999999994
+        },
+        {
+          "nombre": "HomePage respeta el stock y explica cuando el carrito ya tiene todas las unidades",
+          "estado": "passed",
+          "duracion_ms": 232.28420000000006
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/LoginPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "LoginPage ofrece el formulario y las cuentas iniciales para un visitante",
+          "estado": "passed",
+          "duracion_ms": 164.90160000000014
+        },
+        {
+          "nombre": "LoginPage ingresa con camila@gmail.com y conserva el perfil Cliente",
+          "estado": "passed",
+          "duracion_ms": 544.2538999999997
+        },
+        {
+          "nombre": "LoginPage ingresa con martin@duoc.cl y conserva el perfil Vendedor",
+          "estado": "passed",
+          "duracion_ms": 495.24040000000014
+        },
+        {
+          "nombre": "LoginPage ingresa con admin@profesor.duoc.cl y conserva el perfil Administrador",
+          "estado": "passed",
+          "duracion_ms": 601.2013000000002
+        },
+        {
+          "nombre": "LoginPage retorna al catálogo con los filtros de la página de origen",
+          "estado": "passed",
+          "duracion_ms": 498.87040000000025
+        },
+        {
+          "nombre": "LoginPage regresa al panel solicitado después de autenticar un vendedor",
+          "estado": "passed",
+          "duracion_ms": 452.77160000000003
+        },
+        {
+          "nombre": "LoginPage descarta un origen administrativo si ingresa un Cliente",
+          "estado": "passed",
+          "duracion_ms": 528.3377
+        },
+        {
+          "nombre": "LoginPage redirige al visitante que ya tiene sesión sin volver a mostrar el formulario",
+          "estado": "passed",
+          "duracion_ms": 16.00250000000051
+        },
+        {
+          "nombre": "LoginPage conserva el formulario cuando el servicio rechaza las credenciales",
+          "estado": "passed",
+          "duracion_ms": 515.8101999999999
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/ProductDetailPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductDetailPage muestra el producto correspondiente al id de la ruta",
+          "estado": "passed",
+          "duracion_ms": 348.5964999999999
+        },
+        {
+          "nombre": "ProductDetailPage muestra un estado de error cuando el producto no existe",
+          "estado": "passed",
+          "duracion_ms": 10.463200000000143
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/ProductsPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProductsPage busca también por código o categoría:  KYN002 ",
+          "estado": "passed",
+          "duracion_ms": 380.65240000000017
+        },
+        {
+          "nombre": "ProductsPage busca también por código o categoría: vitaminas",
+          "estado": "passed",
+          "duracion_ms": 273.94720000000007
+        },
+        {
+          "nombre": "ProductsPage abre una categoría desde un enlace con tilde",
+          "estado": "passed",
+          "duracion_ms": 46.89830000000029
+        },
+        {
+          "nombre": "ProductsPage muestra todo el catálogo para la categoría inválida 'Desconocida'",
+          "estado": "passed",
+          "duracion_ms": 40.04310000000032
+        },
+        {
+          "nombre": "ProductsPage muestra todo el catálogo para la categoría inválida ''",
+          "estado": "passed",
+          "duracion_ms": 31.891200000000026
+        },
+        {
+          "nombre": "ProductsPage sincroniza el filtro con la URL, respeta Volver y permite restablecerlo",
+          "estado": "passed",
+          "duracion_ms": 331.66409999999996
+        },
+        {
+          "nombre": "ProductsPage filtra el catálogo al escribir en el buscador",
+          "estado": "passed",
+          "duracion_ms": 221.9728
+        },
+        {
+          "nombre": "ProductsPage filtra productos por categoría",
+          "estado": "passed",
+          "duracion_ms": 117.33379999999988
+        }
+      ]
+    },
+    {
+      "archivo": "src/pages/RegistrationPage.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "RegistrationPage ofrece registro al visitante y explica la contraseña demostrativa",
+          "estado": "passed",
+          "duracion_ms": 204.5246000000002
+        },
+        {
+          "nombre": "RegistrationPage envía al panel a un Vendedor que ya tiene sesión",
+          "estado": "passed",
+          "duracion_ms": 14.37519999999995
+        },
+        {
+          "nombre": "RegistrationPage redirige una sesión vigente a un destino público válido: undefined",
+          "estado": "passed",
+          "duracion_ms": 12.111899999999878
+        },
+        {
+          "nombre": "RegistrationPage redirige una sesión vigente a un destino público válido: { pathname: '/carrito' }",
+          "estado": "passed",
+          "duracion_ms": 15.07470000000012
+        },
+        {
+          "nombre": "RegistrationPage redirige una sesión vigente a un destino público válido: { pathname: '//otro.test' }",
+          "estado": "passed",
+          "duracion_ms": 15.084499999999935
+        }
+      ]
+    },
+    {
+      "archivo": "src/routes/ProtectedRoute.test.jsx",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "ProtectedRoute no monta contenido privado para un visitante y conserva ruta y filtros para Login",
+          "estado": "passed",
+          "duracion_ms": 146.60729999999967
+        },
+        {
+          "nombre": "ProtectedRoute reemplaza la entrada protegida del historial para no crear un ciclo al volver",
+          "estado": "passed",
+          "duracion_ms": 82.17450000000008
+        },
+        {
+          "nombre": "ProtectedRoute aplica el permiso de usuarios al ingresar como camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 17.02310000000034
+        },
+        {
+          "nombre": "ProtectedRoute aplica el permiso de usuarios al ingresar como martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 11.894000000000233
+        },
+        {
+          "nombre": "ProtectedRoute aplica el permiso de usuarios al ingresar como admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 13.815300000000207
+        },
+        {
+          "nombre": "ProtectedRoute admite una ruta que solo exige sesión para camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 12.822200000000066
+        },
+        {
+          "nombre": "ProtectedRoute admite una ruta que solo exige sesión para martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 20.416400000000067
+        },
+        {
+          "nombre": "ProtectedRoute admite una ruta que solo exige sesión para admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 21.803499999999985
+        },
+        {
+          "nombre": "ProtectedRoute deniega permisos no reconocidos incluso a Administrador: desconocido",
+          "estado": "passed",
+          "duracion_ms": 33.77359999999999
+        },
+        {
+          "nombre": "ProtectedRoute deniega permisos no reconocidos incluso a Administrador: ",
+          "estado": "passed",
+          "duracion_ms": 13.856200000000172
+        },
+        {
+          "nombre": "ProtectedRoute deniega permisos no reconocidos incluso a Administrador: null",
+          "estado": "passed",
+          "duracion_ms": 11.296500000000378
+        },
+        {
+          "nombre": "ProtectedRoute revalida el permiso al cambiar el rol en otra pestaña y desmonta el contenido",
+          "estado": "passed",
+          "duracion_ms": 17.617099999999937
+        },
+        {
+          "nombre": "ProtectedRoute retira el contenido si eliminan al usuario en otra pestaña",
+          "estado": "passed",
+          "duracion_ms": 19.551100000000133
+        },
+        {
+          "nombre": "ProtectedRoute usa el rol del usuario guardado aunque la sesión indique uno con más permisos",
+          "estado": "passed",
+          "duracion_ms": 14.024899999999889
+        },
+        {
+          "nombre": "ProtectedRoute redirige a Login al cerrar sesión desde el contenido protegido",
+          "estado": "passed",
+          "duracion_ms": 57.23090000000002
+        }
+      ]
+    },
+    {
+      "archivo": "src/services/adminOrders.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Consulta protegida de pedidos permite consultar lista y detalle a admin@profesor.duoc.cl sin escribir",
+          "estado": "passed",
+          "duracion_ms": 7.485599999999977
+        },
+        {
+          "nombre": "Consulta protegida de pedidos permite consultar lista y detalle a martin@duoc.cl sin escribir",
+          "estado": "passed",
+          "duracion_ms": 0.6895999999999276
+        },
+        {
+          "nombre": "Consulta protegida de pedidos deniega lista y detalle sin permiso: null",
+          "estado": "passed",
+          "duracion_ms": 1.082300000000032
+        },
+        {
+          "nombre": "Consulta protegida de pedidos deniega lista y detalle sin permiso: camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 0.4330999999999676
+        },
+        {
+          "nombre": "Consulta protegida de pedidos consulta el rol vigente aunque la sesión guardada todavía diga Administrador",
+          "estado": "passed",
+          "duracion_ms": 0.49129999999991014
+        },
+        {
+          "nombre": "Consulta protegida de pedidos deniega una identidad o un rol que ya no son válidos",
+          "estado": "passed",
+          "duracion_ms": 0.32330000000001746
+        },
+        {
+          "nombre": "Consulta protegida de pedidos informa un identificador inexistente sin devolver otro pedido",
+          "estado": "passed",
+          "duracion_ms": 1.0962999999999283
+        },
+        {
+          "nombre": "Consulta protegida de pedidos entrega copias que no permiten modificar los datos originales por referencia",
+          "estado": "passed",
+          "duracion_ms": 1.002599999999802
+        },
+        {
+          "nombre": "Consulta protegida de pedidos conserva productos e importes históricos si se edita o elimina el catálogo actual",
+          "estado": "passed",
+          "duracion_ms": 3.9157000000000153
+        },
+        {
+          "nombre": "Consulta protegida de pedidos no revela datos si el almacenamiento impide verificar la sesión",
+          "estado": "passed",
+          "duracion_ms": 1.2072000000000571
+        }
+      ]
+    },
+    {
+      "archivo": "src/services/adminProducts.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Persistencia y administración de productos lee el catálogo inicial sin escribir y conserva un catálogo vacío",
+          "estado": "passed",
+          "duracion_ms": 6.541299999999865
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza almacenamiento dañado sin reemplazarlo: {",
+          "estado": "passed",
+          "duracion_ms": 1.1854000000002998
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza almacenamiento dañado sin reemplazarlo: {}",
+          "estado": "passed",
+          "duracion_ms": 0.31899999999996
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza almacenamiento dañado sin reemplazarlo: null",
+          "estado": "passed",
+          "duracion_ms": 0.2424999999998363
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza almacenamiento dañado sin reemplazarlo: [{\"id\":1}]",
+          "estado": "passed",
+          "duracion_ms": 0.24839999999994689
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza productos con id duplicado",
+          "estado": "passed",
+          "duracion_ms": 0.33969999999999345
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza productos con code duplicado",
+          "estado": "passed",
+          "duracion_ms": 0.1934000000001106
+        },
+        {
+          "nombre": "Persistencia y administración de productos crea con identidad propia e informa el cambio a los consumidores",
+          "estado": "passed",
+          "duracion_ms": 3.8728000000000975
+        },
+        {
+          "nombre": "Persistencia y administración de productos preserva todos los metadatos heredados al editar y actualiza el slug",
+          "estado": "passed",
+          "duracion_ms": 2.9378999999998996
+        },
+        {
+          "nombre": "Persistencia y administración de productos rechaza duplicados de código sin distinguir mayúsculas y permite conservar el propio",
+          "estado": "passed",
+          "duracion_ms": 1.4144999999998618
+        },
+        {
+          "nombre": "Persistencia y administración de productos valida en el servicio aunque se omita el formulario",
+          "estado": "passed",
+          "duracion_ms": 1.0664999999999054
+        },
+        {
+          "nombre": "Persistencia y administración de productos deniega todas las modificaciones a camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 0.9012000000002445
+        },
+        {
+          "nombre": "Persistencia y administración de productos deniega todas las modificaciones a martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 0.26430000000027576
+        },
+        {
+          "nombre": "Persistencia y administración de productos revisa el rol vigente y deniega una sesión ausente o revocada",
+          "estado": "passed",
+          "duracion_ms": 0.44860000000016953
+        },
+        {
+          "nombre": "Persistencia y administración de productos no recrea un producto inexistente al editar o eliminar: null",
+          "estado": "passed",
+          "duracion_ms": 0.31900000000041473
+        },
+        {
+          "nombre": "Persistencia y administración de productos no recrea un producto inexistente al editar o eliminar: -1",
+          "estado": "passed",
+          "duracion_ms": 0.29129999999986467
+        },
+        {
+          "nombre": "Persistencia y administración de productos no recrea un producto inexistente al editar o eliminar: 1",
+          "estado": "passed",
+          "duracion_ms": 0.2480000000000473
+        },
+        {
+          "nombre": "Persistencia y administración de productos no recrea un producto inexistente al editar o eliminar: 999",
+          "estado": "passed",
+          "duracion_ms": 0.1793999999999869
+        },
+        {
+          "nombre": "Persistencia y administración de productos detecta cambios desde que se abrió el producto antes de editar o eliminar",
+          "estado": "passed",
+          "duracion_ms": 0.5588000000002467
+        },
+        {
+          "nombre": "Persistencia y administración de productos elimina y conserva vacío sin reponer los productos iniciales",
+          "estado": "passed",
+          "duracion_ms": 0.582300000000032
+        },
+        {
+          "nombre": "Persistencia y administración de productos preserva los datos anteriores cuando falla una escritura",
+          "estado": "passed",
+          "duracion_ms": 1.7527000000000044
+        },
+        {
+          "nombre": "Persistencia y administración de productos informa fallos de lectura y admite reintentar al recuperar el almacenamiento",
+          "estado": "passed",
+          "duracion_ms": 0.756800000000112
+        },
+        {
+          "nombre": "Persistencia y administración de productos escucha productos y limpieza entre pestañas, e ignora otras claves",
+          "estado": "passed",
+          "duracion_ms": 1.3535000000001673
+        }
+      ]
+    },
+    {
+      "archivo": "src/services/adminUsers.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza lectura y mutaciones sin permiso: null",
+          "estado": "passed",
+          "duracion_ms": 5.908700000000181
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza lectura y mutaciones sin permiso: camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 1.174600000000055
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza lectura y mutaciones sin permiso: martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 0.6642000000001644
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios entrega solo los datos administrables y nunca contraseñas",
+          "estado": "passed",
+          "duracion_ms": 3.88130000000001
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios crea con rol elegido, id único y contraseña EP1, ignorando campos no editables",
+          "estado": "passed",
+          "duracion_ms": 4.2199999999998
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios impide duplicados normalizados: { run: '123456785' }",
+          "estado": "passed",
+          "duracion_ms": 1.3799000000001342
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios impide duplicados normalizados: { email: ' CAMILA@GMAIL.COM ' }",
+          "estado": "passed",
+          "duracion_ms": 0.7228000000000065
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios valida todo el perfil y el rol antes de guardar",
+          "estado": "passed",
+          "duracion_ms": 1.2282999999999902
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios edita sin considerar duplicado al propio registro y conserva contraseña y datos adicionales",
+          "estado": "passed",
+          "duracion_ms": 1.4827999999999975
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios actualiza la sesión al editar el correo y nombre del administrador conectado",
+          "estado": "passed",
+          "duracion_ms": 0.6854000000000724
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios aplica inmediatamente una reducción del propio rol",
+          "estado": "passed",
+          "duracion_ms": 0.3914999999999509
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios elimina otro usuario, conserva carrito y sesión y bloquea eliminarse a sí mismo",
+          "estado": "passed",
+          "duracion_ms": 0.5059999999998581
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios detecta ediciones y eliminaciones concurrentes sin sobrescribir el registro nuevo",
+          "estado": "passed",
+          "duracion_ms": 0.6699999999998454
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza identificadores inválidos o inexistentes: 0",
+          "estado": "passed",
+          "duracion_ms": 0.2908999999999651
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza identificadores inválidos o inexistentes: -1",
+          "estado": "passed",
+          "duracion_ms": 0.21329999999989013
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza identificadores inválidos o inexistentes: 1.5",
+          "estado": "passed",
+          "duracion_ms": 0.19669999999996435
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza identificadores inválidos o inexistentes: 1",
+          "estado": "passed",
+          "duracion_ms": 0.2074000000000069
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza identificadores inválidos o inexistentes: NaN",
+          "estado": "passed",
+          "duracion_ms": 0.2075999999999567
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios rechaza identificadores inválidos o inexistentes: 999",
+          "estado": "passed",
+          "duracion_ms": 0.21500000000014552
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios no sobrescribe almacenamiento dañado: dañado",
+          "estado": "passed",
+          "duracion_ms": 0.2806000000000495
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios no sobrescribe almacenamiento dañado: {}",
+          "estado": "passed",
+          "duracion_ms": 0.15990000000010696
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios no sobrescribe almacenamiento dañado: [null]",
+          "estado": "passed",
+          "duracion_ms": 0.12130000000001928
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios no sobrescribe almacenamiento dañado: [{\"id\":1,\"run\":\"123456785\",\"firstName\":\"Camila\",\"lastName\":\"Soto Pérez\",\"email\":\"camila@gmail.com\",\"password\":\"1234\",\"birthDate\":\"1998-06-12\",\"region\":\"Región Metropolitana de Santiago\",\"commune\":\"Santiago\",\"address\":\"Av. Principal 123\",\"role\":\"Cliente\"},{\"id\":2,\"run\":\"111111111\",\"firstName\":\"Martín\",\"lastName\":\"Rojas Díaz\",\"email\":\"martin@duoc.cl\",\"password\":\"1234\",\"birthDate\":null,\"region\":\"Región de Valparaíso\",\"commune\":\"Viña del Mar\",\"address\":\"Calle del Mar 456\",\"role\":\"Vendedor\"},{\"id\":3,\"run\":\"222222222\",\"firstName\":\"Administrador\",\"lastName\":\"KYNEX\",\"email\":\"admin@profesor.duoc.cl\",\"password\":\"1234\",\"birthDate\":null,\"region\":\"Región Metropolitana de Santiago\",\"commune\":\"Providencia\",\"address\":\"Oficina KYNEX\",\"role\":\"Administrador\"},{\"id\":1,\"run\":\"123456785\",\"firstName\":\"Camila\",\"lastName\":\"Soto Pérez\",\"email\":\"camila@gmail.com\",\"password\":\"1234\",\"birthDate\":\"1998-06-12\",\"region\":\"Región Metropolitana de Santiago\",\"commune\":\"Santiago\",\"address\":\"Av. Principal 123\",\"role\":\"Cliente\"}]",
+          "estado": "passed",
+          "duracion_ms": 0.15999999999985448
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios devuelve un error de corrupción si sobreviven registros legibles y un admin válido",
+          "estado": "passed",
+          "duracion_ms": 0.37839999999982865
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios informa fallos de getItem sin anunciar éxito",
+          "estado": "passed",
+          "duracion_ms": 0.9055000000000746
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios informa fallos de setItem sin anunciar éxito",
+          "estado": "passed",
+          "duracion_ms": 0.7177000000001499
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios revierte la sesión si falla guardar el perfil propio",
+          "estado": "passed",
+          "duracion_ms": 0.7581000000000131
+        },
+        {
+          "nombre": "Gestión administrativa de usuarios solo interpreta ids enteros positivos en las URLs",
+          "estado": "passed",
+          "duracion_ms": 0.4925999999998112
+        }
+      ]
+    },
+    {
+      "archivo": "src/services/auth.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Servicio de autenticación demostrativa inicia sin sesión y no escribe usuarios al consultar una visita anónima",
+          "estado": "passed",
+          "duracion_ms": 2.5949000000000524
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa autentica camila@gmail.com con su rol Cliente y guarda solamente los datos de sesión",
+          "estado": "passed",
+          "duracion_ms": 2.4480000000000928
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa autentica martin@duoc.cl con su rol Vendedor y guarda solamente los datos de sesión",
+          "estado": "passed",
+          "duracion_ms": 0.4492999999999938
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa autentica admin@profesor.duoc.cl con su rol Administrador y guarda solamente los datos de sesión",
+          "estado": "passed",
+          "duracion_ms": 0.36370000000010805
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa rechaza las credenciales inválidas de desconocido@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 0.24260000000003856
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa rechaza las credenciales inválidas de camila@gmail.com",
+          "estado": "passed",
+          "duracion_ms": 0.13959999999997308
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa rechaza entradas incompletas o de tipos incorrectos sin lanzar errores",
+          "estado": "passed",
+          "duracion_ms": 0.2635999999999967
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa respeta los usuarios y contraseñas existentes sin reponer cuentas eliminadas",
+          "estado": "passed",
+          "duracion_ms": 0.34619999999995343
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa conserva la contraseña demostrativa de cuentas antiguas sin contraseña (undefined)",
+          "estado": "passed",
+          "duracion_ms": 0.27350000000001273
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa conserva la contraseña demostrativa de cuentas antiguas sin contraseña (null)",
+          "estado": "passed",
+          "duracion_ms": 0.11469999999985703
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa conserva la contraseña demostrativa de cuentas antiguas sin contraseña ()",
+          "estado": "passed",
+          "duracion_ms": 0.0865000000001146
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa tolera usuarios dañados o vacíos sin sobrescribirlos: JSON inválido",
+          "estado": "passed",
+          "duracion_ms": 0.22390000000018517
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa tolera usuarios dañados o vacíos sin sobrescribirlos: {}",
+          "estado": "passed",
+          "duracion_ms": 0.09570000000007894
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa tolera usuarios dañados o vacíos sin sobrescribirlos: []",
+          "estado": "passed",
+          "duracion_ms": 0.0905999999999949
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa tolera usuarios dañados o vacíos sin sobrescribirlos: [null, 42, {}]",
+          "estado": "passed",
+          "duracion_ms": 0.08550000000013824
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa ignora sesiones inválidas: JSON inválido",
+          "estado": "passed",
+          "duracion_ms": 0.13599999999996726
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa ignora sesiones inválidas: null",
+          "estado": "passed",
+          "duracion_ms": 0.06670000000008258
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa ignora sesiones inválidas: []",
+          "estado": "passed",
+          "duracion_ms": 0.05550000000016553
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa ignora sesiones inválidas: {}",
+          "estado": "passed",
+          "duracion_ms": 0.050200000000131695
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa ignora sesiones inválidas: {\"id\":1,\"email\":\"camila@gmail.com\",\"role\":\"Desconocido\"}",
+          "estado": "passed",
+          "duracion_ms": 0.06619999999998072
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa recupera una sesión de la EP1 usando el perfil y rol vigentes del usuario",
+          "estado": "passed",
+          "duracion_ms": 0.17829999999980828
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa descarta sesiones de usuarios eliminados o con otra identidad",
+          "estado": "passed",
+          "duracion_ms": 0.18339999999989232
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa permite continuar como visitante si el almacenamiento no se puede leer",
+          "estado": "passed",
+          "duracion_ms": 1.39650000000006
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa no informa éxito cuando no se puede guardar la sesión",
+          "estado": "passed",
+          "duracion_ms": 0.38170000000013715
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa cierra únicamente la sesión, conservando los usuarios y el carrito",
+          "estado": "passed",
+          "duracion_ms": 0.5162000000000262
+        },
+        {
+          "nombre": "Servicio de autenticación demostrativa informa si el navegador impide eliminar la sesión",
+          "estado": "passed",
+          "duracion_ms": 0.33930000000009386
+        }
+      ]
+    },
+    {
+      "archivo": "src/services/register.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Registro de clientes inicializa demos y guarda un cliente normalizado con contraseña EP1 sin iniciar sesión",
+          "estado": "passed",
+          "duracion_ms": 5.0530999999998585
+        },
+        {
+          "nombre": "Registro de clientes respeta un registro vacío sin reponer demos y conserva carrito y sesión existentes",
+          "estado": "passed",
+          "duracion_ms": 1.4369999999998981
+        },
+        {
+          "nombre": "Registro de clientes rechaza duplicados contra cuentas existentes: { run: '12.345.678-5' }",
+          "estado": "passed",
+          "duracion_ms": 0.5058000000001357
+        },
+        {
+          "nombre": "Registro de clientes rechaza duplicados contra cuentas existentes: { email: ' CAMILA@GMAIL.COM ' }",
+          "estado": "passed",
+          "duracion_ms": 0.22220000000015716
+        },
+        {
+          "nombre": "Registro de clientes vuelve a comprobar duplicados en cada envío y no guarda dos veces la cuenta",
+          "estado": "passed",
+          "duracion_ms": 0.282399999999825
+        },
+        {
+          "nombre": "Registro de clientes rechaza datos inválidos antes de modificar el almacenamiento",
+          "estado": "passed",
+          "duracion_ms": 0.904700000000048
+        },
+        {
+          "nombre": "Registro de clientes no sobrescribe usuarios dañados: JSON dañado",
+          "estado": "passed",
+          "duracion_ms": 0.503400000000056
+        },
+        {
+          "nombre": "Registro de clientes no sobrescribe usuarios dañados: {}",
+          "estado": "passed",
+          "duracion_ms": 0.22910000000001673
+        },
+        {
+          "nombre": "Registro de clientes no sobrescribe usuarios dañados: null",
+          "estado": "passed",
+          "duracion_ms": 0.1850000000001728
+        },
+        {
+          "nombre": "Registro de clientes no sobrescribe usuarios dañados: [null]",
+          "estado": "passed",
+          "duracion_ms": 0.17029999999999745
+        },
+        {
+          "nombre": "Registro de clientes no sobrescribe usuarios dañados: [{\"id\":7}]",
+          "estado": "passed",
+          "duracion_ms": 0.16610000000014224
+        },
+        {
+          "nombre": "Registro de clientes evita colisiones de identificadores con usuarios creados en el mismo instante",
+          "estado": "passed",
+          "duracion_ms": 1.2412999999999101
+        },
+        {
+          "nombre": "Registro de clientes informa fallos de almacenamiento en getItem sin anunciar éxito",
+          "estado": "passed",
+          "duracion_ms": 0.6176000000000386
+        },
+        {
+          "nombre": "Registro de clientes informa fallos de almacenamiento en setItem sin anunciar éxito",
+          "estado": "passed",
+          "duracion_ms": 0.28660000000013497
+        }
+      ]
+    },
+    {
+      "archivo": "src/services/routineStore.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 abre vacía sin escribir y devuelve una instantánea estable",
+          "estado": "passed",
+          "duracion_ms": 4.377500000000055
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 conserva selecciones y ajustes heredados, usa sugerencias y omite ids ausentes sin escribir",
+          "estado": "passed",
+          "duracion_ms": 0.9975999999999203
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 agrega sugerencias, evita duplicados e ids desconocidos",
+          "estado": "passed",
+          "duracion_ms": 1.6802000000000135
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 edita solo el campo solicitado conservando el resto de la rutina",
+          "estado": "passed",
+          "duracion_ms": 0.8203999999998359
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 lee cambios recientes antes de editar, elimina una referencia y vacía quitando la clave",
+          "estado": "passed",
+          "duracion_ms": 0.8209999999999127
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 protege datos dañados: {",
+          "estado": "passed",
+          "duracion_ms": 0.9611999999999625
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 protege datos dañados: null",
+          "estado": "passed",
+          "duracion_ms": 0.41610000000014224
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 protege datos dañados: {}",
+          "estado": "passed",
+          "duracion_ms": 0.31399999999985084
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 protege datos dañados: [null]",
+          "estado": "passed",
+          "duracion_ms": 0.37990000000013424
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 protege datos dañados: [{\"id\":\"1\"}]",
+          "estado": "passed",
+          "duracion_ms": 0.31150000000002365
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 protege datos dañados: [{\"id\":1},{\"id\":1}]",
+          "estado": "passed",
+          "duracion_ms": 0.292299999999841
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 informa fallos de lectura y permite volver a intentar",
+          "estado": "passed",
+          "duracion_ms": 1.2626999999999953
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 conserva los datos anteriores ante fallos de escritura o de vaciado",
+          "estado": "passed",
+          "duracion_ms": 0.9093000000000302
+        },
+        {
+          "nombre": "Persistencia de rutina compatible con EP1 notifica cambios locales, entre pestañas y de limpieza; retira la suscripción",
+          "estado": "passed",
+          "duracion_ms": 1.4264000000000578
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/authRedirect.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Destino posterior al acceso permite volver a /",
+          "estado": "passed",
+          "duracion_ms": 3.6644000000001142
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /carrito",
+          "estado": "passed",
+          "duracion_ms": 0.6083999999998468
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /productos",
+          "estado": "passed",
+          "duracion_ms": 0.22270000000003165
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /productos/2",
+          "estado": "passed",
+          "duracion_ms": 0.3707999999999174
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /contacto",
+          "estado": "passed",
+          "duracion_ms": 0.21820000000002437
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /entrenamiento",
+          "estado": "passed",
+          "duracion_ms": 0.17020000000002256
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /rutina",
+          "estado": "passed",
+          "duracion_ms": 0.14670000000000982
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /nosotros",
+          "estado": "passed",
+          "duracion_ms": 0.15030000000001564
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /blog",
+          "estado": "passed",
+          "duracion_ms": 0.3790000000001328
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /blog/creatina-y-rendimiento",
+          "estado": "passed",
+          "duracion_ms": 0.3004000000000815
+        },
+        {
+          "nombre": "Destino posterior al acceso permite volver a /blog/recuperacion-muscular",
+          "estado": "passed",
+          "duracion_ms": 0.2055000000000291
+        },
+        {
+          "nombre": "Destino posterior al acceso conserva los filtros del catálogo",
+          "estado": "passed",
+          "duracion_ms": 0.21529999999984284
+        },
+        {
+          "nombre": "Destino posterior al acceso envía Administrador al panel o al origen público explícito",
+          "estado": "passed",
+          "duracion_ms": 1.340800000000172
+        },
+        {
+          "nombre": "Destino posterior al acceso envía Vendedor al panel o al origen público explícito",
+          "estado": "passed",
+          "duracion_ms": 0.7704000000001088
+        },
+        {
+          "nombre": "Destino posterior al acceso retorna a /admin/usuarios solo con permiso de usuarios",
+          "estado": "passed",
+          "duracion_ms": 0.520200000000159
+        },
+        {
+          "nombre": "Destino posterior al acceso retorna a /admin/usuarios/nuevo solo con permiso de usuarios",
+          "estado": "passed",
+          "duracion_ms": 0.3273999999998978
+        },
+        {
+          "nombre": "Destino posterior al acceso retorna a /admin/usuarios/1/editar solo con permiso de usuarios",
+          "estado": "passed",
+          "duracion_ms": 0.40259999999989304
+        },
+        {
+          "nombre": "Destino posterior al acceso impide retornar al panel con un perfil Cliente o desconocido",
+          "estado": "passed",
+          "duracion_ms": 0.4617999999998119
+        },
+        {
+          "nombre": "Destino posterior al acceso permite la lista de productos a Vendedor y Administrador",
+          "estado": "passed",
+          "duracion_ms": 0.41440000000011423
+        },
+        {
+          "nombre": "Destino posterior al acceso retorna a /admin/pedidos solo con permiso de consulta",
+          "estado": "passed",
+          "duracion_ms": 0.5234000000000378
+        },
+        {
+          "nombre": "Destino posterior al acceso retorna a /admin/pedidos/1001 solo con permiso de consulta",
+          "estado": "passed",
+          "duracion_ms": 0.46050000000013824
+        },
+        {
+          "nombre": "Destino posterior al acceso descarta un subcamino de pedidos no implementado",
+          "estado": "passed",
+          "duracion_ms": 0.24530000000004293
+        },
+        {
+          "nombre": "Destino posterior al acceso reserva el retorno a /admin/productos/nuevo al Administrador",
+          "estado": "passed",
+          "duracion_ms": 0.501700000000028
+        },
+        {
+          "nombre": "Destino posterior al acceso reserva el retorno a /admin/productos/2/editar al Administrador",
+          "estado": "passed",
+          "duracion_ms": 0.34149999999999636
+        },
+        {
+          "nombre": "Destino posterior al acceso usa el catálogo en lugar de un destino externo, circular o inexistente: https://ejemplo.com",
+          "estado": "passed",
+          "duracion_ms": 0.3045999999999367
+        },
+        {
+          "nombre": "Destino posterior al acceso usa el catálogo en lugar de un destino externo, circular o inexistente: //ejemplo.com",
+          "estado": "passed",
+          "duracion_ms": 0.18689999999992324
+        },
+        {
+          "nombre": "Destino posterior al acceso usa el catálogo en lugar de un destino externo, circular o inexistente: /login",
+          "estado": "passed",
+          "duracion_ms": 0.1533999999999196
+        },
+        {
+          "nombre": "Destino posterior al acceso usa el catálogo en lugar de un destino externo, circular o inexistente: /admin",
+          "estado": "passed",
+          "duracion_ms": 0.15620000000012624
+        },
+        {
+          "nombre": "Destino posterior al acceso usa el catálogo en lugar de un destino externo, circular o inexistente: /no-existe",
+          "estado": "passed",
+          "duracion_ms": 0.17370000000005348
+        },
+        {
+          "nombre": "Destino posterior al acceso usa el catálogo en lugar de un destino externo, circular o inexistente: /\\ejemplo.com",
+          "estado": "passed",
+          "duracion_ms": 0.07470000000012078
+        },
+        {
+          "nombre": "Destino posterior al acceso tolera un estado de navegación ausente o mal formado",
+          "estado": "passed",
+          "duracion_ms": 0.21659999999997126
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/cart.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "cart utils limita una cantidad al stock disponible",
+          "estado": "passed",
+          "duracion_ms": 2.039099999999962
+        },
+        {
+          "nombre": "cart utils calcula despacho estándar cuando el subtotal es menor a $50.000",
+          "estado": "passed",
+          "duracion_ms": 0.3464999999998781
+        },
+        {
+          "nombre": "cart utils calcula despacho gratuito desde $50.000",
+          "estado": "passed",
+          "duracion_ms": 0.17020000000002256
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/contact.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Validaciones de Contacto exige los tres campos y rechaza contenido vacío o solo espacios",
+          "estado": "passed",
+          "duracion_ms": 2.7396000000001095
+        },
+        {
+          "nombre": "Validaciones de Contacto acepta un nombre de 100 caracteres y rechaza uno de 101",
+          "estado": "passed",
+          "duracion_ms": 0.5551000000000386
+        },
+        {
+          "nombre": "Validaciones de Contacto acepta un comentario de 500 caracteres y rechaza uno de 501",
+          "estado": "passed",
+          "duracion_ms": 0.18679999999994834
+        },
+        {
+          "nombre": "Validaciones de Contacto reutiliza los dominios permitidos y rechaza otros correos",
+          "estado": "passed",
+          "duracion_ms": 0.24440000000004147
+        },
+        {
+          "nombre": "Validaciones de Contacto aplica el límite de 100 caracteres al correo",
+          "estado": "passed",
+          "duracion_ms": 0.17350000000010368
+        },
+        {
+          "nombre": "Validaciones de Contacto admite espacios exteriores y mayúsculas sin modificar los datos recibidos",
+          "estado": "passed",
+          "duracion_ms": 0.1770000000001346
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/orders.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Cálculos de pedidos conserva unidades y total de productos del pedido 1001",
+          "estado": "passed",
+          "duracion_ms": 2.6147000000000844
+        },
+        {
+          "nombre": "Cálculos de pedidos conserva unidades y total de productos del pedido 1002",
+          "estado": "passed",
+          "duracion_ms": 0.21600000000012187
+        },
+        {
+          "nombre": "Cálculos de pedidos conserva unidades y total de productos del pedido 1003",
+          "estado": "passed",
+          "duracion_ms": 0.11660000000006221
+        },
+        {
+          "nombre": "Cálculos de pedidos resume una lista vacía y admite productos gratuitos sin agregar despacho",
+          "estado": "passed",
+          "duracion_ms": 0.22850000000016735
+        },
+        {
+          "nombre": "Cálculos de pedidos exige un identificador entero positivo completo",
+          "estado": "passed",
+          "duracion_ms": 0.483600000000024
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/permissions.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Permisos administrativos heredados de EP1 aplica toda la matriz del perfil Cliente",
+          "estado": "passed",
+          "duracion_ms": 3.8126000000002023
+        },
+        {
+          "nombre": "Permisos administrativos heredados de EP1 aplica toda la matriz del perfil Vendedor",
+          "estado": "passed",
+          "duracion_ms": 0.3691000000001168
+        },
+        {
+          "nombre": "Permisos administrativos heredados de EP1 aplica toda la matriz del perfil Administrador",
+          "estado": "passed",
+          "duracion_ms": 0.1514999999999418
+        },
+        {
+          "nombre": "Permisos administrativos heredados de EP1 deniega roles y permisos desconocidos",
+          "estado": "passed",
+          "duracion_ms": 0.30330000000003565
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/productDetails.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Paridad de datos del catálogo conserva todos los campos de los seis productos originales",
+          "estado": "passed",
+          "duracion_ms": 3.1721999999999753
+        },
+        {
+          "nombre": "Paridad de datos del catálogo completa solo datos ausentes sin mutar el registro ni los originales",
+          "estado": "passed",
+          "duracion_ms": 2.3066999999998643
+        },
+        {
+          "nombre": "Paridad de datos del catálogo respeta vacíos explícitos, null y objetos parciales",
+          "estado": "passed",
+          "duracion_ms": 0.3857999999997901
+        },
+        {
+          "nombre": "Paridad de datos del catálogo no atribuye fichas originales a otros ids o códigos",
+          "estado": "passed",
+          "duracion_ms": 0.22500000000013642
+        },
+        {
+          "nombre": "Paridad de datos del catálogo presenta metadatos incompletos o dañados como información no especificada",
+          "estado": "passed",
+          "duracion_ms": 0.48450000000002547
+        },
+        {
+          "nombre": "Paridad de datos del catálogo conserva cero calorías y no inventa un valor para datos ausentes o inválidos",
+          "estado": "passed",
+          "duracion_ms": 0.3492999999998574
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/products.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Validación del catálogo normaliza código, espacios, números y umbral opcional conservando valores cero",
+          "estado": "passed",
+          "duracion_ms": 4.27390000000014
+        },
+        {
+          "nombre": "Validación del catálogo rechaza precio inválido ",
+          "estado": "passed",
+          "duracion_ms": 0.47710000000006403
+        },
+        {
+          "nombre": "Validación del catálogo rechaza precio inválido  ",
+          "estado": "passed",
+          "duracion_ms": 0.14809999999988577
+        },
+        {
+          "nombre": "Validación del catálogo rechaza precio inválido -1",
+          "estado": "passed",
+          "duracion_ms": 0.11439999999993233
+        },
+        {
+          "nombre": "Validación del catálogo rechaza precio inválido Infinity",
+          "estado": "passed",
+          "duracion_ms": 0.09950000000026193
+        },
+        {
+          "nombre": "Validación del catálogo rechaza precio inválido NaN",
+          "estado": "passed",
+          "duracion_ms": 0.0929999999998472
+        },
+        {
+          "nombre": "Validación del catálogo exige enteros no negativos para existencias y acepta precio decimal",
+          "estado": "passed",
+          "duracion_ms": 0.5608000000001994
+        },
+        {
+          "nombre": "Validación del catálogo valida campos obligatorios, categorías y límites de texto",
+          "estado": "passed",
+          "duracion_ms": 0.364100000000235
+        },
+        {
+          "nombre": "Validación del catálogo admite imágenes web y convierte rutas heredadas de recursos",
+          "estado": "passed",
+          "duracion_ms": 0.6851000000001477
+        },
+        {
+          "nombre": "Validación del catálogo no interpreta un umbral ausente como cero",
+          "estado": "passed",
+          "duracion_ms": 0.23050000000012005
+        },
+        {
+          "nombre": "Validación del catálogo acepta solo identificadores enteros positivos completos",
+          "estado": "passed",
+          "duracion_ms": 0.46050000000013824
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/registration.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Validaciones del registro EP1 acepta el RUN 9.876.543-3 por módulo 11",
+          "estado": "passed",
+          "duracion_ms": 2.10570000000007
+        },
+        {
+          "nombre": "Validaciones del registro EP1 acepta el RUN 12.345.678-5 por módulo 11",
+          "estado": "passed",
+          "duracion_ms": 0.2764999999999418
+        },
+        {
+          "nombre": "Validaciones del registro EP1 acepta el RUN 6.000.000-k por módulo 11",
+          "estado": "passed",
+          "duracion_ms": 0.13570000000004256
+        },
+        {
+          "nombre": "Validaciones del registro EP1 acepta el RUN 10.000.004-0 por módulo 11",
+          "estado": "passed",
+          "duracion_ms": 0.13190000000008695
+        },
+        {
+          "nombre": "Validaciones del registro EP1 rechaza RUN inválido: 98765432",
+          "estado": "passed",
+          "duracion_ms": 0.8967000000000098
+        },
+        {
+          "nombre": "Validaciones del registro EP1 rechaza RUN inválido: abcdefghi",
+          "estado": "passed",
+          "duracion_ms": 0.1489000000001397
+        },
+        {
+          "nombre": "Validaciones del registro EP1 rechaza RUN inválido: 12",
+          "estado": "passed",
+          "duracion_ms": 0.1012999999998101
+        },
+        {
+          "nombre": "Validaciones del registro EP1 rechaza RUN inválido: 1234567890",
+          "estado": "passed",
+          "duracion_ms": 0.09609999999997854
+        },
+        {
+          "nombre": "Validaciones del registro EP1 rechaza RUN inválido: 12 3456785",
+          "estado": "passed",
+          "duracion_ms": 0.12380000000007385
+        },
+        {
+          "nombre": "Validaciones del registro EP1 rechaza RUN inválido: ",
+          "estado": "passed",
+          "duracion_ms": 0.08150000000000546
+        },
+        {
+          "nombre": "Validaciones del registro EP1 normaliza los datos sin admitir rol ni contraseña desde el formulario",
+          "estado": "passed",
+          "duracion_ms": 0.8821000000000367
+        },
+        {
+          "nombre": "Validaciones del registro EP1 valida campos requeridos y los límites de nombre, apellidos y dirección",
+          "estado": "passed",
+          "duracion_ms": 0.6677999999999429
+        },
+        {
+          "nombre": "Validaciones del registro EP1 exige que la comuna pertenezca a una región disponible",
+          "estado": "passed",
+          "duracion_ms": 0.3101999999998952
+        },
+        {
+          "nombre": "Validaciones del registro EP1 acepta fecha opcional o de calendario válida y rechaza fechas imposibles",
+          "estado": "passed",
+          "duracion_ms": 0.7868000000000848
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/routine.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Reglas de la rutina acepta enteros y límites para sets",
+          "estado": "passed",
+          "duracion_ms": 3.271400000000085
+        },
+        {
+          "nombre": "Reglas de la rutina acepta enteros y límites para reps",
+          "estado": "passed",
+          "duracion_ms": 0.39589999999998327
+        },
+        {
+          "nombre": "Reglas de la rutina recupera sugerencias para datos heredados vacíos y ajusta valores fuera de rango",
+          "estado": "passed",
+          "duracion_ms": 0.3170000000000073
+        },
+        {
+          "nombre": "Reglas de la rutina busca en nombre y descripción sin depender de mayúsculas o espacios externos",
+          "estado": "passed",
+          "duracion_ms": 1.3136999999999261
+        },
+        {
+          "nombre": "Reglas de la rutina combina los tres filtros y admite resultados vacíos",
+          "estado": "passed",
+          "duracion_ms": 0.2747999999999138
+        }
+      ]
+    },
+    {
+      "archivo": "src/utils/validation.test.js",
+      "resultado": "passed",
+      "pruebas": [
+        {
+          "nombre": "Validaciones de acceso de la EP1 acepta el dominio permitido de   CAMILA@GMAIL.COM  ",
+          "estado": "passed",
+          "duracion_ms": 2.0431999999998425
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 acepta el dominio permitido de martin@duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 0.25769999999988613
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 acepta el dominio permitido de admin@profesor.duoc.cl",
+          "estado": "passed",
+          "duracion_ms": 0.10130000000003747
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 rechaza formatos o dominios no permitidos: sin-correo",
+          "estado": "passed",
+          "duracion_ms": 0.24720000000002074
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 rechaza formatos o dominios no permitidos: persona@outlook.com",
+          "estado": "passed",
+          "duracion_ms": 0.10640000000012151
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 rechaza formatos o dominios no permitidos: persona@gmail.com.ejemplo",
+          "estado": "passed",
+          "duracion_ms": 0.08599999999978536
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 rechaza formatos o dominios no permitidos: persona@sub.gmail.com",
+          "estado": "passed",
+          "duracion_ms": 0.0725999999999658
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 exige correo y admite hasta 100 caracteres después de quitar espacios exteriores",
+          "estado": "passed",
+          "duracion_ms": 0.1736999999998261
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 acepta la longitud válida de contraseña: 1234",
+          "estado": "passed",
+          "duracion_ms": 0.1550999999999476
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 acepta la longitud válida de contraseña: 1234567890",
+          "estado": "passed",
+          "duracion_ms": 0.06529999999997926
+        },
+        {
+          "nombre": "Validaciones de acceso de la EP1 exige contraseña y conserva los límites de 4 a 10 caracteres",
+          "estado": "passed",
+          "duracion_ms": 0.11799999999993815
+        }
+      ]
+    }
+  ]
+}

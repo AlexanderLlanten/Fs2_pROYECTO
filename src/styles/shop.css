@@ -777,6 +777,9 @@
 }
 
 .cart-item-react-visual {
+    position: relative;
+    overflow: hidden;
+
     display:
         flex;
 
@@ -803,6 +806,10 @@
 
     font-size:
         2.5rem;
+}
+
+.cart-item-react-visual .kynex-product-image {
+    padding: 0.5rem;
 }
 
 .cart-item-react-info > span {
