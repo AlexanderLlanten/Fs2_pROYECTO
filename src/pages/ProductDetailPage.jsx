@@ -98,7 +98,11 @@ function ProductDetailPage() {
                                 </h1>
 
                                 <p className="product-detail-code">
-                                    Código {product.code}
+                                    Código{" "}
+
+                                    <span>
+                                        {product.code}
+                                    </span>
                                 </p>
 
                                 <p className="product-detail-description-react">
