@@ -1,67 +1,12 @@
-import { defaultUsers } from "../data/users.js";
 import { getRegistrationErrors, normalizeRegistration } from "../utils/registration.js";
 import { cleanRun } from "../utils/validation.js";
+import { isValidIdentity, nextUserId, normalizeEmail, readUsers, toSession, USERS_KEY } from "./userStore.js";
 
-export const USERS_KEY = "kynex_users";
+export { USERS_KEY } from "./userStore.js";
+export { AUTH_ROLES } from "../data/roles.js";
 export const SESSION_KEY = "kynex_session";
-export const AUTH_ROLES = Object.freeze(["Cliente", "Vendedor", "Administrador"]);
 
 const STORAGE_ERROR = "No fue posible acceder al almacenamiento de este navegador. Inténtalo nuevamente.";
-
-function normalizeEmail(email) {
-    return typeof email === "string" ? email.trim().toLowerCase() : "";
-}
-
-function isValidIdentity(value) {
-    return value !== null
-        && typeof value === "object"
-        && !Array.isArray(value)
-        && Number.isSafeInteger(value.id)
-        && value.id > 0
-        && normalizeEmail(value.email) !== ""
-        && AUTH_ROLES.includes(value.role);
-}
-
-function isValidUser(value) {
-    return isValidIdentity(value)
-        && typeof value.firstName === "string"
-        && value.firstName.trim() !== ""
-        && (value.lastName === undefined || typeof value.lastName === "string")
-        && (value.password == null || typeof value.password === "string");
-}
-
-function readUsers() {
-    const stored = localStorage.getItem(USERS_KEY);
-
-    if (stored === null) {
-        return {
-            users: defaultUsers.map(user => ({ ...user })),
-            needsInitialization: true
-        };
-    }
-
-    try {
-        const parsed = JSON.parse(stored);
-        return {
-            users: Array.isArray(parsed) ? parsed.filter(isValidUser) : [],
-            isCorrupted: !Array.isArray(parsed) || !parsed.every(isValidUser),
-            needsInitialization: false
-        };
-    } catch {
-        // No reemplazar registros dañados por las cuentas de demostración.
-        return { users: [], needsInitialization: false, isCorrupted: true };
-    }
-}
-
-function toSession(user) {
-    return {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName ?? "",
-        email: normalizeEmail(user.email),
-        role: user.role
-    };
-}
 
 export function getSession() {
     try {
@@ -155,8 +100,7 @@ export function registerUser(values) {
             return { success: false, errors, message: "Revisa los campos marcados antes de continuar." };
         }
 
-        const id = Math.max(Date.now(), ...users.map(user => user.id + 1));
-        if (!Number.isSafeInteger(id) || id <= 0) throw new Error("No se puede generar un identificador.");
+        const id = nextUserId(users);
         // La EP1 crea clientes con contraseña demostrativa 1234, sin abrir una sesión.
         const user = { ...data, id, password: "1234", role: "Cliente" };
         localStorage.setItem(USERS_KEY, JSON.stringify([...users, user]));
