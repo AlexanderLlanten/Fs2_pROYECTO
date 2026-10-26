@@ -14,6 +14,7 @@ import "./styles/admin.css";
 import "./styles/contact.css";
 import "./styles/training.css";
 import "./styles/about.css";
+import "./styles/blog.css";
 
 import App from "./App.jsx";
 

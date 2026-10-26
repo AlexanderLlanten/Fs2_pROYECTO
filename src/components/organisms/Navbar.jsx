@@ -61,6 +61,9 @@ function Navbar() {
                                 <NavLink className="nav-link" to="/rutina" onClick={closeMenu}>Mi rutina</NavLink>
                             </li>
                             <li className="nav-item">
+                                <NavLink className="nav-link" to="/blog" onClick={closeMenu}>Blog</NavLink>
+                            </li>
+                            <li className="nav-item">
                                 <NavLink className="nav-link" to="/nosotros" end onClick={closeMenu}>Nosotros</NavLink>
                             </li>
                             <li className="nav-item">

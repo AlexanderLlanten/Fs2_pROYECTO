@@ -1,7 +1,7 @@
 import { matchPath } from "react-router-dom";
 import { getRoleHome, hasPermission, PERMISSIONS } from "./permissions.js";
 
-const publicPaths = ["/", "/productos", "/productos/:id", "/carrito", "/contacto", "/entrenamiento", "/rutina", "/nosotros"];
+const publicPaths = ["/", "/productos", "/productos/:id", "/carrito", "/contacto", "/entrenamiento", "/rutina", "/nosotros", "/blog", "/blog/:slug"];
 const userPaths = ["/admin/usuarios", "/admin/usuarios/nuevo", "/admin/usuarios/:id/editar"];
 const productEditPaths = ["/admin/productos/nuevo", "/admin/productos/:id/editar"];
 const orderPaths = ["/admin/pedidos", "/admin/pedidos/:id"];

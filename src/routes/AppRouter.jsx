@@ -26,6 +26,8 @@ import ContactPage from "../pages/ContactPage.jsx";
 import TrainingPage from "../pages/TrainingPage.jsx";
 import RoutinePage from "../pages/RoutinePage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import BlogPage from "../pages/BlogPage.jsx";
+import BlogArticlePage from "../pages/BlogArticlePage.jsx";
 
 function AppRouter() {
     return (
@@ -42,6 +44,8 @@ function AppRouter() {
                     <Route path="entrenamiento" element={<TrainingPage />} />
                     <Route path="rutina" element={<RoutinePage />} />
                     <Route path="nosotros" element={<AboutPage />} />
+                    <Route path="blog" element={<BlogPage />} />
+                    <Route path="blog/:slug" element={<BlogArticlePage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>

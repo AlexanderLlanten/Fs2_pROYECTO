@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { getLoginDestination } from "./authRedirect.js";
 
 describe("Destino posterior al acceso", () => {
-    it.each(["/", "/carrito", "/productos", "/productos/2", "/contacto", "/entrenamiento", "/rutina", "/nosotros"])("permite volver a %s", pathname => {
+    it.each(["/", "/carrito", "/productos", "/productos/2", "/contacto", "/entrenamiento", "/rutina", "/nosotros", "/blog", "/blog/creatina-y-rendimiento", "/blog/recuperacion-muscular"])("permite volver a %s", pathname => {
         expect(getLoginDestination({ pathname })).toBe(pathname);
     });
 
