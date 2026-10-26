@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { products } from "../data/products.js";
-import { products as originalProducts } from "../../assets/js/data/products.js";
+// Referencia histórica independiente del catálogo vigente y exclusiva de testing.
+import originalProducts from "../test/fixtures/products-ep1.json";
 import { completeProductDetails, productCalories, productList, productRecord, productText } from "./productDetails.js";
 
 describe("Paridad de datos del catálogo", () => {
