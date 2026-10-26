@@ -20,6 +20,8 @@ import AdminUsersPage from "../pages/AdminUsersPage.jsx";
 import AdminUserFormPage from "../pages/AdminUserFormPage.jsx";
 import AdminProductsPage from "../pages/AdminProductsPage.jsx";
 import AdminProductFormPage from "../pages/AdminProductFormPage.jsx";
+import AdminOrdersPage from "../pages/AdminOrdersPage.jsx";
+import AdminOrderDetailPage from "../pages/AdminOrderDetailPage.jsx";
 
 function AppRouter() {
     return (
@@ -43,7 +45,6 @@ function AppRouter() {
                             <Route path="usuarios/:id/editar" element={<AdminUserFormPage />} />
                             <Route path="usuarios/*" element={<NotFoundPage admin />} />
                         </Route>
-                        <Route path="*" element={<NotFoundPage admin />} />
                         <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_VIEW} />}>
                             <Route path="productos" element={<AdminProductsPage />} />
                             <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_MANAGE} />}>
@@ -52,6 +53,12 @@ function AppRouter() {
                             </Route>
                             <Route path="productos/*" element={<NotFoundPage admin />} />
                         </Route>
+                        <Route element={<ProtectedRoute permission={PERMISSIONS.ORDERS_VIEW} />}>
+                            <Route path="pedidos" element={<AdminOrdersPage />} />
+                            <Route path="pedidos/:id" element={<AdminOrderDetailPage />} />
+                            <Route path="pedidos/*" element={<NotFoundPage admin />} />
+                        </Route>
+                        <Route path="*" element={<NotFoundPage admin />} />
                     </Route>
                 </Route>
             </Routes>

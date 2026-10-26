@@ -37,6 +37,14 @@ describe("Destino posterior al acceso", () => {
         for (const role of ["Vendedor", "Administrador"]) expect(getLoginDestination({ pathname: "/admin/productos" }, role)).toBe("/admin/productos");
         expect(getLoginDestination({ pathname: "/admin/productos" }, "Cliente")).toBe("/productos");
     });
+    it.each(["/admin/pedidos", "/admin/pedidos/1001"])("retorna a %s solo con permiso de consulta", pathname => {
+        for (const role of ["Vendedor", "Administrador"]) expect(getLoginDestination({ pathname, search: "?origen=panel" }, role)).toBe(`${pathname}?origen=panel`);
+        expect(getLoginDestination({ pathname }, "Cliente")).toBe("/productos");
+        expect(getLoginDestination({ pathname }, "Desconocido")).toBe("/productos");
+    });
+    it("descarta un subcamino de pedidos no implementado", () => {
+        expect(getLoginDestination({ pathname: "/admin/pedidos/1001/editar" }, "Administrador")).toBe("/admin");
+    });
     it.each(["/admin/productos/nuevo", "/admin/productos/2/editar"])("reserva el retorno a %s al Administrador", pathname => {
         expect(getLoginDestination({ pathname }, "Administrador")).toBe(pathname);
         expect(getLoginDestination({ pathname }, "Vendedor")).toBe("/admin");
