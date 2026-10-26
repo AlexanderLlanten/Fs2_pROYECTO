@@ -247,6 +247,33 @@ y conserva los valores; editar retira la confirmación hasta volver a validar.
 No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
 permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
 
+## Blog y artículos
+
+Las rutas públicas `/blog`, `/blog/creatina-y-rendimiento` y
+`/blog/recuperacion-muscular` reutilizan PublicLayout. `src/data/articles.js` conserva
+los dos artículos de la EP1, sus resúmenes, categorías, párrafos, listas, notas
+informativas y fotografías originales. El contenido se representa con JSX y texto;
+no se inyecta HTML. Su alcance sigue siendo académico e informativo.
+
+El átomo ArticleImage muestra texto alternativo, carga diferida y una alternativa
+si falta o falla la imagen. BlogCard compone imagen, Badge, título, resumen y un enlace
+con nombre accesible que identifica el artículo. BlogFeed agrega el encabezado de
+sección y la grilla. ArticleContent comparte el cuerpo de lectura entre ambos
+artículos, con encabezados, listas y nota identificable. BlogArticlePage resuelve
+el slug solicitado y muestra «Artículo no encontrado» si no existe.
+
+El enlace «Volver al blog» apunta a `/blog`, incluso al entrar o recargar directamente
+un artículo. La portada ofrece acceder a la tienda. Navbar y Footer incorporan Blog;
+el enlace de cabecera permanece activo durante la lectura. El menú conserva su
+comportamiento móvil y ajusta el espaciado de escritorio para alojar todos los accesos.
+Login conserva portada o artículo de origen, incluida la consulta. Visitar estas
+páginas no agrega claves de almacenamiento; compra y rutina se conservan al navegar,
+recargar e iniciar o cerrar sesión.
+
+Con este bloque, las 20 pantallas del inventario original tienen ruta y contenido
+en React. Quedan la revisión final de paridad y recursos, ERS, documento de testing,
+entregables y defensa; el inventario de pantallas no mide ese trabajo de cierre.
+
 ## Nosotros
 
 `/nosotros` es pública y reutiliza PublicLayout. Conserva la presentación de KYNEX,
@@ -331,14 +358,15 @@ npm run build
 ```
 
 No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
-Nosotros y su componente compartido con Inicio (4 archivos y 20 pruebas en este corte):
+Blog y artículos (5 archivos y 23 pruebas en este corte):
 
 ```sh
-npm test -- About.test AboutPage FeatureSection HomePage
+npm test -- ArticleImage BlogCard ArticleContent BlogPage Blog.test
 ```
 
 En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
-la página, la sección reutilizable, los recorridos integrados y la regresión de Inicio.
+las imágenes, tarjetas, cuerpos de lectura, portada y recorridos integrados.
+Nosotros conserva su selección rápida: `npm test -- About.test AboutPage FeatureSection HomePage`.
 Entrenamiento y rutina conservan su selección rápida:
 `npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test`.
 Contacto conserva su selección rápida: `npm test -- ContactForm contact.test Contact.test`.
@@ -380,6 +408,9 @@ recarga, sincronización, cancelación/confirmación, fallos de almacenamiento y
 conservación de los datos de sesión, catálogo y compra. Nosotros comprueba contenido
 institucional, composición por props, enlaces a categorías y catálogo, acceso público,
 menú móvil, retorno desde Login, recarga y conservación de compra y rutina.
+Blog y artículos agregan composición por props, alternativa de imagen, contenido
+original, enlaces distinguibles, lectura directa, cambio de artículo, acceso con
+todos los perfiles, retorno desde Login, recarga y manejo de artículos inexistentes.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.
