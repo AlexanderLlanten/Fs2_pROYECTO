@@ -16,7 +16,7 @@ function getStockStatus(
     }
 
     if (
-        numericCriticalStock > 0
+        criticalStock !== null && criticalStock !== undefined
         &&
         numericStock <= numericCriticalStock
     ) {

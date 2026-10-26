@@ -1,8 +1,9 @@
 import AdminSummaryCard from "../molecules/AdminSummaryCard.jsx";
+import { isCriticalStock } from "../../utils/products.js";
 
 function InventorySummary({ products }) {
     const units = products.reduce((total, product) => total + product.stock, 0);
-    const lowStock = products.filter(product => product.stock <= product.criticalStock).length;
+    const lowStock = products.filter(isCriticalStock).length;
 
     return (
         <section aria-labelledby="inventory-summary-title">
