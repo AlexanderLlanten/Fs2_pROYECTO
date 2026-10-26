@@ -4,8 +4,12 @@ Corte: 26 de octubre de 2026. Rama: `feature/react-migration`.
 
 La revisión acumulada contrasta directamente catálogo, detalle de producto, Inicio
 y el aviso de continuación del carrito. Se usan
-los HTML y módulos originales conservados en `pages/`, `admin/` y `assets/js/`;
+los HTML y módulos originales disponibles en el historial Git anterior a la depuración;
 el Inicio anterior a Vite se consulta con `git show 3d43937:index.html`.
+Los archivos antiguos se retiraron después de completar la migración; el corte
+`a7df48b` conserva esos antecedentes y [el registro de limpieza](limpieza-legacy.md)
+detalla sus reemplazos. La prueba del catálogo mantiene una referencia histórica
+independiente y exclusiva de testing.
 La matriz también identifica las 20 pantallas y sus rutas actuales. Para los demás
 módulos se registra la migración y sus pruebas previas. El cierre añade la
 [auditoría transversal](auditoria-final.md): 22 rutas y variantes en tres tamaños,

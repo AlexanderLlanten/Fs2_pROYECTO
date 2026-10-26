@@ -99,8 +99,32 @@ Las próximas ampliaciones de pruebas deberán priorizar escenarios observables 
 
 ## Exclusiones y aceptación pendiente
 
-La instrumentación excluye el punto de arranque, los auxiliares de prueba y las propias pruebas. La medición no acredita estilos, contenido heredado, servicios externos, rendimiento real ni comportamiento en todos los navegadores. El entorno simulado tampoco reproduce íntegramente el diseño visual o las tecnologías de asistencia.
+La instrumentación excluye el punto de arranque, los auxiliares de prueba y las propias pruebas. La medición no acredita estilos, servicios externos, rendimiento real ni comportamiento en todos los navegadores. El entorno simulado tampoco reproduce íntegramente el diseño visual o las tecnologías de asistencia.
 
 Continúan pendientes la matriz Chrome, Edge, Firefox y Safari, las mediciones de carga de 3 segundos y respuesta inferior a 300 milisegundos, y la reproducción del video externo, cuyo proveedor mostró restricción con código 151.
 
 La versión presenta resultados satisfactorios dentro del alcance académico Front End y de los escenarios evaluados. Su aceptación integral queda condicionada a completar las comprobaciones anteriores. La operación productiva requerirá servicios de servidor y controles adicionales de seguridad y persistencia.
+
+## Verificación tras la depuración
+
+La eliminación de 51 archivos antiguos se verificó mediante revisión de dependencias, regresión automatizada y comparación de la compilación. Las responsabilidades retiradas ya están cubiertas por la implementación React vigente.
+
+| Elemento retirado | Cantidad | Reemplazo vigente |
+| --- | ---: | --- |
+| Pantallas HTML | 19 | Páginas React y navegación con React Router; plantillas públicas y administrativas compartidas. |
+| Hojas de estilo CSS | 7 | Estilos de la aplicación React y Bootstrap, manteniendo la identidad visual KYNEX. |
+| Módulos JavaScript | 25 | Componentes, estado compartido, hooks, servicios, validaciones y datos del catálogo React. |
+
+### Preservación de la prueba del catálogo
+
+Una prueba todavía dependía del módulo antiguo de productos. Sus seis registros completos se conservaron como una referencia histórica independiente, exclusiva de testing. La prueba compara todos los campos con el catálogo vigente sin utilizar código de la implementación retirada.
+
+### Resultados posteriores al retiro
+
+La regresión aprobó 597 pruebas distribuidas en 80 agrupaciones, sin fallos ni omisiones, en 109,92 segundos. La cobertura se mantiene en 97,91% de sentencias, 94,74% de ramas, 99,30% de funciones y 98,98% de líneas. Los archivos retirados no pertenecían al código instrumentado de la aplicación React.
+
+La compilación finalizó correctamente. Sus 24 archivos coinciden byte a byte con la salida previa a la limpieza. También se verificó la conservación de las 19 imágenes y la ausencia de dependencias hacia los módulos eliminados.
+
+### Alcance de la evidencia
+
+La revisión visual anterior corresponde al mismo resultado compilado; la comparación no constituye una nueva evaluación de navegador. Permanecen las condiciones pendientes de rendimiento, compatibilidad y reproducción multimedia. El historial Git conserva la implementación retirada.

@@ -2,6 +2,11 @@
 
 Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del inventario original tienen ruta React.
 
+Se retiraron los 19 HTML, 7 CSS y 25 módulos JavaScript de la implementación anterior.
+La aplicación conserva su entrada `index.html` y las 19 imágenes utilizadas por React.
+El [registro de limpieza](docs/limpieza-legacy.md) detalla cada archivo retirado, su
+reemplazo y la verificación posterior. El historial Git conserva la versión original.
+
 ## Entrega y ejecución en otro equipo
 
 Trabajar con **feature/react-migration**. Esta entrega no modifica `main`.

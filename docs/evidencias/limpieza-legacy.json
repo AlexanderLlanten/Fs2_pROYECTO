@@ -1,0 +1,278 @@
+{
+  "fecha": "2026-10-26",
+  "commit_anterior": "a7df48ba20f7c32fc1a77d34ce8bcf154ae70b3f",
+  "commit_limpieza": "024096d5aafc31918274ee43d331a7fb2112b460",
+  "eliminados": [
+    {
+      "path": "admin/index.html",
+      "sha256": "fa3b34bd89d5674cc965bb2d6d50a73b16c87db01a3c447a086f45d0aee8b74c",
+      "reemplazo": "AdminHomePage; /admin"
+    },
+    {
+      "path": "admin/orders/order-detail.html",
+      "sha256": "0ce356b7256171ddca7597374574ae7b1f974425e1adb6f556f39296952eb39b",
+      "reemplazo": "AdminOrderDetailPage; /admin/pedidos/:id"
+    },
+    {
+      "path": "admin/orders/orders.html",
+      "sha256": "4c6dbf939250c261ed1ccbd8ea2d073af3b94161f501b16579dc67824350d83e",
+      "reemplazo": "AdminOrdersPage; /admin/pedidos"
+    },
+    {
+      "path": "admin/products/product-form.html",
+      "sha256": "88ed3a8f37c9f86494332e4e98b7cfa5489df3133b8d0c6231a4dac33d56dc8e",
+      "reemplazo": "AdminProductFormPage; /admin/productos/nuevo y /admin/productos/:id/editar"
+    },
+    {
+      "path": "admin/products/products.html",
+      "sha256": "3f21fa63a50ea65151bfa678aa2b1023eaf6dc36f9d4445c5a030df25a0e6390",
+      "reemplazo": "AdminProductsPage; /admin/productos"
+    },
+    {
+      "path": "admin/users/user-form.html",
+      "sha256": "52cfd08104f29c00e03854c407241021c9e4fd1ca50efb9822b15e4ee854568e",
+      "reemplazo": "AdminUserFormPage; /admin/usuarios/nuevo y /admin/usuarios/:id/editar"
+    },
+    {
+      "path": "admin/users/users.html",
+      "sha256": "6eadbe7fe8b23baa1aaaed1596f4cdb93a17003e7350178309bacd3636376e45",
+      "reemplazo": "AdminUsersPage; /admin/usuarios"
+    },
+    {
+      "path": "assets/css/admin.css",
+      "sha256": "c49c1d534a4fe786fba3786ec8d1047be0f18889b834a97a32bb3a7eb95f5608",
+      "reemplazo": "src/styles/admin.css y AdminLayout"
+    },
+    {
+      "path": "assets/css/components.css",
+      "sha256": "916d839882c5dbb1d061366a92939a0b8bb2391a21fc671f1972449262cf2984",
+      "reemplazo": "Estilos de componentes de src/styles y Bootstrap"
+    },
+    {
+      "path": "assets/css/content.css",
+      "sha256": "667cac516e9541f3e7456cc10b12e18f40769fae54b082ff324dc031548392ae",
+      "reemplazo": "src/styles/about.css, blog.css y contact.css"
+    },
+    {
+      "path": "assets/css/forms.css",
+      "sha256": "9c75d5d20b8670d82cfcd70812cf6f2c478cd187ccc251c6f6ec8b769b47620f",
+      "reemplazo": "src/styles/auth.css, admin.css y contact.css; formularios reutilizables"
+    },
+    {
+      "path": "assets/css/main.css",
+      "sha256": "afbb1d3839f41e263bf16b9186666e555ff000d660d09c34b58690d851b36970",
+      "reemplazo": "src/styles/global.css, layout.css y home.css"
+    },
+    {
+      "path": "assets/css/shop.css",
+      "sha256": "570b1d7277fa2807c71002618c88deba127ab0af4b2c4cc5957fc5b1c652858c",
+      "reemplazo": "src/styles/shop.css"
+    },
+    {
+      "path": "assets/css/training.css",
+      "sha256": "0f13294749567414953620ced9df69f0a4a883e20015d2f2eb67a09ce8aa5c9c",
+      "reemplazo": "src/styles/training.css"
+    },
+    {
+      "path": "assets/js/app.js",
+      "sha256": "c9a7039bf3b140f2b59d454227c341213bda393c481dc09f65a39572d43946af",
+      "reemplazo": "App, AppRouter, HomePage, Navbar y Footer"
+    },
+    {
+      "path": "assets/js/data/exercises.js",
+      "sha256": "06662109d45066154162bebbdf5429e6ec882ba00e013abe50f740853e5d8e0e",
+      "reemplazo": "src/data/exercises.js"
+    },
+    {
+      "path": "assets/js/data/orders.js",
+      "sha256": "9736e61de022b239d81160684323f872d8457165af4dc1e2e641254ad187c7c3",
+      "reemplazo": "src/data/orders.js"
+    },
+    {
+      "path": "assets/js/data/products.js",
+      "sha256": "1220aae3e64714bec059a9cc2a6d8966aac1f6a0975a07462013c9dc332c067c",
+      "reemplazo": "src/data/products.js"
+    },
+    {
+      "path": "assets/js/data/regions.js",
+      "sha256": "43b239e917b93866a415302413ab6c1f340d66eec9084e01e111d46010f3ef5a",
+      "reemplazo": "src/data/regions.js"
+    },
+    {
+      "path": "assets/js/data/users.js",
+      "sha256": "090bb889b61aeb80a70e9f6eac7755eff498ca54b1c0acdf6709936320827a6b",
+      "reemplazo": "src/data/users.js"
+    },
+    {
+      "path": "assets/js/modules/admin-auth.js",
+      "sha256": "75fff742bd846a251d2cdb7bdcc22243a03687795e3e9ed90ddc28155d89353d",
+      "reemplazo": "AuthContext, ProtectedRoute y permisos centralizados"
+    },
+    {
+      "path": "assets/js/modules/admin-order-detail.js",
+      "sha256": "92305216247130ffeea972b47eb1c5d6c927e9ace2f8e9d001066c5f3a1e033f",
+      "reemplazo": "AdminOrderDetailPage, OrderSummary y OrderItemsTable"
+    },
+    {
+      "path": "assets/js/modules/admin-orders.js",
+      "sha256": "b7419517d57e0bbaf867703c39d9bc59a2b881cc6696845278bcf29725067cbf",
+      "reemplazo": "AdminOrdersPage, OrdersTable y servicio adminOrders"
+    },
+    {
+      "path": "assets/js/modules/admin-product-form.js",
+      "sha256": "49004efde8a07984c774b4bc5388f225e1d4fa96befc5f5c3967bbbb8223dbca",
+      "reemplazo": "AdminProductForm, servicio adminProducts y validación de productos"
+    },
+    {
+      "path": "assets/js/modules/admin-products.js",
+      "sha256": "e821ff4c7ab7d1f1892b0373934afaa4b57767fa0e5e9fd326f6c581d62dacdb",
+      "reemplazo": "AdminProductsPage, ProductsTable y servicio adminProducts"
+    },
+    {
+      "path": "assets/js/modules/admin-user-form.js",
+      "sha256": "4ea0c00b993cdd2f60504f3b87c17b67da943915918c0ed7b3c0a17dc2962ce7",
+      "reemplazo": "AdminUserForm, servicio adminUsers y validación de usuarios"
+    },
+    {
+      "path": "assets/js/modules/admin-users.js",
+      "sha256": "cc4e22b61bed02d5d4a35c1586f83f6fc4868709fafcd4284e73617fa06bbdc5",
+      "reemplazo": "AdminUsersPage, UsersTable y servicio adminUsers"
+    },
+    {
+      "path": "assets/js/modules/auth.js",
+      "sha256": "8af3a438e6e3afe6fef10b2805b74e246a1b3fc020d4134ebb120d06155b2849",
+      "reemplazo": "AuthContext y servicios auth y userStore"
+    },
+    {
+      "path": "assets/js/modules/cart.js",
+      "sha256": "e9b0d52f52424dae528f907cd8ea3f3f947d16bb3228ef25f04e5ad23ace9cef",
+      "reemplazo": "CartContext, CartPage y utilidades de carrito"
+    },
+    {
+      "path": "assets/js/modules/contact.js",
+      "sha256": "6fa5b7e8ad46b0906641e4df2f45c92620ec5b0123876ad7c116f3d8f1e61ef3",
+      "reemplazo": "ContactForm, ContactPage y validación de contacto"
+    },
+    {
+      "path": "assets/js/modules/image-config.js",
+      "sha256": "e6b4b7287f748d1eb2f54cbf485ef1448d8b199d9f0848d702c3ead00a6d416d",
+      "reemplazo": "ProductImage, productImages y assetImages"
+    },
+    {
+      "path": "assets/js/modules/login.js",
+      "sha256": "42d00225a05e2d108d7050ca3dba0c1454e78eda5a409c694051fd7cab621322",
+      "reemplazo": "LoginPage, LoginForm y servicio auth"
+    },
+    {
+      "path": "assets/js/modules/product-detail.js",
+      "sha256": "274ece1c9f3ca0768a74800aa6023cb3d0fa51884ddd67cd4865d4fbff25b747",
+      "reemplazo": "ProductDetailPage, ProductInformation y utilidades productDetails"
+    },
+    {
+      "path": "assets/js/modules/product-renderer.js",
+      "sha256": "e6dd7c8c3c33013c1d2924f1d358272f675948bf7e2327581eed1face144c4c5",
+      "reemplazo": "ProductGrid, ProductCard y ProductImage"
+    },
+    {
+      "path": "assets/js/modules/product-storage.js",
+      "sha256": "f085ccbd4aa93a935bad9c94495b12e23b056f37a5ef964fe0429714fe57af36",
+      "reemplazo": "Servicio productStore y hook useCatalog"
+    },
+    {
+      "path": "assets/js/modules/register.js",
+      "sha256": "1aac7eedaf2b0296f2f1e66d893b0a111d401b366d44a5b324963b4353f1cb96",
+      "reemplazo": "RegistrationPage, RegistrationForm y registro de usuarios"
+    },
+    {
+      "path": "assets/js/modules/routine.js",
+      "sha256": "755440ba55ebf32485a6b76e45d7ab83c1161139c5ab2d31d4aa17f04dee4448",
+      "reemplazo": "RoutineBuilder, hook useRoutine y servicio routineStore"
+    },
+    {
+      "path": "assets/js/modules/training.js",
+      "sha256": "f4ef6abe5f138508fe45fd5ecff68ea7df18e2dec92cd94075a6730b837ca4fe",
+      "reemplazo": "TrainingPage, ExerciseLibrary y ExerciseCard"
+    },
+    {
+      "path": "assets/js/modules/validation.js",
+      "sha256": "c1fff888d425495a9e6ea401a0375370f87f5bd12a2de98adbaf283729b94fe3",
+      "reemplazo": "Utilidades validation, registration, products y adminUsers"
+    },
+    {
+      "path": "pages/account/login.html",
+      "sha256": "dfe3a90fffb56e52101b688ac7ac5597a76c1b8d13cf5df385727597d201bbe3",
+      "reemplazo": "LoginPage; /login"
+    },
+    {
+      "path": "pages/account/register.html",
+      "sha256": "1deae3f9a99915dab47448cee69111763aa31469e78e1080802ecda291532d66",
+      "reemplazo": "RegistrationPage; /registro"
+    },
+    {
+      "path": "pages/information/about.html",
+      "sha256": "45fffed8e04bde29ac9b52fb89d777e6240b098b373bd71e773f088c1560dc8b",
+      "reemplazo": "AboutPage; /nosotros"
+    },
+    {
+      "path": "pages/information/blog-detail-1.html",
+      "sha256": "aebde6f19b54875410c6f05695026a265435f57962a5e49fd02dedc809919e7d",
+      "reemplazo": "BlogArticlePage; /blog/creatina-y-rendimiento"
+    },
+    {
+      "path": "pages/information/blog-detail-2.html",
+      "sha256": "b774149ca28a451cc30fa43361ec9ef01099406b35109bf2d47e473bcc516660",
+      "reemplazo": "BlogArticlePage; /blog/recuperacion-muscular"
+    },
+    {
+      "path": "pages/information/blog.html",
+      "sha256": "7df01755c520aa9b68ac640cf28f50631318e72e97bc8d7154edecd0c7ed300e",
+      "reemplazo": "BlogPage; /blog"
+    },
+    {
+      "path": "pages/information/contact.html",
+      "sha256": "c041e8fce32eb3406fbae50d69b1fe1fc0cf0756da5e02b4ddd746c12b17a09d",
+      "reemplazo": "ContactPage; /contacto"
+    },
+    {
+      "path": "pages/shop/cart.html",
+      "sha256": "b9ef851c9419e0d18820605acd37c013e97555e99d1f8dd282a3dcd10deea95f",
+      "reemplazo": "CartPage; /carrito"
+    },
+    {
+      "path": "pages/shop/product-detail.html",
+      "sha256": "50f3e93cb918598ba1e27d5cfcb1b4d4d635f6af9c40525f454401c80699cb1f",
+      "reemplazo": "ProductDetailPage; /productos/:id"
+    },
+    {
+      "path": "pages/shop/products.html",
+      "sha256": "8edaeb48988a26adeb295fab503afd1c4f0d59f7aa6a863e3f7ba5d4e1448ea5",
+      "reemplazo": "ProductsPage; /productos"
+    },
+    {
+      "path": "pages/training/routine.html",
+      "sha256": "0eed01d9afa358343521c4fe8cfcd7a21ceba757a73ce2d6e12ae448875cc9c1",
+      "reemplazo": "RoutinePage; /rutina"
+    },
+    {
+      "path": "pages/training/training.html",
+      "sha256": "b2f5bb7d7f64b128ce001b62520c531bb7260d8cb99c1e77eb20be77c3a9ae23",
+      "reemplazo": "TrainingPage; /entrenamiento"
+    }
+  ],
+  "conservados": {
+    "html": "index.html",
+    "imagenes": 19,
+    "referencia_testing": "src/test/fixtures/products-ep1.json"
+  },
+  "validacion": {
+    "deleted_files": 51,
+    "retained_images": 19,
+    "runtime_source_unchanged": true,
+    "production_build_identical": true,
+    "build_files": 24,
+    "test_changed": [
+      "src/utils/productDetails.test.js"
+    ],
+    "retained_html": "index.html"
+  }
+}

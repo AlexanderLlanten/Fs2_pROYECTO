@@ -40,7 +40,7 @@ El 5% tampoco representa una lista exacta de tareas ni permite calcular horas re
 | Elemento | Resultado |
 | --- | --- |
 | Clon público y npm ci | Correctos, con Node 24.22.1 y npm 11.19.1 |
-| Regresión de cierre | 80 archivos, 597 aprobadas, 0 fallidas, 0 omitidas; 130,76 s |
+| Regresión de cierre | 80 archivos, 597 aprobadas, 0 fallidas y 0 omitidas tras la limpieza |
 | Cobertura | Sentencias 97,91%; ramas 94,74%; funciones 99,30%; líneas 98,98% |
 | Producción | Build correcto en clon limpio y después del ajuste CSS |
 | Navegador | 22 rutas/variantes × 3 tamaños, además de roles, formularios, persistencia y cinco errores de ruta |
@@ -48,11 +48,15 @@ El 5% tampoco representa una lista exacta de tareas ni permite calcular horas re
 | Testing | Informe Word y versión Markdown con resultados, mocks, diez casos y riesgos residuales |
 | Defensa | Guía con comandos y explicación de diez pruebas |
 
-La cobertura vigente se midió sobre `de87421`, incluida la corrección de imágenes
-del carrito. Las 597 pruebas aprobaron en 130,76 s. Los informes se actualizaron
-con redacción ejecutiva, en tercera persona y autocontenida. La nueva medición se
-conserva en [testing V2](evidencias/testing-v2.json) y
-[cobertura V2](evidencias/coverage-v2.json); la evidencia del cierre anterior se mantiene como antecedente.
+La cobertura vigente se midió sobre `024096d` después de retirar 51 archivos
+antiguos y conservar la referencia histórica de productos como dato de testing.
+Las 597 pruebas aprobaron. La compilación produce los mismos 24 archivos que antes
+de la limpieza. El ERS y el informe de testing registran los elementos retirados
+y sus reemplazos con redacción ejecutiva y en tercera persona.
+
+La evidencia vigente se conserva en [testing de limpieza](evidencias/testing-limpieza.json),
+[cobertura de limpieza](evidencias/coverage-limpieza.json) y
+[registro de sustituciones](limpieza-legacy.md). Los cortes anteriores se mantienen como antecedente.
 
 Referencias: [auditoría final](auditoria-final.md), [paridad EP1](paridad-ep1.md),
 [informe de testing](cobertura-testing.md), [guía de defensa](guia-defensa.md),

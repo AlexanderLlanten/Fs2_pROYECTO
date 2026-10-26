@@ -1,0 +1,3102 @@
+{
+  "total": {
+    "lines": {
+      "total": 1088,
+      "covered": 1077,
+      "skipped": 0,
+      "pct": 98.98
+    },
+    "statements": {
+      "total": 1342,
+      "covered": 1314,
+      "skipped": 0,
+      "pct": 97.91
+    },
+    "functions": {
+      "total": 434,
+      "covered": 431,
+      "skipped": 0,
+      "pct": 99.3
+    },
+    "branches": {
+      "total": 1104,
+      "covered": 1046,
+      "skipped": 0,
+      "pct": 94.74
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/App.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/ArticleImage.jsx": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/Badge.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/BrandLink.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/Button.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/OrderStatusBadge.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/Price.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/ProductImage.jsx": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/atoms/StockBadge.jsx": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/AccountActions.jsx": {
+    "lines": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/AdminModuleCard.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/AdminSummaryCard.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/BlogCard.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/CartItem.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/CatalogError.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/CategoryCard.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/ConfirmDeleteDialog.jsx": {
+    "lines": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/DeleteUserDialog.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/ExerciseCard.jsx": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/FeatureCard.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/FormField.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 26,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/PasswordField.jsx": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/ProductCard.jsx": {
+    "lines": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    },
+    "branches": {
+      "total": 7,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "src/components/molecules/ProductInfoList.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/QuantitySelector.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/RoleGate.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/RoutineError.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/RoutineItem.jsx": {
+    "lines": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 26,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/molecules/SectionHeading.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/AdminProductForm.jsx": {
+    "lines": {
+      "total": 35,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 15,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 50,
+      "covered": 49,
+      "skipped": 0,
+      "pct": 98
+    },
+    "branches": {
+      "total": 32,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 96.87
+    }
+  },
+  "src/components/organisms/AdminUserForm.jsx": {
+    "lines": {
+      "total": 35,
+      "covered": 35,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 47,
+      "covered": 46,
+      "skipped": 0,
+      "pct": 97.87
+    },
+    "branches": {
+      "total": 40,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 90
+    }
+  },
+  "src/components/organisms/ArticleContent.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/BlogFeed.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/CartSummary.jsx": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/CategoryGrid.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/ContactForm.jsx": {
+    "lines": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 31,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/ExerciseLibrary.jsx": {
+    "lines": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/FeatureSection.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/FeaturedProducts.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/Footer.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/GoalSection.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/HomeArticles.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/HomeHero.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/HomeMedia.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/InventorySummary.jsx": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/LoginForm.jsx": {
+    "lines": {
+      "total": 32,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 96.87
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 35,
+      "covered": 34,
+      "skipped": 0,
+      "pct": 97.14
+    },
+    "branches": {
+      "total": 18,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "src/components/organisms/Navbar.jsx": {
+    "lines": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/OrderItemsTable.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/OrderSummary.jsx": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/OrdersTable.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/ProductGrid.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/ProductInformation.jsx": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/ProductsTable.jsx": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/RegistrationForm.jsx": {
+    "lines": {
+      "total": 42,
+      "covered": 42,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 47,
+      "covered": 46,
+      "skipped": 0,
+      "pct": 97.87
+    },
+    "branches": {
+      "total": 32,
+      "covered": 29,
+      "skipped": 0,
+      "pct": 90.62
+    }
+  },
+  "src/components/organisms/RoutineBuilder.jsx": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 23,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 95.65
+    },
+    "branches": {
+      "total": 19,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 78.94
+    }
+  },
+  "src/components/organisms/TrainingHighlight.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/UserProfileFields.jsx": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/components/organisms/UsersTable.jsx": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 70
+    }
+  },
+  "src/components/templates/AdminLayout.jsx": {
+    "lines": {
+      "total": 13,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 76.92
+    },
+    "functions": {
+      "total": 9,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 66.66
+    },
+    "statements": {
+      "total": 15,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 80
+    },
+    "branches": {
+      "total": 8,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 87.5
+    }
+  },
+  "src/components/templates/PublicLayout.jsx": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/context/AuthContext.jsx": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/context/CartContext.jsx": {
+    "lines": {
+      "total": 44,
+      "covered": 44,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 65,
+      "covered": 62,
+      "skipped": 0,
+      "pct": 95.38
+    },
+    "branches": {
+      "total": 39,
+      "covered": 33,
+      "skipped": 0,
+      "pct": 84.61
+    }
+  },
+  "src/data/about.js": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/articles.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/assetImages.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/exercises.js": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/home.js": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/orders.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/productImages.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/products.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/regions.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/roles.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/data/users.js": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/hooks/useAuth.js": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/hooks/useCart.js": {
+    "lines": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 75
+    },
+    "branches": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "src/hooks/useCatalog.js": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/hooks/useManagedUsers.js": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 5,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 80
+    }
+  },
+  "src/hooks/useRoutine.js": {
+    "lines": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/AboutPage.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/AdminHomePage.jsx": {
+    "lines": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 50
+    }
+  },
+  "src/pages/AdminOrderDetailPage.jsx": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/AdminOrdersPage.jsx": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/AdminProductFormPage.jsx": {
+    "lines": {
+      "total": 21,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 95.23
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 29,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 93.1
+    },
+    "branches": {
+      "total": 28,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 85.71
+    }
+  },
+  "src/pages/AdminProductsPage.jsx": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 24,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 95.83
+    },
+    "branches": {
+      "total": 16,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 87.5
+    }
+  },
+  "src/pages/AdminUserFormPage.jsx": {
+    "lines": {
+      "total": 24,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 95.83
+    },
+    "functions": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 34,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 88.23
+    },
+    "branches": {
+      "total": 34,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 79.41
+    }
+  },
+  "src/pages/AdminUsersPage.jsx": {
+    "lines": {
+      "total": 17,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 24,
+      "covered": 23,
+      "skipped": 0,
+      "pct": 95.83
+    },
+    "branches": {
+      "total": 12,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "src/pages/BlogArticlePage.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/BlogPage.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/CartPage.jsx": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 83.33
+    }
+  },
+  "src/pages/ContactPage.jsx": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/HomePage.jsx": {
+    "lines": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/LoginPage.jsx": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/NotFoundPage.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/ProductDetailPage.jsx": {
+    "lines": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 24,
+      "covered": 22,
+      "skipped": 0,
+      "pct": 91.66
+    },
+    "branches": {
+      "total": 19,
+      "covered": 17,
+      "skipped": 0,
+      "pct": 89.47
+    }
+  },
+  "src/pages/ProductsPage.jsx": {
+    "lines": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    }
+  },
+  "src/pages/RegistrationPage.jsx": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/RoutinePage.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/pages/TrainingPage.jsx": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 13,
+      "covered": 13,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/routes/AppRouter.jsx": {
+    "lines": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/routes/ProtectedRoute.jsx": {
+    "lines": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 1,
+      "covered": 1,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/services/adminOrders.js": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/services/adminProducts.js": {
+    "lines": {
+      "total": 37,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 97.29
+    },
+    "functions": {
+      "total": 12,
+      "covered": 12,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 54,
+      "covered": 53,
+      "skipped": 0,
+      "pct": 98.14
+    },
+    "branches": {
+      "total": 45,
+      "covered": 45,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/services/adminUsers.js": {
+    "lines": {
+      "total": 55,
+      "covered": 54,
+      "skipped": 0,
+      "pct": 98.18
+    },
+    "functions": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 79,
+      "covered": 77,
+      "skipped": 0,
+      "pct": 97.46
+    },
+    "branches": {
+      "total": 65,
+      "covered": 64,
+      "skipped": 0,
+      "pct": 98.46
+    }
+  },
+  "src/services/auth.js": {
+    "lines": {
+      "total": 54,
+      "covered": 54,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 57,
+      "covered": 57,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 31,
+      "covered": 31,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/services/productStore.js": {
+    "lines": {
+      "total": 32,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 24,
+      "covered": 24,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/services/routineStore.js": {
+    "lines": {
+      "total": 50,
+      "covered": 50,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 71,
+      "covered": 71,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 45,
+      "covered": 45,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/services/userStore.js": {
+    "lines": {
+      "total": 16,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 21,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 95.23
+    },
+    "branches": {
+      "total": 29,
+      "covered": 27,
+      "skipped": 0,
+      "pct": 93.1
+    }
+  },
+  "src/utils/adminUsers.js": {
+    "lines": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 6,
+      "covered": 6,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/authRedirect.js": {
+    "lines": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 14,
+      "covered": 14,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 21,
+      "covered": 21,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/cart.js": {
+    "lines": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 17,
+      "covered": 16,
+      "skipped": 0,
+      "pct": 94.11
+    },
+    "branches": {
+      "total": 22,
+      "covered": 15,
+      "skipped": 0,
+      "pct": 68.18
+    }
+  },
+  "src/utils/contact.js": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 5,
+      "covered": 5,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 11,
+      "covered": 11,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/orders.js": {
+    "lines": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 3,
+      "covered": 3,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/permissions.js": {
+    "lines": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 2,
+      "covered": 2,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/productDetails.js": {
+    "lines": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 18,
+      "covered": 18,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 26,
+      "covered": 26,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/products.js": {
+    "lines": {
+      "total": 25,
+      "covered": 25,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 7,
+      "covered": 7,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 61,
+      "covered": 61,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/registration.js": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 10,
+      "covered": 10,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 30,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/routine.js": {
+    "lines": {
+      "total": 8,
+      "covered": 8,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 9,
+      "covered": 9,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 20,
+      "covered": 20,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "src/utils/validation.js": {
+    "lines": {
+      "total": 28,
+      "covered": 28,
+      "skipped": 0,
+      "pct": 100
+    },
+    "functions": {
+      "total": 4,
+      "covered": 4,
+      "skipped": 0,
+      "pct": 100
+    },
+    "statements": {
+      "total": 32,
+      "covered": 32,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 36,
+      "covered": 36,
+      "skipped": 0,
+      "pct": 100
+    }
+  }
+}
