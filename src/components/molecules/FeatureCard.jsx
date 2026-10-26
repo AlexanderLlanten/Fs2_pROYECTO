@@ -1,4 +1,6 @@
-function FeatureCard({ icon, title, children }) {
+import { Link } from "react-router-dom";
+
+function FeatureCard({ icon, title, children, action }) {
     return (
         <article className="home-feature-card">
             <span className="home-card-icon">
@@ -6,6 +8,9 @@ function FeatureCard({ icon, title, children }) {
             </span>
             <h3>{title}</h3>
             <p>{children}</p>
+            {action && <Link className="home-feature-link" to={action.to}>
+                {action.label}<i className="bi bi-arrow-right" aria-hidden="true" />
+            </Link>}
         </article>
     );
 }

@@ -1,6 +1,34 @@
 # Fs2_pROYECTO
 
-Frontend KYNEX en migración a React, Vite y React Router.
+Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del inventario original tienen ruta React.
+
+## Entrega y ejecución en otro equipo
+
+Trabajar con **feature/react-migration**. Esta entrega no modifica `main`.
+Se verificaron instalación y build desde un clon nuevo con Node 24.22.1 y npm 11.19.1.
+
+```powershell
+git clone --branch feature/react-migration --single-branch https://github.com/AlexanderLlanten/Fs2_pROYECTO.git
+cd Fs2_pROYECTO
+npm.cmd ci
+npm.cmd run dev
+```
+
+Abrir la URL que indique Vite. Para comprobar producción: `npm.cmd run build`
+y luego `npm.cmd run preview`. Desde el ZIP, extraer y abrir una terminal donde
+está `package.json`; ejecutar desde `npm.cmd ci`. El archivo conserva las fuentes
+y documentos y omite `.git`, `node_modules`, `dist` y `coverage`.
+
+- [ERS actualizado 2.1](docs/entrega/ERS_KYNEX_V2_1.docx).
+- [Informe de cobertura en Word](docs/entrega/Cobertura_Testing_KYNEX.docx) y [versión Markdown](docs/cobertura-testing.md).
+- [Guía de defensa con diez pruebas](docs/guia-defensa.md).
+- [Auditoría final](docs/auditoria-final.md), [evidencias](docs/evidencias/) y [avance frente a la pauta](docs/avance-migracion.md).
+
+**Verificación final:** 597 pruebas aprobadas en 80 archivos; cobertura de líneas
+98,98%. La suite completa ya está registrada en la evidencia. No hace falta
+repetirla por descargar esta documentación; puede usarse una selección del módulo.
+El video externo, la matriz de navegadores y las mediciones de rendimiento tienen
+los límites descritos en la auditoría. El sistema conserva su alcance académico.
 
 ## Layout público y Atomic Design
 
@@ -23,8 +51,9 @@ La gestión de usuarios usa `/admin/usuarios`, `/admin/usuarios/nuevo` y
 ## Inicio KYNEX
 
 HomePage recupera el encabezado «Entrena mejor. Supérate.» y la imagen original
-de la marca. Compone HomeHero, CategoryGrid y FeaturedProducts con las moléculas
-SectionHeading, CategoryCard y FeatureCard. Los destacados se obtienen del campo
+de la marca. Compone HomeHero, FeatureSection, CategoryGrid, FeaturedProducts,
+GoalSection, TrainingHighlight, HomeMedia y HomeArticles con las moléculas
+SectionHeading, CategoryCard, FeatureCard y BlogCard. Los destacados se obtienen del campo
 `featured` de los mismos productos usados en el catálogo y se agregan al carrito
 compartido, respetando el stock y mostrando una confirmación accesible.
 
@@ -32,6 +61,26 @@ Las categorías abren `/productos?categoria=...`. El selector del catálogo se
 sincroniza con ese parámetro y con el historial del navegador; una categoría
 desconocida muestra el catálogo completo. El aviso de despacho usa
 `FREE_SHIPPING_FROM`, la misma regla que calcula el total del carrito.
+
+Inicio recupera los accesos a tienda, entrenamiento, Nosotros, rutina, Blog y registro,
+los cuatro objetivos originales, la fotografía de entrenamiento y los dos artículos.
+Los objetivos llevan al catálogo completo, como en EP1. FeatureCard acepta una acción
+opcional; las tarjetas informativas de Nosotros conservan su composición sin enlaces.
+«Ver destacados» aparece solo cuando existe esa sección. Se mantienen la compra desde
+destacados, el enlace al catálogo de la llamada final y los filtros por categoría.
+
+HomeMedia conserva el video original `UBMk30rjy0o` en un iframe con título, carga
+diferida y sin reproducción automática. Ofrece abrirlo en YouTube en otra pestaña.
+En el navegador de revisión el reproductor externo mostró el código 151: se verificó
+la integración y la alternativa, pero no se confirmó la reproducción del video.
+
+## Continuación de compra demostrativa
+
+CartSummary anuncia «El proceso de checkout será implementado en una etapa posterior»
+al activar Continuar compra, igual que el alcance del aviso original. Usa una región
+de estado accesible asociada al botón, que mantiene el foco y admite teclado. El
+carrito vacío no permite continuar. Esta acción no realiza peticiones, escribe datos,
+crea pedidos ni cambia la ruta; la compra permanece disponible para seguir editándola.
 
 ## Estado de autenticación
 
@@ -184,8 +233,11 @@ Recargar datos. Una escritura fallida conserva el catálogo anterior. El almacen
 local sigue siendo demostrativo y no ofrece transacciones concurrentes entre pestañas.
 
 La imagen opcional admite URL http(s) o una ruta `/assets/`; las rutas heredadas
-`../../assets/...` se convierten a la raíz. ProductImage reutiliza el ícono si la
-imagen está ausente o falla. El carrito toma precio y stock vigentes, limita cantidades,
+`../../assets/...` se normalizan. ProductImage prioriza la imagen personalizada y,
+si falta, recupera una de las seis originales por código. `assetImages.js` resuelve
+los recursos originales a las URL que Vite genera también en producción. Al agregar
+imágenes locales nuevas hay que registrar su ruta en ese manifiesto. Si la imagen
+falla o no hay una disponible se conserva el icono. El carrito toma precio y stock vigentes, limita cantidades,
 retira agotados/eliminados y persiste las cantidades ajustadas. Un fallo de lectura
 del catálogo conserva la compra guardada; un fallo al guardar el carrito se anuncia
 y conserva los cambios en memoria durante esa visita.
@@ -247,6 +299,30 @@ y conserva los valores; editar retira la confirmación hasta volver a validar.
 No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,
 permite volver desde Login y mantiene el borrador al cerrar sesión en la misma ruta.
 
+## Paridad del catálogo con EP1
+
+`src/data/products.js` conserva la ficha completa de los seis productos originales.
+ProductInformation compone ProductInfoList, listas de uso, tabla nutricional y calidad
+y seguridad. Presenta beneficios, ingredientes, alérgenos, uso, nutrición, certificaciones
+y advertencia. Tolera metadatos incompletos; cero calorías permanece visible y la falta
+de información sobre alérgenos se distingue de una lista explícitamente vacía.
+
+`completeProductDetails` completa solo campos de detalle ausentes en los catálogos
+guardados por las primeras etapas React, y exige coincidencia de id y código original.
+Leer no escribe: precios, stock, nombres, descripciones e imágenes guardados prevalecen.
+También se conservan listas vacías, null y objetos parciales explícitos. Los datos
+adicionales quedan preservados cuando se guarda una edición administrativa posterior.
+
+El detalle reutiliza QuantitySelector para elegir de 1 a 10 unidades por adición,
+limitadas además por el stock que queda después del carrito. El mensaje informa la
+cantidad realmente agregada y la selección se ajusta ante cambios del catálogo. Los
+productos agotados o ya completos en el carrito bloquean Agregar. La búsqueda incluye
+nombre, descripción, categoría y código; las tarjetas muestran los objetivos originales.
+
+La revisión y los pendientes concretos se registran en [docs/paridad-ep1.md](docs/paridad-ep1.md).
+Quedan bloques y accesos del Inicio original y el aviso demostrativo de Continuar compra,
+además de la revisión transversal y documentación final.
+
 ## Blog y artículos
 
 Las rutas públicas `/blog`, `/blog/creatina-y-rendimiento` y
@@ -270,16 +346,17 @@ Login conserva portada o artículo de origen, incluida la consulta. Visitar esta
 páginas no agrega claves de almacenamiento; compra y rutina se conservan al navegar,
 recargar e iniciar o cerrar sesión.
 
-Con este bloque, las 20 pantallas del inventario original tienen ruta y contenido
-en React. Quedan la revisión final de paridad y recursos, ERS, documento de testing,
-entregables y defensa; el inventario de pantallas no mide ese trabajo de cierre.
+Las 20 pantallas del inventario original tienen ruta y contenido en React. La
+auditoría transversal, el ERS y el informe de testing están documentados. Continúan
+las verificaciones del entorno de presentación y el ensayo de defensa indicados
+en [la auditoría final](docs/auditoria-final.md).
 
 ## Nosotros
 
 `/nosotros` es pública y reutiliza PublicLayout. Conserva la presentación de KYNEX,
 su propuesta, experiencia, categorías, visión, compromisos y accesos al catálogo de
-la página original. Los textos sobre la ficha de producto describen los datos que
-actualmente muestra React: descripción, formato, precio, stock y características.
+la página original. Los textos sobre la ficha de producto resumen información disponible
+en React; el detalle ahora incorpora también la información ampliada de la EP1.
 
 `src/data/about.js` separa las listas de contenido de la presentación. El organismo
 `FeatureSection` compone SectionHeading y FeatureCard mediante props; se reutiliza
@@ -358,14 +435,17 @@ npm run build
 ```
 
 No es necesario ejecutar toda la suite por cada edición. Para comprobar únicamente
-Blog y artículos (5 archivos y 23 pruebas en este corte):
+Inicio y el aviso del carrito (5 archivos y 30 pruebas en este corte):
 
 ```sh
-npm test -- ArticleImage BlogCard ArticleContent BlogPage Blog.test
+npm test -- HomePage FeatureSection HomeParity CartSummary CartPage
 ```
 
 En PowerShell se puede usar `npm.cmd` en lugar de `npm`. Los filtros seleccionan
-las imágenes, tarjetas, cuerpos de lectura, portada y recorridos integrados.
+la composición de Inicio, enlaces, video, acceso público, persistencia y aviso de compra.
+Catálogo y detalle conservan su selección rápida:
+`npm test -- productDetails ProductInformation ProductImage ProductDetailPage ProductsPage QuantitySelector CatalogParity`.
+Blog conserva su selección rápida: `npm test -- ArticleImage BlogCard ArticleContent BlogPage Blog.test`.
 Nosotros conserva su selección rápida: `npm test -- About.test AboutPage FeatureSection HomePage`.
 Entrenamiento y rutina conservan su selección rápida:
 `npm test -- ExerciseCard ExerciseLibrary RoutineItem routine.test routineStore Training.test`.
@@ -411,6 +491,13 @@ menú móvil, retorno desde Login, recarga y conservación de compra y rutina.
 Blog y artículos agregan composición por props, alternativa de imagen, contenido
 original, enlaces distinguibles, lectura directa, cambio de artículo, acceso con
 todos los perfiles, retorno desde Login, recarga y manejo de artículos inexistentes.
+La paridad de catálogo añade comparación de datos originales, lectura compatible sin
+escrituras, personalizaciones, nutrición con valores cero, alérgenos, tipos inesperados,
+imágenes originales y rutas antiguas, cantidades elegidas y stock restante.
+Inicio agrega navegación hacia todos sus nuevos destinos, objetivos sin filtros
+inventados, recarga con los tres perfiles y visita anónima, catálogo vacío o dañado
+y conservación de la compra y la rutina. El aviso de checkout verifica teclado,
+foco, descripción accesible y ausencia de solicitudes o escrituras.
 Las pruebas de acceso cubren los tres perfiles, visita anónima, historial sin ciclos,
 no montaje de contenido privado, permisos desconocidos, cambios de rol, eliminación
 de usuarios, cierre entre pestañas, Login al panel y conservación del carrito.

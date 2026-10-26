@@ -13,6 +13,11 @@ import StockBadge from "../components/atoms/StockBadge.jsx";
 import useCatalog from "../hooks/useCatalog.js";
 import CatalogError from "../components/molecules/CatalogError.jsx";
 import ProductImage from "../components/atoms/ProductImage.jsx";
+import Badge from "../components/atoms/Badge.jsx";
+import QuantitySelector from "../components/molecules/QuantitySelector.jsx";
+import ProductInformation from "../components/organisms/ProductInformation.jsx";
+import { parseProductId } from "../utils/products.js";
+import { productList, productText } from "../utils/productDetails.js";
 
 import useCart from "../hooks/useCart.js";
 
@@ -24,19 +29,21 @@ function ProductDetailPage() {
     } = useParams();
 
     const {
-        addToCart
+        addToCart,
+        detailedCart
     } = useCart();
 
     const [
         feedback,
         setFeedback
-    ] = useState("");
+    ] = useState(null);
+    const [selection, setSelection] = useState({ id: null, quantity: 1 });
 
     const product =
         products.find(
             item =>
                 item.id ===
-                Number(id)
+                parseProductId(id)
         );
 
     if (!catalog.success) return <section className="product-detail-section"><div className="container"><h1>Catálogo no disponible</h1><CatalogError resource={catalog} /></div></section>;
@@ -73,14 +80,14 @@ function ProductDetailPage() {
         );
     }
 
-    function handleAddToCart() {
-        addToCart(
-            product
-        );
+    const inCart = detailedCart.find(item => item.id === product.id)?.quantity ?? 0;
+    const maximum = Math.min(10, Math.max(0, product.stock - inCart));
+    const quantity = maximum === 0 ? 0 : Math.min(selection.id === product.id ? selection.quantity : 1, maximum);
 
-        setFeedback(
-            "Producto agregado al carrito."
-        );
+    function handleAddToCart() {
+        if (!quantity) return;
+        addToCart(product, quantity);
+        setFeedback({ id: product.id, message: quantity === 1 ? "Producto agregado al carrito." : `${quantity} productos agregados al carrito.` });
     }
 
     return (
@@ -101,7 +108,7 @@ function ProductDetailPage() {
                         </Link>
                     </div>
 
-                    <div className="row g-5 align-items-start">
+                    <div className="row gx-4 gy-5 align-items-start">
                         <div className="col-12 col-lg-6">
                             <div className="product-detail-visual-react">
                                 <StockBadge
@@ -135,6 +142,10 @@ function ProductDetailPage() {
                                     {product.description}
                                 </p>
 
+                                <div className="product-detail-tags" aria-label="Objetivos y características">
+                                    {[...productList(product.goals), ...productList(product.dietaryTags)].map((value, index) => <Badge key={`${index}-${value}`}>{value}</Badge>)}
+                                </div>
+
                                 <div className="product-detail-attributes-react">
                                     <div>
                                         <span>
@@ -142,7 +153,7 @@ function ProductDetailPage() {
                                         </span>
 
                                         <strong>
-                                            {product.format}
+                                            {productText(product.format, "Sin especificar")}
                                         </strong>
                                     </div>
 
@@ -152,7 +163,7 @@ function ProductDetailPage() {
                                         </span>
 
                                         <strong>
-                                            {product.flavor}
+                                            {productText(product.flavor, "Sin especificar")}
                                         </strong>
                                     </div>
 
@@ -172,10 +183,16 @@ function ProductDetailPage() {
                                         </span>
 
                                         <strong>
-                                            {product.brand}
+                                            {productText(product.brand)}
                                         </strong>
                                     </div>
                                 </div>
+
+                                <QuantitySelector label="Cantidad a agregar" quantity={quantity}
+                                    onIncrease={() => setSelection({ id: product.id, quantity: Math.min(quantity + 1, maximum) })}
+                                    onDecrease={() => setSelection({ id: product.id, quantity: Math.max(1, quantity - 1) })}
+                                    disabledIncrease={quantity >= maximum} disabledDecrease={quantity <= 1} />
+                                <p className="product-detail-note">Hasta 10 unidades por adición, según el stock que queda disponible.</p>
 
                                 <div className="product-detail-purchase-react">
                                     <Price
@@ -186,7 +203,7 @@ function ProductDetailPage() {
                                         className="btn btn-success"
                                         type="button"
                                         disabled={
-                                            product.stock <= 0
+                                            maximum === 0
                                         }
                                         onClick={handleAddToCart}
                                     >
@@ -198,8 +215,9 @@ function ProductDetailPage() {
                                     className="product-detail-note"
                                     aria-live="polite"
                                 >
-                                    {feedback}
+                                    {feedback?.id === product.id ? feedback.message : ""}
                                 </p>
+                                {product.stock > 0 && maximum === 0 && <p className="product-detail-note" aria-live="polite">Ya tienes todo el stock disponible en tu carrito.</p>}
 
                                 <Link
                                     className="btn btn-outline-light mt-2"
@@ -210,6 +228,7 @@ function ProductDetailPage() {
                             </div>
                         </div>
                     </div>
+                    <ProductInformation product={product} />
                 </div>
             </section>
         </>

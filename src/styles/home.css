@@ -165,6 +165,45 @@
     border-radius: 1rem;
 }
 
+.home-feature-card { display: flex; flex-direction: column; align-items: flex-start; }
+.home-feature-card p { flex: 1; }
+.home-feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    min-height: 2.75rem;
+    margin-top: 1rem;
+    color: var(--kynex-accent);
+    font-weight: 700;
+}
+.home-feature-link:hover { color: var(--kynex-accent-hover); }
+.home-hero .home-feature-link { margin-top: 0; }
+.home-goal-card {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    height: 100%;
+    padding: 1.5rem;
+    border: 1px solid var(--kynex-border);
+    border-radius: 1rem;
+    background: var(--kynex-surface);
+    font-weight: 700;
+}
+.home-goal-card i { color: var(--kynex-accent); }
+.home-goal-card i:last-child { margin-left: auto; }
+.home-goal-card:hover { color: var(--kynex-text); border-color: var(--kynex-accent); }
+.home-training-image {
+    display: block;
+    width: 100%;
+    height: clamp(18rem, 40vw, 30rem);
+    object-fit: cover;
+    border-radius: 1.5rem;
+    border: 1px solid var(--kynex-border);
+}
+.home-training-content > p { color: var(--kynex-muted); margin-bottom: 1.5rem; }
+.home-video { overflow: hidden; border-radius: 1rem; border: 1px solid var(--kynex-border); background: var(--kynex-surface); }
+.home-video iframe { border: 0; }
+
 .home-category-card {
     transition: border-color 180ms ease, transform 180ms ease;
 }

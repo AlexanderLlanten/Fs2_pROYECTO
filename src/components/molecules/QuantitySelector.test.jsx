@@ -15,6 +15,13 @@ import userEvent from "@testing-library/user-event";
 import QuantitySelector from "./QuantitySelector.jsx";
 
 describe("QuantitySelector", () => {
+    it("permite bloquear ambos límites sin ejecutar los callbacks", async () => {
+        const user = userEvent.setup(); const onIncrease = vi.fn(); const onDecrease = vi.fn();
+        render(<QuantitySelector quantity={1} onIncrease={onIncrease} onDecrease={onDecrease} disabledIncrease disabledDecrease />);
+        await user.click(screen.getByRole("button", { name: "Aumentar cantidad" }));
+        await user.click(screen.getByRole("button", { name: "Disminuir cantidad" }));
+        expect(onIncrease).not.toHaveBeenCalled(); expect(onDecrease).not.toHaveBeenCalled();
+    });
     it("muestra la cantidad actual", () => {
         render(
             <QuantitySelector

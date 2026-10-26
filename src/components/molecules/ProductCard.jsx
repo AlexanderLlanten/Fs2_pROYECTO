@@ -7,6 +7,7 @@ import Button from "../atoms/Button.jsx";
 import Price from "../atoms/Price.jsx";
 import StockBadge from "../atoms/StockBadge.jsx";
 import ProductImage from "../atoms/ProductImage.jsx";
+import { productList } from "../../utils/productDetails.js";
 
 function ProductCard({
     product,
@@ -66,6 +67,7 @@ function ProductCard({
                 </p>
 
                 <div className="product-tags">
+                    {productList(product.goals).slice(0, 2).map(goal => <span className="product-tag" key={goal}>{goal}</span>)}
                     <span className="product-tag">
                         {product.format}
                     </span>

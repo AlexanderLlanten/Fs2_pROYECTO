@@ -75,7 +75,9 @@ function ProductsPage() {
                         .toLowerCase()
                         .includes(
                             normalizedSearch
-                        );
+                        )
+                    || product.category.toLowerCase().includes(normalizedSearch)
+                    || product.code.toLowerCase().includes(normalizedSearch);
 
                 const matchesCategory =
                     category === "all"

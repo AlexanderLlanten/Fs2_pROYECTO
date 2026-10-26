@@ -44,6 +44,11 @@ function renderPage(initialEntry = "/productos") {
 }
 
 describe("ProductsPage", () => {
+    it.each([[" KYN002 ", 1], ["vitaminas", 2]])("busca también por código o categoría: %s", async (query, count) => {
+        const user = userEvent.setup(); renderPage();
+        await user.type(screen.getByRole("searchbox", { name: /buscar productos/i }), query);
+        expect(screen.getAllByRole("article")).toHaveLength(count);
+    });
     it("abre una categoría desde un enlace con tilde", () => {
         renderPage("/productos?categoria=Prote%C3%ADnas");
 

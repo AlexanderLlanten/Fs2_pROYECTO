@@ -25,16 +25,26 @@ export const homeFeatures = [
     {
         title: "Suplementación clara",
         icon: "bi-bag-check",
-        description: "Consulta formato, sabor, precio y disponibilidad de cada producto antes de elegir."
+        description: "Consulta información nutricional, ingredientes, modo de uso, alérgenos, precio y disponibilidad de cada producto antes de elegir.",
+        action: { label: "Explorar tienda", to: "/productos" }
     },
     {
-        title: "Compra a tu ritmo",
-        icon: "bi-cart-check",
-        description: "Agrega productos, ajusta cantidades y retoma tu carrito cuando vuelvas."
+        title: "Entrenamiento",
+        icon: "bi-activity",
+        description: "Explora ejercicios por grupo muscular, dificultad y equipamiento para construir tu rutina.",
+        action: { label: "Ver ejercicios", to: "/entrenamiento" }
     },
     {
-        title: "Tu objetivo, tu elección",
+        title: "Evolución deportiva",
         icon: "bi-graph-up-arrow",
-        description: "Explora proteínas, creatinas, vitaminas y pre-entreno en un solo lugar."
+        description: "Conoce la propuesta KYNEX, que conecta suplementación, conocimiento y entrenamiento en una misma experiencia.",
+        action: { label: "Conocer KYNEX", to: "/nosotros" }
     }
+];
+
+export const homeGoals = [
+    { name: "Aumento de masa", icon: "bi-graph-up-arrow" },
+    { name: "Energía", icon: "bi-lightning-charge" },
+    { name: "Recuperación", icon: "bi-heart-pulse" },
+    { name: "Descanso", icon: "bi-moon-stars" }
 ];
