@@ -1,3 +1,5 @@
+// Construye el pie de página público con identidad y enlaces.
+
 import { Link } from "react-router-dom";
 
 import BrandLink from "../atoms/BrandLink.jsx";
