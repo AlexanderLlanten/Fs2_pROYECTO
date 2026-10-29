@@ -1,3 +1,5 @@
+// Construye la navegación pública, el menú móvil y el contador del carrito.
+
 import { useEffect, useId, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
