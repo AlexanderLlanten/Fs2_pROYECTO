@@ -1,3 +1,5 @@
+// Organiza las tarjetas de productos y muestra un aviso cuando la lista está vacía.
+
 import ProductCard from "../molecules/ProductCard.jsx";
 
 function ProductGrid({
