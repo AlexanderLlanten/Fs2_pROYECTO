@@ -1,3 +1,5 @@
+// Presenta el contenido completo de un artículo.
+
 import { Link } from "react-router-dom";
 import ArticleImage from "../atoms/ArticleImage.jsx";
 import Badge from "../atoms/Badge.jsx";
