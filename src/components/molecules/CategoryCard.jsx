@@ -1,3 +1,5 @@
+// Muestra una categoría y enlaza al catálogo filtrado por ella.
+
 import { Link } from "react-router-dom";
 
 function CategoryCard({ category }) {
