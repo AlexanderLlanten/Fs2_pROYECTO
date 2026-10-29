@@ -1,3 +1,5 @@
+// Presenta unidades, subtotal, despacho y total; muestra el aviso de continuación de compra.
+
 import { useId, useState } from "react";
 import Price from "../atoms/Price.jsx";
 
