@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Prueba el carrito frente a modificaciones del catálogo, errores de almacenamiento y sincronización.
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

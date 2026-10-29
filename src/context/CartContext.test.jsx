@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de CartContext. Casos: «agrega productos y actualiza cantidad y subtotal global»; «elimina
+ * el producto cuando su cantidad disminuye desde uno».
+ */
+
 import {
     describe,
     expect,

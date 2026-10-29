@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de adminUsers. Casos: «entrega solo los datos administrables y nunca contraseñas»; «crea
+ * con rol elegido, id único y contraseña EP1, ignorando campos no editables».
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { defaultUsers } from "../data/users.js";
 import { registrationData } from "../test/registration.js";

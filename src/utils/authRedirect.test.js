@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de authRedirect. Casos: «conserva los filtros del catálogo»; «impide retornar al panel con
+ * un perfil Cliente o desconocido».
+ */
+
 import { describe, expect, it } from "vitest";
 
 import { getLoginDestination } from "./authRedirect.js";

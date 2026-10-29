@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Prueba el registro público: datos válidos, duplicados, perfil asignado y fallos de persistencia.
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { defaultUsers } from "../data/users.js";
 import { registrationData } from "../test/registration.js";

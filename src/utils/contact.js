@@ -1,7 +1,15 @@
+/*
+ * Reglas y funciones auxiliares.
+ * Devuelve errores de nombre, correo y comentario usando límites de longitud y dominios permitidos.
+ * Una validación correcta no equivale al envío del mensaje.
+ */
+
 import { getEmailError } from "./validation.js";
 
+// Conserva un texto sin espacios exteriores; devuelve texto vacío para otros tipos de dato.
 const text = value => typeof value === "string" ? value.trim() : "";
 
+// Valida nombre, correo y comentario para la confirmación local de contacto.
 export function getContactErrors(values = {}) {
     const name = text(values.name);
     const comment = text(values.comment);

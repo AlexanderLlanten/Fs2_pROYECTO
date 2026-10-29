@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de routine. Casos: «recupera sugerencias para datos heredados vacíos y ajusta valores fuera
+ * de rango»; «busca en nombre y descripción sin depender de mayúsculas o espacios externos».
+ */
+
 import { describe, expect, it } from "vitest";
 import { exercises } from "../data/exercises.js";
 import { filterExercises, getRoutineValueError, normalizeRoutineValue } from "./routine.js";

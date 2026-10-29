@@ -1,3 +1,10 @@
+/*
+ * Servicio local de datos y operaciones.
+ * Revalida al administrador antes de cada operación. Controla duplicados, conflictos y eliminación
+ * propia; al editar la cuenta conectada intenta restaurar la sesión si falla la escritura de
+ * usuarios.
+ */
+
 import { getSession, SESSION_KEY } from "./auth.js";
 import { nextUserId, normalizeEmail, readUsers, toSession, USERS_KEY } from "./userStore.js";
 import { getManagedUserErrors, normalizeManagedUser } from "../utils/adminUsers.js";
@@ -7,24 +14,32 @@ import { hasPermission, PERMISSIONS } from "../utils/permissions.js";
 const storageError = { success: false, code: "STORAGE", message: "No fue posible acceder al almacenamiento de este navegador. Inténtalo nuevamente." };
 const forbidden = { success: false, code: "FORBIDDEN", message: "No tienes permiso para gestionar usuarios." };
 const notFound = { success: false, code: "NOT_FOUND", message: "No fue posible encontrar el usuario solicitado." };
+// Comprueba que el identificador sea un número entero seguro y positivo.
 const validId = id => Number.isSafeInteger(id) && id > 0;
+// Construye la representación administrativa con id y campos normalizados, sin exponer la contraseña.
 const toManagedUser = user => ({ id: user.id, ...normalizeManagedUser(user) });
 
+// Obtiene usuarios y sesión y verifica que el actor vigente tenga permiso de gestionar usuarios.
 function readAdminStore() {
     const store = readUsers();
     const session = getSession();
+    // La autorización se obtiene del usuario vigente, incluso si su perfil cambió después de abrir la
+    // página.
     const actor = store.users.find(user => user.id === session?.id && normalizeEmail(user.email) === session.email);
     if (!actor || !hasPermission(actor.role, PERMISSIONS.USERS_MANAGE)) return forbidden;
     if (store.isCorrupted) return { success: false, code: "CORRUPTED", message: "Los usuarios guardados no se pueden leer correctamente. No se modificaron tus datos." };
     return { success: true, users: store.users, actor };
 }
 
+// Compara el registro actual con la copia esperada para detectar que cambió desde que se abrió el
+// formulario.
 function conflict(user, expectedUser) {
     return expectedUser && JSON.stringify(toManagedUser(user)) !== JSON.stringify(toManagedUser(expectedUser));
 }
 
 const changed = { success: false, code: "CONFLICT", message: "Este usuario cambió desde que lo abriste. Recarga sus datos antes de continuar." };
 
+// Devuelve usuarios aptos para la vista administrativa cuando el actor está autorizado.
 export function listManagedUsers() {
     try {
         const result = readAdminStore();
@@ -32,6 +47,8 @@ export function listManagedUsers() {
     } catch { return storageError; }
 }
 
+// Busca el usuario solicitado dentro del conjunto autorizado y devuelve un estado inexistente cuando
+// corresponde.
 export function getManagedUser(id) {
     const result = listManagedUsers();
     if (!result.success) return result;
@@ -39,10 +56,14 @@ export function getManagedUser(id) {
     return user ? { success: true, user } : notFound;
 }
 
+// Valida y guarda un alta o edición, controla duplicados y conflictos y coordina el cambio de la
+// sesión propia cuando corresponde.
 export function saveManagedUser(values, { id, expectedUser } = {}) {
     try {
         const store = readAdminStore();
         if (!store.success) return store;
+        // La presencia de id distingue edición de creación. expectedUser permite detectar cambios
+        // desde que se abrió el formulario.
         const previous = id !== undefined ? store.users.find(user => validId(id) && user.id === id) : null;
         if (id !== undefined && !previous) return notFound;
         if (previous && conflict(previous, expectedUser)) return changed;
@@ -52,8 +73,12 @@ export function saveManagedUser(values, { id, expectedUser } = {}) {
         if (store.users.some(user => user.id !== id && normalizeEmail(user.email) === data.email)) errors.email = "Ya existe un usuario registrado con este correo.";
         if (Object.values(errors).some(Boolean)) return { success: false, errors, message: "Revisa los campos marcados antes de guardar el usuario." };
 
+        // En edición el spread conserva campos no editables, como la contraseña. En creación se
+        // asignan id y contraseña demostrativa.
         const user = previous ? { ...previous, ...data } : { ...data, id: nextUserId(store.users), password: "1234" };
         const users = previous ? store.users.map(item => item.id === id ? user : item) : [...store.users, user];
+        // Al editar la propia cuenta también se sincroniza la sesión. Se conserva la sesión anterior
+        // para intentar restaurarla si falla el guardado de usuarios.
         if (previous?.id === store.actor.id) {
             const oldSession = localStorage.getItem(SESSION_KEY);
             localStorage.setItem(SESSION_KEY, JSON.stringify(toSession(user)));
@@ -70,6 +95,7 @@ export function saveManagedUser(values, { id, expectedUser } = {}) {
     } catch { return storageError; }
 }
 
+// Elimina una cuenta tras comprobar permiso y versión esperada. Rechaza borrar la cuenta conectada.
 export function deleteManagedUser(id, expectedUser) {
     try {
         const store = readAdminStore();

@@ -1,3 +1,9 @@
+/*
+ * Estado compartido mediante contexto de React.
+ * Mantiene la sesión de React y expone acceso, salida, registro y comprobación de permisos.
+ * Sincroniza el estado al cambiar usuarios o sesión desde otras pestañas.
+ */
+
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 
 import {
@@ -13,14 +19,19 @@ import { hasPermission } from "../utils/permissions.js";
 export const AuthContext = createContext(null);
 
 function AuthProvider({ children }) {
+    // useState conserva la sesión compartida. Se pasa getSession como función para leerla al
+    // inicializar el proveedor.
     const [user, setUser] = useState(getSession);
 
+    // Vuelve a consultar al servicio para reflejar cambios de perfil o eliminación de la cuenta;
+    // useCallback permite compartir una referencia estable.
     const refreshSession = useCallback(() => {
         const session = getSession();
         setUser(session);
         return session;
     }, []);
 
+    // Solo se actualiza el estado de React cuando el servicio confirma que la sesión fue guardada.
     const login = useCallback((email, password) => {
         const result = loginUser(email, password);
 
@@ -31,6 +42,8 @@ function AuthProvider({ children }) {
         return result;
     }, []);
 
+    // Una salida exitosa retira la sesión de la interfaz. El servicio conserva las otras claves, como
+    // carrito y rutina.
     const logout = useCallback(() => {
         const result = logoutUser();
 
@@ -41,7 +54,11 @@ function AuthProvider({ children }) {
         return result;
     }, []);
 
+    // storage permite actualizar la sesión cuando otra pestaña modifica usuarios o sesión. Al
+    // desmontar se retira el oyente registrado.
     useEffect(() => {
+        // Manejador que filtra eventos de almacenamiento relevantes antes de actualizar el recurso o
+        // la sesión.
         function handleStorage(event) {
             if (![SESSION_KEY, USERS_KEY, null].includes(event.key)) {
                 return;
@@ -58,6 +75,8 @@ function AuthProvider({ children }) {
         return () => window.removeEventListener("storage", handleStorage);
     }, [refreshSession]);
 
+    // Este objeto es la API del contexto: datos de sesión, operaciones y consultas de permiso
+    // disponibles mediante useAuth.
     const value = useMemo(() => ({
         user,
         isAuthenticated: user !== null,

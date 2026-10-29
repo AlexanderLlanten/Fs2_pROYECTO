@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de auth. Casos: «inicia sin sesión y no escribe usuarios al consultar una visita anónima»;
+ * «rechaza entradas incompletas o de tipos incorrectos sin lanzar errores».
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { defaultUsers } from "../data/users.js";

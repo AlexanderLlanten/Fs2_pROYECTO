@@ -1,3 +1,9 @@
+/*
+ * Reglas y funciones auxiliares.
+ * Define la clave de compra y las reglas de despacho. Limita cantidades según stock y calcula
+ * unidades, subtotal, envío, total y diferencia para despacho gratuito.
+ */
+
 export const CART_KEY =
     "kynex_cart";
 
@@ -7,6 +13,8 @@ export const FREE_SHIPPING_FROM =
 export const STANDARD_SHIPPING =
     3990;
 
+// Convierte cantidades y stock a números y limita el resultado entre uno y el stock disponible;
+// devuelve cero cuando el stock no permite compra.
 export function normalizeQuantity(
     quantity,
     stock
@@ -35,6 +43,8 @@ export function normalizeQuantity(
     );
 }
 
+// Devuelve unidades, subtotal, despacho, total y monto faltante para despacho gratuito a partir de
+// las líneas detalladas.
 export function calculateCartSummary(
     detailedCart
 ) {
@@ -45,6 +55,8 @@ export function calculateCartSummary(
             ? detailedCart
             : [];
 
+    // reduce acumula las cantidades de todas las líneas; dos unidades del mismo producto cuentan como
+    // dos.
     const totalItems =
         items.reduce(
             (
@@ -61,6 +73,7 @@ export function calculateCartSummary(
             0
         );
 
+    // El subtotal suma precio por cantidad de cada producto antes de agregar el despacho.
     const subtotal =
         items.reduce(
             (
@@ -85,6 +98,8 @@ export function calculateCartSummary(
             0
         );
 
+    // Se cobra despacho solo para un subtotal positivo inferior al umbral gratuito; el carrito vacío
+    // tiene despacho cero.
     const shipping =
         subtotal > 0
         &&

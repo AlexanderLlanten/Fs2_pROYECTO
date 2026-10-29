@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de productDetails. Casos: «conserva todos los campos de los seis productos originales»;
+ * «completa solo datos ausentes sin mutar el registro ni los originales».
+ */
+
 import { describe, expect, it } from "vitest";
 import { products } from "../data/products.js";
 // Referencia histórica independiente del catálogo vigente y exclusiva de testing.

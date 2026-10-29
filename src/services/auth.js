@@ -1,3 +1,9 @@
+/*
+ * Servicio local de datos y operaciones.
+ * Obtiene una sesión vigente, inicia y cierra sesión y registra clientes. Los datos residen en el
+ * navegador; las credenciales tienen alcance demostrativo.
+ */
+
 import { getRegistrationErrors, normalizeRegistration } from "../utils/registration.js";
 import { cleanRun } from "../utils/validation.js";
 import { isValidIdentity, nextUserId, normalizeEmail, readUsers, toSession, USERS_KEY } from "./userStore.js";
@@ -8,6 +14,8 @@ export const SESSION_KEY = "kynex_session";
 
 const STORAGE_ERROR = "No fue posible acceder al almacenamiento de este navegador. Inténtalo nuevamente.";
 
+// Lee la identidad guardada y la contrasta con usuarios vigentes. Devuelve los datos de sesión
+// actuales o null cuando no son válidos.
 export function getSession() {
     try {
         const stored = localStorage.getItem(SESSION_KEY);
@@ -15,6 +23,8 @@ export function getSession() {
             return null;
         }
 
+        // Una sesión guardada debe tener estructura válida y corresponder a una cuenta que todavía
+        // exista.
         const session = JSON.parse(stored);
         if (!isValidIdentity(session)) {
             return null;
@@ -33,6 +43,8 @@ export function getSession() {
     }
 }
 
+// Normaliza el correo, busca una cuenta, comprueba contraseña demostrativa y guarda la sesión cuando
+// corresponde.
 export function loginUser(email, password) {
     const normalizedEmail = normalizeEmail(email);
 
@@ -69,6 +81,7 @@ export function loginUser(email, password) {
     }
 }
 
+// Retira únicamente la clave de sesión y comunica si la operación se realizó correctamente.
 export function logoutUser() {
     try {
         localStorage.removeItem(SESSION_KEY);
@@ -78,7 +91,11 @@ export function logoutUser() {
     }
 }
 
+// Normaliza y valida el registro, detecta RUN y correo repetidos y guarda un Cliente con contraseña
+// demostrativa inicial sin abrir sesión.
 export function registerUser(values) {
+    // Primero se preparan los datos y se validan. Cada mensaje no vacío impide continuar con el
+    // registro.
     const data = normalizeRegistration(values);
     const errors = getRegistrationErrors(data);
     if (Object.values(errors).some(Boolean)) {
@@ -90,6 +107,7 @@ export function registerUser(values) {
         if (isCorrupted) {
             return { success: false, message: "Los usuarios guardados no se pueden leer correctamente. No se modificaron tus datos." };
         }
+        // RUN y correo deben ser únicos; la comparación utiliza sus versiones normalizadas.
         if (users.some(user => cleanRun(user.run) === data.run)) {
             errors.run = "Ya existe un usuario registrado con este RUN.";
         }
