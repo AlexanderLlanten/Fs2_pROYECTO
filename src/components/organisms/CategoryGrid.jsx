@@ -1,3 +1,5 @@
+// Organiza las tarjetas de categorías.
+
 import CategoryCard from "../molecules/CategoryCard.jsx";
 
 function CategoryGrid({ categories }) {
