@@ -1,3 +1,8 @@
+/*
+ * Preparación compartida de pruebas.
+ * Comparte valores y operaciones auxiliares de pruebas de registro.
+ */
+
 import { screen } from "@testing-library/react";
 
 export const registrationData = {
@@ -11,6 +16,7 @@ export const registrationData = {
     address: "Avenida Central 123"
 };
 
+// Ayudante de pruebas que completa los datos de registro y sus selectores dependientes.
 export async function fillRegistration(user, values = registrationData) {
     for (const [label, key] of [["RUN", "run"], ["Nombre", "firstName"], ["Apellidos", "lastName"],
         ["Correo electrónico", "email"], ["Dirección", "address"]]) {

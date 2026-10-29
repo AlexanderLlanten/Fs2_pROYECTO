@@ -1,3 +1,11 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene los ocho ejercicios demostrativos con grupo muscular, dificultad, imagen y cantidades
+ * sugeridas.
+ */
+
+// Construye la dirección de una imagen respecto a este módulo para que Vite pueda incluirla en
+// producción.
 const image = name => new URL(`../../assets/img/training/${name}.jpg`, import.meta.url).href;
 
 // Mismos ejercicios, identificadores y sugerencias de la EP1.

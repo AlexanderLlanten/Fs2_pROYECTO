@@ -1,3 +1,8 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene tres pedidos demostrativos con productos, cliente, fecha y precios históricos.
+ */
+
 // Pedidos demostrativos de la EP1. Conservan los precios del momento del pedido.
 export const orders = [
     {

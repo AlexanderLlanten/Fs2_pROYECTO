@@ -1,3 +1,9 @@
+/*
+ * Preparación compartida de pruebas.
+ * Carga los matchers de DOM y sustituye desplazamiento y apertura/cierre de diálogos que jsdom no
+ * implementa de forma nativa.
+ */
+
 import "@testing-library/jest-dom/vitest";
 import { vi } from "vitest";
 

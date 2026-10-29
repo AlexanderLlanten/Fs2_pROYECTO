@@ -1,3 +1,8 @@
+/*
+ * Presentación visual.
+ * Da estilo a acceso, registro, campos, ayudas, errores, mensajes y distribución de formularios.
+ */
+
 .auth-page-header {
     padding: 3.5rem 0 2.5rem;
     background: linear-gradient(180deg, var(--kynex-bg-soft), var(--kynex-bg));

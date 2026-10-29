@@ -1,3 +1,9 @@
+/*
+ * Presentación visual.
+ * Define panel, navegación, formularios y tablas administrativas, incluidos ajustes para pantallas
+ * pequeñas.
+ */
+
 .kynex-admin-layout {
     display: grid;
     grid-template-columns: 280px minmax(0, 1fr);

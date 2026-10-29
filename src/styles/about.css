@@ -1,3 +1,8 @@
+/*
+ * Presentación visual.
+ * Da presentación a la información institucional, sus imágenes y bloques de contenido.
+ */
+
 .about-story-copy h2 {
     margin-bottom: 1.5rem;
     font-size: clamp(1.85rem, 3vw, 2.8rem);

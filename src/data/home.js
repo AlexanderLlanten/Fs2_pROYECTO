@@ -1,3 +1,8 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene categorías, objetivos y bloques informativos usados por la portada.
+ */
+
 export const homeCategories = [
     {
         name: "Proteínas",

@@ -1,3 +1,9 @@
+/*
+ * Datos iniciales y contenido.
+ * Relaciona rutas históricas conocidas de imágenes con URL que Vite puede empaquetar. Conserva
+ * compatibilidad con selecciones guardadas.
+ */
+
 // Recursos originales: las rutas guardadas de la EP1 se resuelven también en producción.
 export const assetImages = {
     "../../assets/img/blog/blog-creatina-rendimiento.jpg": new URL("../../assets/img/blog/blog-creatina-rendimiento.jpg", import.meta.url).href,

@@ -1,3 +1,9 @@
+/*
+ * Presentación visual.
+ * Define catálogo, tarjetas, detalle, imágenes, cantidades, carrito y presentación de información
+ * comercial.
+ */
+
 .shop-product-card {
     display:
         flex;

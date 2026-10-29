@@ -1,3 +1,8 @@
+/*
+ * Presentación visual.
+ * Define biblioteca de ejercicios, filtros, tarjetas y edición de rutina.
+ */
+
 .training-section { padding-block: 3.5rem; }
 .training-heading { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
 .training-heading > div { max-width: 42rem; }

@@ -1,3 +1,9 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene los seis productos iniciales con precio, disponibilidad y metadatos ampliados. Los cambios
+ * guardados del catálogo tienen prioridad cuando son válidos.
+ */
+
 // Catálogo demostrativo completo de la EP1.
 export const products = [
     {

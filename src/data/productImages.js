@@ -1,3 +1,8 @@
+/*
+ * Datos iniciales y contenido.
+ * Asocia los seis códigos de producto con imágenes predeterminadas que Vite incorpora al build.
+ */
+
 export const productImages = {
     KYN001: new URL("../../assets/img/products/kynex-whey-protein-vanilla.png", import.meta.url).href,
     KYN002: new URL("../../assets/img/products/kynex-creatina-monohidratada-unflavored.png", import.meta.url).href,
