@@ -1,3 +1,5 @@
+// Muestra una cantidad y los controles para aumentarla o disminuirla.
+
 function QuantitySelector({
     quantity,
     onIncrease,
