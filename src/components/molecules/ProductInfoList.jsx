@@ -1,3 +1,5 @@
+// Presenta una lista de información del producto, como ingredientes o beneficios.
+
 import { useId } from "react";
 import { productList } from "../../utils/productDetails.js";
 
