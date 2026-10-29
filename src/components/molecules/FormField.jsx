@@ -1,3 +1,5 @@
+// Reúne etiqueta, campo, ayuda y mensaje de error de un formulario.
+
 import { useId } from "react";
 
 function FormField({ id, label, error = "", helpText, inputRef, children, className = "", fieldClassName = "", as: Control = "input", ...inputProps }) {
