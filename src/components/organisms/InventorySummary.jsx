@@ -1,3 +1,5 @@
+// Calcula y muestra productos, unidades disponibles y productos con stock bajo.
+
 import AdminSummaryCard from "../molecules/AdminSummaryCard.jsx";
 import { isCriticalStock } from "../../utils/products.js";
 
