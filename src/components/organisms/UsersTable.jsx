@@ -1,3 +1,5 @@
+// Lista usuarios y presenta las acciones autorizadas sobre sus cuentas.
+
 import { Link } from "react-router-dom";
 
 function UsersTable({ users, currentUserId, onDelete }) {
