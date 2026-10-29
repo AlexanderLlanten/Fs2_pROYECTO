@@ -1,3 +1,5 @@
+// Gestiona nombre, correo, comentario y validación local del contacto.
+
 import { useEffect, useRef, useState } from "react";
 import Button from "../atoms/Button.jsx";
 import FormField from "../molecules/FormField.jsx";
