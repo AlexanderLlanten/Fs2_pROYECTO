@@ -1,3 +1,5 @@
+// Presenta la sección de portada que invita a explorar entrenamiento.
+
 import { Link } from "react-router-dom";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 import trainingImage from "../../../assets/img/training/training-hero-deadlift.jpg";
