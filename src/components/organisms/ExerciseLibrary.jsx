@@ -1,3 +1,5 @@
+// Presenta ejercicios y combina búsqueda, grupo muscular y dificultad.
+
 import { useState } from "react";
 import FormField from "../molecules/FormField.jsx";
 import ExerciseCard from "../molecules/ExerciseCard.jsx";
