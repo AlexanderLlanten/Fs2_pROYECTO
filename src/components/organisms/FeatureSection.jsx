@@ -1,3 +1,5 @@
+// Reúne un encabezado y varias tarjetas de características.
+
 import FeatureCard from "../molecules/FeatureCard.jsx";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 
