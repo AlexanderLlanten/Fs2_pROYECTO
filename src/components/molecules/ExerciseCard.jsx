@@ -1,3 +1,5 @@
+// Presenta un ejercicio y permite solicitar que se agregue a la rutina.
+
 import { useId, useState } from "react";
 import Button from "../atoms/Button.jsx";
 
