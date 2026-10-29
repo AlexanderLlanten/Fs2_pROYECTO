@@ -1,3 +1,5 @@
+// Presenta el video de la portada y su alternativa de acceso externo.
+
 import SectionHeading from "../molecules/SectionHeading.jsx";
 
 function HomeMedia() {
