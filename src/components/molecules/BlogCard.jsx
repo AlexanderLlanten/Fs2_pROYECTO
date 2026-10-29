@@ -1,3 +1,5 @@
+// Presenta el resumen de un artículo y el enlace para leerlo.
+
 import { useId } from "react";
 import { Link } from "react-router-dom";
 import ArticleImage from "../atoms/ArticleImage.jsx";
