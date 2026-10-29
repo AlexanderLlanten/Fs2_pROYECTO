@@ -1,3 +1,5 @@
+// Adapta el diálogo de eliminación para mostrar los datos del usuario seleccionado.
+
 import ConfirmDeleteDialog from "./ConfirmDeleteDialog.jsx";
 
 function DeleteUserDialog({ user, ...props }) {
