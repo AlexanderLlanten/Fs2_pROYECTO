@@ -1,3 +1,5 @@
+// Comparte campos de identidad y dirección entre registro y administración.
+
 import FormField from "../molecules/FormField.jsx";
 import { regions } from "../../data/regions.js";
 
