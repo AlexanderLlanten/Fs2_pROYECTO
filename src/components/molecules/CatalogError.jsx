@@ -1,3 +1,5 @@
+// Informa que el catálogo no pudo leerse y permite reintentar.
+
 function CatalogError({ resource }) {
     return <div className="auth-form-alert my-4" role="alert">
         <p>{resource.message}</p>
