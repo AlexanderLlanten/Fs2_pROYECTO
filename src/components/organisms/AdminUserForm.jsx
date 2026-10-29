@@ -1,3 +1,5 @@
+// Captura y valida datos de usuarios y su perfil.
+
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../atoms/Button.jsx";
