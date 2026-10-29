@@ -1,3 +1,5 @@
+// Gestiona correo, contraseña, validación y solicitud de inicio de sesión.
+
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
