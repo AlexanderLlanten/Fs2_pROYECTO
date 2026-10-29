@@ -1,3 +1,8 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene textos, características y compromisos utilizados en la página institucional.
+ */
+
 export const aboutProposal = [
     {
         title: "Productos seleccionados", icon: "bi-bag-check",

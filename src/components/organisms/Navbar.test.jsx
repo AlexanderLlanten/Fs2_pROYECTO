@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de Navbar. Casos: «enlaza la marca y las páginas públicas con un carrito vacío»; «recupera
+ * el total de unidades guardadas, no solo los productos distintos».
+ */
+
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

@@ -1,4 +1,8 @@
-// Lista usuarios y presenta las acciones autorizadas sobre sus cuentas.
+/*
+ * Organismo de interfaz.
+ * Presenta usuarios y acciones autorizadas. Identifica la cuenta conectada para evitar ofrecer su
+ * eliminación.
+ */
 
 import { Link } from "react-router-dom";
 

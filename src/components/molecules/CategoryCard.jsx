@@ -1,4 +1,8 @@
-// Muestra una categoría y enlaza al catálogo filtrado por ella.
+/*
+ * Molécula reutilizable.
+ * Presenta una categoría como enlace al catálogo filtrado. La categoría elegida se expresa en el
+ * parámetro de consulta de la dirección.
+ */
 
 import { Link } from "react-router-dom";
 

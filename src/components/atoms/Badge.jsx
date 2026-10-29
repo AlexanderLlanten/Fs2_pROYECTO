@@ -1,3 +1,9 @@
+/*
+ * Átomo reutilizable.
+ * Envuelve el contenido recibido en una etiqueta visual y permite añadir clases. No decide reglas de
+ * negocio.
+ */
+
 function Badge({
     children,
     className = ""

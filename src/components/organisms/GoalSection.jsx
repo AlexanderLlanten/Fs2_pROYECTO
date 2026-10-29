@@ -1,4 +1,7 @@
-// Presenta los objetivos de entrenamiento y sus accesos al catálogo.
+/*
+ * Organismo de interfaz.
+ * Presenta los objetivos de entrenamiento y sus accesos al catálogo.
+ */
 
 import { Link } from "react-router-dom";
 import SectionHeading from "../molecules/SectionHeading.jsx";

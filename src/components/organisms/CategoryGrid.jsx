@@ -1,4 +1,7 @@
-// Organiza las tarjetas de categorías.
+/*
+ * Organismo de interfaz.
+ * Organiza las tarjetas de categoría recibidas y reutiliza CategoryCard.
+ */
 
 import CategoryCard from "../molecules/CategoryCard.jsx";
 

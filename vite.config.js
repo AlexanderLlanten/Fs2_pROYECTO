@@ -1,3 +1,9 @@
+/*
+ * Entrada y configuración.
+ * Activa la transformación React y configura Vitest, jsdom, preparación, dos trabajadores y alcance
+ * de cobertura V8.
+ */
+
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 

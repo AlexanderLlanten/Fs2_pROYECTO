@@ -1,3 +1,8 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene regiones y comunas disponibles para los selectores dependientes de los formularios.
+ */
+
 "use strict";
 
 /* =========================================================

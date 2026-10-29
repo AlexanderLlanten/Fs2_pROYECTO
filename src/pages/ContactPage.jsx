@@ -1,3 +1,8 @@
+/*
+ * Página y coordinación de la vista.
+ * Presenta el contexto de contacto y el formulario de validación local.
+ */
+
 import ContactForm from "../components/organisms/ContactForm.jsx";
 
 const topics = [

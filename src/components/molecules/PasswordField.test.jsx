@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de PasswordField. Casos: «muestra y oculta la contraseña sin cambiarla ni enviar el
+ * formulario».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

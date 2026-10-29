@@ -1,3 +1,9 @@
+/*
+ * Servicio local de datos y operaciones.
+ * Lee, normaliza y modifica ejercicios de rutina. Protege datos dañados, controla duplicados y
+ * límites y notifica a los suscriptores después de una escritura correcta.
+ */
+
 import { exercises } from "../data/exercises.js";
 import { getRoutineValueError, normalizeRoutineValue, routineLimits } from "../utils/routine.js";
 
@@ -8,9 +14,11 @@ const storageError = { success: false, items: [], code: "STORAGE", message: "No 
 let lastRaw;
 let snapshot;
 
+// Lee la rutina, valida su estructura y normaliza series y repeticiones para ejercicios existentes.
 export function readRoutine() {
     let raw;
     try { raw = localStorage.getItem(ROUTINE_KEY); } catch { return storageError; }
+    // La instantánea estable evita interpretar cada lectura como un cambio nuevo en React.
     if (snapshot && raw === lastRaw) return snapshot;
     try {
         const parsed = raw === null ? [] : JSON.parse(raw);
@@ -31,12 +39,17 @@ export function readRoutine() {
     return snapshot;
 }
 
+// Emite un evento local de cambio de rutina.
 export function refreshRoutine() { window.dispatchEvent(new Event(ROUTINE_CHANGED)); }
 
+// Escucha cambios locales y entre pestañas y devuelve su función de cancelación.
 export function subscribeRoutine(listener) {
+    // Manejador de cambios entre documentos del almacenamiento de rutina.
     function onStorage(event) {
         if ((!event.storageArea || event.storageArea === localStorage) && [ROUTINE_KEY, null].includes(event.key)) listener();
     }
+    // Se escuchan tanto cambios entre pestañas como escrituras realizadas por esta misma ventana; la
+    // función devuelta cancela ambas suscripciones.
     window.addEventListener("storage", onStorage);
     window.addEventListener(ROUTINE_CHANGED, listener);
     return () => {
@@ -45,8 +58,11 @@ export function subscribeRoutine(listener) {
     };
 }
 
+// Guarda o retira únicamente la clave de rutina. Notifica el cambio después de una escritura exitosa.
 function persist(items, clear = false) {
     try {
+        // Vaciar retira únicamente la clave de rutina. Guardar convierte sus elementos en una cadena
+        // JSON.
         if (clear) localStorage.removeItem(ROUTINE_KEY);
         else localStorage.setItem(ROUTINE_KEY, JSON.stringify(items));
     } catch { return { success: false, code: "STORAGE", message: "No fue posible guardar la rutina. Tus cambios anteriores se conservaron. Inténtalo nuevamente." }; }
@@ -54,6 +70,7 @@ function persist(items, clear = false) {
     return { success: true };
 }
 
+// Agrega un ejercicio existente con sus valores sugeridos y rechaza duplicados o un almacén inválido.
 export function addRoutineExercise(id) {
     const current = readRoutine();
     if (!current.success) return current;
@@ -63,6 +80,7 @@ export function addRoutineExercise(id) {
     return persist([...current.items, { id, sets: exercise.defaultSets, reps: exercise.defaultReps }]);
 }
 
+// Valida el campo, la cantidad y la existencia del ejercicio y persiste la actualización.
 export function updateRoutineExercise(id, field, value) {
     const current = readRoutine();
     if (!current.success) return current;
@@ -73,12 +91,14 @@ export function updateRoutineExercise(id, field, value) {
     return persist(current.items.map(item => item.id === id ? { ...item, [field]: Number(value) } : item));
 }
 
+// Guarda la rutina sin el identificador indicado cuando la lectura es válida.
 export function removeRoutineExercise(id) {
     const current = readRoutine();
     if (!current.success) return current;
     return persist(current.items.filter(item => item.id !== id));
 }
 
+// Retira la rutina guardada si el almacén actual puede leerse correctamente.
 export function clearRoutine() {
     const current = readRoutine();
     return current.success ? persist([], true) : current;

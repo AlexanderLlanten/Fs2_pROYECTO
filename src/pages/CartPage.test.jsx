@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de CartPage. Casos: «muestra el estado vacío cuando no existen productos»; «renderiza
+ * productos almacenados y permite vaciar el carrito».
+ */
+
 import {
     beforeEach,
     describe,

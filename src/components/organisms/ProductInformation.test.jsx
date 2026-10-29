@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductInformation. Casos: «presenta ingredientes, beneficios, alérgenos, uso y
+ * nutrición originales»; «distingue alérgenos vacíos informados y conserva cero calorías».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import ProductInformation from "./ProductInformation.jsx";

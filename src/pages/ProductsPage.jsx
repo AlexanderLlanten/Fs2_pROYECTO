@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Obtiene el catálogo compartido. Mantiene búsqueda local, sincroniza categoría con la URL y aplica
+ * ambos criterios antes de presentar ProductGrid.
+ */
+
 import {
     useState
 } from "react";
@@ -17,6 +23,8 @@ function ProductsPage() {
         addToCart
     } = useCart();
 
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [
         search,
         setSearch
@@ -24,6 +32,8 @@ function ProductsPage() {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
+    // Set elimina categorías repetidas para construir las opciones del selector a partir del catálogo
+    // vigente.
     const categories = [
         ...new Set(
             products.map(
@@ -33,11 +43,15 @@ function ProductsPage() {
         )
     ];
 
+    // La categoría vive en la URL para conservar enlaces y navegación del historial. Una categoría
+    // desconocida equivale a mostrar todas.
     const requestedCategory = searchParams.get("categoria");
     const category = categories.includes(requestedCategory)
         ? requestedCategory
         : "all";
 
+    // Actualiza la categoría del catálogo en los parámetros de consulta y conserva los demás
+    // parámetros.
     function handleCategoryChange(event) {
         const nextCategory = event.target.value;
 
@@ -59,6 +73,8 @@ function ProductsPage() {
             .trim()
             .toLowerCase();
 
+    // Un producto debe cumplir a la vez el texto buscado y la categoría seleccionada; el filtro crea
+    // otra lista sin alterar el catálogo.
     const filteredProducts =
         products.filter(
             product => {

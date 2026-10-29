@@ -1,4 +1,8 @@
-// Decide si se muestra un contenido según los permisos de la sesión.
+/*
+ * Molécula reutilizable.
+ * Decide si se presenta su contenido según un permiso de la sesión. Puede mostrar un reemplazo; los
+ * servicios también vuelven a verificar los permisos.
+ */
 
 import useAuth from "../../hooks/useAuth.js";
 

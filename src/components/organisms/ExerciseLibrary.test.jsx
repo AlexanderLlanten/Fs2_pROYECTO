@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ExerciseLibrary. Casos: «muestra ocho ejercicios y marca los seleccionados»; «combina
+ * búsqueda, músculo y dificultad y muestra un estado vacío recuperable».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

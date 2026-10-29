@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de RegistrationPage. Casos: «ofrece registro al visitante y explica la contraseña
+ * demostrativa»; «envía al panel a un Vendedor que ya tiene sesión».
+ */
+
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";

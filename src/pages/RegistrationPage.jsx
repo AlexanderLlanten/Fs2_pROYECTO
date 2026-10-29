@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Conecta RegistrationForm con registerUser a través del contexto y conserva un destino de acceso
+ * interno cuando corresponde.
+ */
+
 import { Navigate, useLocation } from "react-router-dom";
 import RegistrationForm from "../components/organisms/RegistrationForm.jsx";
 import useAuth from "../hooks/useAuth.js";

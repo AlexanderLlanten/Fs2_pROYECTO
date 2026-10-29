@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de AuthContext. Casos: «presenta un visitante sin roles cuando no existe una sesión»;
+ * «devuelve el error de autenticación sin abrir una sesión».
+ */
+
 import { useState } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";

@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de permissions. Casos: «deniega roles y permisos desconocidos».
+ */
+
 import { describe, expect, it } from "vitest";
 import { AUTH_ROLES } from "../services/auth.js";
 import { getRoleHome, hasPermission, PERMISSIONS } from "./permissions.js";

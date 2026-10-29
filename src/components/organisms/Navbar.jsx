@@ -1,4 +1,8 @@
-// Construye la navegación pública, el menú móvil y el contador del carrito.
+/*
+ * Organismo de interfaz.
+ * Construye la navegación pública y el contador del carrito. Mantiene apertura del menú móvil y lo
+ * cierra al cambiar la ubicación o usar un enlace.
+ */
 
 import { useEffect, useId, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -11,12 +15,15 @@ function Navbar() {
     const { totalItems } = useCart();
     const { key } = useLocation();
     const menuId = useId();
+    // El estado recuerda si el menú móvil está abierto; se actualiza al pulsar el control o navegar.
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Cambiar de ruta cierra el menú móvil para que la nueva página quede visible.
     useEffect(() => {
         setIsMenuOpen(false);
     }, [key]);
 
+    // Establece el estado del menú en cerrado.
     function closeMenu() {
         setIsMenuOpen(false);
     }

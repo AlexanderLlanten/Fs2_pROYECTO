@@ -1,4 +1,8 @@
-// Mantiene una presentación común para los títulos y descripciones de las secciones.
+/*
+ * Molécula reutilizable.
+ * Reúne antetítulo, título y descripción para mantener una estructura visual consistente entre
+ * secciones.
+ */
 
 function SectionHeading({ id, eyebrow, title, description }) {
     return (

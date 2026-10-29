@@ -1,4 +1,7 @@
-// Presenta la sección de portada que invita a explorar entrenamiento.
+/*
+ * Organismo de interfaz.
+ * Presenta el acceso destacado al entrenamiento desde la portada.
+ */
 
 import { Link } from "react-router-dom";
 import SectionHeading from "../molecules/SectionHeading.jsx";

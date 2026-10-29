@@ -1,3 +1,8 @@
+/*
+ * Página y coordinación de la vista.
+ * Presenta el encabezado del blog y la colección de artículos mediante BlogFeed.
+ */
+
 import { Link } from "react-router-dom";
 import BlogFeed from "../components/organisms/BlogFeed.jsx";
 import { articles } from "../data/articles.js";

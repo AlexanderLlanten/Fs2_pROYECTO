@@ -1,4 +1,8 @@
-// Presenta el resumen de un artículo y el enlace para leerlo.
+/*
+ * Molécula reutilizable.
+ * Resume un artículo con imagen, categoría, título y enlace de lectura. Recibe el artículo por
+ * propiedades.
+ */
 
 import { useId } from "react";
 import { Link } from "react-router-dom";

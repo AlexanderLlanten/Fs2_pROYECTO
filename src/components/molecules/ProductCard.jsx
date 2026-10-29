@@ -1,4 +1,8 @@
-// Muestra la tarjeta del producto con imagen, información, precio y acciones.
+/*
+ * Molécula reutilizable.
+ * Presenta los datos de un producto y compone imagen, etiquetas, precio y botón. Al agregar comprueba
+ * disponibilidad y entrega el producto al callback recibido.
+ */
 
 import {
     Link
@@ -24,6 +28,8 @@ function ProductCard({
         typeof onAddToCart ===
         "function";
 
+    // El botón comunica el producto mediante la función recibida. El contexto conserva la
+    // responsabilidad final sobre cantidades y stock.
     function handleAddToCart() {
         if (
             isOutOfStock

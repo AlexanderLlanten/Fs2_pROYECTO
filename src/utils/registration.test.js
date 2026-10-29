@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de registration. Casos: «normaliza los datos sin admitir rol ni contraseña desde el
+ * formulario»; «valida campos requeridos y los límites de nombre, apellidos y dirección».
+ */
+
 import { describe, expect, it } from "vitest";
 import { registrationData } from "../test/registration.js";
 import { cleanRun, getRunError } from "./validation.js";

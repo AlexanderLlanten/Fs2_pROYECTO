@@ -1,4 +1,9 @@
-// Muestra una cifra del panel junto con su título e icono.
+/*
+ * Molécula reutilizable.
+ * Presenta una cifra administrativa con etiqueta e icono. El cálculo se realiza antes de entregar el
+ * valor al componente.
+ */
+
 function AdminSummaryCard({ label, value, icon }) {
     return (
         <article className="kynex-admin-stat" aria-label={label}>

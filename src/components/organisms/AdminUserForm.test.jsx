@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de AdminUserForm. Casos: «valida los campos requeridos y enfoca el primero sin guardar»;
+ * «comparte validaciones del registro y permite seleccionar un rol al crear».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

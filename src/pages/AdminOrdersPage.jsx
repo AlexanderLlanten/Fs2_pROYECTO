@@ -1,3 +1,8 @@
+/*
+ * Página y coordinación de la vista.
+ * Consulta los pedidos demostrativos autorizados y los presenta en una tabla con estados de error.
+ */
+
 import useAuth from "../hooks/useAuth.js";
 import { listManagedOrders } from "../services/adminOrders.js";
 import OrdersTable from "../components/organisms/OrdersTable.jsx";

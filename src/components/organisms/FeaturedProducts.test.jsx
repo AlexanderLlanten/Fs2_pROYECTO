@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de FeaturedProducts. Casos: «muestra solo destacados y entrega el producto elegido al
+ * carrito».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

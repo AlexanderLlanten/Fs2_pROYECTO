@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de orders. Casos: «resume una lista vacía y admite productos gratuitos sin agregar
+ * despacho»; «exige un identificador entero positivo completo».
+ */
+
 import { describe, expect, it } from "vitest";
 import { orders } from "../data/orders.js";
 import { calculateOrderSummary, parseOrderId } from "./orders.js";

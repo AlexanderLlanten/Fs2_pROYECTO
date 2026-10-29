@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de DeleteUserDialog. Casos: «enfoca Cancelar y exige una decisión explícita antes de
+ * eliminar»; «maneja Escape como cancelación y muestra errores sin perder la cuenta seleccionada».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

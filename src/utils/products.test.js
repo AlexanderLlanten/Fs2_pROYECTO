@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de products. Casos: «normaliza código, espacios, números y umbral opcional conservando
+ * valores cero»; «exige enteros no negativos para existencias y acepta precio decimal».
+ */
+
 import { describe, expect, it } from "vitest";
 import { getProductErrors, isCriticalStock, normalizeProduct, parseProductId, productImageSource } from "./products.js";
 import { products } from "../data/products.js";

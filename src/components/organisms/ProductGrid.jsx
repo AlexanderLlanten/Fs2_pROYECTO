@@ -1,4 +1,8 @@
-// Organiza las tarjetas de productos y muestra un aviso cuando la lista está vacía.
+/*
+ * Organismo de interfaz.
+ * Organiza las tarjetas del catálogo, transmite el evento de agregar y presenta el estado sin
+ * productos cuando corresponde.
+ */
 
 import ProductCard from "../molecules/ProductCard.jsx";
 
@@ -7,6 +11,8 @@ function ProductGrid({
     onAddToCart,
     headingLevel = 2
 }) {
+    // Antes de recorrer products con map se comprueba que sea una lista con elementos; de lo
+    // contrario se presenta el estado vacío.
     if (
         !Array.isArray(products)
         ||

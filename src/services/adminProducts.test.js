@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de adminProducts. Casos: «lee el catálogo inicial sin escribir y conserva un catálogo
+ * vacío»; «crea con identidad propia e informa el cambio a los consumidores».
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { products } from "../data/products.js";
 import { defaultUsers } from "../data/users.js";

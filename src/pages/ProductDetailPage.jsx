@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Lee y valida el id de la ruta, busca el producto y calcula la cantidad disponible considerando el
+ * carrito. Compone imagen, ficha, información ampliada y selección de unidades.
+ */
+
 import {
     Link,
     useParams
@@ -33,6 +39,8 @@ function ProductDetailPage() {
         detailedCart
     } = useCart();
 
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [
         feedback,
         setFeedback
@@ -80,10 +88,14 @@ function ProductDetailPage() {
         );
     }
 
+    // Se descuenta lo ya agregado para calcular stock restante. Cada nueva adición permite como
+    // máximo diez unidades y nunca supera ese stock.
     const inCart = detailedCart.find(item => item.id === product.id)?.quantity ?? 0;
     const maximum = Math.min(10, Math.max(0, product.stock - inCart));
     const quantity = maximum === 0 ? 0 : Math.min(selection.id === product.id ? selection.quantity : 1, maximum);
 
+    // Responde al clic de compra y comunica la operación al callback o al contexto del carrito; este
+    // último controla el stock vigente.
     function handleAddToCart() {
         if (!quantity) return;
         addToCart(product, quantity);

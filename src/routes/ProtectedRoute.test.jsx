@@ -1,3 +1,10 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProtectedRoute. Casos: «no monta contenido privado para un visitante y conserva ruta y
+ * filtros para Login»; «reemplaza la entrada protegida del historial para no crear un ciclo al
+ * volver».
+ */
+
 import { useEffect } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";

@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de cart. Casos: «limita una cantidad al stock disponible»; «calcula despacho estándar
+ * cuando el subtotal es menor a $50.000».
+ */
+
 import {
     describe,
     expect,

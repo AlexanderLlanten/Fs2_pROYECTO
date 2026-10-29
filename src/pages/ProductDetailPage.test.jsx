@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductDetailPage. Casos: «muestra el producto correspondiente al id de la ruta»;
+ * «muestra un estado de error cuando el producto no existe».
+ */
+
 import {
     describe,
     expect,

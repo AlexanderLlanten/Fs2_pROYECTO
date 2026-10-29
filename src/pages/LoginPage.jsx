@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Conecta LoginForm con la sesión compartida y decide el destino después de autenticar. Presenta las
+ * cuentas demostrativas disponibles.
+ */
+
 import { Link, Navigate, useLocation } from "react-router-dom";
 
 import LoginForm from "../components/organisms/LoginForm.jsx";

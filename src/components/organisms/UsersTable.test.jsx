@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de UsersTable. Casos: «muestra el estado vacío»; «renderiza texto de usuarios como texto y
+ * entrega el registro al solicitar eliminar».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

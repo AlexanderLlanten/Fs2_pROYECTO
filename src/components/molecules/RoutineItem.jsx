@@ -1,4 +1,8 @@
-// Representa un ejercicio guardado y permite editar series y repeticiones o retirarlo.
+/*
+ * Molécula reutilizable.
+ * Presenta un ejercicio guardado con sus series y repeticiones. Mantiene borradores de edición,
+ * valida límites y comunica actualización o eliminación.
+ */
 
 import { useEffect, useId, useState } from "react";
 import FormField from "./FormField.jsx";
@@ -6,12 +10,18 @@ import { getRoutineValueError, routineLimits } from "../../utils/routine.js";
 
 function RoutineItem({ exercise, item, onUpdate, onRemove }) {
     const titleId = useId();
+    // Los valores editables se mantienen como texto hasta validarlos y convertirlos en números en el
+    // servicio.
     const [values, setValues] = useState({ sets: String(item.sets), reps: String(item.reps) });
     const [errors, setErrors] = useState({});
+    // Si la rutina cambia fuera de este editor, los borradores se actualizan con las nuevas series y
+    // repeticiones.
     useEffect(() => {
         setValues({ sets: String(item.sets), reps: String(item.reps) }); setErrors({});
     }, [item.sets, item.reps]);
 
+    // El borrador permite escribir sin guardar cada tecla. Al perder foco se valida y solo se envía
+    // un valor distinto del guardado.
     function commit(field) {
         const error = getRoutineValueError(field, values[field]);
         if (error) { setErrors(current => ({ ...current, [field]: error })); return; }

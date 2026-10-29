@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductsPage. Casos: «abre una categoría desde un enlace con tilde»; «sincroniza el
+ * filtro con la URL, respeta Volver y permite restablecerlo».
+ */
+
 import {
     describe,
     expect,

@@ -1,4 +1,8 @@
-// Gestiona correo, contraseña, validación y solicitud de inicio de sesión.
+/*
+ * Organismo de interfaz.
+ * Mantiene correo, contraseña, errores y envío en curso. Valida campos, evita envíos repetidos y
+ * muestra el resultado del callback de autenticación.
+ */
 
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -11,6 +15,8 @@ import { getEmailError, getPasswordError } from "../../utils/validation.js";
 const validators = { email: getEmailError, password: getPasswordError };
 
 function LoginForm({ onSubmit }) {
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [values, setValues] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState({ email: "", password: "" });
     const [message, setMessage] = useState("");
@@ -18,6 +24,7 @@ function LoginForm({ onSubmit }) {
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
+    // Actualiza el campo editado del formulario y vuelve a comprobar sus errores cuando corresponde.
     function handleChange(event) {
         const { name, value } = event.target;
         setValues(current => ({ ...current, [name]: value }));
@@ -28,12 +35,17 @@ function LoginForm({ onSubmit }) {
         }
     }
 
+    // Manejador local que comprueba el campo cuando pierde el foco.
     function handleBlur(event) {
         const { name, value } = event.target;
         setErrors(current => ({ ...current, [name]: validators[name](value) }));
     }
 
+    // Valida el formulario y comunica el resultado de la operación al usuario mediante su estado y
+    // mensajes.
     async function handleSubmit(event) {
+        // Se evita la recarga nativa del formulario para validar y mostrar el resultado mediante el
+        // estado de React.
         event.preventDefault();
         if (isSubmitting) {
             return;
@@ -55,6 +67,8 @@ function LoginForm({ onSubmit }) {
         setIsSubmitting(true);
 
         try {
+            // El correo se normaliza antes de autenticar. El resultado fallido se muestra aquí; la
+            // sesión exitosa la actualiza el contexto.
             const result = await onSubmit(values.email.trim().toLowerCase(), values.password);
             if (!result?.success) {
                 setMessage(result?.message || "No fue posible iniciar sesión. Inténtalo nuevamente.");

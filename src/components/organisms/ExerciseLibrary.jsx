@@ -1,4 +1,8 @@
-// Presenta ejercicios y combina búsqueda, grupo muscular y dificultad.
+/*
+ * Organismo de interfaz.
+ * Combina búsqueda, grupo muscular y dificultad. Presenta los ejercicios filtrados, identifica los ya
+ * agregados y comunica la acción de agregar.
+ */
 
 import { useState } from "react";
 import FormField from "../molecules/FormField.jsx";
@@ -6,8 +10,11 @@ import ExerciseCard from "../molecules/ExerciseCard.jsx";
 import { filterExercises } from "../../utils/routine.js";
 
 function ExerciseLibrary({ exercises, items, disabled, onAdd }) {
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [filters, setFilters] = useState({ search: "", muscle: "all", difficulty: "all" });
     const filtered = filterExercises(exercises, filters);
+    // Actualiza solo el criterio de búsqueda o filtro indicado, conservando los demás filtros.
     function change(field, value) { setFilters(current => ({ ...current, [field]: value })); }
     return <section className="training-section" aria-labelledby="exercise-library-title"><div className="container">
         <p className="kynex-eyebrow">BIBLIOTECA</p><h2 id="exercise-library-title">Ejercicios disponibles</h2>

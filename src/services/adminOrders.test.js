@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de adminOrders. Casos: «consulta el rol vigente aunque la sesión guardada todavía diga
+ * Administrador»; «deniega una identidad o un rol que ya no son válidos».
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { listManagedOrders, getManagedOrder } from "./adminOrders.js";
 import { loginUser, USERS_KEY, SESSION_KEY } from "./auth.js";

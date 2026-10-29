@@ -1,4 +1,8 @@
-// Solicita confirmación antes de eliminar; controla cancelación, errores y estado de espera.
+/*
+ * Molécula reutilizable.
+ * Centraliza la confirmación modal de una acción destructiva. Gestiona apertura, foco, cancelación,
+ * confirmación, estado ocupado y error.
+ */
 
 import { useEffect, useId, useRef } from "react";
 
@@ -7,8 +11,12 @@ function ConfirmDeleteDialog({ title, description, confirmLabel, children, onCan
     const cancelRef = useRef(null);
     const titleId = useId();
     const descriptionId = useId();
+    // El efecto abre el diálogo al montarse y su limpieza lo cierra y restaura el foco al
+    // desmontarse.
     useEffect(() => {
         const dialog = dialogRef.current;
+        // Se conserva el control que abrió el diálogo y se enfoca Cancelar para evitar confirmar una
+        // eliminación por accidente.
         const previousFocus = document.activeElement;
         dialog.showModal();
         cancelRef.current.focus();

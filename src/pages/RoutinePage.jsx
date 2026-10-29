@@ -1,3 +1,8 @@
+/*
+ * Página y coordinación de la vista.
+ * Presenta el encabezado de la rutina y delega su edición a RoutineBuilder.
+ */
+
 import RoutineBuilder from "../components/organisms/RoutineBuilder.jsx";
 
 function RoutinePage() {

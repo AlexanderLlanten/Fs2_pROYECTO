@@ -1,4 +1,8 @@
-// Muestra acciones de la cuenta, como iniciar sesión, salir o acceder a administración.
+/*
+ * Molécula reutilizable.
+ * Muestra las acciones correspondientes a la sesión. Permite salir, presenta un error si falla la
+ * operación y ofrece administración cuando el perfil está autorizado.
+ */
 
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -10,10 +14,15 @@ import RoleGate from "./RoleGate.jsx";
 function AccountActions({ onNavigate, showAdminLink = true }) {
     const { user, logout } = useAuth();
     const { pathname, search } = useLocation();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [error, setError] = useState("");
 
+    // El efecto sincroniza el componente después del renderizado; su función de retorno, cuando
+    // existe, retira lo que se registró.
     useEffect(() => setError(""), [user]);
 
+    // Solicita el cierre de sesión y actualiza mensajes o navegación según su resultado.
     function handleLogout() {
         const result = logout();
         if (!result.success) {

@@ -1,4 +1,8 @@
-// Adapta el diálogo de eliminación para mostrar los datos del usuario seleccionado.
+/*
+ * Molécula reutilizable.
+ * Especializa el diálogo de confirmación con los datos del usuario seleccionado y transmite las demás
+ * propiedades al diálogo compartido.
+ */
 
 import ConfirmDeleteDialog from "./ConfirmDeleteDialog.jsx";
 

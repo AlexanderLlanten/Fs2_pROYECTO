@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de AdminProductForm. Casos: «bloquea datos vacíos y enfoca el primer error asociado»;
+ * «envía datos normalizados y un umbral vacío como null».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

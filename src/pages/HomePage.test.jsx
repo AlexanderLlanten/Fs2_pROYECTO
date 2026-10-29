@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de HomePage. Casos: «muestra la identidad KYNEX, la imagen original y accesos al catálogo»;
+ * «recupera los objetivos, el entrenamiento, los artículos y el acceso al registro».
+ */
+
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

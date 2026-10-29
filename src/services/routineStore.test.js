@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de routineStore. Casos: «abre vacía sin escribir y devuelve una instantánea estable»;
+ * «conserva selecciones y ajustes heredados, usa sugerencias y omite ids ausentes sin escribir».
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { addRoutineExercise, clearRoutine, readRoutine, refreshRoutine, removeRoutineExercise, ROUTINE_KEY, subscribeRoutine, updateRoutineExercise } from "./routineStore.js";
 

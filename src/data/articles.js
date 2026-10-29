@@ -1,3 +1,9 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene dos artículos con sus datos de portada, identificador legible y contenido estructurado
+ * para renderizar con React.
+ */
+
 export const articles = [
     {
         slug: "creatina-y-rendimiento",

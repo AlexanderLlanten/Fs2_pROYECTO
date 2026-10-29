@@ -1,4 +1,8 @@
-// Selecciona y presenta los productos destacados.
+/*
+ * Organismo de interfaz.
+ * Selecciona y presenta productos destacados con la acción de agregar al carrito y el mensaje de
+ * confirmación recibido.
+ */
 
 import { Link } from "react-router-dom";
 

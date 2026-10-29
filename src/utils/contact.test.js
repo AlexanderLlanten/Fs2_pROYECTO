@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de contact. Casos: «exige los tres campos y rechaza contenido vacío o solo espacios»;
+ * «acepta un nombre de 100 caracteres y rechaza uno de 101».
+ */
+
 import { describe, expect, it } from "vitest";
 import { getContactErrors } from "./contact.js";
 

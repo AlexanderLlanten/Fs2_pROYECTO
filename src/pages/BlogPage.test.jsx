@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de BlogPage. Casos: «muestra los dos artículos originales con imagen, categoría y resumen»;
+ * «ofrece enlaces distinguibles y compone contenido sin duplicar el layout».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";

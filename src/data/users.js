@@ -1,3 +1,9 @@
+/*
+ * Datos iniciales y contenido.
+ * Contiene cuentas iniciales demostrativas utilizadas cuando todavía no existe almacenamiento de
+ * usuarios.
+ */
+
 // Cuentas demostrativas de la EP1. No contienen datos de usuarios reales.
 export const defaultUsers = [
     {

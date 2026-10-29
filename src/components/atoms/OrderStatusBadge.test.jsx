@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de OrderStatusBadge. Evalúan los comportamientos declarados y sus resultados observables.
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import OrderStatusBadge from "./OrderStatusBadge.jsx";

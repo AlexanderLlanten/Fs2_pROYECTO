@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de PublicLayout. Casos: «compone una cabecera, el contenido de la ruta y un pie de página»;
+ * «cambia el contenido del Outlet conservando la cabecera y el pie compartidos».
+ */
+
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

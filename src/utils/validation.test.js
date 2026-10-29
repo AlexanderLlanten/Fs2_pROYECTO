@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de validation. Casos: «exige correo y admite hasta 100 caracteres después de quitar
+ * espacios exteriores»; «exige contraseña y conserva los límites de 4 a 10 caracteres».
+ */
+
 import { describe, expect, it } from "vitest";
 
 import { getEmailError, getPasswordError } from "./validation.js";

@@ -1,3 +1,9 @@
+/*
+ * Presentación visual.
+ * Define colores KYNEX, tipografía, fondos y estilos base compartidos por la aplicación.
+ */
+
+/* Las variables --kynex concentran la paleta para reutilizar colores con var() en todas las secciones. */
 :root {
     font-family:
         Inter,

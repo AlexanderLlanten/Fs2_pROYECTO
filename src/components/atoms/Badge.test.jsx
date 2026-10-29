@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de Badge. Casos: «muestra el contenido recibido mediante children».
+ */
+
 import {
     describe,
     expect,

@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Consulta el catálogo administrativo y coordina confirmación y eliminación. Mantiene avisos y
+ * respeta la diferencia entre consulta y gestión.
+ */
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
@@ -13,10 +19,14 @@ function AdminProductsPage() {
     const { hasPermission, refreshSession } = useAuth();
     const canManage = hasPermission(PERMISSIONS.PRODUCTS_MANAGE);
     const { state } = useLocation();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [notice, setNotice] = useState(state?.notice ?? "");
     const [selected, setSelected] = useState(null);
     const [error, setError] = useState("");
     const [busy, setBusy] = useState(false);
+    // Coordina una eliminación desde la página, usando el registro seleccionado y mostrando éxito o
+    // error.
     function handleDelete() {
         if (busy) return;
         setBusy(true); setError("");
