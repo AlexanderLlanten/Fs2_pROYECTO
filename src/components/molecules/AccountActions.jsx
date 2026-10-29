@@ -1,3 +1,5 @@
+// Muestra acciones de la cuenta, como iniciar sesión, salir o acceder a administración.
+
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
