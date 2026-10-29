@@ -1,3 +1,5 @@
+// Selecciona y presenta los productos destacados.
+
 import { Link } from "react-router-dom";
 
 import SectionHeading from "../molecules/SectionHeading.jsx";
