@@ -1,3 +1,5 @@
+// Representa un producto del carrito con imagen, cantidad, total y controles.
+
 import {
     Link
 } from "react-router-dom";
