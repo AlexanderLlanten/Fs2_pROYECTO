@@ -1,3 +1,4 @@
+// Presenta el resumen de un artículo y el enlace para leerlo.
 function AdminSummaryCard({ label, value, icon }) {
     return (
         <article className="kynex-admin-stat" aria-label={label}>
