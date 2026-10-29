@@ -1,3 +1,5 @@
+// Presenta un campo de contraseña con opción para mostrarla u ocultarla.
+
 import { useId, useState } from "react";
 
 import FormField from "./FormField.jsx";
