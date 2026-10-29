@@ -1,3 +1,5 @@
+// Informa un problema de lectura de la rutina y permite reintentar.
+
 import Button from "../atoms/Button.jsx";
 
 function RoutineError({ resource }) {
