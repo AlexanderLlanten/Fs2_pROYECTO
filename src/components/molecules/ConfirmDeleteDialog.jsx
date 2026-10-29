@@ -1,3 +1,5 @@
+// Solicita confirmación antes de eliminar; controla cancelación, errores y estado de espera.
+
 import { useEffect, useId, useRef } from "react";
 
 function ConfirmDeleteDialog({ title, description, confirmLabel, children, onCancel, onConfirm, busy, error }) {
