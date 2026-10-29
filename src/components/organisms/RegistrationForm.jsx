@@ -1,3 +1,5 @@
+// Gestiona campos, errores y confirmación del registro público.
+
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
