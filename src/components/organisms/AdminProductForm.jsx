@@ -1,3 +1,5 @@
+// Captura y valida los datos para crear o editar productos.
+
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FormField from "../molecules/FormField.jsx";
