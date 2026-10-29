@@ -1,4 +1,4 @@
-// Muestra una cifra del panel junto con su título e icono.
+// Presenta una tarjeta de acceso a un módulo administrativo.
 
 import { useId } from "react";
 import { Link } from "react-router-dom";
