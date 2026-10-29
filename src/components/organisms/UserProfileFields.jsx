@@ -1,8 +1,18 @@
+/*
+ * Organismo de interfaz.
+ * Comparte los campos de identidad entre registro y administración. Calcula las comunas de la región
+ * y entrega ayudas, errores y referencias a cada control.
+ */
+
 import FormField from "../molecules/FormField.jsx";
 import { regions } from "../../data/regions.js";
 
 function UserProfileFields({ values, errors, disabled, onChange, onBlur, inputRefs, children }) {
+    // Las comunas dependen de la región elegida. El formulario que usa estos campos reinicia la
+    // comuna cuando cambia la región.
     const communes = regions.find(region => region.name === values.region)?.communes ?? [];
+    // Construye propiedades de un campo a partir de su nombre, como valor, error, eventos y
+    // referencia.
     function fieldProps(name) {
         return { name, value: values[name], error: errors[name], onChange, onBlur, disabled,
             inputRef: element => { inputRefs.current[name] = element; }, required: name !== "birthDate" };

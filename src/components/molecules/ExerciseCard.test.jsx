@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ExerciseCard. Casos: «presenta datos y sugerencias recibidos por props y agrega el
+ * ejercicio elegido»; «impide volver a agregar un ejercicio y respeta el bloqueo por almacenamiento».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

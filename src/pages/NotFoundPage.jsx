@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Presenta una ruta inexistente con un enlace de recuperación adecuado para el área pública o
+ * administrativa.
+ */
+
 import { Link } from "react-router-dom";
 
 function NotFoundPage({ admin = false }) {

@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta el encabezado visual de la portada y sus accesos principales. El enlace a destacados
+ * depende de la disponibilidad de ese bloque.
+ */
+
 import { Link } from "react-router-dom";
 
 import heroImage from "../../../assets/img/brand/kynex-hero-home.jpg";

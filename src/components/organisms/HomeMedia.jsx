@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta el bloque multimedia de la portada. La reproducción del video depende del proveedor
+ * externo y sus restricciones.
+ */
+
 import SectionHeading from "../molecules/SectionHeading.jsx";
 
 function HomeMedia() {

@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Resume un artículo con imagen, categoría, título y enlace de lectura. Recibe el artículo por
+ * propiedades.
+ */
+
 import { useId } from "react";
 import { Link } from "react-router-dom";
 import ArticleImage from "../atoms/ArticleImage.jsx";

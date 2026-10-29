@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de RoleGate. Casos: «muestra el fallback y responde a una pérdida de permisos».
+ */
+
 import { beforeEach, describe, expect, it } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import AuthProvider from "../../context/AuthContext.jsx";

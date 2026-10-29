@@ -1,3 +1,8 @@
+/*
+ * Organismo de interfaz.
+ * Presenta el acceso destacado al entrenamiento desde la portada.
+ */
+
 import { Link } from "react-router-dom";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 import trainingImage from "../../../assets/img/training/training-hero-deadlift.jpg";

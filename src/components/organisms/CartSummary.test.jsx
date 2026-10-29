@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de CartSummary. Casos: «anuncia el alcance demostrativo al activar Continuar compra con
+ * teclado»; «deshabilita la continuación de un carrito vacío».
+ */
+
 import {
     describe,
     expect,

@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Reúne antetítulo, título y descripción para mantener una estructura visual consistente entre
+ * secciones.
+ */
+
 function SectionHeading({ id, eyebrow, title, description }) {
     return (
         <div className="home-section-heading">

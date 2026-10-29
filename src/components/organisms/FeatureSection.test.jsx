@@ -1,3 +1,10 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de FeatureSection. Casos: «compone una sección identificable con encabezado y tarjetas
+ * recibidas por props»; «ofrece acciones opcionales sin convertir las tarjetas informativas en
+ * enlaces».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import FeatureSection from "./FeatureSection.jsx";

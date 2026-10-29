@@ -1,3 +1,8 @@
+/*
+ * Organismo de interfaz.
+ * Organiza las tarjetas de categoría recibidas y reutiliza CategoryCard.
+ */
+
 import CategoryCard from "../molecules/CategoryCard.jsx";
 
 function CategoryGrid({ categories }) {

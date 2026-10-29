@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Presenta una línea de compra con fotografía, detalle, precio por cantidad y controles. Los eventos
+ * llaman a las funciones de aumentar, disminuir o retirar recibidas.
+ */
+
 import {
     Link
 } from "react-router-dom";
@@ -12,6 +18,8 @@ function CartItem({
     onDecrease,
     onRemove
 }) {
+    // El total de esta línea es precio por cantidad. Aumentar, disminuir y eliminar se comunican a
+    // las funciones recibidas por propiedades.
     const lineTotal =
         product.price
         *

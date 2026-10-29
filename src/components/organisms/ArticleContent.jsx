@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta el contenido completo de un artículo mediante elementos React, incluidos párrafos, listas
+ * e imagen. No inyecta una cadena de HTML.
+ */
+
 import { Link } from "react-router-dom";
 import ArticleImage from "../atoms/ArticleImage.jsx";
 import Badge from "../atoms/Badge.jsx";

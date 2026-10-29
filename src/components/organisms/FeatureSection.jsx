@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Compone encabezado y tarjetas de características con una distribución configurable. Recibe
+ * contenido, identificador y clases por propiedades.
+ */
+
 import FeatureCard from "../molecules/FeatureCard.jsx";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 

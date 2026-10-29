@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de LoginForm. Casos: «impide enviar campos vacíos, explica los errores y enfoca el
+ * primero»; «valida al salir del campo y retira el error al corregirlo».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

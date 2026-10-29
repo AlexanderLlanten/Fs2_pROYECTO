@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de QuantitySelector. Casos: «permite bloquear ambos límites sin ejecutar los callbacks»;
+ * «muestra la cantidad actual».
+ */
+
 import {
     describe,
     expect,

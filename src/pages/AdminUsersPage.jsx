@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Muestra usuarios y coordina la eliminación confirmada. Mantiene mensajes y selección mientras el
+ * servicio comprueba permiso y datos vigentes.
+ */
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DeleteUserDialog from "../components/molecules/DeleteUserDialog.jsx";
@@ -10,11 +16,15 @@ function AdminUsersPage() {
     const { user, refreshSession } = useAuth();
     const resource = useManagedUsers();
     const { state } = useLocation();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [notice, setNotice] = useState(state?.notice ?? "");
     const [selectedUser, setSelectedUser] = useState(null);
     const [deleteError, setDeleteError] = useState("");
     const [busy, setBusy] = useState(false);
 
+    // Coordina una eliminación desde la página, usando el registro seleccionado y mostrando éxito o
+    // error.
     async function handleDelete() {
         if (busy) return;
         setBusy(true); setDeleteError("");

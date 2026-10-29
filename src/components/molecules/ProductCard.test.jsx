@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductCard. Casos: «renderiza los datos principales recibidos mediante la prop
+ * product»; «deshabilita Agregar mientras no exista una función de carrito».
+ */
+
 import {
     describe,
     expect,

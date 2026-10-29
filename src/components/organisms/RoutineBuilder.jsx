@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta el resumen y los ejercicios guardados. Coordina edición, eliminación y vaciado con
+ * confirmación, mostrando los resultados de los servicios.
+ */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { exercises } from "../../data/exercises.js";
@@ -10,16 +16,21 @@ import Button from "../atoms/Button.jsx";
 
 function RoutineBuilder() {
     const routine = useRoutine();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [confirmClear, setConfirmClear] = useState(false);
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
     if (!routine.success) return <RoutineError resource={routine} />;
 
+    // Solicita retirar el ejercicio seleccionado y convierte el resultado del servicio en un mensaje
+    // visible.
     function remove(id) {
         const result = removeRoutineExercise(id);
         setError(result.success ? "" : result.message);
         setMessage(result.success ? "Ejercicio eliminado de tu rutina." : "");
     }
+    // Solicita vaciar la rutina. Cierra la confirmación solo después de un resultado exitoso.
     function clear() {
         const result = clearRoutine();
         setError(result.success ? "" : result.message);

@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductGrid. Casos: «renderiza una tarjeta por cada producto recibido mediante props»;
+ * «muestra un estado vacío cuando no existen productos».
+ */
+
 import {
     describe,
     expect,

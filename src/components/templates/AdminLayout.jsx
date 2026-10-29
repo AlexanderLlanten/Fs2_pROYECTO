@@ -1,3 +1,9 @@
+/*
+ * Plantilla compartida.
+ * Construye la estructura administrativa y sus enlaces según permisos. Comparte navegación y
+ * contenido de rutas hijas, con comportamiento adaptable.
+ */
+
 import { useId, useLayoutEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import BrandLink from "../atoms/BrandLink.jsx";
@@ -6,10 +12,13 @@ import RoleGate from "../molecules/RoleGate.jsx";
 import { PERMISSIONS } from "../../utils/permissions.js";
 
 function AdminLayout() {
+    // Este estado controla la apertura del menú administrativo en pantallas pequeñas.
     const [isOpen, setIsOpen] = useState(false);
     const menuId = useId();
     const { pathname, hash } = useLocation();
 
+    // Al cambiar la ruta se cierra el menú y se ajusta el desplazamiento, salvo que exista un destino
+    // de sección.
     useLayoutEffect(() => {
         setIsOpen(false);
         if (!hash) window.scrollTo({ top: 0, left: 0, behavior: "instant" });

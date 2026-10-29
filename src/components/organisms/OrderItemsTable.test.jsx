@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de OrderItemsTable. Casos: «distingue precio unitario, cantidad y total de una línea con
+ * varias unidades»; «informa un pedido sin productos».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { orders } from "../../data/orders.js";

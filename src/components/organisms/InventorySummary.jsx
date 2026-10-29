@@ -1,7 +1,15 @@
+/*
+ * Organismo de interfaz.
+ * Calcula y presenta un resumen del catálogo, incluidas referencias, unidades y productos con stock
+ * crítico.
+ */
+
 import AdminSummaryCard from "../molecules/AdminSummaryCard.jsx";
 import { isCriticalStock } from "../../utils/products.js";
 
 function InventorySummary({ products }) {
+    // reduce suma existencias y filter cuenta los productos bajo su umbral; las tarjetas reciben las
+    // cifras ya calculadas.
     const units = products.reduce((total, product) => total + product.stock, 0);
     const lowStock = products.filter(isCriticalStock).length;
 

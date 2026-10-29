@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductsTable. Casos: «permite consultar a Vendedor sin ofrecer modificaciones»; «ofrece
+ * edición y solicita confirmación mediante el callback al Administrador».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta productos administrativos, disponibilidad y acciones. La propiedad canManage permite
+ * ofrecer edición y eliminación únicamente cuando corresponde.
+ */
+
 import { Link } from "react-router-dom";
 import Price from "../atoms/Price.jsx";
 import StockBadge from "../atoms/StockBadge.jsx";

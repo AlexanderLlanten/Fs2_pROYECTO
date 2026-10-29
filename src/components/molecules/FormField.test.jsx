@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de FormField. Casos: «asocia ayuda y error a selectores y áreas de texto»; «asocia
+ * etiquetas únicas a cada campo sin exigir ids manuales».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 

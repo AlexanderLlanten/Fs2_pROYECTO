@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de Price. Casos: «formatea un valor numérico como moneda chilena»; «renderiza el precio
+ * recibido mediante props».
+ */
+
 import {
     describe,
     expect,

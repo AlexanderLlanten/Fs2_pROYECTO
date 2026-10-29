@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Presenta el panel y los módulos permitidos. Utiliza el catálogo vigente para el resumen de
+ * inventario.
+ */
+
 import { Link } from "react-router-dom";
 import InventorySummary from "../components/organisms/InventorySummary.jsx";
 import useCatalog from "../hooks/useCatalog.js";

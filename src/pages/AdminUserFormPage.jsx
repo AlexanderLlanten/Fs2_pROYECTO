@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Coordina alta o edición de usuarios. Carga la identidad esperada, delega la escritura y reevalúa la
+ * sesión cuando cambia la propia cuenta.
+ */
+
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import AdminUserForm from "../components/organisms/AdminUserForm.jsx";
@@ -8,6 +14,8 @@ import { parseUserId } from "../utils/adminUsers.js";
 
 function AdminUserEditor({ id }) {
     const editing = id !== undefined;
+    // El editor conserva el usuario cargado y detecta si quedó desactualizado antes de permitir el
+    // guardado.
     const [resource, setResource] = useState(() => editing ? getManagedUser(parseUserId(id)) : { success: true, user: null });
     const [revision, setRevision] = useState(0);
     const [stale, setStale] = useState(false);
@@ -19,8 +27,12 @@ function AdminUserEditor({ id }) {
         setRevision(value => value + 1); setStale(false);
     }
 
+    // Los eventos de otras pestañas permiten detectar que cambió el usuario editado y evitar
+    // sobrescribirlo.
     useEffect(() => {
         if (!editing) return;
+        // Manejador que filtra eventos de almacenamiento relevantes antes de actualizar el recurso o
+        // la sesión.
         function handleStorage(event) {
             if (event.storageArea && event.storageArea !== localStorage) return;
             if (![USERS_KEY, SESSION_KEY, null].includes(event.key)) return;
@@ -31,6 +43,8 @@ function AdminUserEditor({ id }) {
         return () => window.removeEventListener("storage", handleStorage);
     }, [editing, id, resource.user]);
 
+    // Después de guardar se reevalúa la sesión: editar el perfil de la propia cuenta puede cambiar
+    // sus accesos.
     function handleSubmit(values) {
         const result = saveManagedUser(values, editing ? { id: parseUserId(id), expectedUser: resource.user } : {});
         refreshSession();
@@ -52,6 +66,8 @@ function AdminUserEditor({ id }) {
     );
 }
 
+// La key distingue cada usuario y el modo nuevo; cambiar de ruta vuelve a crear el editor con sus
+// datos correspondientes.
 function AdminUserFormPage() {
     const { id } = useParams();
     return <AdminUserEditor key={id ?? "new"} id={id} />;

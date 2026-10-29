@@ -1,3 +1,8 @@
+/*
+ * Organismo de interfaz.
+ * Presenta identidad, cliente, estado e importes del pedido recibido.
+ */
+
 import { useId } from "react";
 import OrderStatusBadge from "../atoms/OrderStatusBadge.jsx";
 import Price from "../atoms/Price.jsx";

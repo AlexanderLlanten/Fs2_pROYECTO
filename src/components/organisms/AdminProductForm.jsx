@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Administra los campos de alta y edición de producto. Mantiene valores, errores, mensaje y bloqueo;
+ * valida, enfoca el primer error y entrega datos al callback de guardado.
+ */
+
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FormField from "../molecules/FormField.jsx";
@@ -5,11 +11,15 @@ import Button from "../atoms/Button.jsx";
 import { getProductErrors, isCriticalStock, normalizeProduct, PRODUCT_CATEGORIES } from "../../utils/products.js";
 
 const fieldNames = ["code", "category", "name", "description", "price", "stock", "criticalStock", "image"];
+// Convierte los campos editables del producto a texto, que es el formato que manejan los controles
+// del formulario.
 function initialValues(product) {
     return Object.fromEntries(fieldNames.map(name => [name, String(product?.[name] ?? "")]));
 }
 
 function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [values, setValues] = useState(() => initialValues(initialProduct));
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState("");
@@ -17,18 +27,26 @@ function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
     const [focusField, setFocusField] = useState(null);
     const inputs = useRef({});
     const isDisabled = disabled || busy;
+    // Después de mostrar los errores y habilitar los controles se enfoca el primer campo inválido
+    // para facilitar su corrección.
     useEffect(() => {
         if (focusField && !isDisabled) { inputs.current[focusField]?.focus(); setFocusField(null); }
     }, [focusField, isDisabled]);
 
+    // Actualiza el campo editado del formulario y vuelve a comprobar sus errores cuando corresponde.
     function handleChange(event) {
         const { name, value } = event.target;
         const next = { ...values, [name]: value };
         setValues(next); setMessage("");
         setErrors(current => ({ ...current, ...(current[name] ? { [name]: getProductErrors(next)[name] } : {}) }));
     }
+    // Actualiza errores visibles y selecciona el primer campo que debe recibir foco.
     function showErrors(next) { setErrors(next); setFocusField(fieldNames.find(name => next[name])); }
+    // Valida el formulario y comunica el resultado de la operación al usuario mediante su estado y
+    // mensajes.
     async function handleSubmit(event) {
+        // Se evita la recarga nativa del formulario para validar y mostrar el resultado mediante el
+        // estado de React.
         event.preventDefault();
         if (isDisabled) return;
         const next = getProductErrors(values);
@@ -43,6 +61,8 @@ function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
         } catch { setMessage("No fue posible guardar el producto. Inténtalo nuevamente."); }
         finally { setBusy(false); }
     }
+    // Agrupa valor, error, eventos y referencia del campo solicitado para reutilizarlos en los
+    // controles.
     function props(name) {
         return { name, value: values[name], error: errors[name], disabled: isDisabled, onChange: handleChange,
             onBlur: () => setErrors(current => ({ ...current, [name]: getProductErrors(values)[name] })),

@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Consume useCart y useCatalog. Presenta líneas de compra, acciones y resumen; distingue carrito
+ * vacío y problemas de lectura del catálogo.
+ */
+
 import {
     Link
 } from "react-router-dom";

@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Compone los bloques ampliados de un producto: objetivos, ingredientes, alérgenos, beneficios, uso,
+ * nutrición, advertencias y certificaciones disponibles.
+ */
+
 import { useId } from "react";
 import Badge from "../atoms/Badge.jsx";
 import ProductInfoList from "../molecules/ProductInfoList.jsx";

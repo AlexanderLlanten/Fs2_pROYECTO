@@ -1,3 +1,8 @@
+/*
+ * Página y coordinación de la vista.
+ * Compone la presentación institucional y sus secciones a partir de datos y componentes informativos.
+ */
+
 import { Link } from "react-router-dom";
 import FeatureCard from "../components/molecules/FeatureCard.jsx";
 import SectionHeading from "../components/molecules/SectionHeading.jsx";

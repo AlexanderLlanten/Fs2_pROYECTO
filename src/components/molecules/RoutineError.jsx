@@ -1,3 +1,8 @@
+/*
+ * Molécula reutilizable.
+ * Presenta un error de lectura de la rutina y una acción para volver a cargar el recurso.
+ */
+
 import Button from "../atoms/Button.jsx";
 
 function RoutineError({ resource }) {

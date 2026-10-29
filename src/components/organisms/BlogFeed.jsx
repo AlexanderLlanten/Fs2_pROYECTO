@@ -1,3 +1,8 @@
+/*
+ * Organismo de interfaz.
+ * Recorre la colección de artículos y construye una tarjeta para cada entrada.
+ */
+
 import BlogCard from "../molecules/BlogCard.jsx";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 

@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Presenta el problema de lectura del catálogo y la posibilidad de reintentar mediante el recurso
+ * recibido.
+ */
+
 function CatalogError({ resource }) {
     return <div className="auth-form-alert my-4" role="alert">
         <p>{resource.message}</p>

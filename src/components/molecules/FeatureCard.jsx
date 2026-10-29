@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Presenta una característica con icono, título, contenido y una acción opcional. Permite reutilizar
+ * la misma composición en secciones informativas.
+ */
+
 import { Link } from "react-router-dom";
 
 function FeatureCard({ icon, title, children, action }) {

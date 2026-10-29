@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de RoutineItem. Casos: «guarda al salir del campo o pulsar Enter y permite quitar el
+ * ejercicio»; «rechaza cantidades fuera de rango sin guardar y permite corregir».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

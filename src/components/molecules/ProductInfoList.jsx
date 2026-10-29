@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Presenta una lista de información ampliada del producto con título y un mensaje cuando no hay datos
+ * válidos.
+ */
+
 import { useId } from "react";
 import { productList } from "../../utils/productDetails.js";
 

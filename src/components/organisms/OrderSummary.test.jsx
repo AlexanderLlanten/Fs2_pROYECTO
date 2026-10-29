@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de OrderSummary. Casos: «muestra cliente, estado, fecha e importe del pedido registrado».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { orders } from "../../data/orders.js";

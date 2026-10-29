@@ -1,3 +1,9 @@
+/*
+ * Átomo reutilizable.
+ * Construye un botón reutilizable. Recibe texto o iconos, tipo, variante, clases, estado
+ * deshabilitado y función de clic. Traduce la variante a clases Bootstrap.
+ */
+
 function Button({
     children,
     type = "button",

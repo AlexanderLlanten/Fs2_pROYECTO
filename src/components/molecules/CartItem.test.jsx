@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de CartItem. Casos: «muestra el producto y el total de su línea»; «ejecuta la eliminación
+ * del producto».
+ */
+
 import {
     describe,
     expect,

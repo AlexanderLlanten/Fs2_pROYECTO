@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Reutiliza FormField y conserva el estado que alterna entre contraseña oculta y visible. Recibe las
+ * demás propiedades del formulario.
+ */
+
 import { useId, useState } from "react";
 
 import FormField from "./FormField.jsx";
@@ -5,6 +11,8 @@ import FormField from "./FormField.jsx";
 function PasswordField({ id, disabled, autoComplete = "current-password", ...props }) {
     const generatedId = useId();
     const fieldId = id ?? generatedId;
+    // Este estado controla si la contraseña se presenta como texto o como un campo oculto; no
+    // modifica su valor.
     const [isVisible, setIsVisible] = useState(false);
 
     return (

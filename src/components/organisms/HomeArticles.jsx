@@ -1,3 +1,8 @@
+/*
+ * Organismo de interfaz.
+ * Presenta los artículos destacados de la portada reutilizando sus tarjetas.
+ */
+
 import { Link } from "react-router-dom";
 import BlogCard from "../molecules/BlogCard.jsx";
 import SectionHeading from "../molecules/SectionHeading.jsx";

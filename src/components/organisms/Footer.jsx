@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Compone el pie público con identidad y enlaces internos compartidos. Permanece bajo el contenido de
+ * las rutas públicas.
+ */
+
 import { Link } from "react-router-dom";
 
 import BrandLink from "../atoms/BrandLink.jsx";

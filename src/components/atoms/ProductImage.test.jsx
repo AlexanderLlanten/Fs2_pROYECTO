@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ProductImage. Casos: «recupera las seis imágenes originales por código sin exigir un
+ * campo image»; «prioriza una imagen personalizada sobre la original del código».
+ */
+
 import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import ProductImage from "./ProductImage.jsx";

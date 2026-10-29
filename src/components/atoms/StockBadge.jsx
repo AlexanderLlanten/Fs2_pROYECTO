@@ -1,3 +1,10 @@
+/*
+ * Átomo reutilizable.
+ * Clasifica disponibilidad y stock crítico. La ausencia de stock tiene prioridad sobre la alerta por
+ * pocas unidades y se expresa con texto y estilo.
+ */
+
+// Deriva el estado visual de disponibilidad, priorizando sin stock frente a la advertencia crítica.
 function getStockStatus(
     stock,
     criticalStock

@@ -1,3 +1,10 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de AboutPage. Casos: «conserva la presentación, propuesta, experiencia, visión y
+ * compromisos de KYNEX»; «enlaza las cuatro categorías y ambos accesos al catálogo mediante React
+ * Router».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";

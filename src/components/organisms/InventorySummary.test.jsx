@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de InventorySummary. Casos: «resume los productos recibidos y cuenta el stock bajo
+ * incluyendo agotados»; «muestra ceros para un catálogo vacío».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import InventorySummary from "./InventorySummary.jsx";

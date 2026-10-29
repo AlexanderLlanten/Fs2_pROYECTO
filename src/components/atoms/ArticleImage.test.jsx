@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ArticleImage. Casos: «presenta la imagen con texto alternativo y carga diferida»;
+ * «sustituye una imagen fallida y permite mostrar una nueva».
+ */
+
 import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import ArticleImage from "./ArticleImage.jsx";

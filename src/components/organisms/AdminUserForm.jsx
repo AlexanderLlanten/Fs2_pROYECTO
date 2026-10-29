@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Administra la edición de identidad y rol. Reutiliza los campos de perfil, valida y comunica los
+ * datos; el servicio comprueba permisos y consistencia antes de guardar.
+ */
+
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../atoms/Button.jsx";
@@ -7,6 +13,8 @@ import { AUTH_ROLES } from "../../data/roles.js";
 import { getManagedUserErrors, normalizeManagedUser } from "../../utils/adminUsers.js";
 
 function AdminUserForm({ initialUser, currentUserId, onSubmit, disabled = false }) {
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [values, setValues] = useState(() => ({ ...normalizeManagedUser(initialUser), birthDate: initialUser?.birthDate ?? "", role: initialUser?.role ?? "Cliente" }));
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState("");
@@ -16,12 +24,17 @@ function AdminUserForm({ initialUser, currentUserId, onSubmit, disabled = false 
     const isEditing = Boolean(initialUser);
     const isDisabled = disabled || isSubmitting;
 
+    // Después de mostrar los errores y habilitar los controles se enfoca el primer campo inválido
+    // para facilitar su corrección.
     useEffect(() => {
         if (focusField && !isDisabled) { fields.current[focusField]?.focus(); setFocusField(null); }
     }, [focusField, isDisabled]);
 
+    // Actualiza el campo editado del formulario y vuelve a comprobar sus errores cuando corresponde.
     function handleChange(event) {
         const { name, value } = event.target;
+        // El spread conserva los campos anteriores y [name] reemplaza el editado; el cambio de región
+        // reinicia la comuna.
         const next = { ...values, [name]: value, ...(name === "region" ? { commune: "" } : {}) };
         setValues(next);
         setMessage("");
@@ -30,12 +43,17 @@ function AdminUserForm({ initialUser, currentUserId, onSubmit, disabled = false 
             ...(name === "region" ? { commune: current.commune ? nextErrors.commune : "" } : {}) }));
     }
 
+    // Actualiza errores visibles y selecciona el primer campo que debe recibir foco.
     function showErrors(nextErrors) {
         setErrors(nextErrors);
         setFocusField(Object.keys(values).find(name => nextErrors[name]));
     }
 
+    // Valida el formulario y comunica el resultado de la operación al usuario mediante su estado y
+    // mensajes.
     async function handleSubmit(event) {
+        // Se evita la recarga nativa del formulario para validar y mostrar el resultado mediante el
+        // estado de React.
         event.preventDefault();
         if (isDisabled) return;
         const nextErrors = getManagedUserErrors(values);

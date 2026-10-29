@@ -1,3 +1,9 @@
+/*
+ * Navegación y acceso.
+ * Declara destinos públicos y administrativos, relaciona rutas con páginas y organiza layouts y
+ * guardas anidadas.
+ */
+
 import {
     BrowserRouter,
     Route,
@@ -29,6 +35,8 @@ import AboutPage from "../pages/AboutPage.jsx";
 import BlogPage from "../pages/BlogPage.jsx";
 import BlogArticlePage from "../pages/BlogArticlePage.jsx";
 
+// Las rutas hijas comparten su layout. Las guardas administrativas se evalúan antes de mostrar el
+// contenido protegido; :id y :slug son segmentos variables.
 function AppRouter() {
     return (
         <BrowserRouter>

@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de Footer. Casos: «muestra la identidad KYNEX, el año actual y enlaces a las rutas
+ * disponibles»; «navega con React Router desde el pie de página».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

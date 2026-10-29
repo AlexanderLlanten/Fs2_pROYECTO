@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Distingue creación y edición por la ruta. Carga el producto esperado, entrega el guardado al
+ * servicio y conserva control de conflictos y navegación.
+ */
+
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
@@ -8,12 +14,16 @@ import AdminProductForm from "../components/organisms/AdminProductForm.jsx";
 
 function ProductEditor({ id }) {
     const editing = id !== undefined;
+    // El editor conserva el registro cargado, una revisión para reiniciar el formulario y el aviso de
+    // datos modificados.
     const [resource, setResource] = useState(() => editing ? getManagedProduct(parseProductId(id)) : { success: true, product: null });
     const [revision, setRevision] = useState(0);
     const [stale, setStale] = useState(false);
     const catalog = useCatalog();
     const { refreshSession } = useAuth();
     const navigate = useNavigate();
+    // El catálogo actual se compara con la copia del editor. Si cambió, se bloquea guardar hasta
+    // recargar los datos.
     useEffect(() => {
         if (!editing || !resource.success) return;
         const current = catalog.products.find(product => product.id === parseProductId(id));
@@ -23,6 +33,8 @@ function ProductEditor({ id }) {
         setResource(editing ? getManagedProduct(parseProductId(id)) : { success: true, product: null });
         setRevision(value => value + 1); setStale(false);
     }
+    // El servicio recibe la copia esperada del producto. Un conflicto obliga a recargar; un éxito
+    // vuelve al listado con un aviso.
     function handleSubmit(values) {
         const result = saveManagedProduct(values, editing ? { id: parseProductId(id), expectedProduct: resource.product } : {});
         refreshSession();
@@ -41,6 +53,8 @@ function ProductEditor({ id }) {
     </>;
 }
 
+// La key reinicia el editor al pasar de un identificador a otro o a una creación nueva, evitando
+// conservar el formulario anterior.
 function AdminProductFormPage() {
     const { id } = useParams();
     return <ProductEditor key={id ?? "new"} id={id} />;

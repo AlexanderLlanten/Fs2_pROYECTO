@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Compone la portada con categorías, destacados, objetivos, información, entrenamiento, multimedia y
+ * artículos. Conecta los destacados al carrito y anuncia lo agregado.
+ */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -27,8 +33,12 @@ function HomePage() {
     const catalog = useCatalog();
     const { products } = catalog;
     const { addToCart, detailedCart } = useCart();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [feedback, setFeedback] = useState("");
 
+    // Responde al clic de compra y comunica la operación al callback o al contexto del carrito; este
+    // último controla el stock vigente.
     function handleAddToCart(product) {
         const currentQuantity = detailedCart.find(item => item.id === product.id)?.quantity ?? 0;
 

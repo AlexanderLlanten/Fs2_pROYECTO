@@ -1,3 +1,9 @@
+/*
+ * Molécula reutilizable.
+ * Presenta un acceso a un módulo administrativo mediante título, descripción, icono y destino o
+ * acción recibidos.
+ */
+
 import { useId } from "react";
 import { Link } from "react-router-dom";
 

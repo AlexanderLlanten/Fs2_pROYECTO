@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta unidades, subtotal, despacho y total. Al continuar muestra el aviso de checkout futuro; no
+ * crea pedidos ni procesa pagos.
+ */
+
 import { useId, useState } from "react";
 import Price from "../atoms/Price.jsx";
 
@@ -8,8 +14,11 @@ function CartSummary({
     total,
     missingForFreeShipping
 }) {
+    // El estado controla la aparición del aviso de checkout futuro al pulsar Continuar compra.
     const [showCheckoutNotice, setShowCheckoutNotice] = useState(false);
     const noticeId = useId();
+    // Los importes llegan calculados por el carrito. Este componente decide el mensaje visible y el
+    // aviso demostrativo de continuación de compra.
     let shippingMessage =
         "Agrega productos para calcular el despacho.";
 

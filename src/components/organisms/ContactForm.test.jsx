@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ContactForm. Casos: «bloquea datos vacíos, anuncia errores y enfoca el primero»; «valida
+ * al salir del correo, enfoca el error al enviar y permite corregirlo».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de StockBadge. Casos: «muestra Disponible cuando el stock supera el nivel crítico»;
+ * «muestra Stock crítico cuando el stock es menor o igual al nivel crítico».
+ */
+
 import {
     describe,
     expect,

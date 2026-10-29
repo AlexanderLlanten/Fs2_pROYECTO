@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de LoginPage. Casos: «ofrece el formulario y las cuentas iniciales para un visitante»;
+ * «retorna al catálogo con los filtros de la página de origen».
+ */
+
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

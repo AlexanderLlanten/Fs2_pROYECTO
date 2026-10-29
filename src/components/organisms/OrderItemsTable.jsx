@@ -1,3 +1,9 @@
+/*
+ * Organismo de interfaz.
+ * Presenta los productos y cantidades de un pedido con sus importes históricos. No sustituye esos
+ * precios por los del catálogo actual.
+ */
+
 import { formatPrice } from "../atoms/Price.jsx";
 
 function OrderItemsTable({ products }) {

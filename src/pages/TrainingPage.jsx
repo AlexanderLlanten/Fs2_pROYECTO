@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Presenta la biblioteca y conecta la acción de agregar con el servicio de rutina; comunica
+ * confirmación o error sin duplicar ejercicios.
+ */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { exercises } from "../data/exercises.js";
@@ -8,6 +14,8 @@ import RoutineError from "../components/molecules/RoutineError.jsx";
 
 function TrainingPage() {
     const routine = useRoutine();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [notice, setNotice] = useState(null);
     function add(exercise) {
         const result = addRoutineExercise(exercise.id);

@@ -1,8 +1,16 @@
+/*
+ * Molécula reutilizable.
+ * Presenta un ejercicio, imagen y características. Permite agregarlo cuando está disponible y
+ * distingue si ya pertenece a la rutina.
+ */
+
 import { useId, useState } from "react";
 import Button from "../atoms/Button.jsx";
 
 function ExerciseCard({ exercise, added, disabled, onAdd }) {
     const titleId = useId();
+    // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
+    // la función que solicita su actualización.
     const [failedImage, setFailedImage] = useState(null);
     return <article className="training-card" aria-labelledby={titleId}>
         <div className="training-card-image">

@@ -1,3 +1,8 @@
+/*
+ * Organismo de interfaz.
+ * Presenta los pedidos disponibles y enlaza con sus detalles.
+ */
+
 import { Link } from "react-router-dom";
 import OrderStatusBadge from "../atoms/OrderStatusBadge.jsx";
 import { formatPrice } from "../atoms/Price.jsx";

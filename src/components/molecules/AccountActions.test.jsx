@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de AccountActions. Casos: «lleva al login conservando la página de origen y sus filtros»;
+ * «muestra el nombre y rol y permite cerrar la sesión desde la navegación».
+ */
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

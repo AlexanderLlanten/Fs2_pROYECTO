@@ -1,3 +1,9 @@
+/*
+ * Página y coordinación de la vista.
+ * Lee el identificador de la ruta, consulta el pedido autorizado y presenta su detalle o un estado
+ * recuperable cuando no existe.
+ */
+
 import { Link, useParams } from "react-router-dom";
 import { getManagedOrder } from "../services/adminOrders.js";
 import { parseOrderId } from "../utils/orders.js";

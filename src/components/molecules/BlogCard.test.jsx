@@ -1,3 +1,8 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de BlogCard. Casos: «presenta los datos recibidos por props y abre su ruta de lectura».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

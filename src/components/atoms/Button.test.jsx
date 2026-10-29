@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de Button. Casos: «renderiza el texto recibido mediante props»; «ejecuta onClick cuando el
+ * usuario presiona el botón».
+ */
+
 import {
     describe,
     expect,

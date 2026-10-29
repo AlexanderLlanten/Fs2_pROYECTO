@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de AdminLayout. Casos: «compone el perfil, navegación, un main y un footer reutilizables»;
+ * «controla el menú móvil con React y permite regresar a la tienda».
+ */
+
 import { beforeEach, describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";

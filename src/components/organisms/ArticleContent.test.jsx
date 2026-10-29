@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de ArticleContent. Casos: «conserva los párrafos, cuatro recomendaciones y nota del
+ * artículo de creatina»; «presenta las secciones, cinco factores y nota académica de recuperación».
+ */
+
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";

@@ -1,3 +1,9 @@
+/*
+ * Pruebas automatizadas.
+ * Pruebas de RegistrationForm. Casos: «impide enviar datos vacíos, asocia errores y enfoca el RUN»;
+ * «valida el RUN al salir y retira el error al corregir el dígito verificador».
+ */
+
 import { describe, expect, it, vi } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
