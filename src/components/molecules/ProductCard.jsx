@@ -1,3 +1,5 @@
+// Muestra la tarjeta del producto con imagen, información, precio y acciones.
+
 import {
     Link
 } from "react-router-dom";
