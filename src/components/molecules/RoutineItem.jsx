@@ -1,3 +1,5 @@
+// Representa un ejercicio guardado y permite editar series y repeticiones o retirarlo.
+
 import { useEffect, useId, useState } from "react";
 import FormField from "./FormField.jsx";
 import { getRoutineValueError, routineLimits } from "../../utils/routine.js";
