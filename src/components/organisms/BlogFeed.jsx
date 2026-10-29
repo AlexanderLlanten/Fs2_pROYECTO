@@ -1,3 +1,5 @@
+// Construye el listado de artículos utilizando BlogCard.
+
 import BlogCard from "../molecules/BlogCard.jsx";
 import SectionHeading from "../molecules/SectionHeading.jsx";
 
