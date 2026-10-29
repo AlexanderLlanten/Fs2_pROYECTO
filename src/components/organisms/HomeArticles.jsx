@@ -1,3 +1,5 @@
+// Muestra artículos destacados en la portada.
+
 import { Link } from "react-router-dom";
 import BlogCard from "../molecules/BlogCard.jsx";
 import SectionHeading from "../molecules/SectionHeading.jsx";
