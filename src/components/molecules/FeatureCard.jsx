@@ -1,3 +1,5 @@
+// Muestra una característica mediante icono, título, descripción y una acción opcional.
+
 import { Link } from "react-router-dom";
 
 function FeatureCard({ icon, title, children, action }) {
