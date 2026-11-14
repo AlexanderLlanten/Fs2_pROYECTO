@@ -54,7 +54,7 @@ function ProductDetailPage() {
                 parseProductId(id)
         );
 
-    if (!catalog.success) return <section className="product-detail-section"><div className="container"><h1>Catálogo no disponible</h1><CatalogError resource={catalog} /></div></section>;
+    if (!catalog.success) return <section className="product-detail-section"><div className="container"><h1>{catalog.loading ? "Cargando producto" : "Catálogo no disponible"}</h1><CatalogError resource={catalog} /></div></section>;
 
     if (!product) {
         return (

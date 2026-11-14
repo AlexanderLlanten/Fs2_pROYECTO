@@ -24,6 +24,8 @@ describe("Catálogo conectado", () => {
         expect(fetch).toHaveBeenCalledWith("http://localhost:8080/api/v1/products", expect.any(Object));
     });
     it("presenta carga, comunica la caída y permite reintentar sin catálogo demostrativo", async () => {
+        const previousCart = [{ id: 2, quantity: 2 }];
+        localStorage.setItem("kynex_cart", JSON.stringify(previousCart));
         vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("offline")));
         const loading = remoteCatalog.reload();
         render(<MemoryRouter><CartProvider><ProductsPage /></CartProvider></MemoryRouter>);
@@ -31,6 +33,7 @@ describe("Catálogo conectado", () => {
         await loading;
         expect(await screen.findByRole("alert")).toHaveTextContent("No fue posible conectar");
         expect(screen.queryByText("Whey Protein Performance")).not.toBeInTheDocument();
+        expect(JSON.parse(localStorage.getItem("kynex_cart"))).toEqual(previousCart);
         vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, status: 200, json: async () => [product] }));
         await userEvent.click(screen.getByRole("button", { name: "Reintentar catálogo" }));
         expect(await screen.findByText(product.name)).toBeInTheDocument();
