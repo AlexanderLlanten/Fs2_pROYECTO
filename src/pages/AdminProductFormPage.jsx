@@ -11,6 +11,8 @@ import useCatalog from "../hooks/useCatalog.js";
 import { getManagedProduct, saveManagedProduct } from "../services/adminProducts.js";
 import { parseProductId } from "../utils/products.js";
 import AdminProductForm from "../components/organisms/AdminProductForm.jsx";
+import { usesApi } from "../config/dataSource.js";
+import { api } from "../services/api/client.js";
 
 function ProductEditor({ id }) {
     const editing = id !== undefined;
@@ -57,7 +59,39 @@ function ProductEditor({ id }) {
 // conservar el formulario anterior.
 function AdminProductFormPage() {
     const { id } = useParams();
+    if (usesApi) return <RemoteProductEditor key={id ?? "new"} id={id} />;
     return <ProductEditor key={id ?? "new"} id={id} />;
+}
+
+function RemoteProductEditor({ id }) {
+    const editing = id !== undefined;
+    const [revision, setRevision] = useState(0);
+    const [resource, setResource] = useState({ loading: true });
+    const [stale, setStale] = useState(false);
+    const navigate = useNavigate();
+    useEffect(() => {
+        let active = true;
+        setResource({ loading: true });
+        Promise.all([api("/categories"), editing ? getManagedProduct(parseProductId(id)) : Promise.resolve({ success: true, product: null })])
+            .then(([categories, result]) => { if (active) setResource({ ...result, categories, loading: false }); })
+            .catch(error => { if (active) setResource({ success: false, loading: false, message: error.message }); });
+        return () => { active = false; };
+    }, [id, editing, revision]);
+    async function submit(values) {
+        const result = await saveManagedProduct(values, editing ? { id: parseProductId(id), expectedProduct: resource.product } : {});
+        if (result.success) navigate("/admin/productos", { replace: true, state: { notice: editing ? "Producto actualizado correctamente." : "Producto creado correctamente." } });
+        else if (result.code === "CONFLICT") setStale(true);
+        return result;
+    }
+    return <>
+        <header className="kynex-admin-heading"><div><p className="kynex-eyebrow">CATÁLOGO KYNEX</p><h1>{editing ? "Editar producto" : "Nuevo producto"}</h1></div></header>
+        {resource.loading ? <p role="status">Cargando datos del producto…</p> : !resource.success ? <div className="auth-form-alert" role="alert"><p>{resource.message}</p><button className="btn btn-outline-light" onClick={() => setRevision(value => value + 1)}>Reintentar</button></div>
+            : <div className="auth-form-panel kynex-admin-user-form"><h2>Datos del producto</h2>
+                {stale && <div className="auth-form-alert" role="alert"><p>El producto cambió. Recarga sus datos antes de guardar.</p><button className="btn btn-outline-light" onClick={() => { setStale(false); setRevision(value => value + 1); }}>Recargar datos</button></div>}
+                <AdminProductForm key={revision} initialProduct={resource.product} onSubmit={submit} disabled={stale}
+                    categories={resource.categories.map(category => category.name)} remote />
+            </div>}
+    </>;
 }
 
 export default AdminProductFormPage;

@@ -27,10 +27,10 @@ function AdminProductsPage() {
     const [busy, setBusy] = useState(false);
     // Coordina una eliminación desde la página, usando el registro seleccionado y mostrando éxito o
     // error.
-    function handleDelete() {
+    async function handleDelete() {
         if (busy) return;
         setBusy(true); setError("");
-        const result = deleteManagedProduct(selected.id, selected);
+        const result = await deleteManagedProduct(selected.id, selected);
         if (result.success) { setSelected(null); setNotice("Producto eliminado correctamente."); }
         else setError(result.message);
         refreshSession(); setBusy(false);
