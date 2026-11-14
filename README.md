@@ -2,6 +2,18 @@
 
 Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del inventario original tienen ruta React.
 
+## Desarrollo EP3
+
+La rama `codex/ep3-integracion` inicia la conexión con el nuevo [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). La versión EP2 continúa disponible en el historial y la actualización no modifica `main`.
+
+La primera entrega incorpora el cliente HTTP común, lectura compartida del catálogo remoto, imágenes servidas por la API y estados de carga, error y reintento. Para activarla, copiar `.env.example` como `.env`, definir `VITE_CATALOG_SOURCE=api` y mantener `VITE_API_URL=http://localhost:8080/api/v1`. Iniciar el backend y reiniciar Vite. Su configuración CORS debe admitir el origen mostrado por Vite.
+
+La opción predeterminada `local` conserva EP2. En el modo `api` no se utilizan semillas locales ante un fallo del servidor. La gestión local de productos se bloquea: las cuentas demostrativas no autorizan escrituras en PostgreSQL. La sesión React, el registro, la administración conectada, el carrito por cuenta, los pedidos, el pago emulado, las rutinas y contacto todavía requieren integración.
+
+El [ERS V3](docs/entrega/ERS_KYNEX_V3.docx) define 32 requisitos funcionales y 21 no funcionales, distinguiendo alcance y estado de implementación. Los documentos V2 siguientes describen el cierre histórico de la migración a React.
+
+Verificación de este bloque: 610 pruebas aprobadas en 83 archivos y build de React completado. El backend dispone de su propia verificación de API y PostgreSQL; estas cifras no representan el cierre de EP3.
+
 Se retiraron los 19 HTML, 7 CSS y 25 módulos JavaScript de la implementación anterior.
 La aplicación conserva su entrada `index.html` y las 19 imágenes utilizadas por React.
 El [registro de limpieza](docs/limpieza-legacy.md) detalla cada archivo retirado, su
@@ -9,11 +21,11 @@ reemplazo y la verificación posterior. El historial Git conserva la versión or
 
 ## Entrega y ejecución en otro equipo
 
-Trabajar con **feature/react-migration**. Esta entrega no modifica `main`.
+Trabajar con **codex/ep3-integracion** para la actualización EP3. Esta entrega no modifica `main`.
 Se verificaron instalación y build desde un clon nuevo con Node 24.22.1 y npm 11.19.1.
 
 ```powershell
-git clone --branch feature/react-migration --single-branch https://github.com/AlexanderLlanten/Fs2_pROYECTO.git
+git clone --branch codex/ep3-integracion --single-branch https://github.com/AlexanderLlanten/Fs2_pROYECTO.git
 cd Fs2_pROYECTO
 npm.cmd ci
 npm.cmd run dev
