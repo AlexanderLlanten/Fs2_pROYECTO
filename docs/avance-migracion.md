@@ -4,11 +4,11 @@
 
 Corte del 14 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; `main` conserva la versión integrada de EP2. El nuevo repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
 
-Verificado en este bloque: Spring Boot y PostgreSQL; migraciones y datos iniciales; CRUD de productos y categorías con baja lógica y control de versión; registro, contraseña con hash, JWT, renovación rotativa y logout; documentación Swagger; imágenes del catálogo; cliente HTTP y lectura pública de React activable mediante configuración.
+Verificado en este bloque: Spring Boot y PostgreSQL; migraciones; CRUD de productos y categorías con baja lógica y versión; registro completo con contraseña elegida, fecha, región, comuna y dirección; JWT, renovación y logout; Swagger e imágenes; sesión recuperable en React y gestión de productos conectada para Administrador. Vendedor conserva consulta. Las rutas esperan recuperar identidad y rechazan sesiones locales alteradas.
 
-Resultados: 27 pruebas de API con PostgreSQL y 610 pruebas de React aprobadas; compilación de ambos proyectos completada. Se comprobó además el ciclo de autenticación mediante HTTP real, la persistencia al reiniciar y CORS para el origen permitido de React. El ERS V3 incorpora 32 requisitos funcionales y 21 no funcionales, con estado y condiciones de aceptación.
+Resultados: 30 pruebas de API con PostgreSQL y 638 pruebas de React aprobadas; compilación de ambos proyectos completada. Se comprobaron también autenticación HTTP, persistencia al reiniciar, CORS y las relaciones de categoría de la ficha. El ERS V3 incorpora 32 requisitos funcionales y 21 no funcionales, con estado y condiciones de aceptación.
 
-Pendiente: conectar sesión y administración en React; completar perfil y usuarios, carrito por cuenta, boletas, pago emulado, ejercicios, rutinas y contacto persistentes; probar el recorrido completo, concurrencia, pertenencia de recursos y operación. El modo predeterminado de React sigue siendo local; al activar catálogo API se bloquean las escrituras administrativas locales.
+Pendiente: edición del perfil y gestión de usuarios, categorías y ejercicios en React; carrito por cuenta, boletas, pago emulado, rutinas y contacto persistentes; recorrido completo de compra, concurrencia comercial, pertenencia de recursos y operación. El modo predeterminado sigue siendo local. Activar `VITE_DATA_SOURCE=api` conecta cuentas y catálogo; no se usan registros locales como respaldo del servidor. Los módulos administrativos pendientes no muestran datos demostrativos en este modo.
 
 Los porcentajes siguientes corresponden al cierre de EP2. No representan el cumplimiento de la nueva rúbrica EP3. Ningún indicador completo de EP3 se declara cerrado mientras falten sus operaciones o la integración correspondiente.
 
