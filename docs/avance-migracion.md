@@ -6,7 +6,7 @@ Corte del 14 de noviembre de 2026. La actualización se desarrolla en `codex/ep3
 
 Verificado en este bloque: Spring Boot y PostgreSQL; migraciones y datos iniciales; CRUD de productos y categorías con baja lógica y control de versión; registro, contraseña con hash, JWT, renovación rotativa y logout; documentación Swagger; imágenes del catálogo; cliente HTTP y lectura pública de React activable mediante configuración.
 
-Resultados: 26 pruebas de API con PostgreSQL y 610 pruebas de React aprobadas; compilación de ambos proyectos completada. Se comprobó además el ciclo de autenticación mediante HTTP real. El ERS V3 incorpora 32 requisitos funcionales y 21 no funcionales, con estado y condiciones de aceptación.
+Resultados: 27 pruebas de API con PostgreSQL y 610 pruebas de React aprobadas; compilación de ambos proyectos completada. Se comprobó además el ciclo de autenticación mediante HTTP real, la persistencia al reiniciar y CORS para el origen permitido de React. El ERS V3 incorpora 32 requisitos funcionales y 21 no funcionales, con estado y condiciones de aceptación.
 
 Pendiente: conectar sesión y administración en React; completar perfil y usuarios, carrito por cuenta, boletas, pago emulado, ejercicios, rutinas y contacto persistentes; probar el recorrido completo, concurrencia, pertenencia de recursos y operación. El modo predeterminado de React sigue siendo local; al activar catálogo API se bloquean las escrituras administrativas locales.
 
