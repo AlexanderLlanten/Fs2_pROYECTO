@@ -8,10 +8,12 @@ import { Navigate, useLocation } from "react-router-dom";
 import RegistrationForm from "../components/organisms/RegistrationForm.jsx";
 import useAuth from "../hooks/useAuth.js";
 import { getLoginDestination } from "../utils/authRedirect.js";
+import SessionStatus from "../components/molecules/SessionStatus.jsx";
 
 function RegistrationPage() {
-    const { user, isAuthenticated, register } = useAuth();
+    const { user, isAuthenticated, register, isRemote, isLoading, sessionError, retrySession } = useAuth();
     const { state } = useLocation();
+    if (isLoading || sessionError) return <SessionStatus loading={isLoading} error={sessionError} onRetry={retrySession} />;
     if (isAuthenticated) return <Navigate to={getLoginDestination(state?.from, user?.role)} replace />;
 
     return (
@@ -30,14 +32,14 @@ function RegistrationPage() {
                             <p className="kynex-eyebrow">REGISTRO</p>
                             <h2 id="registration-form-title">Crea tu perfil</h2>
                             <p className="auth-form-intro">Completa tus datos. Los campos con asterisco son obligatorios.</p>
-                            <RegistrationForm onSubmit={register} loginState={state} />
+                            <RegistrationForm onSubmit={register} loginState={state} remote={isRemote} />
                         </div>
                         <aside className="auth-side-panel" aria-labelledby="registration-info-title">
                             <i className="bi bi-person-plus auth-side-icon" aria-hidden="true" />
                             <h2 id="registration-info-title">Únete a KYNEX</h2>
                             <p>Crea tu cuenta de cliente para continuar tu experiencia de suplementación y entrenamiento.</p>
                             <div className="auth-registration-note">
-                                <p>En esta demostración tu contraseña inicial será <strong>1234</strong>.</p>
+                                {isRemote ? <p>Elige una contraseña personal de al menos 10 caracteres.</p> : <p>En esta demostración tu contraseña inicial será <strong>1234</strong>.</p>}
                                 <p className="mb-0">Después del registro podrás iniciar sesión con tu correo.</p>
                             </div>
                         </aside>

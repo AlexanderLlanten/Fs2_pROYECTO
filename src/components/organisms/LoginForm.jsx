@@ -11,10 +11,10 @@ import Button from "../atoms/Button.jsx";
 import FormField from "../molecules/FormField.jsx";
 import PasswordField from "../molecules/PasswordField.jsx";
 import { getEmailError, getPasswordError } from "../../utils/validation.js";
+import { getApiEmailError, getApiPasswordError } from "../../utils/apiAccount.js";
 
-const validators = { email: getEmailError, password: getPasswordError };
-
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, remote = false }) {
+    const validators = remote ? { email: getApiEmailError, password: getApiPasswordError } : { email: getEmailError, password: getPasswordError };
     // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
     // la función que solicita su actualización.
     const [values, setValues] = useState({ email: "", password: "" });
@@ -52,8 +52,8 @@ function LoginForm({ onSubmit }) {
         }
 
         const nextErrors = {
-            email: getEmailError(values.email),
-            password: getPasswordError(values.password)
+            email: validators.email(values.email),
+            password: validators.password(values.password)
         };
         setErrors(nextErrors);
         setMessage("");
@@ -101,21 +101,21 @@ function LoginForm({ onSubmit }) {
                 onBlur={handleBlur}
                 inputRef={emailRef}
                 error={errors.email}
-                helpText="Se permiten cuentas @duoc.cl, @profesor.duoc.cl y @gmail.com."
+                helpText={remote ? "Ingresa el correo de tu cuenta KYNEX." : "Se permiten cuentas @duoc.cl, @profesor.duoc.cl y @gmail.com."}
                 disabled={isSubmitting}
             />
             <PasswordField
                 label="Contraseña"
                 name="password"
-                minLength={4}
-                maxLength={10}
+                minLength={remote ? 1 : 4}
+                maxLength={remote ? 72 : 10}
                 required
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 inputRef={passwordRef}
                 error={errors.password}
-                helpText="Entre 4 y 10 caracteres."
+                helpText={remote ? "Usa la contraseña que elegiste al registrarte." : "Entre 4 y 10 caracteres."}
                 disabled={isSubmitting}
             />
             {message && <p className="auth-form-alert" role="alert">{message}</p>}

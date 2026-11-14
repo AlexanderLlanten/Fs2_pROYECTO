@@ -4,7 +4,10 @@
  * Sincroniza el estado al cambiar usuarios o sesión desde otras pestañas.
  */
 
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { AuthContext } from "./authContext.js";
+import ApiAuthProvider from "./ApiAuthProvider.jsx";
+import { usesApi } from "../config/dataSource.js";
 
 import {
     getSession,
@@ -16,9 +19,9 @@ import {
 } from "../services/auth.js";
 import { hasPermission } from "../utils/permissions.js";
 
-export const AuthContext = createContext(null);
+export { AuthContext } from "./authContext.js";
 
-function AuthProvider({ children }) {
+function LocalAuthProvider({ children }) {
     // useState conserva la sesión compartida. Se pasa getSession como función para leerla al
     // inicializar el proveedor.
     const [user, setUser] = useState(getSession);
@@ -79,6 +82,7 @@ function AuthProvider({ children }) {
     // disponibles mediante useAuth.
     const value = useMemo(() => ({
         user,
+        isLoading: false, isRemote: false, sessionError: "",
         isAuthenticated: user !== null,
         login,
         logout,
@@ -93,6 +97,10 @@ function AuthProvider({ children }) {
             {children}
         </AuthContext.Provider>
     );
+}
+
+function AuthProvider({ children }) {
+    return usesApi ? <ApiAuthProvider>{children}</ApiAuthProvider> : <LocalAuthProvider>{children}</LocalAuthProvider>;
 }
 
 export default AuthProvider;

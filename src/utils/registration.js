@@ -29,7 +29,7 @@ export function normalizeRegistration(values = {}) {
 }
 
 // Devuelve mensajes por campo, incluidas fecha válida y relación región-comuna.
-export function getRegistrationErrors(values = {}) {
+export function getRegistrationErrors(values = {}, { emailValidator = getEmailError } = {}) {
     const data = normalizeRegistration(values);
     const region = regions.find(item => item.name === data.region);
     // Se contrasta la fecha escrita con la fecha interpretada: JavaScript puede ajustar días
@@ -44,7 +44,7 @@ export function getRegistrationErrors(values = {}) {
             : data.firstName.length > 50 ? "El nombre no puede superar 50 caracteres." : "",
         lastName: !data.lastName ? "Los apellidos son obligatorios."
             : data.lastName.length > 100 ? "Los apellidos no pueden superar 100 caracteres." : "",
-        email: getEmailError(data.email),
+        email: emailValidator(data.email),
         birthDate: validDate ? "" : "Ingresa una fecha de nacimiento válida.",
         region: region ? "" : "Selecciona una región.",
         commune: region?.communes.includes(data.commune) ? "" : "Selecciona una comuna de la región indicada.",

@@ -31,7 +31,11 @@ export function createApiClient({ baseUrl = "http://localhost:8080/api/v1", fetc
             if (response.status === 204) return null;
             let data;
             try { data = await response.json(); }
-            catch { throw new ApiError("El servidor devolvió una respuesta no válida.", response.status); }
+            catch {
+                throw new ApiError(response.status === 401 ? "Tu sesión o las credenciales no son válidas."
+                    : response.status === 403 ? "No tienes permiso para realizar esta operación."
+                    : "El servidor devolvió una respuesta no válida.", response.status);
+            }
             if (!response.ok) throw new ApiError(data.detail || data.message || "No fue posible completar la solicitud.", response.status, data.errors || {});
             return data;
         } catch (error) {

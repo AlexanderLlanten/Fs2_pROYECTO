@@ -7,9 +7,10 @@
 import { useSyncExternalStore } from "react";
 import { readCatalog, refreshCatalog, subscribeCatalog } from "../services/productStore.js";
 import { remoteCatalog } from "../services/api/catalogStore.js";
+import { usesApi } from "../config/dataSource.js";
 
 // EP3 permite comprobar la lectura del servidor mientras se integran los módulos privados.
-const useApi = import.meta.env.VITE_CATALOG_SOURCE === "api";
+const useApi = usesApi;
 
 function useCatalog() {
     // useSyncExternalStore suscribe la interfaz al catálogo. readCatalog devuelve la misma
