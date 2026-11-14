@@ -16,6 +16,10 @@ const storageError = { success: false, code: "STORAGE", message: "No fue posible
 
 // Comprueba permiso de gestión de productos antes de entregar el catálogo al servicio administrativo.
 function readManagedCatalog() {
+    if (import.meta.env.VITE_CATALOG_SOURCE === "api") return {
+        success: false, code: "INTEGRATION_PENDING",
+        message: "La gestión de productos del servidor todavía está en integración. El catálogo conectado está disponible para consulta."
+    };
     if (!hasPermission(getSession()?.role, PERMISSIONS.PRODUCTS_MANAGE)) return forbidden;
     return readCatalog();
 }
