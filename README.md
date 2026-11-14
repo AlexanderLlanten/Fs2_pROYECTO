@@ -4,7 +4,7 @@ Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del invent
 
 ## Desarrollo EP3
 
-La rama `codex/ep3-integracion` inicia la conexión con el nuevo [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). La versión EP2 continúa disponible en el historial y la actualización no modifica `main`.
+La rama `codex/ep3-integracion` continúa la conexión con el [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). La primera entrega EP3 ya está integrada en `main`; los cambios nuevos se proponen para revisión. La versión EP2 permanece disponible en el historial.
 
 El modo conectado integra catálogo, registro con perfil completo y contraseña elegida, login, recuperación de sesión al recargar, renovación y logout. Administrador puede crear, editar y desactivar productos; Vendedor conserva consulta. Las categorías se obtienen del servidor y se preservan metadatos, imágenes y versión al editar.
 
