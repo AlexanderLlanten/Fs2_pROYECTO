@@ -11,8 +11,10 @@ import CatalogError from "../components/molecules/CatalogError.jsx";
 import useAuth from "../hooks/useAuth.js";
 import AdminModuleCard from "../components/molecules/AdminModuleCard.jsx";
 import { PERMISSIONS } from "../utils/permissions.js";
+import { usesApi } from "../config/dataSource.js";
 
 const modules = [
+    ...(usesApi ? [{ title:"Categorías",description:"Organiza las categorías activas del catálogo.",icon:"bi-tags",to:"/admin/categorias",action:"Gestionar categorías",permission:PERMISSIONS.CATEGORIES_MANAGE }] : []),
     { title: "Productos", description: "Consulta precios, disponibilidad y alertas de stock.", icon: "bi-box-seam", to: "/admin/productos", action: "Consultar productos", permission: PERMISSIONS.PRODUCTS_VIEW },
     { title: "Usuarios", description: "Administra los datos y perfiles de las cuentas registradas.", icon: "bi-people", to: "/admin/usuarios", action: "Gestionar usuarios", permission: PERMISSIONS.USERS_MANAGE },
     { title: "Pedidos", description: "Consulta clientes, productos y estados de los pedidos.", icon: "bi-receipt", to: "/admin/pedidos", action: "Consultar pedidos", permission: PERMISSIONS.ORDERS_VIEW }

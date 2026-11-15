@@ -9,6 +9,7 @@ import { getRoleHome, hasPermission, PERMISSIONS } from "./permissions.js";
 
 const publicPaths = ["/", "/productos", "/productos/:id", "/carrito", "/contacto", "/entrenamiento", "/rutina", "/nosotros", "/blog", "/blog/:slug", "/compra", "/compras", "/compras/:id", "/perfil"];
 const userPaths = ["/admin/usuarios", "/admin/usuarios/nuevo", "/admin/usuarios/:id/editar"];
+const categoryPaths = ["/admin/categorias", "/admin/categorias/nuevo", "/admin/categorias/:id/editar"];
 const productEditPaths = ["/admin/productos/nuevo", "/admin/productos/:id/editar"];
 const orderPaths = ["/admin/pedidos", "/admin/pedidos/:id"];
 
@@ -25,6 +26,7 @@ export function getLoginDestination(from, role) {
         || !(publicPaths.some(path => matchPath({ path, end: true }, pathname))
             || (matchPath({ path: "/admin", end: true }, pathname) && hasPermission(role, PERMISSIONS.ADMIN_ACCESS))
             || (userPaths.some(path => matchPath({ path, end: true }, pathname)) && hasPermission(role, PERMISSIONS.USERS_MANAGE))
+            || (categoryPaths.some(path => matchPath({ path, end: true }, pathname)) && hasPermission(role, PERMISSIONS.CATEGORIES_MANAGE))
             || (matchPath({ path: "/admin/productos", end: true }, pathname) && hasPermission(role, PERMISSIONS.PRODUCTS_VIEW))
             || (productEditPaths.some(path => matchPath({ path, end: true }, pathname)) && hasPermission(role, PERMISSIONS.PRODUCTS_MANAGE))
             || (orderPaths.some(path => matchPath({ path, end: true }, pathname)) && hasPermission(role, PERMISSIONS.ORDERS_VIEW)))

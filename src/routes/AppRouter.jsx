@@ -37,6 +37,8 @@ import BlogArticlePage from "../pages/BlogArticlePage.jsx";
 import ApiAdminUsersPage from "../pages/ApiAdminUsersPage.jsx";
 import ApiAdminUserFormPage from "../pages/ApiAdminUserFormPage.jsx";
 import ProfilePage from "../pages/ProfilePage.jsx";
+import AdminCategoriesPage from "../pages/AdminCategoriesPage.jsx";
+import AdminCategoryFormPage from "../pages/AdminCategoryFormPage.jsx";
 import { usesApi } from "../config/dataSource.js";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import MyOrdersPage from "../pages/MyOrdersPage.jsx";
@@ -72,6 +74,12 @@ function AppRouter() {
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>
                     <Route path="admin" element={<AdminLayout />}>
                         <Route index element={<AdminHomePage />} />
+                        {usesApi && <Route element={<ProtectedRoute permission={PERMISSIONS.CATEGORIES_MANAGE} />}>
+                            <Route path="categorias" element={<AdminCategoriesPage />} />
+                            <Route path="categorias/nuevo" element={<AdminCategoryFormPage />} />
+                            <Route path="categorias/:id/editar" element={<AdminCategoryFormPage />} />
+                            <Route path="categorias/*" element={<NotFoundPage admin />} />
+                        </Route>}
                         <Route element={<ProtectedRoute permission={PERMISSIONS.USERS_MANAGE} />}>
                             <Route path="usuarios" element={usesApi ? <ApiAdminUsersPage /> : <AdminUsersPage />} />
                             <Route path="usuarios/nuevo" element={usesApi ? <ApiAdminUserFormPage /> : <AdminUserFormPage />} />
