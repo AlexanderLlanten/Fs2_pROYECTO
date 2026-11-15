@@ -6,9 +6,9 @@
 
 import ConfirmDeleteDialog from "./ConfirmDeleteDialog.jsx";
 
-function DeleteUserDialog({ user, ...props }) {
-    return <ConfirmDeleteDialog {...props} title="Eliminar usuario" confirmLabel="Eliminar usuario"
-        description={<>¿Deseas eliminar a <strong>{user.firstName} {user.lastName}</strong>? Su cuenta se eliminará de este navegador.</>}>
+function DeleteUserDialog({ user, remote = false, ...props }) {
+    return <ConfirmDeleteDialog {...props} title={remote ? "Desactivar usuario" : "Eliminar usuario"} confirmLabel={remote ? "Desactivar usuario" : "Eliminar usuario"} busyLabel={remote ? "Desactivando…" : "Eliminando…"}
+        description={<>¿Deseas {remote ? "desactivar" : "eliminar"} a <strong>{user.firstName} {user.lastName}</strong>? {remote ? "No podrá iniciar sesión; se conservarán sus compras y datos históricos." : "Su cuenta se eliminará de este navegador."}</>}>
         <p>{user.email}</p>
     </ConfirmDeleteDialog>;
 }
