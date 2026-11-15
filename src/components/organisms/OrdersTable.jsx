@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import OrderStatusBadge from "../atoms/OrderStatusBadge.jsx";
 import { formatPrice } from "../atoms/Price.jsx";
 
-function OrdersTable({ orders }) {
+function OrdersTable({ orders, basePath = "/admin/pedidos" }) {
     if (!orders.length) return <p role="status">No hay pedidos disponibles.</p>;
     return <div className="table-responsive kynex-users-table-wrap" tabIndex={0} role="region"
         aria-label="Listado de pedidos">
         <table className="table align-middle kynex-users-table kynex-orders-table">
             <caption className="visually-hidden">Pedidos registrados en KYNEX</caption>
             <thead>
-                <tr>{["Pedido", "Fecha", "Cliente", "Unidades", "Total de productos", "Estado", "Detalle"].map(label => <th
+                <tr>{["Pedido", "Fecha", "Cliente", "Unidades", orders.some(order => order.shipping !== undefined) ? "Total del pedido" : "Total de productos", "Estado", "Detalle"].map(label => <th
                         key={label} scope="col">{label}</th>)}</tr>
             </thead>
             <tbody>{orders.map(order => <tr key={order.id}>
@@ -28,7 +28,7 @@ function OrdersTable({ orders }) {
                         <OrderStatusBadge status={order.status} />
                     </td>
                     <td>
-                        <Link className="btn btn-outline-light btn-sm" to={`/admin/pedidos/${order.id}`}
+                            <Link className="btn btn-outline-light btn-sm" to={`${basePath}/${order.id}`}
                             aria-label={`Ver pedido ${order.id}`}>Ver detalle</Link>
                     </td>
                 </tr>)}</tbody>

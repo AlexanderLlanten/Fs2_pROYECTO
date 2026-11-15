@@ -12,7 +12,7 @@ import { PERMISSIONS } from "../../utils/permissions.js";
 import RoleGate from "./RoleGate.jsx";
 
 function AccountActions({ onNavigate, showAdminLink = true }) {
-    const { user, logout, isLoading, sessionError, retrySession } = useAuth();
+    const { user, logout, isLoading, sessionError, retrySession, isRemote } = useAuth();
     const { pathname, search } = useLocation();
     // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
     // la función que solicita su actualización.
@@ -65,6 +65,7 @@ function AccountActions({ onNavigate, showAdminLink = true }) {
                     <span>{user.firstName}</span>
                     <small>{user.role}</small>
                 </p>
+                {isRemote && <NavLink className="kynex-account-link" to="/compras" onClick={onNavigate}>Mis compras</NavLink>}
                 {showAdminLink && (
                     <RoleGate permission={PERMISSIONS.ADMIN_ACCESS}>
                         <NavLink className="kynex-account-link" to="/admin" onClick={onNavigate}>

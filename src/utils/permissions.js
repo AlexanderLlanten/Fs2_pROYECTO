@@ -9,7 +9,8 @@ export const PERMISSIONS = Object.freeze({
     PRODUCTS_VIEW: "admin:products:view",
     PRODUCTS_MANAGE: "admin:products:manage",
     USERS_MANAGE: "admin:users:manage",
-    ORDERS_VIEW: "admin:orders:view"
+    ORDERS_VIEW: "admin:orders:view",
+    ORDERS_MANAGE: "admin:orders:manage"
 });
 
 // La matriz concentra qué puede hacer cada perfil. Una misma regla se reutiliza en navegación, rutas

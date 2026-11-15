@@ -30,10 +30,12 @@ function OrderSummary({ order }) {
                         <dd>{order.quantity}</dd>
                     </div>
                 </dl>
-                <Price value={order.total} label="Total de productos" />
+                {order.delivery && <p>Entrega a {order.delivery.recipient}: {order.delivery.address}, {order.delivery.commune}, {order.delivery.region}.</p>}
+                {order.shipping !== undefined && <><Price value={order.subtotal} label="Subtotal" /><Price value={order.shipping} label="Despacho" /></>}
+                <Price value={order.total} label={order.shipping === undefined ? "Total de productos" : "Total del pedido"} />
             </div>
         </div>
-        <p className="kynex-order-note mb-0 mt-3">Los importes corresponden a los productos del pedido registrado.</p>
+        <p className="kynex-order-note mb-0 mt-3">{order.shipping === undefined ? "Los importes corresponden a los productos del pedido registrado." : "El pedido conserva sus productos, precios y dirección históricos. El pago corresponde a un entorno de pruebas sin cobros reales."}</p>
     </section>;
 }
 

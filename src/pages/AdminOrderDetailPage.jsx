@@ -9,8 +9,14 @@ import { getManagedOrder } from "../services/adminOrders.js";
 import { parseOrderId } from "../utils/orders.js";
 import OrderItemsTable from "../components/organisms/OrderItemsTable.jsx";
 import OrderSummary from "../components/organisms/OrderSummary.jsx";
+import { usesApi } from "../config/dataSource.js";
+import useApiResource from "../hooks/useApiResource.js";
+import useAuth from "../hooks/useAuth.js";
+import ApiResourceState from "../components/molecules/ApiResourceState.jsx";
+import OrderStateForm from "../components/organisms/OrderStateForm.jsx";
+import { PERMISSIONS } from "../utils/permissions.js";
 
-function AdminOrderDetailPage() {
+function LocalAdminOrderDetailPage() {
     const { id } = useParams();
     const resource = getManagedOrder(parseOrderId(id));
     return <>
@@ -22,5 +28,17 @@ function AdminOrderDetailPage() {
             : <p className="auth-form-alert" role="alert">{resource.message}</p>}
     </>;
 }
+
+function RemoteAdminOrderDetailPage() {
+    const { id } = useParams(); const resource = useApiResource(`/admin/orders/${id}`); const { hasPermission } = useAuth();
+    return <><header className="kynex-admin-heading"><h1>Pedido #{id}</h1><Link className="btn btn-outline-light" to="/admin/pedidos">Volver a pedidos</Link></header>
+        {resource.loading || resource.error ? <ApiResourceState resource={resource} /> : <>
+            <OrderSummary order={resource.data} /><OrderItemsTable products={resource.data.products} />
+            {hasPermission(PERMISSIONS.ORDERS_MANAGE) && <OrderStateForm order={resource.data} onChange={resource.update} />}
+            <h2>Historial de estados</h2><ul>{resource.data.events.map((event,index) => <li key={index}>{event.note}</li>)}</ul>
+        </>}
+    </>;
+}
+function AdminOrderDetailPage() { return usesApi ? <RemoteAdminOrderDetailPage /> : <LocalAdminOrderDetailPage />; }
 
 export default AdminOrderDetailPage;
