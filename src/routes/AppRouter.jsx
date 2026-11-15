@@ -43,6 +43,8 @@ import ApiTrainingPage from "../pages/ApiTrainingPage.jsx";
 import ApiRoutinePage from "../pages/ApiRoutinePage.jsx";
 import AdminExercisesPage from "../pages/AdminExercisesPage.jsx";
 import AdminExerciseFormPage from "../pages/AdminExerciseFormPage.jsx";
+import AdminContactPage from "../pages/AdminContactPage.jsx";
+import AdminContactDetailPage from "../pages/AdminContactDetailPage.jsx";
 import { usesApi } from "../config/dataSource.js";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import MyOrdersPage from "../pages/MyOrdersPage.jsx";
@@ -79,6 +81,11 @@ function AppRouter() {
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>
                     <Route path="admin" element={<AdminLayout />}>
                         <Route index element={<AdminHomePage />} />
+                        {usesApi && <Route element={<ProtectedRoute permission={PERMISSIONS.CONTACT_MANAGE} />}>
+                            <Route path="contacto" element={<AdminContactPage />} />
+                            <Route path="contacto/:id" element={<AdminContactDetailPage />} />
+                            <Route path="contacto/*" element={<NotFoundPage admin />} />
+                        </Route>}
                         {usesApi&&<Route element={<ProtectedRoute permission={PERMISSIONS.EXERCISES_MANAGE}/>}>
                             <Route path="ejercicios" element={<AdminExercisesPage/>}/>
                             <Route path="ejercicios/nuevo" element={<AdminExerciseFormPage/>}/>

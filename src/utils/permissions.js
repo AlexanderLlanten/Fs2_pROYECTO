@@ -11,6 +11,7 @@ export const PERMISSIONS = Object.freeze({
     USERS_MANAGE: "admin:users:manage",
     CATEGORIES_MANAGE: "admin:categories:manage",
     EXERCISES_MANAGE: "admin:exercises:manage",
+    CONTACT_MANAGE: "admin:contact:manage",
     ORDERS_VIEW: "admin:orders:view",
     ORDERS_MANAGE: "admin:orders:manage"
 });

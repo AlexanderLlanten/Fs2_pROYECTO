@@ -7,3 +7,14 @@
     color: var(--kynex-accent);
     font-size: 1.15rem;
 }
+
+.contact-inbox-controls, .contact-pagination { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+.contact-inbox-controls select { width: auto; max-width: 100%; }
+.contact-status { display: inline-block; white-space: nowrap; padding: .3rem .65rem; border-radius: 1rem; font-size: .85rem; background: #303949; color: #f3f5f8; }
+.contact-status-en_atencion { background: #173a52; color: #a7dcff; }
+.contact-status-resuelta { background: #263c17; color: var(--kynex-accent); }
+.contact-text, .contact-original dd, .contact-history p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.contact-original dt { color: var(--kynex-text-muted); }
+.contact-history { padding-left: 1.3rem; }
+.contact-history li { padding: 1rem 0; border-bottom: 1px solid var(--kynex-border); }
+.contact-history p { margin: .5rem 0 0; }
