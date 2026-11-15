@@ -4,7 +4,7 @@ Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del invent
 
 ## Desarrollo EP3
 
-La rama `codex/ep3-integracion` continúa la conexión con el [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). La primera entrega EP3 ya está integrada en `main`; los cambios nuevos se proponen para revisión. La versión EP2 permanece disponible en el historial.
+La rama `codex/ep3-integracion` continúa la conexión con el [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). Las entregas previas de cuentas y compra ya están integradas en `main`; los cambios nuevos se proponen para revisión. La versión EP2 permanece disponible en el historial.
 
 El modo conectado integra catálogo, registro con perfil completo y contraseña elegida, login, recuperación de sesión al recargar, renovación y logout. Administrador puede crear, editar y desactivar productos; Vendedor conserva consulta. Las categorías se obtienen del servidor y se preservan metadatos, imágenes y versión al editar.
 
@@ -14,11 +14,13 @@ Para activarlo, copiar `.env.example` como `.env`, definir `VITE_DATA_SOURCE=api
 
 La opción predeterminada `local` conserva EP2. En `api` no se consultan cuentas ni catálogo demostrativos ante un fallo del servidor. El JWT permanece en memoria; una cookie HttpOnly permite recuperar la identidad validada. Web Locks coordina renovaciones entre pestañas y BroadcastChannel transmite únicamente avisos de sesión. Las rutas esperan la recuperación antes de presentar contenido privado y las peticiones no se reintentan bajo otra cuenta si cambia la sesión.
 
-La gestión administrativa de usuarios, la edición del perfil, la gestión visual de categorías y ejercicios, las rutinas y contacto persistentes todavía requieren integración. Usuarios administrativos muestran disponibilidad futura en el modo API. La rutina conserva su alcance local de EP2; carrito autenticado y pedidos utilizan PostgreSQL.
+La gestión de usuarios y el perfil personal también utilizan PostgreSQL. Administrador crea cuentas con contraseña elegida, edita datos y roles y desactiva o reactiva cuentas conservando su historial. No puede desactivarse ni cambiar su propio rol. La baja revoca las sesiones; reactivar exige un nuevo login. Las versiones impiden sobrescribir cambios y el servidor coordina las modificaciones administrativas concurrentes.
+
+La ruta protegida `/perfil`, accesible desde Mi perfil, permite actualizar los datos propios sin admitir cambios de identidad de sesión, rol, estado o contraseña. La cabecera recupera el nombre guardado; los avisos entre pestañas provocan una revisión de la identidad vigente. La gestión visual de categorías y ejercicios, las rutinas y contacto persistentes todavía requieren integración. La rutina conserva su alcance local de EP2.
 
 El [ERS V3](docs/entrega/ERS_KYNEX_V3.docx) define 32 requisitos funcionales y 21 no funcionales, distinguiendo alcance y estado de implementación. Los documentos V2 siguientes describen el cierre histórico de la migración a React.
 
-Verificación de este bloque: 657 pruebas aprobadas en 90 archivos y build de React completado. El backend dispone de 56 pruebas con PostgreSQL, incluidas compras simultáneas y confirmaciones repetidas. El recorrido de compra y anulación pasó en Edge. Estas cifras no representan el cierre de EP3 ni una medición nueva de cobertura.
+Verificación de este bloque: 669 pruebas aprobadas en 92 archivos y build de React completado. El backend dispone de 79 pruebas con PostgreSQL, incluidas compras simultáneas, confirmaciones repetidas, cambios de rol concurrentes y desactivación durante renovación. Edge comprobó compra y anulación, perfil, alta y edición de cuentas, conflicto sin pérdida del borrador, baja, revocación y reactivación. El perfil se revisó a 390, 768 y 1366 px. Estas cifras no representan el cierre de EP3 ni una medición nueva de cobertura.
 
 En el backend, definir `PAYMENT_EMULATOR_ENABLED=true` en `.env` y volver a cargar el entorno antes de iniciar Maven. Las migraciones se aplican al arrancar. El carrito visitante se concilia una vez al acceder y sus ajustes de stock se anuncian. Las cuentas recuperan carrito e historial desde otros equipos; no guardan el carrito privado en LocalStorage. Las rutas `/compra`, `/compras` y `/compras/:id` requieren sesión. El pedido pendiente vence a los 15 minutos y cada intento de pago, a los cinco minutos como máximo. No existe reserva previa de inventario.
 
