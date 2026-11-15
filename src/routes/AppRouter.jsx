@@ -34,7 +34,9 @@ import RoutinePage from "../pages/RoutinePage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
 import BlogPage from "../pages/BlogPage.jsx";
 import BlogArticlePage from "../pages/BlogArticlePage.jsx";
-import PendingModulePage from "../pages/PendingModulePage.jsx";
+import ApiAdminUsersPage from "../pages/ApiAdminUsersPage.jsx";
+import ApiAdminUserFormPage from "../pages/ApiAdminUserFormPage.jsx";
+import ProfilePage from "../pages/ProfilePage.jsx";
 import { usesApi } from "../config/dataSource.js";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import MyOrdersPage from "../pages/MyOrdersPage.jsx";
@@ -52,6 +54,7 @@ function AppRouter() {
                     <Route path="productos/:id" element={<ProductDetailPage />} />
                     <Route path="carrito" element={<CartPage />} />
                     {usesApi && <Route element={<ProtectedRoute />}>
+                        <Route path="perfil" element={<ProfilePage />} />
                         <Route path="compra" element={<CheckoutPage />} />
                         <Route path="compras" element={<MyOrdersPage />} />
                         <Route path="compras/:id" element={<MyOrderDetailPage />} />
@@ -70,9 +73,9 @@ function AppRouter() {
                     <Route path="admin" element={<AdminLayout />}>
                         <Route index element={<AdminHomePage />} />
                         <Route element={<ProtectedRoute permission={PERMISSIONS.USERS_MANAGE} />}>
-                            <Route path="usuarios" element={usesApi ? <PendingModulePage title="Usuarios" /> : <AdminUsersPage />} />
-                            <Route path="usuarios/nuevo" element={usesApi ? <PendingModulePage title="Usuarios" /> : <AdminUserFormPage />} />
-                            <Route path="usuarios/:id/editar" element={usesApi ? <PendingModulePage title="Usuarios" /> : <AdminUserFormPage />} />
+                            <Route path="usuarios" element={usesApi ? <ApiAdminUsersPage /> : <AdminUsersPage />} />
+                            <Route path="usuarios/nuevo" element={usesApi ? <ApiAdminUserFormPage /> : <AdminUserFormPage />} />
+                            <Route path="usuarios/:id/editar" element={usesApi ? <ApiAdminUserFormPage /> : <AdminUserFormPage />} />
                             <Route path="usuarios/*" element={<NotFoundPage admin />} />
                         </Route>
                         <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_VIEW} />}>

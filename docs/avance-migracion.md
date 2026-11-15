@@ -2,15 +2,31 @@
 
 ## Desarrollo de EP3
 
-Corte del 14 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; `main` incorpora la primera entrega de EP3. El bloque actual se propone por separado para revisión. El repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
+Corte del 14 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; `main` incorpora las entregas anteriores de cuentas y compra. Usuarios y perfil se proponen por separado para revisión. El repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
 
 Verificado: Spring Boot y PostgreSQL; migraciones; CRUD de productos y categorías con baja lógica y versión; registro completo; JWT, renovación y logout; sesión recuperable y gestión de productos en React. El bloque comercial añade carrito por propietario y conciliación del visitante, dirección de entrega, pedidos históricos, cinco resultados de pago académico e historial propio. Administrador consulta, avanza y anula pedidos con motivo; Vendedor consulta. La aprobación y la restitución de stock son transaccionales e idempotentes.
 
-Resultados: 56 pruebas de API con PostgreSQL y 657 pruebas de React en 90 archivos aprobadas; ambos builds completados. Dos compradores por la última unidad produjeron una sola venta; confirmar simultáneamente el mismo pago descontó una vez. Edge comprobó conciliación, carrito en un contexto independiente, rechazo, aprobación, recarga, historial y anulación con restitución. Se verificaron datos ajenos, importes impuestos por el cliente, errores y expiración. El ERS V3 conserva 32 requisitos funcionales y 21 no funcionales y actualiza su estado.
+Usuarios y perfil: CRUD administrativo con baja lógica y reactivación, contraseña inicial elegida, edición de datos propios y control de versiones. Las bajas revocan las sesiones y preservan carritos y compras. Se bloquean cambios del rol propio y la desactivación propia; la coordinación en PostgreSQL protege los cambios de administración entre procesos. El perfil no admite id, rol, estado ni contraseña enviados por el navegador.
 
-Pendiente: edición del perfil y gestión de usuarios; categorías y ejercicios en React; ejercicios, rutinas y contacto persistentes; operación, copia y restauración y aceptación completa en otro equipo. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, catálogo y compra sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los módulos pendientes mantienen su alcance explícito. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
+Resultados: 79 pruebas de API con PostgreSQL y 669 pruebas de React en 92 archivos aprobadas; ambos builds completados. Se conserva la evidencia de compra concurrente e idempotente. Las nuevas comprobaciones incluyen dos administradores intentando degradarse mutuamente y renovación simultánea con desactivación, sin bloqueo ni sesión residual. Edge comprobó alta, perfil persistente, permisos vigentes, conflicto con borrador conservado, baja, revocación y reactivación. El perfil se revisó a 390, 768 y 1366 px. El ERS V3 mantiene 32 RF y 21 RNF y actualiza su estado.
 
-Los porcentajes siguientes corresponden al cierre de EP2. No representan el cumplimiento de la nueva rúbrica EP3. Ningún indicador completo de EP3 se declara cerrado mientras falten sus operaciones o la integración correspondiente.
+Pendiente: categorías y ejercicios en React; ejercicios, rutinas y contacto persistentes; operación, copia y restauración y aceptación completa en otro equipo. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, perfil, usuarios, catálogo y compra sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
+
+La autoevaluación técnica EP3 pasa del 79% al **85%**, con un margen pendiente estimado del **15%**. Se aplican los niveles de la rúbrica a sus pesos normalizados. Es un juicio sobre evidencia disponible, no una calificación, una medida de horas ni cobertura de código. Las ampliaciones de ejercicios, rutinas y contacto siguen siendo obligatorias para el cierre acordado y no añaden ponderaciones a la rúbrica.
+
+| Indicador EP3 | Peso en el encargo | Nivel estimado | Aporte |
+| --- | ---: | ---: | ---: |
+| IE3.1.1 Backend, modelos y negocio | 20% | 80% | 16 |
+| IE3.2.1 API CRUD y Swagger | 20% | 60% | 12 |
+| IE3.2.2 Integración REST | 15% | 80% | 12 |
+| IE3.3.1 JWT y roles | 15% | 100% | 15 |
+| IE3.3.2 Sesión persistente | 15% | 100% | 15 |
+| IE3.3.3 Restricciones en React | 15% | 100% | 15 |
+| **Total estimado** | **100%** | | **85%** |
+
+La integración sube a 80% por incorporar la gestión de cuentas y el perfil en recorridos completos; las restricciones se verifican también en estas nuevas pantallas. API permanece en 60% porque faltan recursos funcionales previstos en el alcance. Modelo y negocio conservan pendientes de entrenamiento y contacto. La sesión y autorización se valoran sobre los escenarios probados; no equivalen a una certificación de seguridad. El encargo pesa 40% de EP3; la presentación individual, 60%, se evalúa por separado.
+
+Los porcentajes posteriores corresponden al antecedente de EP2.
 
 ## Antecedente del cierre de EP2
 

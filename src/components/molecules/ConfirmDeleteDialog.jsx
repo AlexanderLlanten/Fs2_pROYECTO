@@ -6,7 +6,7 @@
 
 import { useEffect, useId, useRef } from "react";
 
-function ConfirmDeleteDialog({ title, description, confirmLabel, children, onCancel, onConfirm, busy, error }) {
+function ConfirmDeleteDialog({ title, description, confirmLabel, children, onCancel, onConfirm, busy, error, busyLabel = "Eliminando…" }) {
     const dialogRef = useRef(null);
     const cancelRef = useRef(null);
     const titleId = useId();
@@ -34,7 +34,7 @@ function ConfirmDeleteDialog({ title, description, confirmLabel, children, onCan
         {error && <p className="auth-form-alert" role="alert">{error}</p>}
         <div className="auth-form-actions">
             <button ref={cancelRef} className="btn btn-outline-light" type="button" disabled={busy} onClick={onCancel}>Cancelar</button>
-            <button className="btn btn-danger" type="button" disabled={busy} onClick={onConfirm}>{busy ? "Eliminando…" : confirmLabel}</button>
+            <button className="btn btn-danger" type="button" disabled={busy} onClick={onConfirm}>{busy ? busyLabel : confirmLabel}</button>
         </div>
     </dialog>;
 }
