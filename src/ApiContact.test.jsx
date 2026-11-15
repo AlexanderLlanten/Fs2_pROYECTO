@@ -53,7 +53,7 @@ beforeEach(async () => {
 });
 afterEach(() => { apiSession.invalidate(); vi.unstubAllGlobals(); window.history.replaceState({}, "", "/"); });
 afterAll(() => vi.unstubAllEnvs());
-function open(path = "/contacto") { window.history.replaceState({}, "", path); return render(<App />); }
+function open(path = "/contacto") { if (path === "/contacto") apiSession.invalidate(); window.history.replaceState({}, "", path); return render(<App />); }
 const submissions = () => calls.filter(c => c.path === "/contact");
 
 describe("Contacto conectado", () => {

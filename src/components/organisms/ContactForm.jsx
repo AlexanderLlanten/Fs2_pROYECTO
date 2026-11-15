@@ -11,10 +11,10 @@ import { getContactErrors } from "../../utils/contact.js";
 
 const initialValues = { name: "", email: "", comment: "" };
 
-function ContactForm({ onSubmit }) {
+function ContactForm({ onSubmit, identity, pendingSession = false }) {
     // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
     // la función que solicita su actualización.
-    const [values, setValues] = useState(initialValues);
+    const [values, setValues] = useState(() => ({ ...initialValues, ...identity }));
     const [errors, setErrors] = useState({});
     const [status, setStatus] = useState(null);
     const [focusField, setFocusField] = useState(null);
@@ -24,6 +24,7 @@ function ContactForm({ onSubmit }) {
     const [busy, setBusy] = useState(false);
     const remote = typeof onSubmit === "function";
     const received = remote && status?.success;
+    const validate = next => ({ ...getContactErrors(next), ...(identity ? { name: "", email: "" } : {}) });
 
     // Después de mostrar los errores y habilitar los controles se enfoca el primer campo inválido
     // para facilitar su corrección.
@@ -36,7 +37,7 @@ function ContactForm({ onSubmit }) {
         const { name, value } = event.target;
         const next = { ...values, [name]: value };
         setValues(next); setStatus(null);
-        setErrors(current => ({ ...current, ...((name === "comment" || current[name]) ? { [name]: getContactErrors(next)[name] } : {}) }));
+        setErrors(current => ({ ...current, ...((name === "comment" || current[name]) ? { [name]: validate(next)[name] } : {}) }));
     }
 
     // Valida el formulario y comunica el resultado de la operación al usuario mediante su estado y
@@ -45,8 +46,8 @@ function ContactForm({ onSubmit }) {
         // Se evita la recarga nativa del formulario para validar y mostrar el resultado mediante el
         // estado de React.
         event.preventDefault();
-        if (sending.current || received) return;
-        const next = getContactErrors(values);
+        if (sending.current || received || pendingSession) return;
+        const next = validate(values);
         setErrors(next);
         const invalidField = Object.keys(initialValues).find(name => next[name]);
         if (invalidField) {
@@ -72,21 +73,22 @@ function ContactForm({ onSubmit }) {
     // Construye propiedades de un campo a partir de su nombre, como valor, error, eventos y
     // referencia.
     function fieldProps(name) {
-        return { name, value: values[name], error: errors[name], required: true, disabled: busy || received,
-            onChange: handleChange, onBlur: () => setErrors(current => ({ ...current, [name]: getContactErrors(values)[name] })),
+        return { name, value: identity?.[name] ?? values[name], error: errors[name], required: true, disabled: busy || received,
+            readOnly: Boolean(identity && name !== "comment"),
+            onChange: handleChange, onBlur: () => setErrors(current => ({ ...current, [name]: validate(values)[name] })),
             inputRef: element => { inputs.current[name] = element; } };
     }
 
     return <form className="auth-form" aria-label="Formulario de contacto" aria-busy={busy} noValidate onSubmit={handleSubmit}>
         <FormField {...fieldProps("name")} label="Nombre" maxLength={100} autoComplete="name" />
         <FormField {...fieldProps("email")} label="Correo electrónico" type="email" maxLength={100} autoComplete="email"
-            helpText="Utiliza un correo @duoc.cl, @profesor.duoc.cl o @gmail.com." />
+            helpText={identity ? "Se utilizará el correo de tu cuenta para vincular la consulta." : "Utiliza un correo @duoc.cl, @profesor.duoc.cl o @gmail.com."} />
         <FormField {...fieldProps("comment")} label="Comentario" as="textarea" rows={6} maxLength={500}
             helpText={`${values.comment.length} / 500 caracteres`} />
         {status && <p className={`auth-form-alert ${status.success ? "auth-form-success" : ""}`} role={status.success ? "status" : "alert"}>{status.message}</p>}
         <div className="auth-form-actions">{received ? <Button type="button" onClick={() => {
-            setValues(initialValues); setErrors({}); setStatus(null); submission.current = null; setFocusField("name");
-        }}>Nuevo mensaje</Button> : <Button type="submit" disabled={busy}>
+            setValues({ ...initialValues, ...identity }); setErrors({}); setStatus(null); submission.current = null; setFocusField(identity ? "comment" : "name");
+        }}>Nuevo mensaje</Button> : <Button type="submit" disabled={busy || pendingSession}>
             <i className="bi bi-check2-circle me-2" aria-hidden="true" />{busy ? "Enviando…" : remote ? "Enviar mensaje" : "Validar mensaje"}
         </Button>}</div>
     </form>;

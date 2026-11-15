@@ -222,6 +222,9 @@
 }
 
 @media (min-width: 1200px) {
+    .kynex-header .navbar-collapse { flex-wrap: wrap; gap: 0.5rem 1rem; min-width: 0; }
+    .kynex-header .kynex-navbar-actions { flex-wrap: wrap; justify-content: flex-end; max-width: 100%; margin-left: auto; }
+    .kynex-header .kynex-account-session { flex-wrap: wrap; justify-content: flex-end; gap: 0.25rem 1rem; }
     .kynex-header .navbar-nav { gap: 0.25rem; }
     .kynex-header .nav-link { padding-inline: 0.65rem; font-size: 0.9rem; white-space: nowrap; }
     .kynex-header .kynex-account-user { max-width: 5.5rem; }
