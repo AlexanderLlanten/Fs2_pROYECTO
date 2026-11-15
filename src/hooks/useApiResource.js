@@ -8,6 +8,7 @@ export default function useApiResource(path) {
     const reload = useCallback(async () => {
         const current = ++generation.current;
         setResource(previous => ({ ...previous, loading: true, error: "" }));
+        if (!path) { setResource({ loading: false, data: null, error: "" }); return null; }
         try {
             const data = await apiSession.authorized(path);
             if (current === generation.current) setResource({ data, loading: false, error: "" });

@@ -17,6 +17,7 @@ function ApiAuthProvider({ children, session = apiSession }) {
             channel.current.onmessage = event => {
                 if (event.data?.type === "logout") session.invalidate(true);
                 if (event.data?.type === "login") { session.invalidate(); void session.restore(); }
+                if (event.data?.type === "account-updated" && session.read().user) void session.identity();
             };
         }
         return () => {
