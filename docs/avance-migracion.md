@@ -1,14 +1,14 @@
 # Avance de la migración KYNEX
 
-## Inicio de EP3
+## Desarrollo de EP3
 
 Corte del 14 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; `main` incorpora la primera entrega de EP3. El bloque actual se propone por separado para revisión. El repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
 
-Verificado en este bloque: Spring Boot y PostgreSQL; migraciones; CRUD de productos y categorías con baja lógica y versión; registro completo con contraseña elegida, fecha, región, comuna y dirección; JWT, renovación y logout; Swagger e imágenes; sesión recuperable en React y gestión de productos conectada para Administrador. Vendedor conserva consulta. Las rutas esperan recuperar identidad y rechazan sesiones locales alteradas.
+Verificado: Spring Boot y PostgreSQL; migraciones; CRUD de productos y categorías con baja lógica y versión; registro completo; JWT, renovación y logout; sesión recuperable y gestión de productos en React. El bloque comercial añade carrito por propietario y conciliación del visitante, dirección de entrega, pedidos históricos, cinco resultados de pago académico e historial propio. Administrador consulta, avanza y anula pedidos con motivo; Vendedor consulta. La aprobación y la restitución de stock son transaccionales e idempotentes.
 
-Resultados: 30 pruebas de API con PostgreSQL y 638 pruebas de React aprobadas; compilación de ambos proyectos completada. Se comprobaron también autenticación HTTP, persistencia al reiniciar, CORS y las relaciones de categoría de la ficha. El ERS V3 incorpora 32 requisitos funcionales y 21 no funcionales, con estado y condiciones de aceptación.
+Resultados: 56 pruebas de API con PostgreSQL y 657 pruebas de React en 90 archivos aprobadas; ambos builds completados. Dos compradores por la última unidad produjeron una sola venta; confirmar simultáneamente el mismo pago descontó una vez. Edge comprobó conciliación, carrito en un contexto independiente, rechazo, aprobación, recarga, historial y anulación con restitución. Se verificaron datos ajenos, importes impuestos por el cliente, errores y expiración. El ERS V3 conserva 32 requisitos funcionales y 21 no funcionales y actualiza su estado.
 
-Pendiente: edición del perfil y gestión de usuarios, categorías y ejercicios en React; carrito por cuenta, boletas, pago emulado, rutinas y contacto persistentes; recorrido completo de compra, concurrencia comercial, pertenencia de recursos y operación. El modo predeterminado sigue siendo local. Activar `VITE_DATA_SOURCE=api` conecta cuentas y catálogo; no se usan registros locales como respaldo del servidor. Los módulos administrativos pendientes no muestran datos demostrativos en este modo.
+Pendiente: edición del perfil y gestión de usuarios; categorías y ejercicios en React; ejercicios, rutinas y contacto persistentes; operación, copia y restauración y aceptación completa en otro equipo. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, catálogo y compra sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los módulos pendientes mantienen su alcance explícito. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
 
 Los porcentajes siguientes corresponden al cierre de EP2. No representan el cumplimiento de la nueva rúbrica EP3. Ningún indicador completo de EP3 se declara cerrado mientras falten sus operaciones o la integración correspondiente.
 
