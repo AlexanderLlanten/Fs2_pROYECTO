@@ -10,6 +10,7 @@ export default function MyContactPage() {
     const [page, setPage] = useState(0); const resource = useApiResource(`/my/contact?page=${page}`); const navigate = useNavigate();
     async function claim(reference) { const result = await contactApi.claim(reference); if (result.success) navigate(`/consultas/${result.detail.id}`); return result; }
     return <section className="container my-5"><p className="kynex-eyebrow">MI KYNEX</p><h1>Mis consultas</h1>
+        <p><Link to="/perfil">Volver a Mi perfil</Link></p>
         <p>Consulta tus mensajes y las respuestas del equipo KYNEX.</p><Link className="btn btn-success mb-4" to="/contacto">Nueva consulta</Link>
         {resource.loading || resource.error ? <ApiResourceState resource={resource} /> : <>
             {resource.data.items.length ? <div className="d-grid gap-3">{resource.data.items.map(message => <article className="auth-form-panel contact-original" key={message.id}>

@@ -65,8 +65,6 @@ function AccountActions({ onNavigate, showAdminLink = true }) {
                     <span>{user.firstName}</span>
                     <small>{user.role}</small>
                 </p>
-                {isRemote && <NavLink className="kynex-account-link" to="/compras" onClick={onNavigate}>Mis compras</NavLink>}
-                {isRemote && <NavLink className="kynex-account-link" to="/consultas" onClick={onNavigate}>Mis consultas</NavLink>}
                 {isRemote && <NavLink className="kynex-account-link" to="/perfil" onClick={onNavigate}>Mi perfil</NavLink>}
                 {showAdminLink && (
                     <RoleGate permission={PERMISSIONS.ADMIN_ACCESS}>
