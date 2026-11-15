@@ -94,7 +94,7 @@ describe("Entrenamiento conectado",()=>{
         await user.type(screen.getByRole("textbox",{name:"Descripción",exact:true}),"Descripción nueva");await user.type(screen.getByRole("textbox",{name:"Grupo muscular"}),"Piernas");await user.type(screen.getByRole("textbox",{name:"Equipamiento"}),"Barra");
         await user.click(screen.getByRole("button",{name:"Guardar ejercicio",exact:true}));expect(await screen.findByText("Ejercicio creado correctamente.")).toBeInTheDocument();
         expect(calls.find(c=>c.method==="POST"&&c.path==="/admin/exercises")).toMatchObject({token:"Bearer training-token",data:{name:"Ejercicio nuevo",defaultSets:3,defaultReps:10}});
-        await user.click(screen.getByRole("link",{name:"Editar Ejercicio nuevo",exact:true}));const name=await screen.findByRole("textbox",{name:"Nombre del ejercicio"});await user.clear(name);await user.type(name,"Ejercicio editado");await user.click(screen.getByRole("button",{name:"Guardar ejercicio",exact:true}));
+        await user.click(await screen.findByRole("link",{name:"Editar Ejercicio nuevo",exact:true}));const name=await screen.findByRole("textbox",{name:"Nombre del ejercicio"});await user.clear(name);await user.type(name,"Ejercicio editado");await user.click(screen.getByRole("button",{name:"Guardar ejercicio",exact:true}));
         expect(await screen.findByText("Ejercicio actualizado correctamente.")).toBeInTheDocument();expect(calls.find(c=>c.method==="PUT"&&c.path==="/admin/exercises/9").data).toMatchObject({version:0,name:"Ejercicio editado"});
     });
     it("renombra una rutina sin modificar sus ejercicios",async()=>{
