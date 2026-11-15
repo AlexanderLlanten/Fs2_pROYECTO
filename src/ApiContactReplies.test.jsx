@@ -27,7 +27,8 @@ beforeEach(async () => {
         if (path === "/my/contact/claims") { if (failedClaim) return response({ detail: "El recurso no existe." }, 404); linked = true; return response(message); }
         if (path.startsWith("/my/contact/")) return path === "/my/contact/4" ? response(message) : response({ detail: "El recurso no existe." }, 404);
         if (path.startsWith("/admin/contact/4")) {
-            if (options.method === "POST") {
+            if (path.endsWith("/account-link")) { message.linked = true; linked = true; message.version++; }
+            else if (options.method === "POST") {
                 const previous = message.replies.find(r => r.key === data.replyKey);
                 if (previous) return response(message);
                 if (conflict) { message.version++; return response({ detail: "La atención cambió. Recarga antes de enviar la respuesta." }, 409); }
@@ -69,11 +70,12 @@ describe("Respuestas de contacto por cuenta", () => {
     });
     it("vincula un mensaje anterior usando su referencia y abre su detalle", async () => {
         linked = false; open("/consultas"); const user = userEvent.setup(); await screen.findByText("No tienes consultas vinculadas a tu cuenta.");
+        await user.click(screen.getByText("Recuperar una consulta anterior", { exact: true }));
         await user.type(screen.getByRole("textbox", { name: "Referencia de recepción" }), reference); await user.click(screen.getByRole("button", { name: "Vincular consulta", exact: true }));
         expect(await screen.findByRole("heading", { name: "Mi consulta #4" })).toBeInTheDocument(); expect(calls.find(c => c.path === "/my/contact/claims")).toMatchObject({ method: "POST", data: { reference }, token: "Bearer reply-token" });
     });
     it("rechaza referencias incompletas antes de enviar y explica un vínculo rechazado", async () => {
-        linked = false; failedClaim = true; open("/consultas"); const user = userEvent.setup(); const field = await screen.findByRole("textbox", { name: "Referencia de recepción" });
+        linked = false; failedClaim = true; open("/consultas"); const user = userEvent.setup(); await user.click(screen.getByText("Recuperar una consulta anterior", { exact: true })); const field = screen.getByRole("textbox", { name: "Referencia de recepción" });
         await user.type(field, "1234"); await user.click(screen.getByRole("button", { name: "Vincular consulta", exact: true })); expect(field).toHaveFocus(); expect(calls.some(c => c.path === "/my/contact/claims")).toBe(false);
         await user.clear(field); await user.type(field, reference); await user.click(screen.getByRole("button", { name: "Vincular consulta", exact: true }));
         expect(await screen.findByText("No fue posible vincular la consulta. Comprueba la referencia y que el correo coincida con tu cuenta.")).toBeInTheDocument(); expect(field).toHaveValue(reference);
@@ -93,6 +95,12 @@ describe("Respuestas de contacto por cuenta", () => {
         expect(screen.getByRole("combobox", { name: "Estado de atención" })).toHaveValue("EN_ATENCION");
         const sent = calls.find(c => c.path.endsWith("/replies")); expect(sent).toMatchObject({ method: "POST", token: "Bearer reply-token", data: { text: "Respuesta visible", version: 0 } });
         expect(screen.getByRole("textbox", { name: "Respuesta para el usuario" })).toHaveValue("");
+    });
+    it("recupera desde Administración una consulta anterior sin publicar su nota privada", async () => {
+        await admin(); message.linked = false; open("/admin/contacto/4"); await userEvent.click(await screen.findByRole("button", { name: "Vincular a la cuenta del mismo correo" }));
+        expect(await screen.findByText("Consulta vinculada a la cuenta del remitente.")).toBeInTheDocument();
+        expect(calls.find(call => call.path.endsWith("/account-link"))).toMatchObject({ method: "POST", token: "Bearer reply-token", data: { version: 0 } });
+        expect(message.note).toBe("NOTA INTERNA PRIVADA"); expect(message.replies).toHaveLength(0);
     });
     it("guardar la atención no descarta una respuesta que todavía se está escribiendo", async () => {
         await admin(); open("/admin/contacto/4"); const user = userEvent.setup(); const reply = await screen.findByRole("textbox", { name: "Respuesta para el usuario" });

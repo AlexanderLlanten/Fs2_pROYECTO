@@ -15,6 +15,14 @@ export default function AdminContactDetailPage() {
     const { id } = useParams(); const validId = parseUserId(id);
     const resource = useApiResource(validId ? `/admin/contact/${validId}` : null);
     const [stale, setStale] = useState(false); const [notice, setNotice] = useState("");
+    const [linking, setLinking] = useState(false); const [linkError, setLinkError] = useState("");
+    async function linkAccount() {
+        if (linking) return; setLinking(true); setLinkError(""); setNotice("");
+        try { const result = await contactApi.linkAccount(resource.data);
+            if (result.success) { resource.update(result.detail); setNotice("Consulta vinculada a la cuenta del remitente."); }
+            else { setLinkError(result.message); if (result.conflict) setStale(true); }
+        } finally { setLinking(false); }
+    }
     async function save(values) {
         setNotice(""); const result = await contactApi.attend(resource.data, values);
         if (result.success) { resource.update(result.detail); setNotice("Atención guardada correctamente."); }
@@ -41,12 +49,14 @@ export default function AdminContactDetailPage() {
             <section className="auth-form-panel mt-4" aria-labelledby="contact-attention-title"><h2 id="contact-attention-title">Atención interna</h2>
                 {stale && <div className="auth-form-alert" role="status"><p>La atención cambió. Se conservó tu borrador; revisa la versión vigente antes de guardar.</p>
                     <button className="btn btn-outline-light" onClick={() => { setStale(false); void resource.reload(); }}>Recargar datos y descartar borrador</button></div>}
-                <ContactAttentionForm key={validId} message={resource.data} onSubmit={save} disabled={stale} />
+                <ContactAttentionForm key={validId} message={resource.data} onSubmit={save} disabled={stale || linking} />
             </section>
             <section className="auth-form-panel mt-4" aria-labelledby="contact-reply-title"><h2 id="contact-reply-title">Respuesta al usuario</h2>
-                {!resource.data.linked && <p>Esta consulta aún no está vinculada. El remitente podrá vincularla desde Mis consultas con su referencia y el mismo correo de su cuenta.</p>}
+                {!resource.data.linked && <div className="mb-4"><p>Esta consulta es anterior a la vinculación por cuenta. Comprueba que el correo corresponda al remitente y confirma su recuperación a la cuenta activa del mismo correo.</p>
+                    <button type="button" className="btn btn-outline-light" disabled={linking || stale} onClick={linkAccount}>{linking ? "Vinculando…" : "Vincular a la cuenta del mismo correo"}</button>
+                    {linkError && <p className="auth-form-alert mt-3" role="alert">{linkError}</p>}</div>}
                 <ContactReplies replies={resource.data.replies} />
-                <ContactReplyForm key={validId} onSubmit={reply} disabled={stale} />
+                <ContactReplyForm key={validId} onSubmit={reply} disabled={stale || linking} />
             </section>
             <section className="auth-form-panel mt-4" aria-labelledby="contact-history-title"><h2 id="contact-history-title">Historial de atención</h2>
                 {resource.data.history.length ? <ol className="contact-history">{resource.data.history.map((event, index) => <li key={index}>
