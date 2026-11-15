@@ -49,6 +49,8 @@ import { usesApi } from "../config/dataSource.js";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import MyOrdersPage from "../pages/MyOrdersPage.jsx";
 import MyOrderDetailPage from "../pages/MyOrderDetailPage.jsx";
+import MyContactPage from "../pages/MyContactPage.jsx";
+import MyContactDetailPage from "../pages/MyContactDetailPage.jsx";
 
 // Las rutas hijas comparten su layout. Las guardas administrativas se evalúan antes de mostrar el
 // contenido protegido; :id y :slug son segmentos variables.
@@ -64,6 +66,8 @@ function AppRouter() {
                     {usesApi && <Route element={<ProtectedRoute />}>
                         <Route path="rutina" element={<ApiRoutinePage />} />
                         <Route path="perfil" element={<ProfilePage />} />
+                        <Route path="consultas" element={<MyContactPage />} />
+                        <Route path="consultas/:id" element={<MyContactDetailPage />} />
                         <Route path="compra" element={<CheckoutPage />} />
                         <Route path="compras" element={<MyOrdersPage />} />
                         <Route path="compras/:id" element={<MyOrderDetailPage />} />
