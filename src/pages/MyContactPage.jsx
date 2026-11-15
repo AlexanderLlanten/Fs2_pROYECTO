@@ -10,7 +10,9 @@ export default function MyContactPage() {
     const [page, setPage] = useState(0); const resource = useApiResource(`/my/contact?page=${page}`); const navigate = useNavigate();
     async function claim(reference) { const result = await contactApi.claim(reference); if (result.success) navigate(`/consultas/${result.detail.id}`); return result; }
     return <section className="container my-5"><p className="kynex-eyebrow">MI KYNEX</p><h1>Mis consultas</h1>
+        <p><Link to="/perfil">Volver a Mi perfil</Link></p>
         <p>Consulta tus mensajes y las respuestas del equipo KYNEX.</p><Link className="btn btn-success mb-4" to="/contacto">Nueva consulta</Link>
+        <p>Las consultas que envías con sesión iniciada aparecen automáticamente en tu cuenta.</p>
         {resource.loading || resource.error ? <ApiResourceState resource={resource} /> : <>
             {resource.data.items.length ? <div className="d-grid gap-3">{resource.data.items.map(message => <article className="auth-form-panel contact-original" key={message.id}>
                 <h2 className="h4">Consulta #{message.id}</h2><ContactStatus status={message.status} />
@@ -24,9 +26,9 @@ export default function MyContactPage() {
                 <button className="btn btn-outline-light" onClick={resource.reload}>Actualizar mis consultas</button>
             </nav>
         </>}
-        <section className="auth-form-panel mt-4" aria-labelledby="contact-claim-title"><h2 id="contact-claim-title">Vincular una consulta anterior</h2>
+        <details className="auth-form-panel mt-4"><summary>Recuperar una consulta anterior</summary>
             <p>Si enviaste una consulta sin sesión o con la versión anterior, ingresa su referencia de recepción. El correo original debe coincidir con el de tu cuenta.</p>
             <ContactClaimForm onSubmit={claim} />
-        </section>
+        </details>
     </section>;
 }
