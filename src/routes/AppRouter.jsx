@@ -39,6 +39,12 @@ import ApiAdminUserFormPage from "../pages/ApiAdminUserFormPage.jsx";
 import ProfilePage from "../pages/ProfilePage.jsx";
 import AdminCategoriesPage from "../pages/AdminCategoriesPage.jsx";
 import AdminCategoryFormPage from "../pages/AdminCategoryFormPage.jsx";
+import ApiTrainingPage from "../pages/ApiTrainingPage.jsx";
+import ApiRoutinePage from "../pages/ApiRoutinePage.jsx";
+import AdminExercisesPage from "../pages/AdminExercisesPage.jsx";
+import AdminExerciseFormPage from "../pages/AdminExerciseFormPage.jsx";
+import AdminContactPage from "../pages/AdminContactPage.jsx";
+import AdminContactDetailPage from "../pages/AdminContactDetailPage.jsx";
 import { usesApi } from "../config/dataSource.js";
 import CheckoutPage from "../pages/CheckoutPage.jsx";
 import MyOrdersPage from "../pages/MyOrdersPage.jsx";
@@ -56,6 +62,7 @@ function AppRouter() {
                     <Route path="productos/:id" element={<ProductDetailPage />} />
                     <Route path="carrito" element={<CartPage />} />
                     {usesApi && <Route element={<ProtectedRoute />}>
+                        <Route path="rutina" element={<ApiRoutinePage />} />
                         <Route path="perfil" element={<ProfilePage />} />
                         <Route path="compra" element={<CheckoutPage />} />
                         <Route path="compras" element={<MyOrdersPage />} />
@@ -64,8 +71,8 @@ function AppRouter() {
                     <Route path="login" element={<LoginPage />} />
                     <Route path="registro" element={<RegistrationPage />} />
                     <Route path="contacto" element={<ContactPage />} />
-                    <Route path="entrenamiento" element={<TrainingPage />} />
-                    <Route path="rutina" element={<RoutinePage />} />
+                    <Route path="entrenamiento" element={usesApi?<ApiTrainingPage/>:<TrainingPage />} />
+                    {!usesApi&&<Route path="rutina" element={<RoutinePage />} />}
                     <Route path="nosotros" element={<AboutPage />} />
                     <Route path="blog" element={<BlogPage />} />
                     <Route path="blog/:slug" element={<BlogArticlePage />} />
@@ -74,6 +81,17 @@ function AppRouter() {
                 <Route element={<ProtectedRoute permission={PERMISSIONS.ADMIN_ACCESS} />}>
                     <Route path="admin" element={<AdminLayout />}>
                         <Route index element={<AdminHomePage />} />
+                        {usesApi && <Route element={<ProtectedRoute permission={PERMISSIONS.CONTACT_MANAGE} />}>
+                            <Route path="contacto" element={<AdminContactPage />} />
+                            <Route path="contacto/:id" element={<AdminContactDetailPage />} />
+                            <Route path="contacto/*" element={<NotFoundPage admin />} />
+                        </Route>}
+                        {usesApi&&<Route element={<ProtectedRoute permission={PERMISSIONS.EXERCISES_MANAGE}/>}>
+                            <Route path="ejercicios" element={<AdminExercisesPage/>}/>
+                            <Route path="ejercicios/nuevo" element={<AdminExerciseFormPage/>}/>
+                            <Route path="ejercicios/:id/editar" element={<AdminExerciseFormPage/>}/>
+                            <Route path="ejercicios/*" element={<NotFoundPage admin/>}/>
+                        </Route>}
                         {usesApi && <Route element={<ProtectedRoute permission={PERMISSIONS.CATEGORIES_MANAGE} />}>
                             <Route path="categorias" element={<AdminCategoriesPage />} />
                             <Route path="categorias/nuevo" element={<AdminCategoryFormPage />} />

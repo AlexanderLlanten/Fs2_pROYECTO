@@ -14,6 +14,8 @@ import { PERMISSIONS } from "../utils/permissions.js";
 import { usesApi } from "../config/dataSource.js";
 
 const modules = [
+    ...(usesApi ? [{ title: "Contacto", description: "Consulta solicitudes y registra su atención interna.", icon: "bi-chat-dots", to: "/admin/contacto", action: "Gestionar contacto", permission: PERMISSIONS.CONTACT_MANAGE }] : []),
+    ...(usesApi?[{title:"Ejercicios",description:"Administra la biblioteca de entrenamiento.",icon:"bi-activity",to:"/admin/ejercicios",action:"Gestionar ejercicios",permission:PERMISSIONS.EXERCISES_MANAGE}]:[]),
     ...(usesApi ? [{ title:"Categorías",description:"Organiza las categorías activas del catálogo.",icon:"bi-tags",to:"/admin/categorias",action:"Gestionar categorías",permission:PERMISSIONS.CATEGORIES_MANAGE }] : []),
     { title: "Productos", description: "Consulta precios, disponibilidad y alertas de stock.", icon: "bi-box-seam", to: "/admin/productos", action: "Consultar productos", permission: PERMISSIONS.PRODUCTS_VIEW },
     { title: "Usuarios", description: "Administra los datos y perfiles de las cuentas registradas.", icon: "bi-people", to: "/admin/usuarios", action: "Gestionar usuarios", permission: PERMISSIONS.USERS_MANAGE },

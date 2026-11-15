@@ -16,15 +16,25 @@ La opción predeterminada `local` conserva EP2. En `api` no se consultan cuentas
 
 La gestión de usuarios y el perfil personal también utilizan PostgreSQL. Administrador crea cuentas con contraseña elegida, edita datos y roles y desactiva o reactiva cuentas conservando su historial. No puede desactivarse ni cambiar su propio rol. La baja revoca las sesiones; reactivar exige un nuevo login. Las versiones impiden sobrescribir cambios y el servidor coordina las modificaciones administrativas concurrentes.
 
-La ruta protegida `/perfil`, accesible desde Mi perfil, permite actualizar los datos propios sin admitir cambios de identidad de sesión, rol, estado o contraseña. La cabecera recupera el nombre guardado; los avisos entre pestañas provocan una revisión de la identidad vigente. La gestión de ejercicios, las rutinas y contacto persistentes todavía requieren integración. La rutina conserva su alcance local de EP2.
+La ruta protegida `/perfil`, accesible desde Mi perfil, permite actualizar los datos propios sin admitir cambios de identidad de sesión, rol, estado o contraseña. La cabecera recupera el nombre guardado; los avisos entre pestañas provocan una revisión de la identidad vigente.
 
 Administración incorpora `/admin/categorias`, `/admin/categorias/nuevo` y `/admin/categorias/:id/editar`, exclusivas de Administrador en modo API. Permite crear, renombrar y desactivar categorías activas. El nombre admite hasta 80 caracteres y es único incluso al cambiar mayúsculas acentuadas o usar escrituras Unicode equivalentes. El servidor exige la versión al editar y dar de baja, conserva las referencias y rechaza desactivar categorías con productos activos. El formulario mantiene su borrador ante errores y ofrece recarga explícita ante conflictos.
 
 Las categorías vigentes se incorporan al selector de productos. El renombre actualiza los productos de la tienda y las etiquetas del carrito; los avisos públicos entre pestañas y la recuperación del foco provocan una nueva consulta. Cliente y Vendedor no ven ni pueden abrir la gestión; las consultas públicas siguen disponibles.
 
+Entrenamiento consulta los ocho ejercicios e imágenes originales desde el backend. Administrador dispone de `/admin/ejercicios`, alta, edición, desactivación y reactivación; Cliente y Vendedor no acceden a su gestión. La biblioteca pública conserva búsqueda, grupo muscular y dificultad. Para agregar un ejercicio se inicia sesión y se selecciona una rutina.
+
+En modo API, `/rutina` requiere sesión y permite crear, seleccionar, renombrar y eliminar rutinas privadas, agregar ejercicios sin repetirlos, ajustar 1–20 series y 1–100 repeticiones, retirar ejercicios y vaciar con confirmación. Cada cuenta admite hasta 20 rutinas y cada rutina, 100 ejercicios distintos. Los nombres son únicos por cuenta. Se recuperan desde otra sesión o equipo; las modificaciones llevan versión y una respuesta de conflicto conserva el borrador hasta una actualización explícita. Los avisos entre pestañas solicitan actualizar sin reemplazar los campos escritos.
+
+Desactivar un ejercicio lo retira de la biblioteca, pero conserva su referencia y la prescripción personal en las rutinas existentes con un aviso. Editar los valores sugeridos no cambia las series o repeticiones que eligió cada usuario. Los datos privados no se escriben en LocalStorage; la rutina local anterior se conserva para el modo EP2 y no se asigna automáticamente a una cuenta.
+
 El [ERS V3](docs/entrega/ERS_KYNEX_V3.docx) define 32 requisitos funcionales y 21 no funcionales, distinguiendo alcance y estado de implementación. Los documentos V2 siguientes describen el cierre histórico de la migración a React.
 
-Verificación de este bloque: 685 pruebas aprobadas en 93 archivos y build de React completado. El backend dispone de 89 pruebas con PostgreSQL, incluidas concurrencia comercial y administrativa, integridad categoría-producto y unicidad Unicode. Edge comprobó cuentas, compra y categorías, su selector en productos, renombre entre pestañas, bloqueo de baja con productos y baja lógica autorizada. Categorías y perfil se revisaron a 390, 768 y 1366 px. Estas cifras no representan el cierre de EP3 ni una medición nueva de cobertura.
+Contacto recibe solicitudes reales mediante `POST /contact` y conserva el contenido ante errores. Un reintento sin cambios reutiliza su referencia UUID; la confirmación se muestra después de persistir y no duplica registros si se perdió la respuesta anterior. La recepción es pública, no transmite JWT ni guarda mensajes en LocalStorage. El visitante conserva lo escrito mientras se determina su sesión inicial.
+
+En modo API, `/admin/contacto` y `/admin/contacto/:id` son exclusivos de Administrador: bandeja paginada, filtro de estado, detalle original inmutable, notas e historial de atención. Los estados son Pendiente, En atención y Resuelta; resolver exige una nota. Un conflicto conserva el borrador y exige recarga explícita. Las notas son internas y no se envían por correo. Vendedor mantiene sus permisos anteriores.
+
+Verificación de este bloque: 724 pruebas aprobadas en 97 archivos y build de React completado. El backend dispone de 134 pruebas con PostgreSQL. Edge comprobó recepción pública, pérdida de respuesta y reintento sin duplicar, bandeja, notas, historial, reapertura, recuperación en otra sesión, conflicto conservado, filtros y logout. Contacto y su detalle se revisaron a 390, 768 y 1366 px. Se conserva la evidencia previa de cuentas, compra y entrenamiento. Estas cifras no representan el cierre de EP3 ni una medición nueva de cobertura.
 
 En el backend, definir `PAYMENT_EMULATOR_ENABLED=true` en `.env` y volver a cargar el entorno antes de iniciar Maven. Las migraciones se aplican al arrancar. El carrito visitante se concilia una vez al acceder y sus ajustes de stock se anuncian. Las cuentas recuperan carrito e historial desde otros equipos; no guardan el carrito privado en LocalStorage. Las rutas `/compra`, `/compras` y `/compras/:id` requieren sesión. El pedido pendiente vence a los 15 minutos y cada intento de pago, a los cinco minutos como máximo. No existe reserva previa de inventario.
 
@@ -329,7 +339,9 @@ comentario obligatorio de hasta 500. Comparte `getEmailError` con los otros
 formularios. El contador muestra la longitud actual del comentario; los errores
 se asocian a los campos, se enfoca el primero inválido y se retiran al corregir.
 
-Se conserva la validación local de la EP1. El botón «Validar mensaje» y la nota
+En modo `api` el botón «Enviar mensaje» guarda la consulta en PostgreSQL y devuelve una referencia. El formulario conserva los valores ante errores, bloquea envíos simultáneos y ofrece «Nuevo mensaje» después de confirmar. La atención interna está disponible en Administración → Contacto y mantiene un historial por solicitud.
+
+En modo `local` se conserva la validación local de la EP1. El botón «Validar mensaje» y la nota
 de demostración aclaran su alcance. El éxito muestra «Mensaje validado correctamente»
 y conserva los valores; editar retira la confirmación hasta volver a validar.
 No se guardan mensajes ni se realizan envíos. La página conserva sesión y carrito,

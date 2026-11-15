@@ -1,9 +1,11 @@
 /*
  * Página y coordinación de la vista.
- * Presenta el contexto de contacto y el formulario de validación local.
+ * Presenta contacto y conecta su envío cuando se utiliza la API.
  */
 
 import ContactForm from "../components/organisms/ContactForm.jsx";
+import { usesApi } from "../config/dataSource.js";
+import { contactApi } from "../services/api/contact.js";
 
 const topics = [
     { icon: "bi-envelope", text: "Consultas generales." },
@@ -19,9 +21,9 @@ function ContactPage() {
         <section className="auth-section" aria-labelledby="contact-form-title"><div className="container"><div className="auth-layout">
             <div className="auth-form-panel">
                 <h2 id="contact-form-title">Tu mensaje</h2>
-                <p className="auth-form-intro">Completa tus datos y valida tu mensaje. Los campos con asterisco son obligatorios.</p>
-                <p className="auth-form-intro">Esta demostración valida el formulario; no envía mensajes.</p>
-                <ContactForm />
+                <p className="auth-form-intro">{usesApi ? "Completa tus datos y envía tu consulta." : "Completa tus datos y valida tu mensaje."} Los campos con asterisco son obligatorios.</p>
+                <p className="auth-form-intro">{usesApi ? "Al recibir tu solicitud se mostrará una referencia de recepción." : "Esta demostración valida el formulario; no envía mensajes."}</p>
+                <ContactForm onSubmit={usesApi ? contactApi.submit : undefined} />
             </div>
             <aside className="auth-side-panel" aria-labelledby="contact-info-title">
                 <i className="bi bi-chat-dots auth-side-icon" aria-hidden="true" /><h2 id="contact-info-title">Contacta a KYNEX</h2>
