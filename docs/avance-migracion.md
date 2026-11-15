@@ -2,7 +2,7 @@
 
 ## Desarrollo de EP3
 
-Corte del 15 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; `main` incorpora las entregas anteriores de cuentas, perfil y compra. Categorías se propone por separado para revisión. El repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
+Corte del 15 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; los cambios pendientes se mantienen en una propuesta de integración para revisión. El repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
 
 Verificado: Spring Boot y PostgreSQL; migraciones; CRUD de productos y categorías con baja lógica y versión; registro completo; JWT, renovación y logout; sesión recuperable y gestión de productos en React. El bloque comercial añade carrito por propietario y conciliación del visitante, dirección de entrega, pedidos históricos, cinco resultados de pago académico e historial propio. Administrador consulta, avanza y anula pedidos con motivo; Vendedor consulta. La aprobación y la restitución de stock son transaccionales e idempotentes.
 
@@ -10,11 +10,13 @@ Usuarios y perfil: CRUD administrativo con baja lógica y reactivación, contras
 
 Categorías: listado, alta, edición y baja lógica desde React, con rutas y menús exclusivos de Administrador. La edición y la baja envían versión; los conflictos conservan el borrador. Se rechaza la baja con productos activos y el bloqueo de categoría evita inconsistencias al crear un producto simultáneamente. Un índice Unicode de PostgreSQL 18 protege nombres con mayúsculas acentuadas y formas equivalentes. La tienda y el carrito reconsultan las etiquetas tras un cambio y al volver a la ventana.
 
-Resultados: 89 pruebas de API con PostgreSQL y 685 pruebas de React en 93 archivos aprobadas; ambos builds completados. Se conserva la evidencia comercial y de cuentas. Edge comprobó alta y duplicado de categoría, selector de productos, renombre entre pestañas, baja bloqueada con productos y baja autorizada tras retirarlos, además de permisos y tres tamaños: 390, 768 y 1366 px. El ERS V3 mantiene 32 RF y 21 RNF y actualiza su estado.
+Entrenamiento: ocho ejercicios e imágenes preservados en el backend; CRUD administrativo con baja lógica y reactivación; biblioteca pública con filtros. Las rutinas pertenecen al usuario autenticado y permiten alta, selección, renombre, prescripción, retirada, vaciado y eliminación. Los límites son 20 rutinas por cuenta, 100 ejercicios por rutina, 1–20 series y 1–100 repeticiones. Un ejercicio desactivado se conserva con aviso en las rutinas previas; los valores sugeridos no reemplazan ajustes personales.
 
-Pendiente: catálogo administrable de ejercicios, rutinas privadas y contacto persistente; operación, copia y restauración y aceptación completa en otro equipo. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, perfil, usuarios, categorías, catálogo y compra sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
+Resultados: 112 pruebas de API con PostgreSQL y 706 pruebas de React en 95 archivos aprobadas; ambos builds completados. Se conserva la evidencia previa. Edge comprobó biblioteca pública, rutinas múltiples, recuperación en otra sesión, rechazo de recursos ajenos, conflicto sin pérdida del valor escrito, gestión de ejercicios, bajas conservadas, confirmaciones y recuperación tras logout. Las vistas personales se revisaron a 390, 768 y 1366 px. El ERS V3 mantiene 32 RF y 21 RNF y actualiza su estado.
 
-La autoevaluación técnica EP3 se mantiene en **85%**, con un margen pendiente estimado del **15%**. El hito de cuentas elevó la estimación anterior de 79% a 85%; incorporar categorías completa otra parte del alcance sin cambiar todavía el nivel de los indicadores pendientes. Se aplican los niveles de la rúbrica a sus pesos normalizados. Es un juicio sobre evidencia, no una calificación, horas ni cobertura de código. Ejercicios, rutinas y contacto siguen siendo obligatorios para el cierre y no añaden ponderaciones a la rúbrica.
+Pendiente: contacto persistente y su atención administrativa; operación, copia y restauración y aceptación completa en otro equipo. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, perfil, usuarios, categorías, catálogo, compra y entrenamiento sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
+
+La autoevaluación técnica EP3 se mantiene en **85%**, con un margen pendiente estimado del **15%**. Categorías y entrenamiento completan parte del alcance, pero todavía falta contacto y la aceptación operativa. Los niveles discretos de la rúbrica no cambian por cada pantalla finalizada. Es un juicio sobre evidencia, no una calificación, horas ni cobertura de código. Contacto sigue siendo obligatorio y no añade ponderaciones a la rúbrica.
 
 | Indicador EP3 | Peso en el encargo | Nivel estimado | Aporte |
 | --- | ---: | ---: | ---: |
@@ -26,7 +28,7 @@ La autoevaluación técnica EP3 se mantiene en **85%**, con un margen pendiente 
 | IE3.3.3 Restricciones en React | 15% | 100% | 15 |
 | **Total estimado** | **100%** | | **85%** |
 
-La integración sube a 80% por incorporar la gestión de cuentas y el perfil en recorridos completos; las restricciones se verifican también en estas nuevas pantallas. API permanece en 60% porque faltan recursos funcionales previstos en el alcance. Modelo y negocio conservan pendientes de entrenamiento y contacto. La sesión y autorización se valoran sobre los escenarios probados; no equivalen a una certificación de seguridad. El encargo pesa 40% de EP3; la presentación individual, 60%, se evalúa por separado.
+La integración se valora en 80% por los recorridos completos de cuentas, compra, catálogo y entrenamiento; las restricciones se verifican también en estas pantallas. API permanece en 60% porque falta contacto, previsto en el alcance. Modelo y negocio conservan ese pendiente. La sesión y autorización se valoran sobre los escenarios probados; no equivalen a una certificación de seguridad. El encargo pesa 40% de EP3; la presentación individual, 60%, se evalúa por separado.
 
 Los porcentajes posteriores corresponden al antecedente de EP2.
 
