@@ -8,7 +8,7 @@ import { useEffect, useId, useState } from "react";
 import FormField from "./FormField.jsx";
 import { getRoutineValueError, routineLimits } from "../../utils/routine.js";
 
-function RoutineItem({ exercise, item, onUpdate, onRemove }) {
+function RoutineItem({ exercise, item, onUpdate, onRemove, disabled = false }) {
     const titleId = useId();
     // Los valores editables se mantienen como texto hasta validarlos y convertirlos en números en el
     // servicio.
@@ -22,11 +22,12 @@ function RoutineItem({ exercise, item, onUpdate, onRemove }) {
 
     // El borrador permite escribir sin guardar cada tecla. Al perder foco se valida y solo se envía
     // un valor distinto del guardado.
-    function commit(field) {
+    async function commit(field) {
+        if(disabled)return;
         const error = getRoutineValueError(field, values[field]);
         if (error) { setErrors(current => ({ ...current, [field]: error })); return; }
         if (Number(values[field]) === item[field]) return;
-        const result = onUpdate(item.id, field, values[field]);
+        const result = await onUpdate(item.id, field, values[field]);
         setErrors(current => ({ ...current, [field]: result.success ? "" : result.message }));
     }
 
@@ -34,10 +35,11 @@ function RoutineItem({ exercise, item, onUpdate, onRemove }) {
         <div className="training-routine-name"><h3 id={titleId}>{exercise.name}</h3><p>{exercise.muscle} · {exercise.equipment}</p></div>
         {Object.entries({ sets: "Series", reps: "Repeticiones" }).map(([field, label]) => <FormField key={field}
             label={label} type="number" min="1" max={routineLimits[field]} step="1" value={values[field]}
+            disabled={disabled}
             helpText={`De 1 a ${routineLimits[field]}`} error={errors[field]} fieldClassName="training-number"
             onChange={event => { setValues(current => ({ ...current, [field]: event.target.value })); setErrors(current => ({ ...current, [field]: "" })); }}
             onBlur={() => commit(field)} onKeyDown={event => { if (event.key === "Enter") event.currentTarget.blur(); }} />)}
-        <button className="training-remove" type="button" aria-label={`Eliminar ${exercise.name} de mi rutina`} onClick={() => onRemove(item.id)}>
+        <button className="training-remove" type="button" disabled={disabled} aria-label={`Eliminar ${exercise.name} de mi rutina`} onClick={() => onRemove(item.id)}>
             <i className="bi bi-trash" aria-hidden="true" /> Eliminar
         </button>
     </article>;
