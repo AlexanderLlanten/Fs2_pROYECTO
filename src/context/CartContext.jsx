@@ -4,11 +4,15 @@
  * los totales. Expone operaciones de compra y persiste cuando el catálogo se puede leer.
  */
 
-import { createContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { CartContext } from "./cartContext.js";
+import ApiCartProvider from "./ApiCartProvider.jsx";
+import useAuth from "../hooks/useAuth.js";
+import { usesApi } from "../config/dataSource.js";
 import useCatalog from "../hooks/useCatalog.js";
 import { CART_KEY, calculateCartSummary, normalizeQuantity } from "../utils/cart.js";
 
-export const CartContext = createContext(null);
+export { CartContext } from "./cartContext.js";
 
 // Lee kynex_cart e interpreta su JSON. Si falta, está dañado o no es un arreglo, devuelve una lista
 // vacía en memoria.
@@ -31,7 +35,7 @@ function reconcileCart(cart, products) {
     });
 }
 
-function CartProvider({ children }) {
+function LocalCartProvider({ children }) {
     const catalog = useCatalog();
     // El estado guarda la compra mínima y el error de persistencia. El detalle y los importes se
     // calculan desde esos datos y el catálogo.
@@ -98,9 +102,19 @@ function CartProvider({ children }) {
     function clearCart() { setCart([]); }
 
     return <CartContext.Provider value={{
-        cart, detailedCart, ...summary, storageError,
+        cart, detailedCart, ...summary, storageError, cartLoading: false, cartBusy: false,
         addToCart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart
     }}>{children}</CartContext.Provider>;
+}
+
+function ConnectedCart({ children }) {
+    const { user, isLoading } = useAuth();
+    if (isLoading) return <CartContext.Provider value={{ cart: [], detailedCart: [], ...calculateCartSummary([]), cartLoading: true,
+        addToCart: () => ({ success: false, message: "Espera a recuperar la sesión." }) }}>{children}</CartContext.Provider>;
+    return user ? <ApiCartProvider key={user.id} ownerId={user.id}>{children}</ApiCartProvider> : <LocalCartProvider>{children}</LocalCartProvider>;
+}
+function CartProvider({ children }) {
+    return usesApi ? <ConnectedCart>{children}</ConnectedCart> : <LocalCartProvider>{children}</LocalCartProvider>;
 }
 
 export default CartProvider;

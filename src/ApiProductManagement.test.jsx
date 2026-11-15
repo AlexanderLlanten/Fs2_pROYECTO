@@ -21,6 +21,8 @@ beforeEach(async () => {
         else if (path === "/auth/login" || path === "/auth/refresh") result = { accessToken: "admin-token", expiresIn: 600, user: { id: 17, firstName: "Administración", lastName: "KYNEX", email: "admin@example.com", role } };
         else if (path === "/auth/me") result = { id: 17, firstName: "Administración", role };
         else if (path === "/categories") result = [{ id: 2, name: "Creatinas" }, { id: 9, name: "Especial" }];
+        else if (path === "/admin/orders") result = [];
+        else if (path === "/cart") result = { version: 0, items: [], totalItems: 0, subtotal: 0, shipping: 0, total: 0, canCheckout: false, warnings: [] };
         else if (path === "/products" && options.method === "GET") result = structuredClone(records);
         else if (options.method === "PUT") {
             mutations.push({ method: options.method, data, token: options.headers.Authorization });
@@ -83,7 +85,7 @@ describe("Productos conectados con autenticación", () => {
         expect(screen.queryByRole("link", { name: "Nuevo producto" })).not.toBeInTheDocument();
         expect(screen.queryByRole("button", { name: /Eliminar/ })).not.toBeInTheDocument();
         await userEvent.click(screen.getByRole("link", { name: "Pedidos", exact: true }));
-        expect(await screen.findByText("Esta sección estará disponible próximamente.")).toBeInTheDocument();
+        expect(await screen.findByText("No hay pedidos disponibles.")).toBeInTheDocument();
         expect(mutations).toEqual([]);
     });
 });

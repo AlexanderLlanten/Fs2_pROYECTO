@@ -122,6 +122,10 @@ export function createApiSession({ request = api, lock = withBrowserLock, now = 
         subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
         initialize: () => initialized ? Promise.resolve(state.user) : restore(),
         restore, login, logout, register, authorized, identity,
+        guard() {
+            const expected = generation;
+            return () => { if (generation !== expected) throw new ApiError("La cuenta cambió durante la operación. Inténtalo nuevamente.", 401); };
+        },
         expiresIn: () => Math.max(0, expiresAt - now()),
         invalidate(loggedOut = false) { ++generation; if (loggedOut) logoutIntent?.set(); else logoutIntent?.clear(); clear(); }
     };

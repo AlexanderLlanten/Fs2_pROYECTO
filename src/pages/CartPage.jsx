@@ -5,7 +5,7 @@
  */
 
 import {
-    Link
+    Link, useNavigate
 } from "react-router-dom";
 
 import CartItem from "../components/molecules/CartItem.jsx";
@@ -14,8 +14,10 @@ import CartSummary from "../components/organisms/CartSummary.jsx";
 import useCart from "../hooks/useCart.js";
 import useCatalog from "../hooks/useCatalog.js";
 import CatalogError from "../components/molecules/CatalogError.jsx";
+import { usesApi } from "../config/dataSource.js";
 
 function CartPage() {
+    const navigate = useNavigate();
     const catalog = useCatalog();
     const {
         detailedCart,
@@ -28,7 +30,7 @@ function CartPage() {
         decreaseQuantity,
         removeFromCart,
         clearCart,
-        storageError
+        storageError, cartLoading, cartBusy, canCheckout, reloadCart, warnings = [], loadError
     } = useCart();
 
     return (
@@ -62,9 +64,10 @@ function CartPage() {
 
             <section className="cart-page-section">
                 <div className="container">
-                    {storageError && <p className="auth-form-alert" role="alert">{storageError}</p>}
+                    {storageError && <div className="auth-form-alert" role="alert"><p>{storageError}</p>{reloadCart && <button className="btn btn-outline-light" onClick={() => reloadCart()}>Recargar carrito</button>}</div>}
+                    {warnings.map((warning, index) => <p className="auth-form-alert" role="status" key={index}>{warning}</p>)}
                     {
-                        !catalog.success ? <CatalogError resource={catalog} /> : detailedCart.length === 0
+                        cartLoading ? <p role="status">Cargando carrito…</p> : loadError ? <p>El carrito no pudo cargarse. Reintenta la consulta.</p> : !catalog.success ? <CatalogError resource={catalog} /> : detailedCart.length === 0
                             ? (
                                 <div className="catalog-empty">
                                     <i
@@ -98,6 +101,7 @@ function CartPage() {
                                                         <CartItem
                                                             key={product.id}
                                                             product={product}
+                                                            disabled={cartBusy}
                                                             onIncrease={
                                                                 () =>
                                                                     increaseQuantity(
@@ -125,7 +129,7 @@ function CartPage() {
                                         <button
                                             type="button"
                                             className="btn btn-outline-danger mt-4"
-                                            onClick={clearCart}
+                                            onClick={clearCart} disabled={cartBusy}
                                         >
                                             Vaciar carrito
                                         </button>
@@ -138,6 +142,8 @@ function CartPage() {
                                             shipping={shipping}
                                             total={total}
                                             missingForFreeShipping={missingForFreeShipping}
+                                            onCheckout={usesApi ? () => navigate("/compra") : undefined}
+                                            disabled={cartBusy || cartLoading || !!storageError || canCheckout === false}
                                         />
                                     </div>
                                 </div>

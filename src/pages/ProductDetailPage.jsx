@@ -96,9 +96,10 @@ function ProductDetailPage() {
 
     // Responde al clic de compra y comunica la operación al callback o al contexto del carrito; este
     // último controla el stock vigente.
-    function handleAddToCart() {
+    async function handleAddToCart() {
         if (!quantity) return;
-        addToCart(product, quantity);
+        const result = await addToCart(product, quantity);
+        if (result?.success === false) { setFeedback({ id: product.id, message: result.message }); return; }
         setFeedback({ id: product.id, message: quantity === 1 ? "Producto agregado al carrito." : `${quantity} productos agregados al carrito.` });
     }
 

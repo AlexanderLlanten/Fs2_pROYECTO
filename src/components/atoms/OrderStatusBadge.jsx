@@ -5,11 +5,12 @@
  */
 
 import Badge from "./Badge.jsx";
+import { orderLabels } from "../../services/api/commerce.js";
 
 const modifiers = { Pendiente: "pending", Preparación: "preparation", Despachado: "shipped" };
 
 function OrderStatusBadge({ status }) {
-    return <Badge className={`kynex-order-status kynex-order-status--${modifiers[status] ?? "default"}`}>{status}</Badge>;
+    return <Badge className={`kynex-order-status kynex-order-status--${modifiers[status] ?? "default"}`}>{orderLabels[status] || status}</Badge>;
 }
 
 export default OrderStatusBadge;
