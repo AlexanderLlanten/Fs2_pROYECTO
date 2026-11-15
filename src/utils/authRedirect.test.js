@@ -9,6 +9,11 @@ import { describe, expect, it } from "vitest";
 import { getLoginDestination } from "./authRedirect.js";
 
 describe("Destino posterior al acceso", () => {
+    it.each(["/admin/categorias","/admin/categorias/nuevo","/admin/categorias/2/editar"])("reserva %s a Administración",pathname=>{
+        expect(getLoginDestination({pathname},"Administrador")).toBe(pathname);
+        expect(getLoginDestination({pathname},"Vendedor")).toBe("/admin");
+        expect(getLoginDestination({pathname},"Cliente")).toBe("/productos");
+    });
     it.each(["/", "/carrito", "/productos", "/productos/2", "/contacto", "/entrenamiento", "/rutina", "/nosotros", "/blog", "/blog/creatina-y-rendimiento", "/blog/recuperacion-muscular"])("permite volver a %s", pathname => {
         expect(getLoginDestination({ pathname })).toBe(pathname);
     });
