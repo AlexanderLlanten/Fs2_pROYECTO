@@ -16,7 +16,7 @@ function CartItem({
     product,
     onIncrease,
     onDecrease,
-    onRemove
+    onRemove, disabled = false
 }) {
     // El total de esta línea es precio por cantidad. Aumentar, disminuir y eliminar se comunican a
     // las funciones recibidas por propiedades.
@@ -56,11 +56,12 @@ function CartItem({
             <QuantitySelector
                 quantity={product.quantity}
                 disabledIncrease={
-                    product.quantity >=
+                    disabled || product.quantity >=
                     product.stock
                 }
                 onIncrease={onIncrease}
                 onDecrease={onDecrease}
+                disabledDecrease={disabled}
                 label={`Cantidad de ${product.name}`}
             />
 
@@ -72,6 +73,7 @@ function CartItem({
             <button
                 type="button"
                 className="cart-remove-button-react"
+                disabled={disabled}
                 aria-label={`Eliminar ${product.name} del carrito`}
                 onClick={onRemove}
             >

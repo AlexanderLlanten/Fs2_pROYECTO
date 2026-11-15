@@ -39,7 +39,7 @@ function HomePage() {
 
     // Responde al clic de compra y comunica la operación al callback o al contexto del carrito; este
     // último controla el stock vigente.
-    function handleAddToCart(product) {
+    async function handleAddToCart(product) {
         const currentQuantity = detailedCart.find(item => item.id === product.id)?.quantity ?? 0;
 
         if (currentQuantity >= product.stock) {
@@ -47,7 +47,8 @@ function HomePage() {
             return;
         }
 
-        addToCart(product);
+        const result = await addToCart(product);
+        if (result?.success === false) { setFeedback(result.message); return result; }
         setFeedback(`Agregaste ${product.name} al carrito.`);
     }
 

@@ -12,7 +12,8 @@ function CartSummary({
     subtotal,
     shipping,
     total,
-    missingForFreeShipping
+    missingForFreeShipping,
+    onCheckout, disabled = false, hideAction = false
 }) {
     // El estado controla la aparición del aviso de checkout futuro al pulsar Continuar compra.
     const [showCheckoutNotice, setShowCheckoutNotice] = useState(false);
@@ -103,17 +104,17 @@ function CartSummary({
                 {shippingMessage}
             </p>
 
-            <button
+            {!hideAction && <button
                 type="button"
                 className="btn btn-success w-100"
-                onClick={() => setShowCheckoutNotice(true)}
+                onClick={onCheckout || (() => setShowCheckoutNotice(true))}
                 aria-describedby={showCheckoutNotice && totalItems > 0 ? noticeId : undefined}
                 disabled={
-                    totalItems === 0
+                    totalItems === 0 || disabled
                 }
             >
                 Continuar compra
-            </button>
+            </button>}
             <p id={noticeId} className="cart-checkout-notice" role="status" aria-live="polite" aria-atomic="true">
                 {showCheckoutNotice && totalItems > 0
                     ? "El proceso de checkout será implementado en una etapa posterior."

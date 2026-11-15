@@ -14,12 +14,15 @@ import Price from "../atoms/Price.jsx";
 import StockBadge from "../atoms/StockBadge.jsx";
 import ProductImage from "../atoms/ProductImage.jsx";
 import { productList } from "../../utils/productDetails.js";
+import { useState } from "react";
 
 function ProductCard({
     product,
     onAddToCart,
     headingLevel = 2
 }) {
+    const [busy, setBusy] = useState(false);
+    const [message, setMessage] = useState("");
     const Heading = `h${headingLevel}`;
     const isOutOfStock =
         Number(product.stock) <= 0;
@@ -30,22 +33,23 @@ function ProductCard({
 
     // El botón comunica el producto mediante la función recibida. El contexto conserva la
     // responsabilidad final sobre cantidades y stock.
-    function handleAddToCart() {
+    async function handleAddToCart() {
         if (
             isOutOfStock
-            ||
+            || busy ||
             !canAddToCart
         ) {
             return;
         }
 
-        onAddToCart(
-            product
-        );
+        setBusy(true); setMessage("");
+        try { const result = await onAddToCart(product); if (result?.success === false) setMessage(result.message); }
+        catch { setMessage("No fue posible actualizar el carrito. Inténtalo nuevamente."); }
+        finally { setBusy(false); }
     }
 
     return (
-        <article className="shop-product-card">
+        <article className="shop-product-card" aria-busy={busy}>
             <div className="shop-product-visual">
                 <StockBadge
                     stock={product.stock}
@@ -102,7 +106,7 @@ function ProductCard({
                             disabled={
                                 isOutOfStock
                                 ||
-                                !canAddToCart
+                                !canAddToCart || busy
                             }
                             onClick={handleAddToCart}
                         >
@@ -111,6 +115,7 @@ function ProductCard({
                     </div>
                 </div>
             </div>
+            {message && <p className="auth-form-alert" role="alert">{message}</p>}
         </article>
     );
 }
