@@ -16,6 +16,7 @@ const numeric = value => (typeof value === "number" || typeof value === "string"
 export function productImageSource(value) {
     const source = text(value);
     if (!source) return "";
+    if (/^\/media\/products\/[a-zA-Z0-9._-]+\.(png|jpg|jpeg|webp)$/.test(source)) return source;
     // Las rutas de imágenes heredadas se convierten al formato /assets/. Las direcciones externas
     // solo admiten http o https sin credenciales.
     if (/^(?:\.\.?\/)*assets\//.test(source)) return `/${source.slice(source.indexOf("assets/"))}`;
@@ -37,19 +38,24 @@ export function normalizeProduct(values = {}) {
 }
 
 // Devuelve los errores de código, nombre, precio, stock, categoría y demás campos del producto.
-export function getProductErrors(values = {}) {
+export function getProductErrors(values = {}, { categories = PRODUCT_CATEGORIES, remote = false } = {}) {
     const data = normalizeProduct(values);
     // Este validador agrega únicamente los campos con error; por eso un objeto sin propiedades
     // significa que los datos son válidos.
     const errors = {};
     if (data.code.length < 3) errors.code = "El código debe tener al menos 3 caracteres.";
-    if (!PRODUCT_CATEGORIES.includes(data.category)) errors.category = "Selecciona una categoría válida.";
+    if (!categories.includes(data.category)) errors.category = "Selecciona una categoría válida.";
     if (!data.name || data.name.length > 100) errors.name = "El nombre es obligatorio y admite hasta 100 caracteres.";
     if (data.description.length > 500) errors.description = "La descripción no puede superar 500 caracteres.";
     if (!Number.isFinite(data.price) || data.price < 0) errors.price = "El precio debe ser un número igual o superior a 0.";
     if (!Number.isSafeInteger(data.stock) || data.stock < 0) errors.stock = "El stock debe ser un entero igual o superior a 0.";
     if (data.criticalStock !== null && (!Number.isSafeInteger(data.criticalStock) || data.criticalStock < 0)) errors.criticalStock = "El stock crítico debe ser un entero igual o superior a 0.";
     if (text(values.image) && !data.image) errors.image = "Usa una URL http(s) o una ruta dentro de /assets/.";
+    if (remote) {
+        if (!/^[A-Z0-9_-]{3,30}$/.test(data.code)) errors.code = "Usa un código de 3 a 30 letras, números o guiones.";
+        if (data.price >= 1e12 || Math.abs(data.price * 100 - Math.round(data.price * 100)) > 0.000001) errors.price = "El precio admite hasta 12 dígitos enteros y 2 decimales.";
+        if (data.image.startsWith("/assets/")) errors.image = "Usa una URL http(s) o una imagen de /media/products/.";
+    }
     return errors;
 }
 

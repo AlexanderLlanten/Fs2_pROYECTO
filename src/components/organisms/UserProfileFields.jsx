@@ -7,7 +7,7 @@
 import FormField from "../molecules/FormField.jsx";
 import { regions } from "../../data/regions.js";
 
-function UserProfileFields({ values, errors, disabled, onChange, onBlur, inputRefs, children }) {
+function UserProfileFields({ values, errors, disabled, onChange, onBlur, inputRefs, children, remote = false }) {
     // Las comunas dependen de la región elegida. El formulario que usa estos campos reinicia la
     // comuna cuando cambia la región.
     const communes = regions.find(region => region.name === values.region)?.communes ?? [];
@@ -25,7 +25,7 @@ function UserProfileFields({ values, errors, disabled, onChange, onBlur, inputRe
             <FormField {...fieldProps("firstName")} label="Nombre" autoComplete="given-name" maxLength={50} />
             <FormField {...fieldProps("lastName")} label="Apellidos" autoComplete="family-name" maxLength={100} fieldClassName="auth-field-wide" />
             <FormField {...fieldProps("email")} label="Correo electrónico" type="email" autoComplete="email" maxLength={100}
-                helpText="Se permiten cuentas @duoc.cl, @profesor.duoc.cl y @gmail.com." fieldClassName="auth-field-wide" />
+                helpText={remote ? "Usa un correo al que tengas acceso." : "Se permiten cuentas @duoc.cl, @profesor.duoc.cl y @gmail.com."} fieldClassName="auth-field-wide" />
             {children}
             <FormField {...fieldProps("birthDate")} label="Fecha de nacimiento" type="date" autoComplete="bday" helpText="Opcional." />
             <FormField {...fieldProps("region")} label="Región" as="select" autoComplete="address-level1">

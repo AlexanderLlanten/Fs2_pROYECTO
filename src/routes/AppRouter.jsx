@@ -34,6 +34,8 @@ import RoutinePage from "../pages/RoutinePage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
 import BlogPage from "../pages/BlogPage.jsx";
 import BlogArticlePage from "../pages/BlogArticlePage.jsx";
+import PendingModulePage from "../pages/PendingModulePage.jsx";
+import { usesApi } from "../config/dataSource.js";
 
 // Las rutas hijas comparten su layout. Las guardas administrativas se evalúan antes de mostrar el
 // contenido protegido; :id y :slug son segmentos variables.
@@ -60,9 +62,9 @@ function AppRouter() {
                     <Route path="admin" element={<AdminLayout />}>
                         <Route index element={<AdminHomePage />} />
                         <Route element={<ProtectedRoute permission={PERMISSIONS.USERS_MANAGE} />}>
-                            <Route path="usuarios" element={<AdminUsersPage />} />
-                            <Route path="usuarios/nuevo" element={<AdminUserFormPage />} />
-                            <Route path="usuarios/:id/editar" element={<AdminUserFormPage />} />
+                            <Route path="usuarios" element={usesApi ? <PendingModulePage title="Usuarios" /> : <AdminUsersPage />} />
+                            <Route path="usuarios/nuevo" element={usesApi ? <PendingModulePage title="Usuarios" /> : <AdminUserFormPage />} />
+                            <Route path="usuarios/:id/editar" element={usesApi ? <PendingModulePage title="Usuarios" /> : <AdminUserFormPage />} />
                             <Route path="usuarios/*" element={<NotFoundPage admin />} />
                         </Route>
                         <Route element={<ProtectedRoute permission={PERMISSIONS.PRODUCTS_VIEW} />}>
@@ -74,8 +76,8 @@ function AppRouter() {
                             <Route path="productos/*" element={<NotFoundPage admin />} />
                         </Route>
                         <Route element={<ProtectedRoute permission={PERMISSIONS.ORDERS_VIEW} />}>
-                            <Route path="pedidos" element={<AdminOrdersPage />} />
-                            <Route path="pedidos/:id" element={<AdminOrderDetailPage />} />
+                            <Route path="pedidos" element={usesApi ? <PendingModulePage title="Pedidos" /> : <AdminOrdersPage />} />
+                            <Route path="pedidos/:id" element={usesApi ? <PendingModulePage title="Pedidos" /> : <AdminOrderDetailPage />} />
                             <Route path="pedidos/*" element={<NotFoundPage admin />} />
                         </Route>
                         <Route path="*" element={<NotFoundPage admin />} />

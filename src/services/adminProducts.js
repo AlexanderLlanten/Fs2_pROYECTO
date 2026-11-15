@@ -8,6 +8,8 @@ import { getSession } from "./auth.js";
 import { persistProducts, readCatalog } from "./productStore.js";
 import { getProductErrors, normalizeProduct, parseProductId } from "../utils/products.js";
 import { hasPermission, PERMISSIONS } from "../utils/permissions.js";
+import { usesApi } from "../config/dataSource.js";
+import { getRemoteProduct, saveRemoteProduct, deleteRemoteProduct } from "./api/adminProducts.js";
 
 const forbidden = { success: false, code: "FORBIDDEN", message: "No tienes permiso para modificar productos." };
 const notFound = { success: false, code: "NOT_FOUND", message: "No fue posible encontrar el producto solicitado." };
@@ -16,16 +18,12 @@ const storageError = { success: false, code: "STORAGE", message: "No fue posible
 
 // Comprueba permiso de gestión de productos antes de entregar el catálogo al servicio administrativo.
 function readManagedCatalog() {
-    if (import.meta.env.VITE_CATALOG_SOURCE === "api") return {
-        success: false, code: "INTEGRATION_PENDING",
-        message: "La gestión de productos del servidor todavía está en integración. El catálogo conectado está disponible para consulta."
-    };
     if (!hasPermission(getSession()?.role, PERMISSIONS.PRODUCTS_MANAGE)) return forbidden;
     return readCatalog();
 }
 
 // Obtiene un producto para gestión tras comprobar permiso, lectura e identificador.
-export function getManagedProduct(id) {
+function getLocalManagedProduct(id) {
     try {
         const result = readManagedCatalog();
         if (!result.success) return result;
@@ -40,7 +38,7 @@ const conflict = (product, expected) => expected && JSON.stringify(product) !== 
 
 // Crea o modifica un producto, conserva metadatos existentes, valida campos y código único y rechaza
 // conflictos antes de guardar.
-export function saveManagedProduct(values, { id, expectedProduct } = {}) {
+function saveLocalManagedProduct(values, { id, expectedProduct } = {}) {
     try {
         const store = readManagedCatalog();
         if (!store.success) return store;
@@ -65,7 +63,7 @@ export function saveManagedProduct(values, { id, expectedProduct } = {}) {
 }
 
 // Comprueba permiso, identidad y versión esperada y guarda el catálogo sin el producto seleccionado.
-export function deleteManagedProduct(id, expectedProduct) {
+function deleteLocalManagedProduct(id, expectedProduct) {
     try {
         const store = readManagedCatalog();
         if (!store.success) return store;
@@ -76,3 +74,8 @@ export function deleteManagedProduct(id, expectedProduct) {
         return { success: true };
     } catch { return storageError; }
 }
+
+// Durante la transición, el modo conectado nunca escribe el catálogo demostrativo.
+export const getManagedProduct = (...args) => usesApi ? getRemoteProduct(...args) : getLocalManagedProduct(...args);
+export const saveManagedProduct = (...args) => usesApi ? saveRemoteProduct(...args) : saveLocalManagedProduct(...args);
+export const deleteManagedProduct = (...args) => usesApi ? deleteRemoteProduct(...args) : deleteLocalManagedProduct(...args);

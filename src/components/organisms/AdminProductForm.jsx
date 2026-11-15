@@ -17,7 +17,8 @@ function initialValues(product) {
     return Object.fromEntries(fieldNames.map(name => [name, String(product?.[name] ?? "")]));
 }
 
-function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
+function AdminProductForm({ initialProduct, onSubmit, disabled = false, categories = PRODUCT_CATEGORIES, remote = false }) {
+    const validate = values => getProductErrors(values, { categories, remote });
     // useState conserva datos de la interfaz entre renderizados; la segunda posición de cada par es
     // la función que solicita su actualización.
     const [values, setValues] = useState(() => initialValues(initialProduct));
@@ -38,7 +39,7 @@ function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
         const { name, value } = event.target;
         const next = { ...values, [name]: value };
         setValues(next); setMessage("");
-        setErrors(current => ({ ...current, ...(current[name] ? { [name]: getProductErrors(next)[name] } : {}) }));
+        setErrors(current => ({ ...current, ...(current[name] ? { [name]: validate(next)[name] } : {}) }));
     }
     // Actualiza errores visibles y selecciona el primer campo que debe recibir foco.
     function showErrors(next) { setErrors(next); setFocusField(fieldNames.find(name => next[name])); }
@@ -49,7 +50,7 @@ function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
         // estado de React.
         event.preventDefault();
         if (isDisabled) return;
-        const next = getProductErrors(values);
+        const next = validate(values);
         if (Object.keys(next).length) { showErrors(next); setMessage("Revisa los campos marcados antes de guardar el producto."); return; }
         setBusy(true); setMessage("");
         try {
@@ -65,7 +66,7 @@ function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
     // controles.
     function props(name) {
         return { name, value: values[name], error: errors[name], disabled: isDisabled, onChange: handleChange,
-            onBlur: () => setErrors(current => ({ ...current, [name]: getProductErrors(values)[name] })),
+            onBlur: () => setErrors(current => ({ ...current, [name]: validate(values)[name] })),
             inputRef: element => { inputs.current[name] = element; } };
     }
     const data = normalizeProduct(values);
@@ -76,14 +77,14 @@ function AdminProductForm({ initialProduct, onSubmit, disabled = false }) {
             <FormField {...props("code")} label="Código" required minLength={3} autoComplete="off" placeholder="KYN007" helpText="Mínimo 3 caracteres. Debe ser único en el catálogo." />
             <FormField {...props("category")} label="Categoría" as="select" required>
                 <option value="">Selecciona una categoría</option>
-                {PRODUCT_CATEGORIES.map(category => <option key={category} value={category}>{category}</option>)}
+                {categories.map(category => <option key={category} value={category}>{category}</option>)}
             </FormField>
             <FormField {...props("name")} label="Nombre" required maxLength={100} fieldClassName="auth-field-wide" />
             <FormField {...props("description")} label="Descripción" as="textarea" rows={4} maxLength={500} fieldClassName="auth-field-wide" helpText={`${values.description.length} / 500 caracteres. Opcional.`} />
             <FormField {...props("price")} label="Precio" type="number" required min={0} step="0.01" helpText="Precio en pesos chilenos. Puede ser 0." />
             <FormField {...props("stock")} label="Stock" type="number" required min={0} step={1} />
             <FormField {...props("criticalStock")} label="Stock crítico" type="number" min={0} step={1} helpText="Opcional. Alerta cuando el stock sea igual o inferior." />
-            <FormField {...props("image")} label="Imagen" helpText="Opcional. URL http(s) o ruta /assets/. Si falla, se muestra el ícono." />
+            <FormField {...props("image")} label="Imagen" helpText={remote ? "Opcional. URL http(s) o recurso /media/products/." : "Opcional. URL http(s) o ruta /assets/. Si falla, se muestra el ícono."} />
         </div>
         {critical && <p className="auth-form-alert" role="status">Stock crítico: las unidades disponibles son iguales o inferiores al umbral indicado.</p>}
         {message && <p className="auth-form-alert" role="alert">{message}</p>}

@@ -4,15 +4,19 @@ Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del invent
 
 ## Desarrollo EP3
 
-La rama `codex/ep3-integracion` inicia la conexión con el nuevo [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). La versión EP2 continúa disponible en el historial y la actualización no modifica `main`.
+La rama `codex/ep3-integracion` continúa la conexión con el [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). La primera entrega EP3 ya está integrada en `main`; los cambios nuevos se proponen para revisión. La versión EP2 permanece disponible en el historial.
 
-La primera entrega incorpora el cliente HTTP común, lectura compartida del catálogo remoto, imágenes servidas por la API y estados de carga, error y reintento. Para activarla, copiar `.env.example` como `.env`, definir `VITE_CATALOG_SOURCE=api` y mantener `VITE_API_URL=http://localhost:8080/api/v1`. Iniciar el backend y reiniciar Vite. Su configuración CORS debe admitir el origen mostrado por Vite.
+El modo conectado integra catálogo, registro con perfil completo y contraseña elegida, login, recuperación de sesión al recargar, renovación y logout. Administrador puede crear, editar y desactivar productos; Vendedor conserva consulta. Las categorías se obtienen del servidor y se preservan metadatos, imágenes y versión al editar.
 
-La opción predeterminada `local` conserva EP2. En el modo `api` no se utilizan semillas locales ante un fallo del servidor. La gestión local de productos se bloquea: las cuentas demostrativas no autorizan escrituras en PostgreSQL. La sesión React, el registro, la administración conectada, el carrito por cuenta, los pedidos, el pago emulado, las rutinas y contacto todavía requieren integración.
+Para activarlo, copiar `.env.example` como `.env`, definir `VITE_DATA_SOURCE=api` y mantener `VITE_API_URL=http://localhost:8080/api/v1`. Iniciar PostgreSQL y el backend; después ejecutar `npm.cmd run dev -- --port 5173 --strictPort`. Usar `http://localhost:5173`, con ese origen incluido en `CORS_ALLOWED_ORIGINS`. Reiniciar Vite al cambiar variables. La opción anterior `VITE_CATALOG_SOURCE=api` también activa esta integración completa.
+
+La opción predeterminada `local` conserva EP2. En `api` no se consultan cuentas ni catálogo demostrativos ante un fallo del servidor. El JWT permanece en memoria; una cookie HttpOnly permite recuperar la identidad validada. Web Locks coordina renovaciones entre pestañas y BroadcastChannel transmite únicamente avisos de sesión. Las rutas esperan la recuperación antes de presentar contenido privado y las peticiones no se reintentan bajo otra cuenta si cambia la sesión.
+
+La gestión administrativa de usuarios, los pedidos, el carrito por cuenta, el pago emulado, las rutinas y contacto persistentes todavía requieren integración. Usuarios y pedidos administrativos muestran disponibilidad futura en el modo API para evitar confundir registros demostrativos con datos reales. Las rutinas y el carrito existentes mantienen por ahora su alcance local de EP2. El perfil se guarda al registrar; su edición personal se incorporará después.
 
 El [ERS V3](docs/entrega/ERS_KYNEX_V3.docx) define 32 requisitos funcionales y 21 no funcionales, distinguiendo alcance y estado de implementación. Los documentos V2 siguientes describen el cierre histórico de la migración a React.
 
-Verificación de este bloque: 610 pruebas aprobadas en 83 archivos y build de React completado. El backend dispone de su propia verificación de API y PostgreSQL; estas cifras no representan el cierre de EP3.
+Verificación de este bloque: 638 pruebas aprobadas en 87 archivos y build de React completado. El backend dispone de 30 pruebas con PostgreSQL. Estas cifras no representan el cierre de EP3.
 
 Se retiraron los 19 HTML, 7 CSS y 25 módulos JavaScript de la implementación anterior.
 La aplicación conserva su entrada `index.html` y las 19 imágenes utilizadas por React.
