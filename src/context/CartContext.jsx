@@ -35,7 +35,7 @@ function reconcileCart(cart, products) {
     });
 }
 
-function LocalCartProvider({ children }) {
+function LocalCartProvider({ children, pendingSession = false }) {
     const catalog = useCatalog();
     // El estado guarda la compra mínima y el error de persistencia. El detalle y los importes se
     // calculan desde esos datos y el catálogo.
@@ -55,18 +55,18 @@ function LocalCartProvider({ children }) {
     // para no borrar una compra por un error de lectura.
     useEffect(() => {
         // Un fallo al leer el catálogo no debe borrar una compra guardada.
-        if (!catalog.success) return;
+        if (!catalog.success || pendingSession) return;
         if (JSON.stringify(storedCart) !== JSON.stringify(cart)) setCart(cart);
         try {
             localStorage.setItem(CART_KEY, JSON.stringify(cart));
             setStorageError("");
         } catch { setStorageError("No fue posible guardar el carrito. Los cambios se conservarán mientras esta página siga abierta."); }
-    }, [cart, storedCart, catalog.success]);
+    }, [cart, storedCart, catalog.success, pendingSession]);
 
     // Busca el producto vigente y agrega o incrementa su cantidad respetando stock. Usa una
     // actualización funcional para trabajar sobre el estado más reciente.
     function addToCart(candidate, quantity = 1) {
-        if (!catalog.success || !Number.isSafeInteger(quantity) || quantity <= 0) return;
+        if (pendingSession || !catalog.success || !Number.isSafeInteger(quantity) || quantity <= 0) return;
         // Consultar el producto vigente, incluso si el consumidor conserva una copia antigua.
         const product = catalog.products.find(item => item.id === candidate?.id);
         if (!product || product.stock <= 0) return;
@@ -83,7 +83,7 @@ function LocalCartProvider({ children }) {
 
     // Incrementa una unidad del producto identificado y respeta su stock vigente.
     function increaseQuantity(id) {
-        if (!catalog.success) return;
+        if (pendingSession || !catalog.success) return;
         const product = catalog.products.find(item => item.id === id);
         if (!product) return;
         setCart(current => reconcileCart(current, catalog.products).map(item => item.id === id
@@ -91,27 +91,30 @@ function LocalCartProvider({ children }) {
     }
     // Resta una unidad y retira las entradas cuya cantidad queda en cero.
     function decreaseQuantity(id) {
-        if (!catalog.success) return;
+        if (pendingSession || !catalog.success) return;
         setCart(current => reconcileCart(current, catalog.products)
             .map(item => item.id === id ? { ...item, quantity: item.quantity - 1 } : item)
             .filter(item => item.quantity > 0));
     }
     // Conserva todos los elementos salvo el identificador indicado.
-    function removeFromCart(id) { setCart(current => current.filter(item => item?.id !== id)); }
+    function removeFromCart(id) { if (!pendingSession) setCart(current => current.filter(item => item?.id !== id)); }
     // Reemplaza el estado del carrito por una lista vacía.
-    function clearCart() { setCart([]); }
+    function clearCart() { if (!pendingSession) setCart([]); }
 
-    return <CartContext.Provider value={{
+    const value = pendingSession ? { cart: [], detailedCart: [], ...calculateCartSummary([]), cartLoading: true,
+        addToCart: () => ({ success: false, message: "Espera a recuperar la sesión." }) } : {
         cart, detailedCart, ...summary, storageError, cartLoading: false, cartBusy: false,
         addToCart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart
-    }}>{children}</CartContext.Provider>;
+    };
+    return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 function ConnectedCart({ children }) {
     const { user, isLoading } = useAuth();
-    if (isLoading) return <CartContext.Provider value={{ cart: [], detailedCart: [], ...calculateCartSummary([]), cartLoading: true,
-        addToCart: () => ({ success: false, message: "Espera a recuperar la sesión." }) }}>{children}</CartContext.Provider>;
-    return user ? <ApiCartProvider key={user.id} ownerId={user.id}>{children}</ApiCartProvider> : <LocalCartProvider>{children}</LocalCartProvider>;
+    // Mantiene la misma rama mientras se determina que es visitante: evita desmontar formularios
+    // públicos y perder lo escrito al finalizar la recuperación inicial de sesión.
+    return user ? <ApiCartProvider key={user.id} ownerId={user.id}>{children}</ApiCartProvider>
+        : <LocalCartProvider pendingSession={isLoading}>{children}</LocalCartProvider>;
 }
 function CartProvider({ children }) {
     return usesApi ? <ConnectedCart>{children}</ConnectedCart> : <LocalCartProvider>{children}</LocalCartProvider>;
