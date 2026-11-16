@@ -52,10 +52,10 @@ describe("Navbar", () => {
         expect(nav.getByRole("link", { name: "KYNEX" })).toHaveAttribute("href", "/");
         expect(nav.getByRole("link", { name: "Inicio" })).toHaveAttribute("href", "/");
         expect(nav.getByRole("link", { name: "Tienda" })).toHaveAttribute("href", "/productos");
-        expect(nav.getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/contacto");
+        expect(nav.queryByRole("link", { name: "Contacto" })).not.toBeInTheDocument();
         expect(nav.getByRole("link", { name: "Entrenamiento" })).toHaveAttribute("href", "/entrenamiento");
         expect(nav.getByRole("link", { name: "Mi rutina" })).toHaveAttribute("href", "/rutina");
-        expect(nav.getByRole("link", { name: "Nosotros" })).toHaveAttribute("href", "/nosotros");
+        expect(nav.queryByRole("link", { name: "Nosotros" })).not.toBeInTheDocument();
         expect(nav.getByRole("link", { name: "Blog", exact: true })).toHaveAttribute("href", "/blog");
         expect(nav.getByRole("link", { name: "Iniciar sesión" })).toHaveAttribute("href", "/login");
         expect(nav.getByRole("link", { name: "Carrito (0)" })).toHaveAttribute("href", "/carrito");
@@ -67,21 +67,21 @@ describe("Navbar", () => {
         ["/productos/2", "Tienda"],
         ["/carrito", "Carrito (0)"],
         ["/login", "Iniciar sesión"],
-        ["/contacto", "Contacto"],
+        ["/contacto", null],
         ["/entrenamiento", "Entrenamiento"],
         ["/rutina", "Mi rutina"],
-        ["/nosotros", "Nosotros"],
+        ["/nosotros", null],
         ["/blog", "Blog"],
         ["/blog/creatina-y-rendimiento", "Blog"],
         ["/blog/recuperacion-muscular", "Blog"]
-    ])("marca solamente el enlace activo en %s", (path, activeLink) => {
+    ])("marca el enlace de %s cuando está presente en la cabecera", (path, activeLink) => {
         renderNavbar(path);
 
-        expect(screen.getByRole("link", { name: activeLink })).toHaveAttribute("aria-current", "page");
+        if (activeLink) expect(screen.getByRole("link", { name: activeLink })).toHaveAttribute("aria-current", "page");
         const activeLinks = screen.getAllByRole("link").filter(
             link => link.getAttribute("aria-current") === "page"
         );
-        expect(activeLinks).toHaveLength(1);
+        expect(activeLinks).toHaveLength(activeLink ? 1 : 0);
     });
 
     it("recupera el total de unidades guardadas, no solo los productos distintos", () => {

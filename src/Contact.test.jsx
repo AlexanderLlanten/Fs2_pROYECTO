@@ -27,14 +27,14 @@ describe("Contacto integrado", () => {
         expect(screen.getByRole("form", { name: "Formulario de contacto" })).toBeInTheDocument();
         expect(screen.getAllByRole("banner")).toHaveLength(1); expect(screen.getAllByRole("main")).toHaveLength(1);
         expect(screen.getAllByRole("contentinfo")).toHaveLength(1);
-        expect(within(screen.getByRole("banner")).getByRole("link", { name: "Contacto" })).toHaveAttribute("aria-current", "page");
+        expect(within(screen.getByRole("banner")).queryByRole("link", { name: "Contacto" })).not.toBeInTheDocument();
         expect(within(screen.getByRole("contentinfo")).getByRole("link", { name: "Contacto" })).toHaveAttribute("href", "/contacto");
     });
-    it("abre Contacto desde la cabecera y cierra el menú móvil", async () => {
+    it("abre Contacto desde el pie y cierra el menú móvil al navegar", async () => {
         const user = userEvent.setup(); openPage("/");
         const header = within(screen.getByRole("banner"));
         await user.click(header.getByRole("button", { name: "Abrir menú" }));
-        await user.click(header.getByRole("link", { name: "Contacto" }));
+        await user.click(within(screen.getByRole("contentinfo")).getByRole("link", { name: "Contacto" }));
         expect(screen.getByRole("heading", { name: "Hablemos" })).toBeInTheDocument();
         expect(header.getByRole("button", { name: "Abrir menú" })).toHaveAttribute("aria-expanded", "false");
     });
