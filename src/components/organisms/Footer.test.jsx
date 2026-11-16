@@ -17,6 +17,8 @@ describe("Footer", () => {
         const footer = within(screen.getByRole("contentinfo"));
         const nav = within(footer.getByRole("navigation", { name: "Navegación del pie de página" }));
 
+        expect(nav.getAllByRole("link")).toHaveLength(9);
+
         expect(footer.getByRole("link", { name: "KYNEX" })).toHaveAttribute("href", "/");
         expect(footer.getByText(/Plataforma deportiva orientada a suplementación/)).toBeInTheDocument();
         expect(footer.getByText(`© ${new Date().getFullYear()} KYNEX. Todos los derechos reservados.`)).toBeInTheDocument();

@@ -12,8 +12,8 @@ function Footer() {
     return (
         <footer className="kynex-footer">
             <div className="container">
-                <div className="row gy-4 justify-content-between">
-                    <div className="col-12 col-md-7 col-lg-5">
+                <nav className="kynex-footer-grid" aria-label="Navegación del pie de página">
+                    <div>
                         <BrandLink />
                         <p className="kynex-footer-description">
                             Plataforma deportiva orientada a suplementación,
@@ -21,22 +21,32 @@ function Footer() {
                         </p>
                     </div>
 
-                    <div className="col-12 col-md-4 col-lg-3">
+                    <div>
                         <h2 className="kynex-footer-title">Explorar</h2>
-                        <nav aria-label="Navegación del pie de página">
-                            <ul className="kynex-footer-links">
-                                <li><Link to="/">Inicio</Link></li>
-                                <li><Link to="/productos">Tienda</Link></li>
-                                <li><Link to="/carrito">Carrito</Link></li>
-                                <li><Link to="/entrenamiento">Entrenamiento</Link></li>
-                                <li><Link to="/rutina">Mi rutina</Link></li>
-                                <li><Link to="/blog">Blog</Link></li>
-                                <li><Link to="/nosotros">Nosotros</Link></li>
-                                <li><Link to="/contacto">Contacto</Link></li>
-                            </ul>
-                        </nav>
+                        <ul className="kynex-footer-links">
+                            <li><Link to="/">Inicio</Link></li>
+                            <li><Link to="/productos">Tienda</Link></li>
+                            <li><Link to="/carrito">Carrito</Link></li>
+                        </ul>
                     </div>
-                </div>
+
+                    <div>
+                        <h2 className="kynex-footer-title">Entrenamiento</h2>
+                        <ul className="kynex-footer-links">
+                            <li><Link to="/entrenamiento">Entrenamiento</Link></li>
+                            <li><Link to="/rutina">Mi rutina</Link></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 className="kynex-footer-title">Empresa</h2>
+                        <ul className="kynex-footer-links">
+                            <li><Link to="/nosotros">Nosotros</Link></li>
+                            <li><Link to="/blog">Blog</Link></li>
+                            <li><Link to="/contacto">Contacto</Link></li>
+                        </ul>
+                    </div>
+                </nav>
 
                 <div className="kynex-footer-bottom">
                     <p>© {new Date().getFullYear()} KYNEX. Todos los derechos reservados.</p>
