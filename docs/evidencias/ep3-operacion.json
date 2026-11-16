@@ -1,0 +1,171 @@
+{
+  "date": "2026-11-15",
+  "scope": "Verificación operativa de EP3",
+  "versions": {
+    "frontendApplication": "d1164012dbb595ede6865c581d02e3192a468843",
+    "backendApplication": "d568be39c9ae296456c79e8b20e3585c989df284",
+    "backendRecovery": "a3f3c2c5a49ee52e91ef40d36ee16f3d7d2d0aed"
+  },
+  "previousApplicationRegression": {
+    "react": {
+      "files": 98,
+      "passed": 740
+    },
+    "backend": {
+      "passed": 158,
+      "database": "PostgreSQL"
+    },
+    "note": "Resultados previos de aplicación; no se suman a las comprobaciones operativas ni representan cobertura nueva."
+  },
+  "cleanInstallation": {
+    "publicClones": true,
+    "copiedEnvironmentFiles": false,
+    "copiedDependencies": false,
+    "npmCi": "approved",
+    "apiProductionBuild": "approved",
+    "mavenWrapperPackage": "approved",
+    "packageTests": "Las pruebas se omitieron al empaquetar; la regresión del servidor se verifica también en GitHub Actions.",
+    "execution": "Frontend compilado y JAR sobre un proyecto Docker PostgreSQL 18.6 independiente, en el mismo equipo físico."
+  },
+  "recovery": {
+    "format": "pg_dump custom",
+    "integrity": "SHA-256 y tamaño del archivo frente al manifiesto",
+    "destination": "Base nueva; nunca sobrescribe el origen ni un destino existente.",
+    "tablesCompared": 18,
+    "sequencesCompared": 14,
+    "allDataAndSequencesEqual": true,
+    "sourceActiveSessionsAtBackup": 2,
+    "restoredActiveSessions": 0,
+    "tables": [
+      {
+        "name": "account_policy",
+        "rows": 1
+      },
+      {
+        "name": "app_user",
+        "rows": 2
+      },
+      {
+        "name": "cart_line",
+        "rows": 1
+      },
+      {
+        "name": "cart_merge",
+        "rows": 0
+      },
+      {
+        "name": "category",
+        "rows": 6
+      },
+      {
+        "name": "contact_event",
+        "rows": 2
+      },
+      {
+        "name": "contact_message",
+        "rows": 1
+      },
+      {
+        "name": "contact_reply",
+        "rows": 1
+      },
+      {
+        "name": "exercise",
+        "rows": 8
+      },
+      {
+        "name": "flyway_schema_history",
+        "rows": 10
+      },
+      {
+        "name": "order_event",
+        "rows": 2
+      },
+      {
+        "name": "order_line",
+        "rows": 1
+      },
+      {
+        "name": "payment_attempt",
+        "rows": 1
+      },
+      {
+        "name": "product",
+        "rows": 6
+      },
+      {
+        "name": "purchase_order",
+        "rows": 1
+      },
+      {
+        "name": "routine_exercise",
+        "rows": 1
+      },
+      {
+        "name": "shopping_cart",
+        "rows": 1
+      },
+      {
+        "name": "training_routine",
+        "rows": 1
+      }
+    ],
+    "operationalChecks": {
+      "passed": 11,
+      "failed": 0,
+      "runtimes": [
+        "Windows PowerShell 5.1.26100.9818",
+        "PowerShell 7.6.9 desde clon público actualizado",
+        "PowerShell en Ubuntu mediante GitHub Actions"
+      ],
+      "note": "El mismo conjunto de 11 casos se ejecutó en varios entornos; no son 33 casos distintos."
+    }
+  },
+  "restoredApplicationAcceptance": {
+    "passed": 11,
+    "failed": 0,
+    "checks": [
+      "La copia rechaza el JWT previo con el mismo secreto de firma.",
+      "El cliente vuelve a ingresar con su cuenta y contraseña originales.",
+      "La compra aprobada conserva propietario, total y estado.",
+      "El inventario conserva el descuento de la compra sin duplicarlo.",
+      "El carrito pendiente conserva su producto y cantidad.",
+      "La rutina conserva nombre, ejercicio, series y repeticiones.",
+      "La consulta conserva su respuesta pública y excluye las notas privadas.",
+      "El frontend compilado permite ingresar y abrir las compras recuperadas desde Mi perfil.",
+      "Una ruta privada directa y su recarga conservan la sesión y la respuesta.",
+      "Mi perfil recuperado se presenta sin desborde horizontal a 390, 768 y 1366 px.",
+      "El cierre de sesión vuelve a proteger el perfil sin errores de JavaScript."
+    ],
+    "browser": "Microsoft Edge",
+    "widths": [
+      390,
+      768,
+      1366
+    ],
+    "javascriptErrors": 0
+  },
+  "continuousIntegration": [
+    {
+      "workflow": "Backend PostgreSQL",
+      "conclusion": "success",
+      "url": "https://github.com/AlexanderLlanten/kynex-backend/actions/runs/43779528280"
+    },
+    {
+      "workflow": "Copia y restauracion PostgreSQL",
+      "conclusion": "success",
+      "url": "https://github.com/AlexanderLlanten/kynex-backend/actions/runs/43779528323"
+    }
+  ],
+  "limits": [
+    "La instalación limpia se realizó en el mismo equipo; no sustituye una aceptación en otro computador físico.",
+    "Continúan pendientes la matriz completa de navegadores, la accesibilidad completa y los objetivos medidos de rendimiento.",
+    "El respaldo de uso permanece privado; no se publican datos, contraseñas, JWT, archivos .env ni copias de base de datos.",
+    "Las comprobaciones realizadas no equivalen a certificación de seguridad ni preparación para operación productiva."
+  ],
+  "rubricEstimate": {
+    "technicalAssignmentPercent": 97,
+    "pendingMarginPercent": 3,
+    "method": "Ponderación de indicadores del encargo; no equivale a nota, horas, cobertura ni presentación individual."
+  }
+}

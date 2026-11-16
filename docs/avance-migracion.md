@@ -20,21 +20,25 @@ Recuperación del histórico: Administrador puede confirmar la vinculación de u
 
 Resultados: 158 pruebas de API con PostgreSQL y 740 pruebas de React en 98 archivos aprobadas; builds local y API completados. Se conserva la evidencia previa. Edge comprobó envío vinculado, recuperación administrativa sin referencias, lectura desde dos sesiones, notas privadas, actualización y logout. Las vistas se revisaron a 390, 768 y 1366 px. Una regresión específica verifica que la recuperación inicial de sesión no desmonte el formulario del visitante. Swagger describe el envío público y los recursos protegidos. El ERS V3 mantiene 32 RF y 21 RNF y actualiza su estado.
 
-Pendiente: operación, copia y restauración y aceptación completa en otro equipo. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, perfil, usuarios, categorías, catálogo, compra, entrenamiento y contacto sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
+Operación verificada: copia con manifiesto SHA-256 y restauración en una base nueva, sin sobrescribir el origen. Once comprobaciones operativas aprobaron en PowerShell 5.1 y 7 y en GitHub Actions con Linux. Se verificaron importes, Unicode, relaciones, secuencias, preservación del origen, revocación de sesiones y rechazo de archivos alterados y bases existentes.
 
-La autoevaluación técnica EP3 pasa de **85% a 93%**, con un margen pendiente estimado del **7%**. Contacto completa el recurso funcional que faltaba y Swagger distingue las rutas públicas y protegidas. La API sube de 60% a 100% en la escala de la pauta, que no contempla 80% para este indicador. Modelo e integración conservan margen por aceptación y operación. Es un juicio sobre evidencia, no una calificación, horas ni cobertura de código.
+Los clones públicos limpios completaron `npm ci`, build API y empaquetado Maven. La aplicación se inició en un proyecto PostgreSQL 18.6 separado y, después, en su copia restaurada. Coincidieron 18 tablas de negocio y migraciones y todas sus secuencias. Otras once comprobaciones verificaron compra aprobada, stock, carrito pendiente, rutina, respuesta pública sin notas privadas, rechazo del JWT anterior, nuevo login, recarga y logout. Edge revisó Mi perfil a 390, 768 y 1366 px. La [evidencia operativa](evidencias/ep3-operacion.json) distingue este corte de la regresión previa de aplicación.
+
+Pendiente: aceptación completa en otro equipo físico, matriz de navegadores, accesibilidad completa y mediciones de rendimiento. La instalación limpia del mismo equipo no reemplaza esas verificaciones. El modo predeterminado sigue siendo local. `VITE_DATA_SOURCE=api` conecta cuentas, perfil, usuarios, categorías, catálogo, compra, entrenamiento y contacto sin registros locales como respaldo del servidor. El emulador requiere `PAYMENT_EMULATOR_ENABLED=true`. Los pedidos son comprobantes académicos internos, sin emisión tributaria ni cobros reales.
+
+La autoevaluación técnica EP3 pasa de **93% a 97%**, con un margen pendiente estimado del **3%**. La recuperación e instalación limpia completan la evidencia operativa del backend. La API conserva 100% en la escala de la pauta, que no contempla 80% para este indicador. La integración conserva margen por aceptación externa y condiciones de funcionamiento pendientes. Es un juicio sobre evidencia, no una calificación, horas ni cobertura de código.
 
 | Indicador EP3 | Peso en el encargo | Nivel estimado | Aporte |
 | --- | ---: | ---: | ---: |
-| IE3.1.1 Backend, modelos y negocio | 20% | 80% | 16 |
+| IE3.1.1 Backend, modelos y negocio | 20% | 100% | 20 |
 | IE3.2.1 API CRUD y Swagger | 20% | 100% | 20 |
 | IE3.2.2 Integración REST | 15% | 80% | 12 |
 | IE3.3.1 JWT y roles | 15% | 100% | 15 |
 | IE3.3.2 Sesión persistente | 15% | 100% | 15 |
 | IE3.3.3 Restricciones en React | 15% | 100% | 15 |
-| **Total estimado** | **100%** | | **93%** |
+| **Total estimado** | **100%** | | **97%** |
 
-La integración se valora en 80% por los recorridos completos de cuentas, compra, catálogo, entrenamiento y contacto; las restricciones se verifican también en estas pantallas. Modelo e integración mantienen margen por aceptación externa y operación. La sesión y autorización se valoran sobre los escenarios probados; no equivalen a una certificación de seguridad. El encargo pesa 40% de EP3; la presentación individual, 60%, se evalúa por separado.
+El modelo y negocio se valoran en 100% sobre las migraciones, relaciones, transacciones, concurrencia y recuperación comprobadas. La integración conserva el nivel estimado de 80% hasta completar su aceptación externa y condiciones de funcionamiento pendientes. El paso desde 93% a 97% corresponde a cuatro puntos ponderados de evidencia del backend; no representa horas ni un conteo de tareas. La sesión y autorización se valoran sobre los escenarios probados; no equivalen a una certificación de seguridad. El encargo pesa 40% de EP3; la presentación individual, 60%, se evalúa por separado.
 
 Los porcentajes posteriores corresponden al antecedente de EP2.
 
