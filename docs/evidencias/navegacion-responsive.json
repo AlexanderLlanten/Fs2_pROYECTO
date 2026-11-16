@@ -1,0 +1,574 @@
+{
+  "date": "2026-11-15",
+  "sourceCommit": "5904492",
+  "problem": {
+    "headerPosition": "static",
+    "cartInsideCollapsedMenu": true,
+    "headerTopAfterScrolling900Pixels": -900
+  },
+  "changes": [
+    "Cabecera sticky con acceso al carrito fuera del menú plegable.",
+    "Menú con altura disponible y desplazamiento interno.",
+    "Cierre al navegar, pulsar fuera, presionar Escape y pasar a escritorio.",
+    "Retorno del foco con Escape; botón del menú y acceso al carrito de al menos 44 px.",
+    "Altura real sincronizada con las anclas y el resumen del carrito."
+  ],
+  "regression": {
+    "files": 98,
+    "passed": 743,
+    "failed": 0,
+    "note": "Ejecución completa de React; incorpora tres casos nuevos de interacción del menú."
+  },
+  "builds": {
+    "local": "approved",
+    "api": "approved"
+  },
+  "browser": "Microsoft Edge",
+  "guestNavigation": {
+    "local": [
+      {
+        "width": 320,
+        "height": 640,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 360,
+        "height": 740,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1024,
+        "height": 768,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1199,
+        "height": 800,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1200,
+        "height": 800,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1280,
+        "height": 800,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1366,
+        "height": 900,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      }
+    ],
+    "api": [
+      {
+        "width": 320,
+        "height": 640,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 360,
+        "height": 740,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 768,
+        "height": 1024,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1024,
+        "height": 768,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1199,
+        "height": 800,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1200,
+        "height": 800,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1280,
+        "height": 800,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 1366,
+        "height": 900,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "stickyHeader": true,
+        "cartVisible": true,
+        "overflow": false,
+        "keyboardAndNavigation": true
+      }
+    ]
+  },
+  "publicRouteChecks": [
+    {
+      "width": 320,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/productos",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/productos/2",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/carrito",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/login",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/contacto",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/nosotros",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/blog",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "route": "/entrenamiento",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/productos",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/productos/2",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/carrito",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/login",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/contacto",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/nosotros",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/blog",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "route": "/entrenamiento",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/productos",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/productos/2",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/carrito",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/login",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/contacto",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/nosotros",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/blog",
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "route": "/entrenamiento",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/productos",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/productos/2",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/carrito",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/login",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/contacto",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/nosotros",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/blog",
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "route": "/entrenamiento",
+      "overflow": false
+    }
+  ],
+  "authenticatedNavigation": [
+    {
+      "role": "Cliente",
+      "width": 320,
+      "height": 640,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Cliente",
+      "width": 390,
+      "height": 844,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Cliente",
+      "width": 768,
+      "height": 1024,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Cliente",
+      "width": 1024,
+      "height": 768,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Cliente",
+      "width": 1200,
+      "height": 800,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Cliente",
+      "width": 1280,
+      "height": 900,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Cliente",
+      "width": 844,
+      "height": 390,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 320,
+      "height": 640,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 390,
+      "height": 844,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 768,
+      "height": 1024,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 1024,
+      "height": 768,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 1200,
+      "height": 800,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 1280,
+      "height": 900,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Vendedor",
+      "width": 844,
+      "height": 390,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 320,
+      "height": 640,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 390,
+      "height": 844,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 768,
+      "height": 1024,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 1024,
+      "height": 768,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 1200,
+      "height": 800,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 1280,
+      "height": 900,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    },
+    {
+      "role": "Administrador",
+      "width": 844,
+      "height": 390,
+      "stickyHeader": true,
+      "cartVisible": true,
+      "accountActionsReachable": true,
+      "overflow": false
+    }
+  ],
+  "guestCartCounter": true,
+  "cartSummaryBelowHeader": true,
+  "resizeClosesMenu": true,
+  "limits": [
+    "Comprobación realizada en el mismo equipo.",
+    "No equivale a una matriz completa de navegadores ni a una auditoría total de accesibilidad.",
+    "No modifica los permisos ni las operaciones del backend."
+  ]
+}
