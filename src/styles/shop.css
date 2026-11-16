@@ -895,7 +895,7 @@
         sticky;
 
     top:
-        1.5rem;
+        calc(var(--kynex-header-height, 0px) + 1.5rem);
 
     padding:
         1.5rem;
