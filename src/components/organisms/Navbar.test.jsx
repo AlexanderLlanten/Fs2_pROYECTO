@@ -5,7 +5,7 @@
  */
 
 import { beforeEach, describe, expect, it } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
@@ -116,6 +116,7 @@ describe("Navbar", () => {
         const toggle = screen.getByRole("button", { name: "Abrir menú" });
         const menu = document.getElementById(toggle.getAttribute("aria-controls"));
         expect(toggle).toHaveAttribute("aria-expanded", "false");
+        expect(menu).not.toContainElement(screen.getByRole("link", { name: "Carrito (0)" }));
 
         await user.click(toggle);
         expect(screen.getByRole("button", { name: "Cerrar menú" })).toHaveAttribute("aria-expanded", "true");
@@ -130,5 +131,35 @@ describe("Navbar", () => {
         expect(toggle).toHaveAttribute("aria-expanded", "false");
         expect(menu).not.toHaveClass("show");
         expect(screen.getByRole("link", { name: "Tienda" })).toHaveAttribute("aria-current", "page");
+    });
+
+    it("cierra el menú con Escape y devuelve el foco al botón", async () => {
+        const user = userEvent.setup();
+        renderNavbar();
+        await user.click(screen.getByRole("button", { name: "Abrir menú" }));
+        screen.getByRole("link", { name: "Tienda" }).focus();
+        await user.keyboard("{Escape}");
+        expect(screen.getByRole("button", { name: "Abrir menú" })).toHaveFocus();
+        expect(screen.getByRole("button", { name: "Abrir menú" })).toHaveAttribute("aria-expanded", "false");
+    });
+
+    it("cierra el menú al pulsar fuera de la cabecera", async () => {
+        const user = userEvent.setup();
+        renderNavbar();
+        await user.click(screen.getByRole("button", { name: "Abrir menú" }));
+        await user.click(screen.getByText("Contenido de la página"));
+        expect(screen.getByRole("button", { name: "Abrir menú" })).toHaveAttribute("aria-expanded", "false");
+    });
+
+    it("cierra el menú al pasar al ancho de escritorio", async () => {
+        const user = userEvent.setup();
+        renderNavbar();
+        await user.click(screen.getByRole("button", { name: "Abrir menú" }));
+        const original = window.innerWidth;
+        try {
+            window.innerWidth = 1280;
+            fireEvent.resize(window);
+            expect(screen.getByRole("button", { name: "Abrir menú" })).toHaveAttribute("aria-expanded", "false");
+        } finally { window.innerWidth = original; }
     });
 });
