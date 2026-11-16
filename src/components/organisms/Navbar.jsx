@@ -72,12 +72,6 @@ function Navbar() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/blog" onClick={closeMenu}>Blog</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/nosotros" end onClick={closeMenu}>Nosotros</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="/contacto" onClick={closeMenu}>Contacto</NavLink>
-                            </li>
                         </ul>
 
                         <div className="kynex-navbar-actions">

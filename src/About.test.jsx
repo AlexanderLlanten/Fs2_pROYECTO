@@ -26,13 +26,14 @@ describe("Nosotros integrado", () => {
         expect(screen.getByRole("heading", { level: 1, name: "Nuestra tienda" })).toBeInTheDocument();
         expect(screen.getAllByRole("banner")).toHaveLength(1); expect(screen.getAllByRole("main")).toHaveLength(1);
         expect(screen.getAllByRole("contentinfo")).toHaveLength(1);
-        expect(within(screen.getByRole("banner")).getByRole("link", { name: "Nosotros" })).toHaveAttribute("aria-current", "page");
+        expect(within(screen.getByRole("banner")).queryByRole("link", { name: "Nosotros" })).not.toBeInTheDocument();
+        expect(within(screen.getByRole("contentinfo")).getByRole("link", { name: "Nosotros" })).toHaveAttribute("href", "/nosotros");
     });
-    it("navega desde cabecera y pie y cierra el menú móvil", async () => {
+    it("navega desde el pie y cierra el menú móvil al cambiar de página", async () => {
         const user = userEvent.setup(); openPage("/");
         const header = within(screen.getByRole("banner"));
         await user.click(header.getByRole("button", { name: "Abrir menú" }));
-        await user.click(header.getByRole("link", { name: "Nosotros" }));
+        await user.click(within(screen.getByRole("contentinfo")).getByRole("link", { name: "Nosotros" }));
         expect(header.getByRole("button", { name: "Abrir menú" })).toHaveAttribute("aria-expanded", "false");
         expect(window.location.pathname).toBe("/nosotros");
         await user.click(header.getByRole("link", { name: "Tienda" }));
@@ -84,6 +85,6 @@ describe("Nosotros integrado", () => {
     it("muestra 404 en un subcamino desconocido sin marcar Nosotros como activo", () => {
         openPage("/nosotros/desconocido");
         expect(screen.getByRole("heading", { name: "Página no encontrada" })).toBeInTheDocument();
-        expect(within(screen.getByRole("banner")).getByRole("link", { name: "Nosotros" })).not.toHaveAttribute("aria-current");
+        expect(within(screen.getByRole("banner")).queryByRole("link", { name: "Nosotros" })).not.toBeInTheDocument();
     });
 });
