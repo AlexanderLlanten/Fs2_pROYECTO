@@ -2,6 +2,12 @@
 
 ## Desarrollo de EP3
 
+Actualización del 17 de noviembre de 2026: se incorpora ejecución con **tres contenedores por responsabilidad** en `codex/ep3-docker` de ambos repositorios. El frontend compila React y utiliza Nginx; el backend ejecuta Spring Boot; PostgreSQL mantiene el volumen. Compose separa las redes web y de datos y espera las comprobaciones de salud. La API y las imágenes se solicitan desde el mismo origen público, con cookies y CSRF conservados. La recarga de rutas mantiene React Router.
+
+La regresión actual del frontend aprueba **753 pruebas en 99 archivos**. Las nuevas pruebas verifican resolución de la API relativa, rechazo de configuraciones ambiguas, cookies/CSRF y fotografías a través del proxy. Las 168 pruebas previas del backend se conservan como antecedente; no se suman a las comprobaciones nuevas de contenedores. El ERS actualiza arquitectura, portabilidad, arranque y persistencia. Los comandos y la evidencia específica se publican junto a la entrega Docker. Esta actualización no convierte la autoevaluación técnica en una calificación ni resuelve por sí sola la aceptación en otro equipo físico.
+
+### Antecedente del corte anterior
+
 Corte del 15 de noviembre de 2026. La actualización se desarrolla en `codex/ep3-integracion`; los cambios pendientes se mantienen en una propuesta de integración para revisión. El repositorio público del servidor es [kynex-backend](https://github.com/AlexanderLlanten/kynex-backend), rama `codex/ep3-base`.
 
 Verificado: Spring Boot y PostgreSQL; migraciones; CRUD de productos y categorías con baja lógica y versión; registro completo; JWT, renovación y logout; sesión recuperable y gestión de productos en React. El bloque comercial añade carrito por propietario y conciliación del visitante, dirección de entrega, pedidos históricos, cinco resultados de pago académico e historial propio. Administrador consulta, avanza y anula pedidos con motivo; Vendedor consulta. La aprobación y la restitución de stock son transaccionales e idempotentes.
