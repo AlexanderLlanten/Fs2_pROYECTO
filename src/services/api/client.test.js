@@ -2,6 +2,14 @@ import { describe, it, expect, vi } from "vitest";
 import { ApiError, createApiClient } from "./client.js";
 
 describe("Cliente HTTP", () => {
+    it("conserva autenticación y CSRF al utilizar una API del mismo sitio", async () => {
+        const fetcher = vi.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
+        const request = createApiClient({ baseUrl: "/api/v1", fetcher });
+        await request("/auth/refresh", { method: "POST", credentials: "include", headers: { "X-XSRF-TOKEN": "csrf-prueba" } });
+        expect(fetcher).toHaveBeenCalledWith(new URL("/api/v1/auth/refresh", location.origin).href, expect.objectContaining({
+            credentials: "include", headers: expect.objectContaining({ "X-XSRF-TOKEN": "csrf-prueba" })
+        }));
+    });
     it("envía JSON y un JWT solo cuando se proporciona", async () => {
         const fetcher = vi.fn().mockResolvedValue({ ok: true, status: 201, json: async () => ({ id: 1 }) });
         const request = createApiClient({ fetcher });

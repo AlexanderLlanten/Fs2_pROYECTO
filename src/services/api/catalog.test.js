@@ -5,6 +5,10 @@ import { createRemoteCatalog } from "./catalogStore.js";
 const product = { id: 2, code: "KYN002", category: "Creatinas", name: "Creatina", description: "Descripción", price: 21990, stock: 25, image: "/media/products/creatina.png" };
 
 describe("Catálogo HTTP", () => {
+    it("sirve las imágenes a través del mismo proxy que la API", async () => {
+        const service = createCatalogApi(async () => [product], "/api/v1");
+        expect((await service.products())[0].image).toBe(location.origin + "/media/products/creatina.png");
+    });
     it("resuelve las imágenes desde el servidor y conserva los metadatos", async () => {
         const service = createCatalogApi(async () => [{ ...product, benefits: ["Fuerza"] }], "http://localhost:8080/api/v1");
         expect(await service.products()).toEqual([{ ...product, image: "http://localhost:8080/media/products/creatina.png", benefits: ["Fuerza"] }]);

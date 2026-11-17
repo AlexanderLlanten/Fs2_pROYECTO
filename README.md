@@ -2,6 +2,19 @@
 
 Frontend KYNEX migrado a React, Vite y React Router. Las 20 pantallas del inventario original tienen ruta React.
 
+## Ejecución completa con Docker
+
+La entrega permite ejecutar tres contenedores separados: **frontend**, **backend** y **PostgreSQL**. Este repositorio aporta la compilación React y Nginx; `compose.yml` del [backend](https://github.com/AlexanderLlanten/kynex-backend) coordina los tres.
+
+Se colocan ambos repositorios en carpetas hermanas `Fs2_pROYECTO` y `kynex-backend`, con sus cambios de la rama `codex/ep3-docker`. Se configura el `.env` privado del backend y, desde su carpeta, se ejecuta:
+
+```powershell
+docker compose up --build -d --wait
+docker compose ps
+```
+
+La aplicación abre en **http://localhost:8081**. La imagen activa el modo API y utiliza `/api/v1` del mismo sitio; Nginx envía las solicitudes y las imágenes al contenedor backend. La recarga de rutas de React Router funciona también dentro del contenedor. No se utiliza el `.env` local del frontend en la construcción Docker. La modalidad de Vite descrita a continuación sigue disponible para desarrollo.
+
 ## Desarrollo EP3
 
 La rama `codex/ep3-integracion` continúa la conexión con el [backend Spring Boot y PostgreSQL](https://github.com/AlexanderLlanten/kynex-backend). Las entregas previas de cuentas y compra ya están integradas en `main`; los cambios nuevos se proponen para revisión. La versión EP2 permanece disponible en el historial.

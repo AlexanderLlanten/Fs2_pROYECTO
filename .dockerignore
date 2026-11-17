@@ -1,0 +1,14 @@
+# Solo se envían archivos necesarios para construir el frontend.
+**
+!package.json
+!package-lock.json
+!index.html
+!vite.config.js
+!src
+!src/**
+!assets
+!assets/**
+!public
+!public/**
+!docker
+!docker/**

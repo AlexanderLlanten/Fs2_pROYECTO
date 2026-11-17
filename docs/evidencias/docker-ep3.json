@@ -1,0 +1,112 @@
+{
+  "date": "2026-11-17",
+  "scope": "Ejecución local de KYNEX con un contenedor para frontend, otro para backend y otro para PostgreSQL.",
+  "source": {
+    "frontendApplication": "4f19fca0c76088fa43986bbc2f443ea7a8fa0b0d",
+    "backendDockerAndSmoke": "2a814b945ffff0963e821e290647c454e1f0e681"
+  },
+  "docker": {
+    "engine": "29.5.3",
+    "compose": "5.1.4",
+    "services": {
+      "frontend": {
+        "healthy": true,
+        "runtime": "Nginx",
+        "uid": 101,
+        "networks": [
+          "web"
+        ]
+      },
+      "backend": {
+        "healthy": true,
+        "runtime": "Java 21 y Spring Boot",
+        "uid": 100,
+        "networks": [
+          "web",
+          "data"
+        ]
+      },
+      "postgres": {
+        "healthy": true,
+        "version": "18.6",
+        "networks": [
+          "data"
+        ],
+        "persistentVolume": true
+      }
+    },
+    "build": "Dos imágenes construidas desde Dockerfile, con dependencias instaladas dentro de etapas separadas.",
+    "privateHostEnvironmentIncludedInImages": false
+  },
+  "frontendRegression": {
+    "files": 99,
+    "passed": 753,
+    "newCases": 10
+  },
+  "httpThroughFrontend": {
+    "passed": 17,
+    "checks": [
+      "Recarga directa de una ruta React Router",
+      "Un asset inexistente devuelve 404 en vez del HTML de React",
+      "La API privada no se transforma en una página pública del proxy",
+      "El proxy rechaza el login sin CSRF aunque las credenciales sean válidas",
+      "Catálogo persistido accesible desde el contenedor frontend",
+      "Imagen del backend accesible mediante /media",
+      "Cookie HttpOnly y SameSite conservada por el proxy para Administrador",
+      "Cookie HttpOnly y SameSite conservada por el proxy para Cliente",
+      "Registro real y login de Cliente a través de Nginx",
+      "Rol Cliente rechazado en gestión administrativa",
+      "Renovación por cookie después de reconstruir el estado de acceso",
+      "Checkout y pago emulado confirman el pedido con importes del servidor",
+      "Repetir confirmación no duplica el descuento de stock",
+      "Compra recuperable desde el historial propio",
+      "Rutina privada persistida con un ejercicio",
+      "Consulta propia con respuesta publicada y nota interna protegida",
+      "Logout revoca también el JWT que estaba en memoria"
+    ]
+  },
+  "browserAfterContainerRecreation": {
+    "checks": [
+      "Detalle e imagen cargados al abrir directamente la ruta",
+      "Carrito del visitante conserva producto e imagen por el proxy",
+      "Login y recuperación de sesión al recargar Mi perfil",
+      "Pedido anterior recuperado después de recrear contenedores",
+      "Rutina privada conservada después de recrear contenedores",
+      "Consulta y respuesta propias conservadas sin nota interna",
+      "Navegación persistente y sin desbordamiento a 390 px",
+      "Navegación persistente y sin desbordamiento a 768 px",
+      "Navegación persistente y sin desbordamiento a 1366 px",
+      "Administración conectada de productos y ejercicios",
+      "Peticiones API y media al mismo origen y sin errores JavaScript"
+    ],
+    "passed": 11,
+    "apiOrigins": [
+      "http://localhost:18081"
+    ],
+    "pageErrors": []
+  },
+  "backupAndRecovery": {
+    "passed": 11,
+    "failed": 0,
+    "powershell": "7.6.9",
+    "scope": "Comprobaciones existentes ejecutadas sobre el servicio PostgreSQL del nuevo Compose."
+  },
+  "persistence": {
+    "recreatedServices": [
+      "postgres",
+      "backend"
+    ],
+    "preserved": [
+      "cuenta",
+      "pedido aprobado",
+      "rutina privada",
+      "consulta y respuesta publicada"
+    ],
+    "newLoginAndReload": "approved"
+  },
+  "limits": [
+    "La revisión se ejecutó en este equipo, con Edge y datos ficticios; no reemplaza la aceptación física en otro equipo.",
+    "Los 17 controles HTTP, 11 controles de navegador y 11 de recuperación son conjuntos separados de la suite Vitest.",
+    "Las 168 pruebas previas del backend corresponden al mismo código de aplicación, anterior al empaquetado Docker."
+  ]
+}

@@ -1,8 +1,9 @@
 import { api } from "./client.js";
 import { apiSession } from "./session.js";
 import { remoteCatalog } from "./catalogStore.js";
+import { apiBaseUrl } from "../../config/apiUrl.js";
 
-const apiOrigin = new URL(import.meta.env.VITE_API_URL || "http://localhost:8080/api/v1").origin;
+const apiOrigin = apiBaseUrl.origin;
 const detailKeys = ["slug", "brand", "format", "flavor", "goals", "dietaryTags", "allergens", "ingredients", "benefits", "usage", "nutrition", "certifications", "warning", "icon"];
 const failure = error => ({ success: false, message: error.message, code: error.status === 409 ? "CONFLICT" : error.status === 404 ? "NOT_FOUND" : "API",
     errors: error.errors ? Object.fromEntries(Object.entries(error.errors).map(([key,value]) => [key === "categoryId" ? "category" : key, value])) : undefined });

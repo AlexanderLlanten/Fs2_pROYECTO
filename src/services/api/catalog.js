@@ -1,8 +1,9 @@
 /* Contrato de lectura del catálogo. En este modo no se consulta LocalStorage ni se usan datos de respaldo. */
 import { api, ApiError } from "./client.js";
+import { apiBaseUrl, resolveApiUrl } from "../../config/apiUrl.js";
 
-export function createCatalogApi(request = api, apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8080/api/v1") {
-    const origin = new URL(apiUrl).origin;
+export function createCatalogApi(request = api, apiUrl = apiBaseUrl.href) {
+    const origin = resolveApiUrl(apiUrl).origin;
     return {
         async products() {
             const data = await request("/products");

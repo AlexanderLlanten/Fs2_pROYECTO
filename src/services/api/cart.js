@@ -1,7 +1,8 @@
 import { apiSession } from "./session.js";
 import { CART_KEY } from "../../utils/cart.js";
+import { apiBaseUrl } from "../../config/apiUrl.js";
 
-const origin = new URL(import.meta.env.VITE_API_URL || "http://localhost:8080/api/v1").origin;
+const origin = apiBaseUrl.origin;
 const MERGE_KEY = "kynex_guest_merge";
 const empty = { version: 0, items: [], totalItems: 0, subtotal: 0, shipping: 0, total: 0, missingForFreeShipping: 0, canCheckout: false, warnings: [] };
 const lock = work => globalThis.navigator?.locks?.request ? navigator.locks.request("kynex-guest-cart-merge", work) : work();
