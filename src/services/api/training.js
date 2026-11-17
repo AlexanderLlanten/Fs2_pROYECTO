@@ -1,7 +1,8 @@
 import { api } from "./client.js";
 import { apiSession } from "./session.js";
+import { apiBaseUrl } from "../../config/apiUrl.js";
 
-const origin = new URL(import.meta.env.VITE_API_URL || "http://localhost:8080/api/v1").origin;
+const origin = apiBaseUrl.origin;
 export const exerciseImage = exercise => ({ ...exercise, image: exercise.image?.startsWith("/media/training/") ? origin + exercise.image : exercise.image });
 export const readExercises = async path => {
     const data = await (path.startsWith("/admin/") ? apiSession.authorized(path) : api(path));

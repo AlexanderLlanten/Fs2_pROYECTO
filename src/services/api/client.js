@@ -1,4 +1,5 @@
 /* Cliente HTTP común. Convierte respuestas fallidas en errores utilizables por los formularios. */
+import { apiBaseUrl, resolveApiUrl } from "../../config/apiUrl.js";
 export class ApiError extends Error {
     constructor(message, status = 0, errors = {}) {
         super(message);
@@ -9,10 +10,7 @@ export class ApiError extends Error {
 }
 
 export function createApiClient({ baseUrl = "http://localhost:8080/api/v1", fetcher = (...args) => fetch(...args), timeout = 12000 } = {}) {
-    const base = new URL(baseUrl);
-    if (!["http:", "https:"].includes(base.protocol) || base.username || base.password || base.search || base.hash) {
-        throw new Error("La dirección de la API debe ser una URL http(s) sin credenciales ni parámetros.");
-    }
+    const base = resolveApiUrl(baseUrl);
     const root = base.href.replace(/\/$/, "");
     return async function request(path, { method = "GET", body, token, credentials = "omit", headers = {}, signal } = {}) {
         if (!path.startsWith("/") || path.startsWith("//")) throw new Error("Usa una ruta relativa a la API.");
@@ -49,4 +47,4 @@ export function createApiClient({ baseUrl = "http://localhost:8080/api/v1", fetc
     };
 }
 
-export const api = createApiClient({ baseUrl: import.meta.env.VITE_API_URL || "http://localhost:8080/api/v1" });
+export const api = createApiClient({ baseUrl: apiBaseUrl.href });
